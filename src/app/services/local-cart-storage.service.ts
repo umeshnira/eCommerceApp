@@ -1,16 +1,16 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class LocalCartStorageService {
-  public localCart = [];
-  constructor() {}
-  addToCartValues(prod) {
-    debugger;
-    this.localCart.push(prod);
+public localCart=[];
+  constructor() { }
+  addToCartValues(prod){
+
+this.localCart.push(prod);
   }
-  getCartValues() {
+  getCartValues(){
     return this.localCart;
   }
 }

@@ -190,7 +190,7 @@
                   <a class="aa-cart-link" href="#">
                     <span class="fa fa-shopping-basket"></span>
                     <span class="aa-cart-title">SHOPPING CART</span>
-                    <span class="aa-cart-notify">2</span>
+                    <span class="aa-cart-notify">{{cartItems}}</span>
                   </a>
                   <div class="aa-cartbox-summary">
                     <ul>
@@ -501,36 +501,48 @@
  </section> -->
     <!-- / Cart view section -->
     <div class="row col-md-12">
-      <div *ngFor="let x of cartView" class="card col-md-8">
-        <div class="card-body col-md-12">
-          <h4 class="card-title">Banaras</h4>
-          <div class="col-md-3">
-            <img
-              height="150px"
-              width="150px"
-              src="../../assets/images/electronic-8.png"
-              alt="img"
-            />
+      <div class="card col-md-8 ">
+        <div *ngFor="let x of cartView">
+          <div class="card-body col-md-12">
+            <h4 class="card-title">{{x.ProductName}}</h4>
+            <div class="col-md-3">
+              <img height="150px" width="150px" src="../../assets/images/{{x.imageName}}" alt="img">
+            </div>
+            <div class="col-md-9">
+              <input class="aa-cart-quantity" [(ngModel)]="x.cartQuant" (input)="cartQuantityCal()" type="number">
+              <p class="card-text">price {{x.price}}</p>
+              <a href="#" class="card-link">Remove</a>
+              <a href="#" class="card-link">Add to Wishlist</a>
+            </div>
+  
           </div>
-          <div class="col-md-9">
-            <input
-              class="aa-cart-quantity"
-              [(ngModel)]="x.cartQuant"
-              (change)="cartQuantityCal()"
-              type="number"
-            />
-            <p class="card-text">price 2000</p>
-            <a href="#" class="card-link">Remove</a>
-            <a href="#" class="card-link">Add to Wishlist</a>
+        </div>
+        <div *ngIf="whishList.length>0">
+          <h4 class="card-title">My whish List</h4>
+          <div *ngFor="let x of whishList">
+            <div class="card-body col-md-12">
+              <h4 class="card-title">{{x.ProductName}}</h4>
+              <div class="col-md-3">
+                <img height="150px" width="150px" src="../../assets/images/{{x.imageName}}" alt="img">
+              </div>
+              <div class="col-md-9">
+                <input class="aa-cart-quantity" [(ngModel)]="x.cartQuant" (input)="cartQuantityCal()" type="number">
+                <p class="card-text">price {{x.price}}</p>
+                <a href="#" class="card-link">Remove</a>
+                <a href="#" class="card-link">Add to Wishlist</a>
+              </div>
+  
+            </div>
           </div>
         </div>
       </div>
+  
       <div class="card col-md-4">
         <div class="card-body">
-          <h4 class="card-title">(1)Items</h4>
-          <p class="card-text">Total Price 2000</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <h4 class="card-title">({{cartItems}})Items </h4>
+          <p class="card-text">Total Price {{totalPrice}}</p>
+          <a href="#" class="card-link">Buy</a>
+          <!-- <a href="#" class="card-link">Another link</a> -->
         </div>
       </div>
     </div>
