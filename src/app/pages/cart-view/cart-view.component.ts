@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { LocalCartStorageService } from "src/app/services/local-cart-storage.service";
-import { LocalWhishListService } from "../../services/local-whish-list.service";
+import { LocalCartStorageService } from "./services/local-cart-storage.service";
+import { LocalWhishListService } from "./services/local-whish-list.service";
 
 @Component({
   selector: "app-cart-view",

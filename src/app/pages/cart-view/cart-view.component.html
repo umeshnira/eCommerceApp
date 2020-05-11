@@ -1,277 +1,612 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Daily Shop | Cart Page</title>
-
-    <!-- Font awesome -->
-    <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
-    <!-- Bootstrap -->
-    <!-- <link href="css/bootstrap.css" rel="stylesheet">    -->
-    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <!-- <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet"> -->
-    <!-- Product view slider -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">     -->
-    <!-- slick slider -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/slick.css"> -->
-    <!-- price picker slider -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/nouislider.css"> -->
-    <!-- Theme color -->
-    <!-- <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet"> -->
-    <!-- Top Slider CSS -->
-    <!-- <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all"> -->
-
-    <!-- Main style sheet -->
-    <!-- <link href="css/style.css" rel="stylesheet">     -->
-
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway"
-      rel="stylesheet"
-      type="text/css"
-    />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <!-- wpf loader Two -->
-    <!-- <div id="wpf-loader-two">          
-      <div class="wpf-loader-two-inner">
-        <span>Loading</span>
+<body>
+  <!-- top-header -->
+  <div class="header-most-top">
+    <p>Grocery Offer Zone Top Deals & Discounts</p>
+  </div>
+  <!-- //top-header -->
+  <!-- header-bot-->
+  <div class="header-bot">
+    <div class="header-bot_inner_wthreeinfo_header_mid">
+      <!-- header-bot-->
+      <div class="col-md-4 logo_agile">
+        <h1>
+          <a href="index.html">
+            <span>G</span>rocery <span>S</span>hoppy
+            <img src="images/logo2.png" alt=" " />
+          </a>
+        </h1>
       </div>
-    </div>  -->
-    <!-- / wpf loader Two -->
-    <!-- SCROLL TOP BUTTON -->
-    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-    <!-- END SCROLL TOP BUTTON -->
+      <!-- header-bot -->
+      <div class="col-md-8 header">
+        <!-- header lists -->
+        <ul>
+          <li>
+            <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
+              <span class="fa fa-map-marker" aria-hidden="true"></span> Shop
+              Locator</a
+            >
+          </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal1">
+              <span class="fa fa-truck" aria-hidden="true"></span>Track Order</a
+            >
+          </li>
+          <li>
+            <span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
+          </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal1">
+              <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In
+            </a>
+          </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal2">
+              <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+              Sign Up
+            </a>
+          </li>
+        </ul>
+        <!-- //header lists -->
+        <!-- search -->
+        <div class="agileits_search">
+          <form action="#" method="post">
+            <input
+              name="Search"
+              type="search"
+              placeholder="How can we help you today?"
+              required=""
+            />
+            <button
+              type="submit"
+              class="btn btn-default"
+              aria-label="Left Align"
+            >
+              <span class="fa fa-search" aria-hidden="true"> </span>
+            </button>
+          </form>
+        </div>
+        <!-- //search -->
+        <!-- cart details -->
+        <div class="top_nav_right">
+          <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+            <form action="#" method="post" class="last">
+              <input type="hidden" name="cmd" value="_cart" />
+              <input type="hidden" name="display" value="1" />
+              <button class="w3view-cart" type="submit" name="submit" value="">
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- //cart details -->
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!-- shop locator (popup) -->
+  <!-- Button trigger modal(shop-locator) -->
+  <div id="small-dialog1" class="mfp-hide">
+    <div class="select-city">
+      <h3>Please Select Your Location</h3>
+      <select class="list_of_cities">
+        <optgroup label="Popular Cities">
+          <option selected style="display: none; color: #eee;"
+            >Select City</option
+          >
+          <option>Birmingham</option>
+          <option>Anchorage</option>
+          <option>Phoenix</option>
+          <option>Little Rock</option>
+          <option>Los Angeles</option>
+          <option>Denver</option>
+          <option>Bridgeport</option>
+          <option>Wilmington</option>
+          <option>Jacksonville</option>
+          <option>Atlanta</option>
+          <option>Honolulu</option>
+          <option>Boise</option>
+          <option>Chicago</option>
+          <option>Indianapolis</option>
+        </optgroup>
+        <optgroup label="Alabama">
+          <option>Birmingham</option>
+          <option>Montgomery</option>
+          <option>Mobile</option>
+          <option>Huntsville</option>
+          <option>Tuscaloosa</option>
+        </optgroup>
+        <optgroup label="Alaska">
+          <option>Anchorage</option>
+          <option>Fairbanks</option>
+          <option>Juneau</option>
+          <option>Sitka</option>
+          <option>Ketchikan</option>
+        </optgroup>
+        <optgroup label="Arizona">
+          <option>Phoenix</option>
+          <option>Tucson</option>
+          <option>Mesa</option>
+          <option>Chandler</option>
+          <option>Glendale</option>
+        </optgroup>
+        <optgroup label="Arkansas">
+          <option>Little Rock</option>
+          <option>Fort Smith</option>
+          <option>Fayetteville</option>
+          <option>Springdale</option>
+          <option>Jonesboro</option>
+        </optgroup>
+        <optgroup label="California">
+          <option>Los Angeles</option>
+          <option>San Diego</option>
+          <option>San Jose</option>
+          <option>San Francisco</option>
+          <option>Fresno</option>
+        </optgroup>
+        <optgroup label="Colorado">
+          <option>Denver</option>
+          <option>Colorado</option>
+          <option>Aurora</option>
+          <option>Fort Collins</option>
+          <option>Lakewood</option>
+        </optgroup>
+        <optgroup label="Connecticut">
+          <option>Bridgeport</option>
+          <option>New Haven</option>
+          <option>Hartford</option>
+          <option>Stamford</option>
+          <option>Waterbury</option>
+        </optgroup>
+        <optgroup label="Delaware">
+          <option>Wilmington</option>
+          <option>Dover</option>
+          <option>Newark</option>
+          <option>Bear</option>
+          <option>Middletown</option>
+        </optgroup>
+        <optgroup label="Florida">
+          <option>Jacksonville</option>
+          <option>Miami</option>
+          <option>Tampa</option>
+          <option>St. Petersburg</option>
+          <option>Orlando</option>
+        </optgroup>
+        <optgroup label="Georgia">
+          <option>Atlanta</option>
+          <option>Augusta</option>
+          <option>Columbus</option>
+          <option>Savannah</option>
+          <option>Athens</option>
+        </optgroup>
+        <optgroup label="Hawaii">
+          <option>Honolulu</option>
+          <option>Pearl City</option>
+          <option>Hilo</option>
+          <option>Kailua</option>
+          <option>Waipahu</option>
+        </optgroup>
+        <optgroup label="Idaho">
+          <option>Boise</option>
+          <option>Nampa</option>
+          <option>Meridian</option>
+          <option>Idaho Falls</option>
+          <option>Pocatello</option>
+        </optgroup>
+        <optgroup label="Illinois">
+          <option>Chicago</option>
+          <option>Aurora</option>
+          <option>Rockford</option>
+          <option>Joliet</option>
+          <option>Naperville</option>
+        </optgroup>
+        <optgroup label="Indiana">
+          <option>Indianapolis</option>
+          <option>Fort Wayne</option>
+          <option>Evansville</option>
+          <option>South Bend</option>
+          <option>Hammond</option>
+        </optgroup>
+        <optgroup label="Iowa">
+          <option>Des Moines</option>
+          <option>Cedar Rapids</option>
+          <option>Davenport</option>
+          <option>Sioux City</option>
+          <option>Waterloo</option>
+        </optgroup>
+        <optgroup label="Kansas">
+          <option>Wichita</option>
+          <option>Overland Park</option>
+          <option>Kansas City</option>
+          <option>Topeka</option>
+          <option>Olathe </option>
+        </optgroup>
+        <optgroup label="Kentucky">
+          <option>Louisville</option>
+          <option>Lexington</option>
+          <option>Bowling Green</option>
+          <option>Owensboro</option>
+          <option>Covington</option>
+        </optgroup>
+        <optgroup label="Louisiana">
+          <option>New Orleans</option>
+          <option>Baton Rouge</option>
+          <option>Shreveport</option>
+          <option>Metairie</option>
+          <option>Lafayette</option>
+        </optgroup>
+        <optgroup label="Maine">
+          <option>Portland</option>
+          <option>Lewiston</option>
+          <option>Bangor</option>
+          <option>South Portland</option>
+          <option>Auburn</option>
+        </optgroup>
+        <optgroup label="Maryland">
+          <option>Baltimore</option>
+          <option>Frederick</option>
+          <option>Rockville</option>
+          <option>Gaithersburg</option>
+          <option>Bowie</option>
+        </optgroup>
+        <optgroup label="Massachusetts">
+          <option>Boston</option>
+          <option>Worcester</option>
+          <option>Springfield</option>
+          <option>Lowell</option>
+          <option>Cambridge</option>
+        </optgroup>
+        <optgroup label="Michigan">
+          <option>Detroit</option>
+          <option>Grand Rapids</option>
+          <option>Warren</option>
+          <option>Sterling Heights</option>
+          <option>Lansing</option>
+        </optgroup>
+        <optgroup label="Minnesota">
+          <option>Minneapolis</option>
+          <option>St. Paul</option>
+          <option>Rochester</option>
+          <option>Duluth</option>
+          <option>Bloomington</option>
+        </optgroup>
+        <optgroup label="Mississippi">
+          <option>Jackson</option>
+          <option>Gulfport</option>
+          <option>Southaven</option>
+          <option>Hattiesburg</option>
+          <option>Biloxi</option>
+        </optgroup>
+        <optgroup label="Missouri">
+          <option>Kansas City</option>
+          <option>St. Louis</option>
+          <option>Springfield</option>
+          <option>Independence</option>
+          <option>Columbia</option>
+        </optgroup>
+        <optgroup label="Montana">
+          <option>Billings</option>
+          <option>Missoula</option>
+          <option>Great Falls</option>
+          <option>Bozeman</option>
+          <option>Butte-Silver Bow</option>
+        </optgroup>
+        <optgroup label="Nebraska">
+          <option>Omaha</option>
+          <option>Lincoln</option>
+          <option>Bellevue</option>
+          <option>Grand Island</option>
+          <option>Kearney</option>
+        </optgroup>
+        <optgroup label="Nevada">
+          <option>Las Vegas</option>
+          <option>Henderson</option>
+          <option>North Las Vegas</option>
+          <option>Reno</option>
+          <option>Sunrise Manor</option>
+        </optgroup>
+        <optgroup label="New Hampshire">
+          <option>Manchesters</option>
+          <option>Nashua</option>
+          <option>Concord</option>
+          <option>Dover</option>
+          <option>Rochester</option>
+        </optgroup>
+        <optgroup label="New Jersey">
+          <option>Newark</option>
+          <option>Jersey City</option>
+          <option>Paterson</option>
+          <option>Elizabeth</option>
+          <option>Edison</option>
+        </optgroup>
+        <optgroup label="New Mexico">
+          <option>Albuquerque</option>
+          <option>Las Cruces</option>
+          <option>Rio Rancho</option>
+          <option>Santa Fe</option>
+          <option>Roswell</option>
+        </optgroup>
+        <optgroup label="New York">
+          <option>New York</option>
+          <option>Buffalo</option>
+          <option>Rochester</option>
+          <option>Yonkers</option>
+          <option>Syracuse</option>
+        </optgroup>
+        <optgroup label="North Carolina">
+          <option>Charlotte</option>
+          <option>Raleigh</option>
+          <option>Greensboro</option>
+          <option>Winston-Salem</option>
+          <option>Durham</option>
+        </optgroup>
+        <optgroup label="North Dakota">
+          <option>Fargo</option>
+          <option>Bismarck</option>
+          <option>Grand Forks</option>
+          <option>Minot</option>
+          <option>West Fargo</option>
+        </optgroup>
+        <optgroup label="Ohio">
+          <option>Columbus</option>
+          <option>Cleveland</option>
+          <option>Cincinnati</option>
+          <option>Toledo</option>
+          <option>Akron</option>
+        </optgroup>
+        <optgroup label="Oklahoma">
+          <option>Oklahoma City</option>
+          <option>Tulsa</option>
+          <option>Norman</option>
+          <option>Broken Arrow</option>
+          <option>Lawton</option>
+        </optgroup>
+        <optgroup label="Oregon">
+          <option>Portland</option>
+          <option>Eugene</option>
+          <option>Salem</option>
+          <option>Gresham</option>
+          <option>Hillsboro</option>
+        </optgroup>
+        <optgroup label="Pennsylvania">
+          <option>Philadelphia</option>
+          <option>Pittsburgh</option>
+          <option>Allentown</option>
+          <option>Erie</option>
+          <option>Reading</option>
+        </optgroup>
+        <optgroup label="Rhode Island">
+          <option>Providence</option>
+          <option>Warwick</option>
+          <option>Cranston</option>
+          <option>Pawtucket</option>
+          <option>East Providence</option>
+        </optgroup>
+        <optgroup label="South Carolina">
+          <option>Columbia</option>
+          <option>Charleston</option>
+          <option>North Charleston</option>
+          <option>Mount Pleasant</option>
+          <option>Rock Hill</option>
+        </optgroup>
+        <optgroup label="South Dakota">
+          <option>Sioux Falls</option>
+          <option>Rapid City</option>
+          <option>Aberdeen</option>
+          <option>Brookings</option>
+          <option>Watertown</option>
+        </optgroup>
+        <optgroup label="Tennessee">
+          <option>Memphis</option>
+          <option>Nashville</option>
+          <option>Knoxville</option>
+          <option>Chattanooga</option>
+          <option>Clarksville</option>
+        </optgroup>
+        <optgroup label="Texas">
+          <option>Houston</option>
+          <option>San Antonio</option>
+          <option>Dallas</option>
+          <option>Austin</option>
+          <option>Fort Worth</option>
+        </optgroup>
+        <optgroup label="Utah">
+          <option>Salt Lake City</option>
+          <option>West Valley City</option>
+          <option>Provo</option>
+          <option>West Jordan</option>
+          <option>Orem</option>
+        </optgroup>
+        <optgroup label="Vermont">
+          <option>Burlington</option>
+          <option>Essex</option>
+          <option>South Burlington</option>
+          <option>Colchester</option>
+          <option>Rutland</option>
+        </optgroup>
+        <optgroup label="Virginia">
+          <option>Virginia Beach</option>
+          <option>Norfolk</option>
+          <option>Chesapeake</option>
+          <option>Arlington</option>
+          <option>Richmond</option>
+        </optgroup>
+        <optgroup label="Washington">
+          <option>Seattle</option>
+          <option>Spokane</option>
+          <option>Tacoma</option>
+          <option>Vancouver</option>
+          <option>Bellevue</option>
+        </optgroup>
+        <optgroup label="West Virginia">
+          <option>Charleston</option>
+          <option>Huntington</option>
+          <option>Parkersburg</option>
+          <option>Morgantown</option>
+          <option>Wheeling</option>
+        </optgroup>
+        <optgroup label="Wisconsin">
+          <option>Milwaukee</option>
+          <option>Madison</option>
+          <option>Green Bay</option>
+          <option>Kenosha</option>
+          <option>Racine</option>
+        </optgroup>
+        <optgroup label="Wyoming">
+          <option>Cheyenne</option>
+          <option>Casper</option>
+          <option>Laramie</option>
+          <option>Gillette</option>
+          <option>Rock Springs</option>
+        </optgroup>
+      </select>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 
-    <!-- Start header section -->
-    <header id="aa-header">
-      <!-- start header top  -->
-      <div class="aa-header-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-header-top-area">
-                <!-- start header top left -->
-                <div class="aa-header-top-left">
-                  <!-- start language -->
-                  <div class="aa-language">
-                    <div class="dropdown">
-                      <a
-                        class="btn dropdown-toggle"
-                        href="#"
-                        type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                      >
-                        <img
-                          src="images/english.jpg"
-                          alt="english flag"
-                        />ENGLISH
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li>
-                          <a href="#"
-                            ><img
-                              src="../../assets/images/french.jpg"
-                              alt=""
-                            />FRENCH</a
-                          >
-                        </li>
-                        <li>
-                          <a href="#"
-                            ><img
-                              src="../../assets/images/english.jpg"
-                              alt=""
-                            />ENGLISH</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- / language -->
-
-                  <!-- start currency -->
-                  <div class="aa-currency">
-                    <div class="dropdown">
-                      <a
-                        class="btn dropdown-toggle"
-                        href="#"
-                        type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                      >
-                        <i class="fa fa-usd"></i>USD
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li>
-                          <a href="#"><i class="fa fa-euro"></i>EURO</a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-jpy"></i>YEN</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- / currency -->
-                  <!-- start cellphone -->
-                  <div class="cellphone hidden-xs">
-                    <p><span class="fa fa-phone"></span>00-62-658-658</p>
-                  </div>
-                  <!-- / cellphone -->
-                </div>
-                <!-- / header top left -->
-                <div class="aa-header-top-right">
-                  <ul class="aa-head-top-nav-right">
-                    <li><a href="account.html">My Account</a></li>
-                    <li class="hidden-xs">
-                      <a href="wishlist.html">Wishlist</a>
-                    </li>
-                    <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
-                    <li class="hidden-xs">
-                      <a href="checkout.html">Checkout</a>
-                    </li>
-                    <li>
-                      <a href="" data-toggle="modal" data-target="#login-modal"
-                        >Login</a
-                      >
-                    </li>
-                  </ul>
-                </div>
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body modal-body-sub_agile">
+          <div class="main-mailposi">
+            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+          </div>
+          <div class="modal_body_left modal_body_left1">
+            <h3 class="agileinfo_sign">Sign In</h3>
+            <p>
+              Sign In now, Let's start your Grocery Shopping. Don't have an
+              account?
+              <a href="#" data-toggle="modal" data-target="#myModal2">
+                Sign Up Now</a
+              >
+            </p>
+            <form action="#" method="post">
+              <div class="styled-input agile-styled-input-top">
+                <input
+                  type="text"
+                  placeholder="User Name"
+                  name="Name"
+                  required=""
+                />
               </div>
-            </div>
+              <div class="styled-input">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  required=""
+                />
+              </div>
+              <input type="submit" value="Sign In" />
+            </form>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- //Modal content-->
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body modal-body-sub_agile">
+          <div class="main-mailposi">
+            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+          </div>
+          <div class="modal_body_left modal_body_left1">
+            <h3 class="agileinfo_sign">Sign Up</h3>
+            <p>
+              Come join the Grocery Shoppy! Let's set up your Account.
+            </p>
+            <form action="#" method="post">
+              <div class="styled-input agile-styled-input-top">
+                <input type="text" placeholder="Name" name="Name" required="" />
+              </div>
+              <div class="styled-input">
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  name="Email"
+                  required=""
+                />
+              </div>
+              <div class="styled-input">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  id="password1"
+                  required=""
+                />
+              </div>
+              <div class="styled-input">
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="Confirm Password"
+                  id="password2"
+                  required=""
+                />
+              </div>
+              <input type="submit" value="Sign Up" />
+            </form>
+            <p>
+              <a href="#">By clicking register, I agree to your terms</a>
+            </p>
           </div>
         </div>
       </div>
-      <!-- / header top  -->
+      <!-- //Modal content-->
+    </div>
+  </div>
 
-      <!-- start header bottom  -->
-      <div class="aa-header-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-header-bottom-area">
-                <!-- logo  -->
-                <div class="aa-logo">
-                  <!-- Text based logo -->
-                  <a href="index.html">
-                    <span class="fa fa-shopping-cart"></span>
-                    <p>
-                      daily<strong>Shop</strong>
-                      <span>Your Shopping Partner</span>
-                    </p>
-                  </a>
-                  <!-- img based logo -->
-                  <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
-                </div>
-                <!-- / logo  -->
-                <!-- cart box -->
-                <div class="aa-cartbox">
-                  <a class="aa-cart-link" href="#">
-                    <span class="fa fa-shopping-basket"></span>
-                    <span class="aa-cart-title">SHOPPING CART</span>
-                    <span class="aa-cart-notify">{{cartItems}}</span>
-                  </a>
-                  <div class="aa-cartbox-summary">
-                    <ul>
-                      <li>
-                        <a class="aa-cartbox-img" href="#"
-                          ><img
-                            src="../../assets/images/woman-small-2.jpg"
-                            alt="img"
-                        /></a>
-                        <div class="aa-cartbox-info">
-                          <h4><a href="#">Product Name</a></h4>
-                          <p>1 x $250</p>
-                        </div>
-                        <a class="aa-remove-product" href="#"
-                          ><span class="fa fa-times"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a class="aa-cartbox-img" href="#"
-                          ><img
-                            src="../../assets/images/woman-small-1.jpg"
-                            alt="img"
-                        /></a>
-                        <div class="aa-cartbox-info">
-                          <h4><a href="#">Product Name</a></h4>
-                          <p>1 x $250</p>
-                        </div>
-                        <a class="aa-remove-product" href="#"
-                          ><span class="fa fa-times"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <span class="aa-cartbox-total-title">
-                          Total
-                        </span>
-                        <span class="aa-cartbox-total-price">
-                          $500
-                        </span>
-                      </li>
-                    </ul>
-                    <a class="aa-cartbox-checkout aa-primary-btn" href="#"
-                      >Checkout</a
-                    >
-                  </div>
-                </div>
-                <!-- / cart box -->
-                <!-- search box -->
-                <div class="aa-search-box">
-                  <form action="">
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      placeholder="Search here ex. 'man' "
-                    />
-                    <button type="submit">
-                      <span class="fa fa-search"></span>
-                    </button>
-                  </form>
-                </div>
-                <!-- / search box -->
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="ban-top">
+    <div class="container">
+      <div class="agileits-navi_search">
+        <form action="#" method="post">
+          <select id="agileinfo-nav_search" name="agileinfo_search" required="">
+            <option value="">All Categories</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Household">Household</option>
+            <option value="Snacks &amp; Beverages">Snacks & Beverages</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Gift Hampers">Gift Hampers</option>
+            <option value="Fruits &amp; Vegetables">Fruits & Vegetables</option>
+            <option value="Baby Care">Baby Care</option>
+            <option value="Soft Drinks &amp; Juices"
+              >Soft Drinks & Juices</option
+            >
+            <option value="Frozen Food">Frozen Food</option>
+            <option value="Bread &amp; Bakery">Bread & Bakery</option>
+            <option value="Sweets">Sweets</option>
+          </select>
+        </form>
       </div>
-      <!-- / header bottom  -->
-    </header>
-    <!-- / header section -->
-    <!-- menu -->
-    <section id="menu">
-      <div class="container">
-        <div class="menu-area">
-          <!-- Navbar -->
-          <div class="navbar navbar-default" role="navigation">
+      <div class="top_nav_left">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button
                 type="button"
-                class="navbar-toggle"
+                class="navbar-toggle collapsed"
                 data-toggle="collapse"
-                data-target=".navbar-collapse"
+                data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false"
               >
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -279,468 +614,751 @@
                 <span class="icon-bar"></span>
               </button>
             </div>
-            <div class="navbar-collapse collapse">
-              <!-- Left nav -->
-              <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse menu--shylock"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul class="nav navbar-nav menu__list">
                 <li>
-                  <a href="#">Men <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Casual</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Formal</a></li>
-                    <li><a href="#">Standard</a></li>
-                    <li><a href="#">T-Shirts</a></li>
-                    <li><a href="#">Shirts</a></li>
-                    <li><a href="#">Jeans</a></li>
-                    <li><a href="#">Trousers</a></li>
+                  <a class="nav-stylehead" href="index.html"
+                    >Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a class="nav-stylehead" href="about.html">About Us</a>
+                </li>
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle nav-stylehead"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Kitchen
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="agile_inner_drop_nav_info">
+                      <div class="col-sm-4 multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <li>
+                            <a href="product.html">Bakery</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Baking Supplies</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Coffee, Tea & Beverages</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Dried Fruits, Nuts</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Sweets, Chocolate</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Spices & Masalas</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Jams, Honey & Spreads</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-4 multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <li>
+                            <a href="product.html">Pickles</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Pasta & Noodles</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Rice, Flour & Pulses</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Sauces & Cooking Pastes</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Snack Foods</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Oils, Vinegars</a>
+                          </li>
+                          <li>
+                            <a href="product.html">Meat, Poultry & Seafood</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-4 multi-gd-img">
+                        <img src="images/nav.png" alt="" />
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle nav-stylehead"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Household
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="agile_inner_drop_nav_info">
+                      <div class="col-sm-6 multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <li>
+                            <a href="product2.html">Kitchen & Dining</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Detergents</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Utensil Cleaners</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Floor & Other Cleaners</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Disposables, Garbage Bag</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Repellents & Fresheners</a>
+                          </li>
+                          <li>
+                            <a href="product2.html"> Dishwash</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-6 multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <li>
+                            <a href="product2.html">Pet Care</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Cleaning Accessories</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Pooja Needs</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Crackers</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Festive Decoratives</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Plasticware</a>
+                          </li>
+                          <li>
+                            <a href="product2.html">Home Care</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </ul>
+                </li>
+                <li class="">
+                  <a class="nav-stylehead" href="faqs.html">Faqs</a>
+                </li>
+                <li class="dropdown">
+                  <a
+                    class="nav-stylehead dropdown-toggle"
+                    href="#"
+                    data-toggle="dropdown"
+                    >Pages
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu agile_short_dropdown">
                     <li>
-                      <a href="#">And more.. <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Sleep Wear</a></li>
-                        <li><a href="#">Sandals</a></li>
-                        <li><a href="#">Loafers</a></li>
-                      </ul>
+                      <a href="icons.html">Web Icons</a>
+                    </li>
+                    <li>
+                      <a href="typography.html">Typography</a>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Women <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Kurta & Kurti</a></li>
-                    <li><a href="#">Trousers</a></li>
-                    <li><a href="#">Casual</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Formal</a></li>
-                    <li><a href="#">Sarees</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li>
-                      <a href="#">And more.. <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Sleep Wear</a></li>
-                        <li><a href="#">Sandals</a></li>
-                        <li><a href="#">Loafers</a></li>
-                        <li>
-                          <a href="#">And more.. <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Rings</a></li>
-                            <li><a href="#">Earrings</a></li>
-                            <li><a href="#">Jewellery Sets</a></li>
-                            <li><a href="#">Lockets</a></li>
-                            <li class="disabled">
-                              <a class="disabled" href="#">Disabled item</a>
-                            </li>
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">Polo T-Shirts</a></li>
-                            <li><a href="#">SKirts</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Tops</a></li>
-                            <li><a href="#">Make Up</a></li>
-                            <li><a href="#">Hair Care</a></li>
-                            <li><a href="#">Perfumes</a></li>
-                            <li><a href="#">Skin Care</a></li>
-                            <li><a href="#">Hand Bags</a></li>
-                            <li><a href="#">Single Bags</a></li>
-                            <li><a href="#">Travel Bags</a></li>
-                            <li><a href="#">Wallets & Belts</a></li>
-                            <li><a href="#">Sunglases</a></li>
-                            <li><a href="#">Nail</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Kids <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Casual</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Formal</a></li>
-                    <li><a href="#">Standard</a></li>
-                    <li><a href="#">T-Shirts</a></li>
-                    <li><a href="#">Shirts</a></li>
-                    <li><a href="#">Jeans</a></li>
-                    <li><a href="#">Trousers</a></li>
-                    <li>
-                      <a href="#">And more.. <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Sleep Wear</a></li>
-                        <li><a href="#">Sandals</a></li>
-                        <li><a href="#">Loafers</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#">Sports</a></li>
-                <li>
-                  <a href="#">Digital <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Camera</a></li>
-                    <li><a href="#">Mobile</a></li>
-                    <li><a href="#">Tablet</a></li>
-                    <li><a href="#">Laptop</a></li>
-                    <li><a href="#">Accesories</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Furniture</a></li>
-                <li>
-                  <a href="blog-archive.html"
-                    >Blog <span class="caret"></span
-                  ></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="blog-archive.html">Blog Style 1</a></li>
-                    <li><a href="blog-archive-2.html">Blog Style 2</a></li>
-                    <li><a href="blog-single.html">Blog Single</a></li>
-                  </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-                <li>
-                  <a href="#">Pages <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="product.html">Shop Page</a></li>
-                    <li><a href="product-detail.html">Shop Single</a></li>
-                    <li><a href="404.html">404 Page</a></li>
-                  </ul>
+                  <a class="" href="contact.html">Contact</a>
                 </li>
               </ul>
             </div>
-            <!--/.nav-collapse -->
           </div>
-        </div>
-      </div>
-      <!-- </div> -->
-    </section>
-    <!-- / menu -->
-
-    <!-- catg header banner section -->
-    <section id="aa-catg-head-banner">
-      <img
-        src="../../assets/images/fashion-header-bg-8.jpg"
-        alt="fashion img"
-      />
-      <div class="aa-catg-head-banner-area">
-        <div class="container">
-          <div class="aa-catg-head-banner-content">
-            <h2>Cart Page</h2>
-            <ol class="breadcrumb">
-              <li><a href="index.html">Home</a></li>
-              <li class="active">Cart</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- / catg header banner section -->
-
-    <!-- Cart view section -->
-    <!-- <section id="cart-view">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <div class="cart-view-area">
-           <div class="cart-view-table">
-             
-               <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let x of cartView">
-                        <td><a class="remove" href="#"> </a></td>
-                        <td><a href="#"><img src="../../assets/images/Tshirt/{{x.imageName}}" alt="img"></a></td>
-                        <td><a class="aa-cart-title" href="#">{{x.ProductName}}</a></td>
-                        <td>{{x.price}}</td>
-                        <td><input class="aa-cart-quantity" [(ngModel)]="x.cartQuant" (change)="cartQuantityCal()" type="number" ></td>
-                        <td>{{x.price}}</td>
-                      </tr>
-                      
-                      <tr>
-                        <td colspan="6" class="aa-cart-view-bottom">
-                          <div class="aa-cart-coupon">
-                            <input class="aa-coupon-code" type="text" placeholder="Coupon">
-                            <input class="aa-cart-view-btn" type="submit" value="Apply Coupon">
-                          </div>
-                          <input class="aa-cart-view-btn" type="submit" value="Update Cart">
-                        </td>
-                      </tr> 
-                      </tbody>
-                  </table>
-                </div>
-             
-             Cart Total view 
-             <div class="cart-view-total">
-               <h4>Cart Totals</h4>
-               <table class="aa-totals-table">
-                 <tbody>
-                   <tr>
-                     <th>Subtotal</th>
-                     <td>$450</td>
-                   </tr>
-                   <tr>
-                     <th>Total</th>
-                     <td>$450</td>
-                   </tr>
-                 </tbody>
-               </table>
-               <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </section> -->
-    <!-- / Cart view section -->
-    <div class="row col-md-12">
-      <div class="card col-md-8 ">
-        <div *ngFor="let x of cartView">
-          <div class="card-body col-md-12">
-            <h4 class="card-title">{{x.ProductName}}</h4>
-            <div class="col-md-3">
-              <img height="150px" width="150px" src="../../assets/images/{{x.imageName}}" alt="img">
-            </div>
-            <div class="col-md-9">
-              <input class="aa-cart-quantity" [(ngModel)]="x.cartQuant" (input)="cartQuantityCal()" type="number">
-              <p class="card-text">price {{x.price}}</p>
-              <a href="#" class="card-link">Remove</a>
-              <a href="#" class="card-link">Add to Wishlist</a>
-            </div>
-  
-          </div>
-        </div>
-        <div *ngIf="whishList.length>0">
-          <h4 class="card-title">My whish List</h4>
-          <div *ngFor="let x of whishList">
-            <div class="card-body col-md-12">
-              <h4 class="card-title">{{x.ProductName}}</h4>
-              <div class="col-md-3">
-                <img height="150px" width="150px" src="../../assets/images/{{x.imageName}}" alt="img">
-              </div>
-              <div class="col-md-9">
-                <input class="aa-cart-quantity" [(ngModel)]="x.cartQuant" (input)="cartQuantityCal()" type="number">
-                <p class="card-text">price {{x.price}}</p>
-                <a href="#" class="card-link">Remove</a>
-                <a href="#" class="card-link">Add to Wishlist</a>
-              </div>
-  
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="card col-md-4">
-        <div class="card-body">
-          <h4 class="card-title">({{cartItems}})Items </h4>
-          <p class="card-text">Total Price {{totalPrice}}</p>
-          <a href="#" class="card-link">Buy</a>
-          <!-- <a href="#" class="card-link">Another link</a> -->
-        </div>
+        </nav>
       </div>
     </div>
-    <!-- Subscribe section -->
-    <section id="aa-subscribe">
+  </div>
+  <!-- //navigation -->
+  <!-- banner-2 -->
+  <div class="page-head_agile_info_w3l"></div>
+  <!-- //banner-2 -->
+  <!-- page -->
+  <div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-subscribe-area">
-              <h3>Subscribe our newsletter</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
-                velit!
-              </p>
-              <form action="" class="aa-subscribe-form">
-                <input
-                  type="email"
-                  name=""
-                  id=""
-                  placeholder="Enter your Email"
-                />
-                <input type="submit" value="Subscribe" />
-              </form>
-            </div>
-          </div>
-        </div>
+        <ul class="w3_short">
+          <li>
+            <a href="index.html">Home</a>
+            <i>|</i>
+          </li>
+          <li>Cart Page</li>
+        </ul>
       </div>
-    </section>
-    <!-- / Subscribe section -->
-
-    <!-- footer -->
-    <footer id="aa-footer">
-      <!-- footer bottom -->
-      <div class="aa-footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-footer-top-area">
-                <div class="row">
-                  <div class="col-md-3 col-sm-6">
-                    <div class="aa-footer-widget">
-                      <h3>Main Menu</h3>
-                      <ul class="aa-footer-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Our Services</a></li>
-                        <li><a href="#">Our Products</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="aa-footer-widget">
-                      <div class="aa-footer-widget">
-                        <h3>Knowledge Base</h3>
-                        <ul class="aa-footer-nav">
-                          <li><a href="#">Delivery</a></li>
-                          <li><a href="#">Returns</a></li>
-                          <li><a href="#">Services</a></li>
-                          <li><a href="#">Discount</a></li>
-                          <li><a href="#">Special Offer</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="aa-footer-widget">
-                      <div class="aa-footer-widget">
-                        <h3>Useful Links</h3>
-                        <ul class="aa-footer-nav">
-                          <li><a href="#">Site Map</a></li>
-                          <li><a href="#">Search</a></li>
-                          <li><a href="#">Advanced Search</a></li>
-                          <li><a href="#">Suppliers</a></li>
-                          <li><a href="#">FAQ</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="aa-footer-widget">
-                      <div class="aa-footer-widget">
-                        <h3>Contact Us</h3>
-                        <address>
-                          <p>25 Astor Pl, NY 10003, USA</p>
-                          <p>
-                            <span class="fa fa-phone"></span>+1 212-982-4589
-                          </p>
-                          <p>
-                            <span class="fa fa-envelope"></span
-                            >dailyshop@gmail.com
-                          </p>
-                        </address>
-                        <div class="aa-footer-social">
-                          <a href="#"><span class="fa fa-facebook"></span></a>
-                          <a href="#"><span class="fa fa-twitter"></span></a>
-                          <a href="#"
-                            ><span class="fa fa-google-plus"></span
-                          ></a>
-                          <a href="#"><span class="fa fa-youtube"></span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- footer-bottom -->
-      <div class="aa-footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-footer-bottom-area">
-                <p>
-                  Designed by <a href="http://www.markups.io/">MarkUps.io</a>
-                </p>
-                <div class="aa-footer-payment">
-                  <span class="fa fa-cc-mastercard"></span>
-                  <span class="fa fa-cc-visa"></span>
-                  <span class="fa fa-paypal"></span>
-                  <span class="fa fa-cc-discover"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- / footer -->
-    <!-- Login Modal -->
-    <div
-      class="modal fade"
-      id="login-modal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-hidden="true"
-            >
-              &times;
-            </button>
-            <h4>Login or Register</h4>
-            <form class="aa-login-form" action="">
-              <label for="">Username or Email address<span>*</span></label>
-              <input type="text" placeholder="Username or email" />
-              <label for="">Password<span>*</span></label>
-              <input type="password" placeholder="Password" />
-              <button class="aa-browse-btn" type="submit">Login</button>
-              <label for="rememberme" class="rememberme"
-                ><input type="checkbox" id="rememberme" /> Remember me
-              </label>
-              <p class="aa-lost-password">
-                <a href="#">Lost your password?</a>
-              </p>
-              <div class="aa-register-now">
-                Don't have an account?<a href="account.html">Register now!</a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
     </div>
+  </div>
+  <div class="container-fluid">
+    <h4 class="text-left heading-style">
+      Shopping Cart
+    </h4>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="checkout-right">
+          <div class="row tablecart">
+            <div class="col-md-3">
+              <img
+                src="../../../assets/products/images/m1.jpg"
+                alt=" "
+                class="img-responsive"
+              />
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li class="font-class">
+                  <a
+                    href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
+                    >Almonds 100g</a
+                  >
+                </li>
+                <li>
+                  <small class="text-success">In stock</small>
+                </li>
+                <li class="small-font">
+                  <img
+                    alt=""
+                    src="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px._CB485936079_.png"
+                    height="18px"
+                    data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png"
+                  />
+                </li>
+                <li class="small-font">
+                  <input type="checkbox" />
+                  This will be a gift<a class="m-l-10">Learn More</a>
+                </li>
+                <li>
+                  <select class="m-r-10 dropdown-style">
+                    <option value="0">Qty:2</option>
+                    <option value="0">2(Minimum order quantity)</option>
+                    <option value="0">3</option>
+                    <option value="0">4</option>
+                    <option value="0">5</option>
+                    <option value="0">6</option>
+                  </select>
+                  |<a class="small-font m-l-10 m-r-10">Delete</a>|<a
+                    class="small-font m-l-10 m-r-10"
+                    >Save for later</a
+                  >|<a class="small-font m-l-10 m-r-10">See more like this</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 text-right heading-style">
+              ₹279.00
+            </div>
+          </div>
+          <div class="text-right heading-style">
+            Subtotal (1 item): ₹279.00
+          </div>
+        </div>
+        <h4 class="text-left heading-style">
+          Saved for later (2 items)
+        </h4>
+        <div class="row tablecart">
+          <div class="col-md-3">
+            <img
+              src="../../../assets/products/images/a2.jpg"
+              alt=" "
+              class="img-responsive"
+            />
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li class="font-class">
+                <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
+                  >Harpic</a
+                >
+              </li>
+              <li>
+                <small class="text-warning">Only 3 left in stock.</small>
+              </li>
+              <li class="small-font">
+                Sold by come ffall in love
+              </li>
+              <li>
+                <a class="small-font m-r-10">Delete</a>|<a
+                  class="small-font m-l-10 m-r-10"
+                  >Move to Cart</a
+                >|<a class="small-font m-l-10 m-r-10">Move to Wish List</a>|<a
+                  class="small-font m-l-10 m-r-10"
+                  >See more like this</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-right heading-style">
+            ₹120.00
+          </div>
+        </div>
+        <div class="row tablecart">
+          <div class="col-md-3">
+            <img
+              src="../../../assets/products/images/a3.jpg"
+              alt=" "
+              class="img-responsive"
+            />
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li class="font-class">
+                <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
+                  >Comfort</a
+                >
+              </li>
+              <li>
+                <small class="text-success">In stock</small>
+              </li>
+              <li class="small-font">
+                <img
+                  alt=""
+                  src="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px._CB485936079_.png"
+                  height="18px"
+                  data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png"
+                />
+              </li>
+              <li class="small-font">
+                <input type="checkbox" />
+                This will be a gift<a>Learn More</a>
+              </li>
+              <li>
+                <a class="small-font m-r-10">Delete</a>|<a
+                  class="small-font m-l-10 m-r-10"
+                  >Move to Cart</a
+                >|<a class="small-font m-l-10 m-r-10">Move to Wish List</a>|<a
+                  class="small-font m-l-10 m-r-10"
+                  >See more like this</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-right heading-style">
+            ₹149.00
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="text-center rightCardStyle">
+          <i class="fa fa-check text-success"></i
+          ><small class="text-success"
+            >Your order is eligible for FREE Delivery.</small
+          >
+          <div class="text-style">
+            <small>Select this option at checkout. <a>Details</a></small>
+          </div>
+        </div>
+        <div class="background p-l-40">
+          <small class="font-class m-t-10">Subtotal (3 items): ₹837.00</small>
+          <div>
+            <span class="m-l-10">
+              <input type="checkbox" />
+              This order contains a gift</span
+            >
+          </div>
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
-    <!-- SmartMenus jQuery plugin -->
-    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
-    <!-- SmartMenus jQuery Bootstrap Addon -->
-    <script
-      type="text/javascript"
-      src="js/jquery.smartmenus.bootstrap.js"
-    ></script>
-    <!-- To Slider JS -->
-    <script src="js/sequence.js"></script>
-    <script src="js/sequence-theme.modern-slide-in.js"></script>
-    <!-- Product view slider -->
-    <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-    <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
-    <!-- slick slider -->
-    <script type="text/javascript" src="js/slick.js"></script>
-    <!-- Price picker slider -->
-    <script type="text/javascript" src="js/nouislider.js"></script>
-    <!-- Custom js -->
-    <script src="js/custom.js"></script>
-  </body>
-</html>
+          <div>
+            <button class="btn btn-warning btn-width">Proceed to Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //checkout page -->
+  <!-- newsletter -->
+  <div class="footer-top">
+    <div class="container-fluid">
+      <div class="col-xs-8 agile-leftmk">
+        <h2>Get your Groceries delivered from local stores</h2>
+        <p>Free Delivery on your first order!</p>
+        <form action="#" method="post">
+          <input type="email" placeholder="E-mail" name="email" required="" />
+          <input type="submit" value="Subscribe" />
+        </form>
+        <div class="newsform-w3l">
+          <span class="fa fa-envelope-o" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="col-xs-4 w3l-rightmk">
+        <img src="../../../assets/products/images/tab3.png" alt=" " />
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!-- //newsletter -->
+  <!-- footer -->
+  <footer>
+    <div class="container">
+      <!-- footer first section -->
+      <p class="footer-main">
+        <span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas
+        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+        eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis
+        iste natus error sit voluptatem accusantium doloremque laudantium, totam
+        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+        architecto beatae vitae dicta sunt explicabo.
+      </p>
+      <!-- //footer first section -->
+      <!-- footer second section -->
+      <div class="w3l-grids-footer">
+        <div class="col-xs-4 offer-footer">
+          <div class="col-xs-4 icon-fot">
+            <span class="fa fa-map-marker" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-8 text-form-footer">
+            <h3>Track Your Order</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-xs-4 offer-footer">
+          <div class="col-xs-4 icon-fot">
+            <span class="fa fa-refresh" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-8 text-form-footer">
+            <h3>Free & Easy Returns</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-xs-4 offer-footer">
+          <div class="col-xs-4 icon-fot">
+            <span class="fa fa-times" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-8 text-form-footer">
+            <h3>Online cancellation</h3>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <!-- //footer second section -->
+      <!-- footer third section -->
+      <div class="footer-info w3-agileits-info">
+        <!-- footer categories -->
+        <div class="col-sm-5 address-right">
+          <div class="col-xs-6 footer-grids">
+            <h3>Categories</h3>
+            <ul>
+              <li>
+                <a href="product.html">Grocery</a>
+              </li>
+              <li>
+                <a href="product.html">Fruits</a>
+              </li>
+              <li>
+                <a href="product.html">Soft Drinks</a>
+              </li>
+              <li>
+                <a href="product2.html">Dishwashers</a>
+              </li>
+              <li>
+                <a href="product.html">Biscuits & Cookies</a>
+              </li>
+              <li>
+                <a href="product2.html">Baby Diapers</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-xs-6 footer-grids agile-secomk">
+            <ul>
+              <li>
+                <a href="product.html">Snacks & Beverages</a>
+              </li>
+              <li>
+                <a href="product.html">Bread & Bakery</a>
+              </li>
+              <li>
+                <a href="product.html">Sweets</a>
+              </li>
+              <li>
+                <a href="product.html">Chocolates & Biscuits</a>
+              </li>
+              <li>
+                <a href="product2.html">Personal Care</a>
+              </li>
+              <li>
+                <a href="product.html">Dried Fruits & Nuts</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- //footer categories -->
+        <!-- quick links -->
+        <div class="col-sm-5 address-right">
+          <div class="col-xs-6 footer-grids">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="about.html">About Us</a>
+              </li>
+              <li>
+                <a href="contact.html">Contact Us</a>
+              </li>
+              <li>
+                <a href="help.html">Help</a>
+              </li>
+              <li>
+                <a href="faqs.html">Faqs</a>
+              </li>
+              <li>
+                <a href="terms.html">Terms of use</a>
+              </li>
+              <li>
+                <a href="privacy.html">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-xs-6 footer-grids">
+            <h3>Get in Touch</h3>
+            <ul>
+              <li><i class="fa fa-map-marker"></i> 123 Sebastian, USA.</li>
+              <li><i class="fa fa-mobile"></i> 333 222 3333</li>
+              <li><i class="fa fa-phone"></i> +222 11 4444</li>
+              <li>
+                <i class="fa fa-envelope-o"></i>
+                <a href="mailto:example@mail.com"> mail@example.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- //quick links -->
+        <!-- social icons -->
+        <div class="col-sm-2 footer-grids w3l-socialmk">
+          <h3>Follow Us on</h3>
+          <div class="social">
+            <ul>
+              <li>
+                <a class="icon fb" href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a class="icon tw" href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a class="icon gp" href="#">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="agileits_app-devices">
+            <h5>Download the App</h5>
+            <a href="#">
+              <img src="../../../assets/products/images/1.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../../../assets/products/images/2.png" alt="" />
+            </a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- //social icons -->
+        <div class="clearfix"></div>
+      </div>
+      <!-- //footer third section -->
+      <!-- footer fourth section (text) -->
+      <div class="agile-sometext">
+        <div class="sub-some">
+          <h5>Online Grocery Shopping</h5>
+          <p>
+            Order online. All your favourite products from the low price online
+            supermarket for grocery home delivery in Delhi, Gurgaon, Bengaluru,
+            Mumbai and other cities in India. Lowest prices guaranteed on
+            Patanjali, Aashirvaad, Pampers, Maggi, Saffola, Huggies, Fortune,
+            Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and
+            others.
+          </p>
+        </div>
+        <div class="sub-some">
+          <h5>Shop online with the best deals & offers</h5>
+          <p>
+            Now Get Upto 40% Off On Everyday Essential Products Shown On The
+            Offer Page. The range includes Grocery, Personal Care, Baby Care,
+            Pet Supplies, Healthcare and Other Daily Need Products. Discount May
+            Vary From Product To Product.
+          </p>
+        </div>
+        <!-- brands -->
+        <div class="sub-some">
+          <h5>Popular Brands</h5>
+          <ul>
+            <li>
+              <a href="product.html">Aashirvaad</a>
+            </li>
+            <li>
+              <a href="product.html">Amul</a>
+            </li>
+            <li>
+              <a href="product.html">Bingo</a>
+            </li>
+            <li>
+              <a href="product.html">Boost</a>
+            </li>
+            <li>
+              <a href="product.html">Durex</a>
+            </li>
+            <li>
+              <a href="product.html"> Maggi</a>
+            </li>
+            <li>
+              <a href="product.html">Glucon-D</a>
+            </li>
+            <li>
+              <a href="product.html">Horlicks</a>
+            </li>
+            <li>
+              <a href="product2.html">Head & Shoulders</a>
+            </li>
+            <li>
+              <a href="product2.html">Dove</a>
+            </li>
+            <li>
+              <a href="product2.html">Dettol</a>
+            </li>
+            <li>
+              <a href="product2.html">Dabur</a>
+            </li>
+            <li>
+              <a href="product2.html">Colgate</a>
+            </li>
+            <li>
+              <a href="product.html">Coca-Cola</a>
+            </li>
+            <li>
+              <a href="product2.html">Closeup</a>
+            </li>
+            <li>
+              <a href="product2.html"> Cinthol</a>
+            </li>
+            <li>
+              <a href="product.html">Cadbury</a>
+            </li>
+            <li>
+              <a href="product.html">Bru</a>
+            </li>
+            <li>
+              <a href="product.html">Bournvita</a>
+            </li>
+            <li>
+              <a href="product.html">Tang</a>
+            </li>
+            <li>
+              <a href="product.html">Pears</a>
+            </li>
+            <li>
+              <a href="product.html">Oreo</a>
+            </li>
+            <li>
+              <a href="product.html"> Taj Mahal</a>
+            </li>
+            <li>
+              <a href="product.html">Sprite</a>
+            </li>
+            <li>
+              <a href="product.html">Thums Up</a>
+            </li>
+            <li>
+              <a href="product2.html">Fair & Lovely</a>
+            </li>
+            <li>
+              <a href="product2.html">Lakme</a>
+            </li>
+            <li>
+              <a href="product.html">Tata</a>
+            </li>
+            <li>
+              <a href="product2.html">Sunfeast</a>
+            </li>
+            <li>
+              <a href="product2.html">Sunsilk</a>
+            </li>
+            <li>
+              <a href="product.html">Patanjali</a>
+            </li>
+            <li>
+              <a href="product.html">MTR</a>
+            </li>
+            <li>
+              <a href="product.html">Kissan</a>
+            </li>
+            <li>
+              <a href="product2.html"> Lipton</a>
+            </li>
+          </ul>
+        </div>
+        <!-- //brands -->
+        <!-- payment -->
+        <div class="sub-some child-momu">
+          <h5>Payment Method</h5>
+          <ul>
+            <li>
+              <img src="../../../assets/products/images/pay2.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay5.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay1.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay4.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay6.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay3.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay7.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay8.png" alt="" />
+            </li>
+            <li>
+              <img src="../../../assets/products/images/pay9.png" alt="" />
+            </li>
+          </ul>
+        </div>
+        <!-- //payment -->
+      </div>
+      <!-- //footer fourth section (text) -->
+    </div>
+  </footer>
+  <!-- //footer -->
+  <!-- copyright -->
+  <div class="copy-right">
+    <div class="container">
+      <p>
+        © 2017 Grocery Shoppy. All rights reserved | Design by
+        <a href="http://w3layouts.com"> W3layouts.</a>
+      </p>
+    </div>
+  </div>
+</body>

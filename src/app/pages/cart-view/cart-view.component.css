@@ -1,0 +1,59 @@
+.tablecart {
+  border-top: 1px solid #eceeef;
+  border-bottom: 1px solid #eceeef;
+  padding: 20px;
+}
+.rightCardStyle {
+  border: 1px #ddd solid;
+  padding: 10px;
+}
+.background {
+  background-color: #f3f3f3;
+  margin-top: -1px;
+  padding: 20px;
+}
+
+.text-style {
+  color: #555;
+}
+.font-class {
+  font-size: 17px !important;
+}
+.m-l-10 {
+  margin-left: 10px;
+}
+.m-t-10 {
+  margin-left: 10px;
+}
+.m-r-10 {
+  margin-right: 10px;
+}
+.btn-width {
+  width: 70%;
+  margin: 10px;
+}
+.p-l-40 {
+  padding-left: 40px;
+}
+a {
+  color: blue;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: underline;
+  color: #c45500;
+  cursor: pointer;
+}
+.small-font {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+.heading-style {
+  font-weight: 600;
+  color: #111;
+}
+.dropdown-style {
+  width: 15%;
+  background: #e7e9ec;
+  border-radius: 3px;
+}
