@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FirstPageService } from "./services/first-page.service";
-import { LocalCartStorageService } from "../cart-view/services/local-cart-storage.service";
+import { LocalCartStorageService } from "../../core/services/local-cart-storage.service";
 import { LocalWhishListService } from "../cart-view/services/local-whish-list.service";
 @Component({
   selector: "app-first-page",
@@ -54,7 +54,7 @@ export class FirstPageComponent implements OnInit {
     this.cartItems = 0;
 
     for (var i = 0; i < this.cartList.length; i++) {
-      this.cartItems = this.cartItems + this.cartList[i].cartQuant;
+      this.cartItems = this.cartItems +parseInt( this.cartList[i].cartQuant);
     }
   }
 }

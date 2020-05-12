@@ -14,4 +14,13 @@ export class LocalWhishListService {
   getWhishList() {
     return this.localWhishLis;
   }
+  deleteWhishListItem(productID){
+    for(var i=0;i<this.localWhishLis.length;i++){
+      if(this.localWhishLis[i].productID==productID){
+       this.localWhishLis.splice(i, 1);
+       break;
+      }
+    }
+    return this.localWhishLis;
+ }
 }
