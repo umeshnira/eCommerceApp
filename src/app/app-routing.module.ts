@@ -2,15 +2,20 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { FirstPageComponent } from "./pages/first-page/first-page.component";
 import { CartViewComponent } from "./pages/cart-view/cart-view.component";
+import { WishlistComponent } from "./pages/wishlist/wishlist.component";
 
 const routes: Routes = [
   {
-    path: "firstPage",
+    path: "first-page",
     component: FirstPageComponent,
   },
   {
-    path: "firstPage/cart-view",
+    path: "cart-view",
     component: CartViewComponent,
+  },
+  {
+    path: "wishlist",
+    component: WishlistComponent,
   },
   {
     path: "product-list",
@@ -22,7 +27,7 @@ const routes: Routes = [
 
   {
     path: "",
-    redirectTo: "/firstPage",
+    redirectTo: "/first-page",
     pathMatch: "full",
   },
 ];

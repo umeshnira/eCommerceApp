@@ -23,6 +23,7 @@ export class CartViewComponent implements OnInit {
     this.whishList=this.locWhishList.getWhishList();
     this.cartQuantityCal();
   }
+
   cartQuantityCal(){
     this.cartItems=0;
     this.totalPrice=0;
