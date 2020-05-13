@@ -1,4 +1,6 @@
 jQuery(document).ready(function ($) {
+  $("#grid").hide();
+  $("#list").show();
   $().UItoTop({
     easingType: "easeOutQuart",
   });
@@ -29,7 +31,20 @@ jQuery(document).ready(function ($) {
     animation: "slide",
     controlNav: "thumbnails",
   });
-
+  $("#parentHorizontalTab").easyResponsiveTabs({
+    type: "default", //Types: default, vertical, accordion
+    width: "auto", //auto or any width like 600px
+    fit: true, // 100% fit in a container
+    tabidentify: "hor_1", // The tab groups identifier
+    activate: function (event) {
+      // Callback function if tab is switched
+      var $tab = $(this);
+      var $info = $("#nested-tabInfo");
+      var $name = $("span", $info);
+      $name.text($tab.text());
+      $info.show();
+    },
+  });
   $("#slider-range").slider({
     range: true,
     min: 0,
@@ -54,5 +69,17 @@ jQuery(document).ready(function ($) {
       },
       1000
     );
+  });
+  $(".grid-class").on("click", function (e) {
+    $("#grid").show();
+    $("#list").hide();
+    $(".list-class").removeClass("active");
+    $(this).addClass("active");
+  });
+  $(".list-class").on("click", function (e) {
+    $("#grid").hide();
+    $("#list").show();
+    $(".grid-class").removeClass("active");
+    $(this).addClass("active");
   });
 });

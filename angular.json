@@ -24,6 +24,8 @@
             "scripts": [
               "src/assets/products/js/jquery-2.1.4.min.js",
               "src/assets/products/js/jquery-ui.js",
+              "src/assets/products/js/easyResponsiveTabs.js",
+              "src/assets/products/js/creditly.js",
               "src/assets/products/js/SmoothScroll.min.js",
               "src/assets/products/js/move-top.js",
               "src/assets/products/js/easing.js",
@@ -94,6 +96,8 @@
             "scripts": [
               "src/assets/products/js/jquery-2.1.4.min.js",
               "src/assets/products/js/jquery-ui.js",
+              "src/assets/products/js/easyResponsiveTabs.js",
+              "src/assets/products/js/creditly.js",
               "src/assets/products/js/SmoothScroll.min.js",
               "src/assets/products/js/move-top.js",
               "src/assets/products/js/easing.js",
