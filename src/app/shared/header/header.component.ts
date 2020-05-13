@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalCartStorageService } from "src/app/core/services/local-cart-storage.service";
+import { HeaderService } from "./service/header.service";
+
 
 @Component({
   selector: "app-header",
@@ -9,11 +11,16 @@ import { LocalCartStorageService } from "src/app/core/services/local-cart-storag
 export class HeaderComponent implements OnInit {
   cartItems = 0;
   cartList = [];
-  constructor(public locCart: LocalCartStorageService) {}
+  categoryList=[];
+  constructor(
+    public locCart: LocalCartStorageService,
+    private hdService:HeaderService
+    ) {}
 
   ngOnInit(): void {
     this.cartList = this.locCart.localCart;
     this.cartQuantityCal();
+    this.categoryList=this.hdService.getCategories();
   }
   cartQuantityCal() {
     this.cartItems = 0;

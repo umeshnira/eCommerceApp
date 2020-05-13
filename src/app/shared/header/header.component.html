@@ -75,10 +75,10 @@
             <div class="aa-header-top-right">
               <ul class="aa-head-top-nav-right">
                 <li><a href="account.html">My Account</a></li>
-                <li class="hidden-xs">
-                  <a href="wishlist.html">Wishlist</a>
+                <li routerLink="/wishlist" class="hidden-xs">
+                  <a >Wishlist</a>
                 </li>
-                <li routerLink="/cart-view" class="hidden-xs">
+                <li routerLink="/cartView" class="hidden-xs">
                   <a>My Cart</a>
                 </li>
                 <li class="hidden-xs">
@@ -684,17 +684,8 @@
     <form action="#" method="post">
       <select id="agileinfo-nav_search" name="agileinfo_search" required="">
         <option value="">All Categories</option>
-        <option value="Kitchen">Kitchen</option>
-        <option value="Household">Household</option>
-        <option value="Snacks &amp; Beverages">Snacks & Beverages</option>
-        <option value="Personal Care">Personal Care</option>
-        <option value="Gift Hampers">Gift Hampers</option>
-        <option value="Fruits &amp; Vegetables">Fruits & Vegetables</option>
-        <option value="Baby Care">Baby Care</option>
-        <option value="Soft Drinks &amp; Juices">Soft Drinks & Juices</option>
-        <option value="Frozen Food">Frozen Food</option>
-        <option value="Bread &amp; Bakery">Bread & Bakery</option>
-        <option value="Sweets">Sweets</option>
+        <option *ngFor="let x of categoryList" [value]="x.CategoryID">{{x.CategoryName}}</option>
+        
       </select>
     </form>
   </div>

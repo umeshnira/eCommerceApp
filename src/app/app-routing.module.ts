@@ -12,6 +12,10 @@ const routes: Routes = [
     component: FirstPageComponent,
   },
   {
+    path: "cartView",
+    component: CartViewComponent,
+  },
+  {
     path: "firstPage/cartView",
     component: CartViewComponent,
   },
