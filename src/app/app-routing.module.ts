@@ -4,6 +4,7 @@ import { FirstPageComponent } from "./pages/first-page/first-page.component";
 import { CartViewComponent } from "./pages/cart-view/cart-view.component";
 import { ProductDetailComponent } from "./pages/product-list/product-detail/product-detail.component";
 import { ProductListComponent } from "./pages/product-list/product-list.component";
+import { WishlistComponent } from "./pages/wishlist/wishlist.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: "firstPage/productList",
     component:ProductListComponent,
+    
+  },
+  {
+    path: "wishlist",
+    component: WishlistComponent,
   },
 
   {

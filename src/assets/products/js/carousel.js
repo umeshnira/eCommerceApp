@@ -1,4 +1,8 @@
-jQuery(function ($) {
+jQuery(document).ready(function ($) {
+  $().UItoTop({
+    easingType: "easeOutQuart",
+  });
+
   $("#flexiselDemo1").flexisel({
     visibleItems: 3,
     animationSpeed: 1000,
@@ -25,17 +29,7 @@ jQuery(function ($) {
     animation: "slide",
     controlNav: "thumbnails",
   });
-  $(".popup-with-zoom-anim").magnificPopup({
-    type: "inline",
-    fixedContentPos: false,
-    fixedBgPos: true,
-    overflowY: "auto",
-    closeBtnInside: true,
-    preloader: false,
-    midClick: true,
-    removalDelay: 300,
-    mainClass: "my-mfp-zoom-in",
-  });
+
   $("#slider-range").slider({
     range: true,
     min: 0,
@@ -51,4 +45,14 @@ jQuery(function ($) {
       " - $" +
       $("#slider-range").slider("values", 1)
   );
+  $(".scroll").click(function (event) {
+    event.preventDefault();
+
+    $("html,body").animate(
+      {
+        scrollTop: $(this.hash).offset().top,
+      },
+      1000
+    );
+  });
 });

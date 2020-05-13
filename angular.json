@@ -21,7 +21,18 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [
+              "src/assets/products/js/jquery-2.1.4.min.js",
+              "src/assets/products/js/jquery-ui.js",
+              "src/assets/products/js/SmoothScroll.min.js",
+              "src/assets/products/js/move-top.js",
+              "src/assets/products/js/easing.js",
+              "src/assets/products/js/imagezoom.js",
+              "src/assets/products/js/jquery.flexisel.js",
+              "src/assets/products/js/jquery.flexslider.js",
+              "src/assets/products/js/bootstrap.js",
+              "src/assets/products/js/carousel.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -80,7 +91,18 @@
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [
+              "src/assets/products/js/jquery-2.1.4.min.js",
+              "src/assets/products/js/jquery-ui.js",
+              "src/assets/products/js/SmoothScroll.min.js",
+              "src/assets/products/js/move-top.js",
+              "src/assets/products/js/easing.js",
+              "src/assets/products/js/imagezoom.js",
+              "src/assets/products/js/jquery.flexisel.js",
+              "src/assets/products/js/jquery.flexslider.js",
+              "src/assets/products/js/bootstrap.js",
+              "src/assets/products/js/carousel.js"
+            ]
           }
         },
         "lint": {

@@ -23,12 +23,14 @@ export class CartViewComponent implements OnInit {
     this.whishList=this.locWhishList.getWhishList();
     this.cartQuantityCal();
   }
+
   cartQuantityCal(){
     this.cartItems=0;
     this.totalPrice=0;
+    debugger;
     for(var i=0;i<this.cartView.length;i++){
       this.cartItems=this.cartItems+parseInt(this.cartView[i].cartQuant);
-      this.totalPrice=this.totalPrice+parseInt(this.cartView[i].price)*this.cartView[i].cartQuant;
+      this.totalPrice=this.totalPrice+parseInt(this.cartView[i].price)*parseInt(this.cartView[i].cartQuant);
     }
   }
   removeCartItem(productID){
