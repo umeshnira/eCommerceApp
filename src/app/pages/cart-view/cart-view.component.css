@@ -19,15 +19,7 @@
 .font-class {
   font-size: 17px !important;
 }
-.m-l-10 {
-  margin-left: 10px;
-}
-.m-t-10 {
-  margin-top: 10px;
-}
-.m-r-10 {
-  margin-right: 10px;
-}
+
 .btn-width {
   width: 70%;
   margin: 10px;

@@ -8,6 +8,7 @@ import { SharedModule } from "./shared/shared-module";
 import { WishlistComponent } from "./pages/wishlist/wishlist.component";
 import { ProductDetailComponent } from "./pages/product-list/product-detail/product-detail.component";
 import { ProductListComponent } from "./pages/product-list/product-list.component";
+import { OrdersComponent } from './pages/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,8 @@ import { ProductListComponent } from "./pages/product-list/product-list.componen
     CartViewComponent,
     WishlistComponent,
     ProductDetailComponent,
-    ProductListComponent
+    ProductListComponent,
+    OrdersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],

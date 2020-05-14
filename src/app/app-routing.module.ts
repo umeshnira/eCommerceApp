@@ -5,6 +5,7 @@ import { CartViewComponent } from "./pages/cart-view/cart-view.component";
 import { ProductDetailComponent } from "./pages/product-list/product-detail/product-detail.component";
 import { ProductListComponent } from "./pages/product-list/product-list.component";
 import { WishlistComponent } from "./pages/wishlist/wishlist.component";
+import { OrdersComponent } from "./pages/orders/orders.component";
 
 const routes: Routes = [
   {
@@ -33,7 +34,10 @@ const routes: Routes = [
     path: "wishlist",
     component: WishlistComponent,
   },
-
+  {
+    path: "orders",
+    component: OrdersComponent,
+  },
   {
     path: "",
     redirectTo: "/firstPage",
