@@ -6,6 +6,9 @@ import { ProductDetailComponent } from "./pages/product-list/product-detail/prod
 import { ProductListComponent } from "./pages/product-list/product-list.component";
 import { WishlistComponent } from "./pages/wishlist/wishlist.component";
 import { OrdersComponent } from "./pages/orders/orders.component";
+import { PaymentComponent } from "./pages/payment/payment.component";
+import { DeliveryOptionsComponent } from "./pages/payment/delivery-options/delivery-options.component";
+import { PaymentMethodComponent } from "./pages/payment/payment-method/payment-method.component";
 
 const routes: Routes = [
   {
@@ -20,21 +23,20 @@ const routes: Routes = [
     path: "firstPage/cartView",
     component: CartViewComponent,
   },
-  
+
   {
     path: "firstPage/DetailsPage",
     component: ProductDetailComponent,
   },
   {
     path: "firstPage/productList",
-    component:ProductListComponent,
-    
+    component: ProductListComponent,
   },
   {
     path: "wishlist",
     component: WishlistComponent,
   },
-  
+
   {
     path: "wishlist/cartView",
     component: CartViewComponent,
@@ -42,6 +44,18 @@ const routes: Routes = [
   {
     path: "orders",
     component: OrdersComponent,
+  },
+  {
+    path: "payment",
+    component: PaymentComponent,
+  },
+  {
+    path: "payment/delivery-option",
+    component: DeliveryOptionsComponent,
+  },
+  {
+    path: "payment/payment-method",
+    component: PaymentMethodComponent,
   },
   {
     path: "",

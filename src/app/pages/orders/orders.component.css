@@ -61,3 +61,9 @@ a:hover {
 .nav-tabs > li > a {
   border: unset !important;
 }
+.btn-warning {
+  background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+  border-radius: 3px;
+  border-color: #eeb933 #eeb933 #eeb933;
+  color: #111;
+}

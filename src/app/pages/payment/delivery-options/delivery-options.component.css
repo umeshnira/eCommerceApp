@@ -1,0 +1,27 @@
+a {
+  color: #0066c0;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: underline;
+  color: #c45500;
+  cursor: pointer;
+}
+ul {
+  list-style: unset;
+}
+.border {
+  border: 1px solid #ddd;
+  padding: 14px 18px;
+  background: #f7f7f7 !important;
+}
+.button-style {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+.btn-warning {
+  background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+  border-radius: 3px;
+  border-color: #eeb933 #eeb933 #eeb933;
+  color: #111;
+}

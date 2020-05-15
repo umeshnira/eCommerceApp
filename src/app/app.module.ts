@@ -9,6 +9,9 @@ import { WishlistComponent } from "./pages/wishlist/wishlist.component";
 import { ProductDetailComponent } from "./pages/product-list/product-detail/product-detail.component";
 import { ProductListComponent } from "./pages/product-list/product-list.component";
 import { OrdersComponent } from './pages/orders/orders.component';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { DeliveryOptionsComponent } from './pages/payment/delivery-options/delivery-options.component';
+import { PaymentMethodComponent } from './pages/payment/payment-method/payment-method.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +21,9 @@ import { OrdersComponent } from './pages/orders/orders.component';
     ProductDetailComponent,
     ProductListComponent,
     OrdersComponent,
+    PaymentComponent,
+    DeliveryOptionsComponent,
+    PaymentMethodComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
