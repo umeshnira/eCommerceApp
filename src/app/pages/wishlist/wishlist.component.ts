@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { LocalWhishListService } from "./service/local-whish-list.service"
+import { LocalCartStorageService } from "../../core/services/local-cart-storage.service";
 
 @Component({
   selector: "app-wishlist",
@@ -6,9 +8,16 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./wishlist.component.css"],
 })
 export class WishlistComponent implements OnInit {
-  constructor() {}
+  wishList = [];
 
-  ngOnInit(): void {}
+  constructor(
+    public locCart: LocalCartStorageService,
+    public wishListSer: LocalWhishListService
+  ) { }
+
+  ngOnInit(): void {
+    this.getWhishList();
+   }
   ngAfterViewInit() {
     this.loadScript("assets/products/js/jquery-2.1.4.min.js");
     this.loadScript("assets/products/js/jquery-ui.js");
@@ -22,6 +31,8 @@ export class WishlistComponent implements OnInit {
     this.loadScript("assets/products/js/jquery.flexslider.js");
     this.loadScript("assets/products/js/bootstrap.js");
     this.loadScript("assets/products/js/carousel.js");
+
+   
   }
 
   private loadScript(scriptUrl: string) {
@@ -31,5 +42,15 @@ export class WishlistComponent implements OnInit {
       scriptElement.onload = resolve;
       document.body.appendChild(scriptElement);
     });
+  }
+  getWhishList() {
+    debugger;
+    this.wishList = this.wishListSer.getWhishList();
+  }
+  addToCart(prod){
+    this.locCart.addToCartValues(prod);
+  }
+  removeWishList(productID){
+    this.wishListSer.deleteWhishListItem(productID);
   }
 }

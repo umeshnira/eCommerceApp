@@ -54,7 +54,8 @@
                   <option value="5">5</option>
                   <option value="6">6</option>
                 </select>
-                |<a (click)="removeCartItem(x.productID);cartQuantityCal();headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Delete</a>|<a (click)="addWhishList(x);removeCartItem(x.productID);headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Save for
+                |<a (click)="removeCartItem(x.productID);cartQuantityCal();headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Delete</a>|
+                <a (click)="addSaveLaterList(x);removeCartItem(x.productID);headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Save for
                   later</a>|<a class="small-font m-l-10 m-r-10">See more like this</a>
               </li>
             </ul>
@@ -68,10 +69,10 @@
         </div>
       </div>
 
-        <h4 *ngIf="whishList.length>0" class="text-left heading-style">
-          Saved for later ({{whishList.length}} items)
+        <h4 *ngIf="saveLaterList.length>0" class="text-left heading-style">
+          Saved for later ({{saveLaterList.length}} items)
         </h4>
-        <div *ngFor="let x of whishList" class="row tablecart">
+        <div *ngFor="let x of saveLaterList" class="row tablecart">
           <div class="col-md-3">
             <img src="../../../assets/products/images/{{x.imageName}}" alt=" " class="img-responsive" />
           </div>
@@ -87,8 +88,8 @@
                 Sold by come ffall in love
               </li>
               <li>
-                <a (click)="deleteWhishList(x.productID);cartQuantityCal();" class="small-font m-r-10">Delete</a>|<a (click)="addTocart(x);deleteWhishList(x.productID);headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Move to Cart</a>|
-                <!-- <a class="small-font m-l-10 m-r-10">Move to Wish List</a>| -->
+                <a (click)="deletesaveLaterList(x.productID);cartQuantityCal();" class="small-font m-r-10">Delete</a>|<a (click)="addTocart(x);deletesaveLaterList(x.productID);headercomp.cartQuantityCal()" class="small-font m-l-10 m-r-10">Move to Cart</a>|
+                <a class="small-font m-l-10 m-r-10">Move to Wish List</a>|
                   <a class="small-font m-l-10 m-r-10">See more
                   like this</a>
               </li>

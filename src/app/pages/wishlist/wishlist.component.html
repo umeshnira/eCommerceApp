@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header #headercomp></app-header>
 <!-- banner-2 -->
 <div class="page-head_agile_info_w3l"></div>
 <!-- //banner-2 -->
@@ -94,11 +94,14 @@
                   </span>
                 </div>
                 <div id="list">
-                  <div class="checkout-right list-style">
+
+  
+                  
+                  <div *ngFor="let x of wishList" class="checkout-right list-style">
                     <div class="row tablecart">
                       <div class="col-md-3">
                         <img
-                          src="../../../assets/products/images/k1.jpg"
+                          src="../../../assets/products/images/{{x.imageName}}"
                           alt=" "
                           class="img-responsive"
                         />
@@ -108,7 +111,7 @@
                           <li class="font-class">
                             <a
                               href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
-                              >Zeeba Basmati Rice</a
+                              >{{x.ProductName}}</a
                             >
                           </li>
                           <li>
@@ -157,102 +160,11 @@
                             >
                           </li>
                           <li class="small-font">
-                            ₹200.00
+                            ₹{{ x.actualPrice }}
                           </li>
 
                           <li class="small-font">
-                            2 offer(s)from Rs.200.00
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-md-3 heading-style">
-                        <ul>
-                          <li class="small-font">Added 12 May 2020</li>
-                          <li>
-                            <button class="btn btn-secondary btn-width">
-                              See all buying options
-                            </button>
-                          </li>
-                          <li>
-                            <a class="small-font">Remove Item</a>
-                          </li>
-                          <li>
-                            <a class="small-font"
-                              >Add comment,quantity &priority</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="checkout-right list-style">
-                    <div class="row tablecart">
-                      <div class="col-md-3">
-                        <img
-                          src="../../../assets/products/images/k10.jpg"
-                          alt=" "
-                          class="img-responsive"
-                        />
-                      </div>
-                      <div class="col-md-6">
-                        <ul>
-                          <li class="font-class">
-                            <a
-                              href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
-                              >Snickers</a
-                            >
-                          </li>
-                          <li>
-                            <small class="text-success">
-                              <div class="rating1">
-                                <span class="starRating">
-                                  <input
-                                    id="rating5"
-                                    type="radio"
-                                    name="rating"
-                                    value="5"
-                                  />
-                                  <label for="rating5">5</label>
-                                  <input
-                                    id="rating4"
-                                    type="radio"
-                                    name="rating"
-                                    value="4"
-                                  />
-                                  <label for="rating4">4</label>
-                                  <input
-                                    id="rating3"
-                                    type="radio"
-                                    name="rating"
-                                    value="3"
-                                    checked=""
-                                  />
-                                  <label for="rating3">3</label>
-                                  <input
-                                    id="rating2"
-                                    type="radio"
-                                    name="rating"
-                                    value="2"
-                                  />
-                                  <label for="rating2">2</label>
-                                  <input
-                                    id="rating1"
-                                    type="radio"
-                                    name="rating"
-                                    value="1"
-                                  />
-                                  <label for="rating1">1</label>
-                                </span>
-                                <a class="small-font">50</a>
-                              </div></small
-                            >
-                          </li>
-                          <li class="small-font">
-                            ₹250.00
-                          </li>
-
-                          <li class="small-font">
-                            1 offer(s)from Rs.250.00
+                            1 offer(s)from Rs.{{ x.price }}
                           </li>
                         </ul>
                       </div>
@@ -260,12 +172,12 @@
                         <ul>
                           <li class="small-font">Added 4 May 2020</li>
                           <li>
-                            <button class="btn btn-warning btn-width">
+                            <button (click)="addToCart(x);removeWishList(x.productID);headercomp.cartQuantityCal()" class="btn btn-warning btn-width">
                               Add to Cart
                             </button>
                           </li>
                           <li>
-                            <a class="small-font">Remove Item</a>
+                            <a (click)="removeWishList(x.productID)" class="small-font">Remove Item</a>
                           </li>
                           <li>
                             <a class="small-font"
@@ -276,6 +188,7 @@
                       </div>
                     </div>
                   </div>
+                  
                 </div>
                 <div id="grid">
                   <div class="row">

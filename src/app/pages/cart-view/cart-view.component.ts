@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalCartStorageService } from "../../core/services/local-cart-storage.service";
-import { LocalWhishListService } from "./services/local-whish-list.service";
-
+import { LocalWhishListService } from "../wishlist/service/local-whish-list.service";
+import { SaveForLaterService } from "../cart-view/services/save-for-later.service";
 @Component({
   selector: "app-cart-view",
   templateUrl: "./cart-view.component.html",
@@ -12,15 +12,16 @@ export class CartViewComponent implements OnInit {
   quantity;
   cartItems=0;
   totalPrice=0;
-  whishList=[];
+ saveLaterList=[];
   constructor(
     public locCart:LocalCartStorageService,
-    public locWhishList:LocalWhishListService
+    public locWhishList:LocalWhishListService,
+    public saveLate:SaveForLaterService
     ) {}
 
   ngOnInit(): void {
     this.cartView=this.locCart.getCartValues();
-    this.whishList=this.locWhishList.getWhishList();
+    this.saveLaterList=this.saveLate.getLaterList();
     this.cartQuantityCal();
   }
 
@@ -37,9 +38,9 @@ export class CartViewComponent implements OnInit {
     this.cartView= this.locCart.deleteCartItem(productID);
     this.cartQuantityCal();
   }
-  addWhishList(prod){
+  addSaveLaterList(prod){
 
-    this.locWhishList.addToMyWhishList(prod);
+    this.saveLate.addToMylaterList(prod);
     this.cartQuantityCal();
   }
   addTocart(prod){
@@ -48,7 +49,7 @@ export class CartViewComponent implements OnInit {
     this.cartQuantityCal();
     
   }
-  deleteWhishList(productID){
-    this.locWhishList.deleteWhishListItem(productID);
+  deletesaveLaterList(productID){
+    this.saveLate.deleteLaterListItem(productID);
   }
 }

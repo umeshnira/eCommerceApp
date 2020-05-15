@@ -33,7 +33,11 @@ const routes: Routes = [
     path: "wishlist",
     component: WishlistComponent,
   },
-
+  
+  {
+    path: "wishlist/cartView",
+    component: CartViewComponent,
+  },
   {
     path: "",
     redirectTo: "/firstPage",
