@@ -1,6 +1,9 @@
 jQuery(document).ready(function ($) {
   $("#grid").hide();
   $("#list").show();
+  $("[data-toggle=popover]").popover({
+    container: "body",
+  });
   $().UItoTop({
     easingType: "easeOutQuart",
   });
@@ -73,13 +76,13 @@ jQuery(document).ready(function ($) {
   $(".grid-class").on("click", function (e) {
     $("#grid").show();
     $("#list").hide();
-    $(".list-class").removeClass("active");
-    $(this).addClass("active");
+    $(".list-class").removeClass("grid-active");
+    $(this).addClass("grid-active");
   });
   $(".list-class").on("click", function (e) {
     $("#grid").hide();
     $("#list").show();
-    $(".grid-class").removeClass("active");
-    $(this).addClass("active");
+    $(".grid-class").removeClass("grid-active");
+    $(this).addClass("grid-active");
   });
 });
