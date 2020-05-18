@@ -9,6 +9,7 @@ import { OrdersComponent } from "./pages/orders/orders.component";
 import { PaymentComponent } from "./pages/payment/payment.component";
 import { DeliveryOptionsComponent } from "./pages/payment/delivery-options/delivery-options.component";
 import { PaymentMethodComponent } from "./pages/payment/payment-method/payment-method.component";
+import { OrderPlacedComponent } from "./pages/payment/order-placed/order-placed.component";
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: "payment/payment-method",
     component: PaymentMethodComponent,
+  },
+  {
+    path: "order-placed",
+    component: OrderPlacedComponent,
   },
   {
     path: "",

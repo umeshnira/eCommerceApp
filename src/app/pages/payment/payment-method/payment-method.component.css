@@ -24,11 +24,15 @@ a:hover {
   margin-top: 55px;
 }
 .dropdown-style {
-  background: #dcdfe3;
-  background: -webkit-linear-gradient(top, #dcdfe3, #dcdfe3);
+  background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
   border-radius: 3px;
-  border-color: #dcdfe3 ;
-  width: 20%;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  width: 25%;
+}
+.expiry-date{
+  background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
+  border-radius: 3px;
+  border-color: #adb1b8 #a2a6ac #8d9096;
 }
 .btn-secondary {
   background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
@@ -37,4 +41,22 @@ a:hover {
 }
 .m-l-36 {
   margin-left: 36px;
+}
+.input-style {
+  width: 20%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.background-style {
+  border-color: #fbd8b4;
+  background-color: #fcf5ee;
+  padding: 6px 25px 25px 0px;
+}
+.upi-style {
+  font-size: 13px;
+  margin-top: 10px;
+  margin-left: 16px;
+}
+.sub-some {
+  margin-top: 0px;
 }

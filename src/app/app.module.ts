@@ -12,6 +12,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { DeliveryOptionsComponent } from './pages/payment/delivery-options/delivery-options.component';
 import { PaymentMethodComponent } from './pages/payment/payment-method/payment-method.component';
+import { OrderPlacedComponent } from './pages/payment/order-placed/order-placed.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { PaymentMethodComponent } from './pages/payment/payment-method/payment-m
     PaymentComponent,
     DeliveryOptionsComponent,
     PaymentMethodComponent,
+    OrderPlacedComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
