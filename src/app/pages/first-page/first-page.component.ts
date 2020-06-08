@@ -30,7 +30,6 @@ export class FirstPageComponent implements OnInit {
     this.locWhishList.addToMyWhishList(prod);
   }
   cartQuantityCal() {
-    debugger;
     // this.cartItems = 0;
 
     // for (var i = 0; i < this.cartList.length; i++) {

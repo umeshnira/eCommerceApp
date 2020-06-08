@@ -13,6 +13,18 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { DeliveryOptionsComponent } from './pages/payment/delivery-options/delivery-options.component';
 import { PaymentMethodComponent } from './pages/payment/payment-method/payment-method.component';
 import { OrderPlacedComponent } from './pages/payment/order-placed/order-placed.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { ClientSignUpComponent } from './auth/client-signUp/client-sign-up/client-sign-up.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { KitchenTreeViewComponent } from './pages/sampleTreeView/kitchen-tree-view/kitchen-tree-view.component';
+import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
+
+import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import { ProductListService } from "./pages/product-list/services/product-list.service";
+import { HttpClientModule } from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +38,12 @@ import { OrderPlacedComponent } from './pages/payment/order-placed/order-placed.
     DeliveryOptionsComponent,
     PaymentMethodComponent,
     OrderPlacedComponent,
+    SignUpComponent,
+    ClientSignUpComponent,
+    KitchenTreeViewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule,HttpClientModule],
+  providers: [ProductListService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

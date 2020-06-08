@@ -1,0 +1,50 @@
+<div class='container'>
+  <div class='col-md-12 row'>
+  </div>
+  <div class='col-md-4'></div>
+  <div class='col-md-4'>
+    <div class='card m-b-30'>
+      <div class='col-md-12'>
+        <div class='row m-b-10'>
+          <h1>Create Account</h1>
+        </div>
+      </div>
+      <form [formGroup]="signUpForm" (submit)="submitForm(signUpForm)">
+        <div class="form-group">
+          <label for="name" class="f-weight">Your name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="address" class="f-weight">Address</label>
+          <textarea rows="4" cols="20" class="w-100" name="address" formControlName="address">
+                    </textarea>
+        </div>
+        <div class="form-group">
+          <label for="" class="f-weight">Landmark</label>
+          <input type="text" class="form-control" id="" formControlName="landmark">
+        </div>
+        <div class="form-group">
+          <label for="" class="f-weight">Pin Code</label>
+          <input type="text" class="form-control" id="" formControlName="pincode">
+        </div>
+        <div class="form-group">
+          <label for="email" class="f-weight">Email</label>
+          <input type="email" class="form-control" id="" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="" class="f-weight">Phone No:</label>
+          <input type="text" class="form-control" id="" formControlName="phone">
+        </div>
+        <div class="form-group">
+          <label for="" class="f-weight">Password</label>
+          <input type="password" class="form-control" id="" formControlName="password">
+        </div>
+        <div>
+          <button type="submit" class="btn btn-warning btn-width w-100">Register</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class='col-md-4'> </div>
+</div>

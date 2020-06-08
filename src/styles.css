@@ -3,6 +3,14 @@
 @import "./assets/css/green-theme.css";
 @import "./assets/css/sequence-theme.modern-slide-in.css";
 @import "./assets/css/style.css";
+
+@import '../node_modules/@syncfusion/ej2-ng-navigations/styles/material.css';
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
 /* @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"); */
 .float {
   float: right;
@@ -63,4 +71,10 @@
 }
 .line-height-style {
   line-height: 2.75;
+}
+.w-100{
+  width:100%;
+}
+.f-weight{
+  font-weight: lighter;
 }

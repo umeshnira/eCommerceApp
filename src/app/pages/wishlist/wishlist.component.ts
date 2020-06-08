@@ -34,7 +34,6 @@ export class WishlistComponent implements OnInit {
     });
   }
   getWhishList() {
-    debugger;
     this.wishList = this.wishListSer.getWhishList();
   }
   addToCart(prod){

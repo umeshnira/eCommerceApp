@@ -4,22 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalCartStorageService {
-public localCart=[];
+  public localCart = [];
   constructor() { }
-  addToCartValues(prod){
+  addToCartValues(prod) {
 
-this.localCart.push(prod);
+    this.localCart.push(prod);
   }
-  getCartValues(){
+  getCartValues() {
     return this.localCart;
   }
-  deleteCartItem(productID){
-    for(var i=0;i<this.localCart.length;i++){
-      if(this.localCart[i].productID==productID){
-       this.localCart.splice(i, 1);
-       break;
+  deleteCartItem(productID) {
+    for (var i = 0; i < this.localCart.length; i++) {
+      if (this.localCart[i].productID == productID) {
+        this.localCart.splice(i, 1);
+        break;
       }
     }
     return this.localCart;
- }
+  }
 }
