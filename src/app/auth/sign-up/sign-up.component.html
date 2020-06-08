@@ -13,6 +13,8 @@
         <div class="form-group">
           <label for="name" class="f-weight">Your name</label>
           <input type="text" class="form-control" id="name" formControlName="name">
+          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
+          </div>
         </div>
         <div class="form-group">
           <label for="address" class="f-weight">Address</label>
@@ -30,6 +32,10 @@
         <div class="form-group">
           <label for="email" class="f-weight">Email</label>
           <input type="email" class="form-control" id="" formControlName="email">
+          <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
+          </div>
+          <div *ngIf="formSubmitted && form.email.errors" class="valid-error">Please enter a valid email
+          </div>
         </div>
         <div class="form-group">
           <label for="" class="f-weight">Phone No:</label>
@@ -38,6 +44,8 @@
         <div class="form-group">
           <label for="" class="f-weight">Password</label>
           <input type="password" class="form-control" id="" formControlName="password">
+          <div *ngIf="formSubmitted && form.password.errors?.required" class="valid-error">Password is required.
+          </div>
         </div>
         <div>
           <button type="submit" class="btn btn-warning btn-width w-100">Register</button>

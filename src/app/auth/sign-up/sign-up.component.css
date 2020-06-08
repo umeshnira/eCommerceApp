@@ -5,3 +5,8 @@
     border-radius: 4px;
     width:400px;
 }
+.valid-error
+{
+    color: red;
+    font-size: 13px;
+}

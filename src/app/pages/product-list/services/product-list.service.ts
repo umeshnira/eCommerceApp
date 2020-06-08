@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductListService {
 
-  
   url = environment.api.baseUrl;
   constructor(private http: HttpClient) { }
 

@@ -1,4 +1,5 @@
-export class SellerModel{
+export class SellerModel {
+
     sellerId: any;
     sellerName: string;
     address: any;

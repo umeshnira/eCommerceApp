@@ -6,10 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HeaderService {
- 
+
   url = environment.api.baseUrl;
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCategories() {
     return this.http.get<any>(this.url + '/productTypes/getAllProductTypes');

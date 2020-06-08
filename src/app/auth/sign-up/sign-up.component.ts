@@ -7,13 +7,14 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent implements OnInit {
 
-signUpForm: FormGroup;
-  emailPattern: string | RegExp;
+  signUpForm: FormGroup;
+  emailPattern = /^[_A-Za-z0-9]+(\.[_A-Za-z0-9]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$/;
   formSubmitted: boolean;
 
-  constructor(private service : AuthService) { }
+  constructor(private service: AuthService) { }
 
   ngOnInit(): void {
     this.validateForm();
@@ -26,7 +27,7 @@ signUpForm: FormGroup;
       address: new FormControl(''),
       landmark: new FormControl(''),
       pincode: new FormControl(''),
-      email: new FormControl('', Validators.compose([Validators.required])),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])),
       phone: new FormControl(''),
       password: new FormControl('', Validators.compose([Validators.required]))
 
@@ -59,9 +60,9 @@ signUpForm: FormGroup;
     }
   }
 
-  // get form() {
+  get form() {
 
-  //   return this.signUpForm.controls;
-  // }
+    return this.signUpForm.controls;
+  }
 
 }

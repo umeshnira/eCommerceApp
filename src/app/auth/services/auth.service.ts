@@ -7,11 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-    url = environment.api.baseUrl;
+  url = environment.api.baseUrl;
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-    register(model) {
-       return this.http.post<any>(this.url + '/auth/signUp', model);
-    }
+  register(model) {
+    return this.http.post<any>(this.url + '/auth/signUp', model);
+  }
 }

@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { LocalCartStorageService } from "src/app/core/services/local-cart-storage.service";
-import { HeaderService } from "./service/header.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { LocalCartStorageService } from 'src/app/core/services/local-cart-storage.service';
+import { HeaderService } from './service/header.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   cartItems = 0;
@@ -45,8 +45,8 @@ export class HeaderComponent implements OnInit {
   }
 
   goToTreeView(event) {
+
     this.typeId = event.target.value;
-    
-    this.router.navigate(['/firstPage/productList'], {queryParams: {id: this.typeId}});
+    this.router.navigate(['/firstPage/productList'], { queryParams: { id: this.typeId } });
   }
 }
