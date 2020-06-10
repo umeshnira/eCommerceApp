@@ -1,80 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FirstPageComponent } from './pages/first-page/first-page.component';
-import { CartViewComponent } from './pages/cart-view/cart-view.component';
-import { ProductDetailComponent } from './pages/product-list/product-detail/product-detail.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { WishlistComponent } from './pages/wishlist/wishlist.component';
-import { OrdersComponent } from './pages/orders/orders.component';
-import { PaymentComponent } from './pages/payment/payment.component';
-import { DeliveryOptionsComponent } from './pages/payment/delivery-options/delivery-options.component';
-import { PaymentMethodComponent } from './pages/payment/payment-method/payment-method.component';
-import { OrderPlacedComponent } from './pages/payment/order-placed/order-placed.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { ClientSignUpComponent } from './auth/client-signUp/client-sign-up/client-sign-up.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/firstPage',
-    pathMatch: 'full',
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: 'seller/signUp',
-    component: SignUpComponent,
+    path: 'order',
+    loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule),
   },
   {
-    path: 'client/signUp',
-    component: ClientSignUpComponent,
-  },
-  {
-    path: 'firstPage',
-    component: FirstPageComponent,
-  },
-  {
-    path: 'cartView',
-    component: CartViewComponent,
-  },
-  {
-    path: 'firstPage/cartView',
-    component: CartViewComponent,
-  },
-  {
-    path: 'firstPage/DetailsPage',
-    component: ProductDetailComponent,
-  },
-  {
-    path: 'firstPage/productList',
-    component: ProductListComponent,
-  },
-  {
-    path: 'wishlist',
-    component: WishlistComponent,
-  },
-  {
-    path: 'wishlist/cartView',
-    component: CartViewComponent,
-  },
-  {
-    path: 'orders',
-    component: OrdersComponent,
+    path: 'pages',
+    loadChildren: () => import('./modules/pages/pages.module').then(m => m.PagesModule),
   },
   {
     path: 'payment',
-    component: PaymentComponent,
+    loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule),
   },
   {
-    path: 'payment/delivery-option',
-    component: DeliveryOptionsComponent,
-  },
-  {
-    path: 'payment/payment-method',
-    component: PaymentMethodComponent,
-  },
-  {
-    path: 'order-placed',
-    component: OrderPlacedComponent,
-  },
+    path: 'product',
+    loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule),
+  }
 
 ];
 
@@ -82,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule { }

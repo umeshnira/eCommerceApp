@@ -1,0 +1,9 @@
+.border {
+  border: 2px solid green;
+  padding: 10px;
+}
+
+.icon-style {
+  color: #3fc35f;
+  font-size: 25px;
+}
