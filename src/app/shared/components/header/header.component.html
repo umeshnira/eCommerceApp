@@ -614,7 +614,7 @@
 <div class="container">
   <div class="agileits-navi_search">
     <form action="#" method="post">
-      <select id="agileinfo-nav_search" name="agileinfo_search" required="" (change)="goToTreeView($event)">
+      <select id="agileinfo-nav_search" name="agileinfo_search" required="" (change)="goToSubProductList($event)">
         <option value="">All Categories</option>
         <option *ngFor="let x of categoryList" [value]="x.ProductTypeId">{{x.ProductTypeName}}</option>
 

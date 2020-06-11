@@ -8,7 +8,7 @@ import { LocalWhishListService } from '../../services/local-whish-list.service';
   styleUrls: ['./wishlist.component.css'],
 })
 
-export class WishlistComponent implements OnInit, AfterViewInit {
+export class WishlistComponent implements OnInit {
 
   wishList = [];
 
@@ -20,12 +20,6 @@ export class WishlistComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.getWhishList();
-  }
-
-  ngAfterViewInit() {
-
-    this.loadScript('assets/products/js/jquery-2.1.4.min.js');
-    this.loadScript('assets/products/js/carousel.js');
   }
 
   getWhishList() {
@@ -43,13 +37,4 @@ export class WishlistComponent implements OnInit, AfterViewInit {
     this.wishListSer.deleteWhishListItem(productID);
   }
 
-  private loadScript(scriptUrl: string) {
-
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
 }

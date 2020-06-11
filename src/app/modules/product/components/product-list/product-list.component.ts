@@ -10,7 +10,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
   styleUrls: ['./product-list.component.css'],
 })
 
-export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   subCategoryList: any;
   subProductTypes: any;
@@ -46,10 +46,10 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.result && this.result.length > 0) {
 
           this.result.forEach(element => {
-            const tempArray = new SubProductType();
-            tempArray.id = element.subProductTypeId;
-            tempArray.name = element.subProductTypeName;
-            model.subProductType.push(tempArray);
+            const subProductTypeModel = new SubProductType();
+            subProductTypeModel.id = element.subProductTypeId;
+            subProductTypeModel.name = element.subProductTypeName;
+            model.subProductType.push(subProductTypeModel);
           });
         }
         this.modelResult.push(model);
@@ -59,22 +59,6 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit() {
-
-    this.loadScript('assets/products/js/jquery-2.1.4.min.js');
-    this.loadScript('assets/products/js/jquery-ui.js');
-    this.loadScript('assets/products/js/easyResponsiveTabs.js');
-    this.loadScript('assets/products/js/creditly.js');
-    this.loadScript('assets/products/js/SmoothScroll.min.js');
-    this.loadScript('assets/products/js/move-top.js');
-    this.loadScript('assets/products/js/easing.js');
-    this.loadScript('assets/products/js/imagezoom.js');
-    this.loadScript('assets/products/js/jquery.flexisel.js');
-    this.loadScript('assets/products/js/jquery.flexslider.js');
-    this.loadScript('assets/products/js/bootstrap.js');
-    this.loadScript('assets/products/js/carousel.js');
-  }
-
   ngOnDestroy() {
 
     if (this.subscription) {
@@ -82,13 +66,4 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private loadScript(scriptUrl: string) {
-
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
 }

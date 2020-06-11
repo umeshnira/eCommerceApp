@@ -2,7 +2,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HeaderService } from './services/header.service';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
@@ -13,7 +12,7 @@ import { LocalCartStorageService } from './services/local-cart-storage.service';
 
 const components = [HeaderComponent, FooterComponent];
 
-const modules = [FormsModule, CommonModule, RouterModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule];
+const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule];
 
 const providers = [HeaderService, LocalCartStorageService];
 

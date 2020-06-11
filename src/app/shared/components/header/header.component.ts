@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  goToTreeView(event) {
+  goToSubProductList(event) {
 
     this.typeId = event.target.value;
     this.router.navigate(['/product/productList'], { queryParams: { id: this.typeId } });

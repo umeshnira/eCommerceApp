@@ -4,6 +4,7 @@ import { RegistrationService } from '../../services/registration.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { SellerModel } from '../../models/sellerModel';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,43 +26,25 @@ export class SellerSignUpComponent implements OnInit, OnDestroy {
     this.formInitialization();
   }
 
-  formInitialization() {
-
-    this.signUpForm = new FormGroup({
-      name: new FormControl('', Validators.compose([Validators.required])),
-      address: new FormControl(''),
-      landmark: new FormControl(''),
-      pincode: new FormControl(''),
-      email: new FormControl('',
-        Validators.compose([Validators.required,
-        Validators.pattern(this.emailPattern)])),
-      phone: new FormControl(''),
-      password: new FormControl('',
-        Validators.compose([Validators.required,
-        CustomFormValidator.cannotContainSpace]))
-    });
-  }
-
-  submitForm(signUpForm: FormGroup) {
+  submitForm() {
 
     this.formSubmitted = true;
 
-    if (signUpForm.valid) {
-      const model = {
-        sellerName: signUpForm.value.name,
-        address: signUpForm.value.address,
-        landmark: signUpForm.value.landmark,
-        pincode: signUpForm.value.pincode,
-        email: signUpForm.value.email,
-        phone: signUpForm.value.phone,
-        password: signUpForm.value.password,
-        role: Constants.seller
-      };
+    if (this.signUpForm.valid) {
+      const sellerModel = new SellerModel();
+      sellerModel.sellerName = this.signUpForm.controls['name'].value;
+      sellerModel.address = this.signUpForm.controls['address'].value;
+      sellerModel.landMark = this.signUpForm.controls['landmark'].value;
+      sellerModel.pincode = this.signUpForm.controls['pincode'].value;
+      sellerModel.email = this.signUpForm.controls['email'].value;
+      sellerModel.phoneNo = this.signUpForm.controls['phone'].value;
+      sellerModel.password = this.signUpForm.controls['password'].value;
 
-      this.subscription = this.service.register(model).subscribe((response) => {
+      this.subscription = this.service.register(sellerModel).subscribe((response) => {
 
         if (response) {
-          signUpForm.reset();
+          this.formSubmitted = false;
+          this.signUpForm.reset();
         }
       },
         (error) => {
@@ -80,6 +63,24 @@ export class SellerSignUpComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  private formInitialization() {
+
+    this.signUpForm = new FormGroup({
+      name: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      address: new FormControl(''),
+      landmark: new FormControl(''),
+      pincode: new FormControl(''),
+      email: new FormControl('',
+        Validators.compose([Validators.required,
+        Validators.pattern(Constants.emailPattern)])),
+      phone: new FormControl(''),
+      password: new FormControl('',
+        Validators.compose([Validators.required]))
+    });
   }
 
 }

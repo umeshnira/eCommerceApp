@@ -9,31 +9,9 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 export class AppComponent implements OnInit {
 
-  title = 'app';
-  showFooter: boolean;
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  constructor() { }
 
   ngOnInit() {
 
-    this.hideFooter();
-  }
-
-  hideFooter() {
-
-    this.router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
-        if (event['url'] === '/auth/client/signUp') {
-          this.showFooter = false;
-        } else if (event['url'] === '/auth/seller/signUp') {
-          this.showFooter = false;
-        } else {
-          this.showFooter = true;
-        }
-      }
-    });
   }
 }

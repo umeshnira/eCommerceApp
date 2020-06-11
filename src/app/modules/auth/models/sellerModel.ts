@@ -1,3 +1,5 @@
+import { Constants } from 'src/app/shared/models/constants';
+
 export class SellerModel {
 
     sellerId: any;
@@ -13,4 +15,6 @@ export class SellerModel {
     pancard: any;
     bankActNo: any;
     isfcCode: any;
+    password: any;
+    role =  Constants.seller;
 }

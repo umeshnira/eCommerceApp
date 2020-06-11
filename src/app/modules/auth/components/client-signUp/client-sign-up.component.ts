@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { RegistrationService } from '../../services/registration.service';
 import { Constants } from 'src/app/shared/models/constants';
-import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { ClientModel } from '../../models/clientModel';
 
 @Component({
   selector: 'app-client-sign-up',
@@ -16,7 +16,6 @@ export class ClientSignUpComponent implements OnInit, OnDestroy {
   username: any;
   password: any;
   formSubmitted = false;
-  validationPattern = Constants.validationPattern;
   subscription: ISubscription;
   signUpForm: FormGroup;
 
@@ -27,33 +26,21 @@ export class ClientSignUpComponent implements OnInit, OnDestroy {
     this.formInitialization();
   }
 
-  formInitialization() {
-
-    this.signUpForm = new FormGroup({
-      username: new FormControl('',
-        Validators.compose([Validators.required,
-        Validators.pattern(this.validationPattern)])),
-      password: new FormControl('',
-        Validators.compose([Validators.required,
-        CustomFormValidator.cannotContainSpace])),
-    });
-  }
-
-  submitForm(signUpForm: FormGroup) {
+  submitForm() {
 
     this.formSubmitted = true;
 
-    if (signUpForm.valid) {
-      const model = {
-        userName: signUpForm.value.username,
-        password: signUpForm.value.password,
-        role: Constants.client
-      };
+    if (this.signUpForm.valid) {
 
-      this.subscription = this.service.register(model).subscribe((response) => {
+      const clientModel = new ClientModel();
+      clientModel.userName = this.signUpForm.controls['username'].value;
+      clientModel.password = this.signUpForm.controls['password'].value;
+
+      this.subscription = this.service.register(clientModel).subscribe((response) => {
 
         if (response) {
-          signUpForm.reset();
+          this.formSubmitted = false;
+          this.signUpForm.reset();
         }
       },
         (error) => {
@@ -72,6 +59,17 @@ export class ClientSignUpComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  private formInitialization() {
+
+    this.signUpForm = new FormGroup({
+      username: new FormControl('',
+        Validators.compose([Validators.required,
+        Validators.pattern(Constants.validationPattern)])),
+      password: new FormControl('',
+        Validators.compose([Validators.required])),
+    });
   }
 
 }
