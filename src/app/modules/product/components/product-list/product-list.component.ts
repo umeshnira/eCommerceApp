@@ -32,7 +32,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.getSubProductList();
   }
 
-  getSubProductList() {
+  ngOnDestroy() {
+
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  private getSubProductList() {
 
     this.subscription = this.service.getSubProductListAganistProductTypeId(this.id).subscribe(response => {
       if (response) {
@@ -57,13 +64,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
       }
     });
-  }
-
-  ngOnDestroy() {
-
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 
 }

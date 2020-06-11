@@ -23,7 +23,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.hideFooter();
   }
 
-  hideFooter() {
+  ngOnDestroy() {
+
+    // if (this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+  }
+
+  private hideFooter() {
 
     this.subscription = this.route.url.subscribe(dataUrl => {
       const path = dataUrl[0].parameters.path;
@@ -33,13 +40,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
         this.showHeaderFooter = true;
       }
     });
-  }
-
-  ngOnDestroy() {
-
-    // if (this.subscription) {
-    //   this.subscription.unsubscribe();
-    // }
   }
 
 }

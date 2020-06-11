@@ -33,6 +33,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.getCategories();
   }
 
+  goToSubProductList(event) {
+
+    this.typeId = event.target.value;
+    this.router.navigate(['/product/productList'], { queryParams: { id: this.typeId } });
+  }
+
   cartQuantityCal() {
 
     this.cartItems = 0;
@@ -43,7 +49,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  getCategories() {
+  ngOnDestroy() {
+
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  private getCategories() {
 
     this.subscription = this.service.getCategories().subscribe((response) => {
       this.categoryList = response;
@@ -51,18 +64,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (error) => {
         console.log(error);
       });
-  }
-
-  goToSubProductList(event) {
-
-    this.typeId = event.target.value;
-    this.router.navigate(['/product/productList'], { queryParams: { id: this.typeId } });
-  }
-
-  ngOnDestroy() {
-
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }
