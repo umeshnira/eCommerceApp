@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { SubscriptionLike as ISubscription, VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -8,9 +8,8 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
   styleUrls: ['./home-page.component.css']
 })
 
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit {
 
-  showHeaderFooter: boolean;
   subscription: ISubscription;
 
   constructor(
@@ -19,27 +18,22 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/pages/firstPage']);
-    this.hideFooter();
+
+    this.router.navigate(['/firstPage'], {relativeTo: this.route});
+    // this.showHeaderFooter();
   }
 
-  ngOnDestroy() {
+  // showHeaderFooter() {
 
-    // if (this.subscription) {
-    //   this.subscription.unsubscribe();
-    // }
-  }
-
-  private hideFooter() {
-
-    this.subscription = this.route.url.subscribe(dataUrl => {
-      const path = dataUrl[0].parameters.path;
-      if (path === 'auth/client/signUp' || path === 'auth/seller/signUp') {
-        this.showHeaderFooter = false;
-      } else {
-        this.showHeaderFooter = true;
-      }
-    });
-  }
+  //   const url = this.router.url;
+  //   if (url === 'auth/client/signUp' || url === 'auth/seller/signUp') {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
 }
+
+
+

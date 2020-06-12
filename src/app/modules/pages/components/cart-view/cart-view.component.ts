@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 import { LocalWhishListService } from '../../services/local-whish-list.service';
 import { SaveForLaterService } from '../../services/save-for-later.service';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 
 @Component({
   selector: 'app-cart-view',
@@ -16,6 +17,8 @@ export class CartViewComponent implements OnInit {
   totalPrice = 0;
   saveLaterList = [];
   cartView = [];
+
+  @Input() header: HeaderComponent;
 
   constructor(
     public locCart: LocalCartStorageService,
