@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SubscriptionLike as ISubscription, } from 'rxjs';
 
 @Component({
   selector: 'app-home-layout',
@@ -10,15 +8,9 @@ import { SubscriptionLike as ISubscription, } from 'rxjs';
 
 export class HomeLayoutComponent implements OnInit {
 
-  subscription: ISubscription;
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.router.navigate([''], { relativeTo: this.route });
   }
 }
 
