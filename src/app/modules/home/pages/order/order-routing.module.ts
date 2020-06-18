@@ -3,14 +3,13 @@ import { RouterModule } from '@angular/router';
 import { OrderComponent } from './components/order/orders.component';
 import { OrderPlacedComponent } from './components/order-placed/order-placed.component';
 
-
 const routes = [
     {
         path: '',
         component: OrderComponent
     },
     {
-        path: 'order-placement',
+        path: 'create',
         component: OrderPlacedComponent
     },
 ];

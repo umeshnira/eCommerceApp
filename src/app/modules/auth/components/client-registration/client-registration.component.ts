@@ -3,15 +3,15 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { RegistrationService } from '../../services/registration.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { ClientModel } from '../../models/clientModel';
+import { ClientModel } from '../../models/client.model';
 
 @Component({
   selector: 'app-client-sign-up',
-  templateUrl: './client-sign-up.component.html',
-  styleUrls: ['./client-sign-up.component.css']
+  templateUrl: './client-registration.component.html',
+  styleUrls: ['./client-registration.component.css']
 })
 
-export class ClientSignUpComponent implements OnInit, OnDestroy {
+export class ClientRegistrationComponent implements OnInit, OnDestroy {
 
   username: any;
   password: any;

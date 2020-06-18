@@ -1,18 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationService } from '../../services/registration.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { SellerModel } from '../../models/sellerModel';
+import { SellerModel } from '../../models/seller-model';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  templateUrl: './seller-registration.component.html',
+  styleUrls: ['./seller-registration.component.css']
 })
 
-export class SellerSignUpComponent implements OnInit, OnDestroy {
+export class SellerRegistrationComponent implements OnInit, OnDestroy {
 
   formSubmitted: boolean;
   emailPattern = Constants.emailPattern;

@@ -7,29 +7,18 @@ const routes: Routes = [
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: 'order',
-    loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule),
-  },
-  {
-    path: 'pages',
-    loadChildren: () => import('./modules/pages/pages.module').then(m => m.PagesModule),
-  },
-  {
-    path: 'payment',
-    loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule),
-  },
-  {
-    path: 'product',
-    loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule),
+    path: 'home',
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
+    runGuardsAndResolvers: 'always'
   },
   {
     path: '',
-    redirectTo: 'pages/homePage',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'pages/homePage'
+    redirectTo: 'home'
   },
 
 ];

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 import { FirstPageService } from '../../services/first-page.service';
-import { LocalCartStorageService } from '../../../../shared/services/local-cart-storage.service';
 import { LocalWhishListService } from '../../services/local-whish-list.service';
 
 @Component({

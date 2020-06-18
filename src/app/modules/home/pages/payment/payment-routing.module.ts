@@ -10,11 +10,11 @@ const routes = [
         component: PaymentComponent
     },
     {
-        path: 'delivery-options',
+        path: 'delivery',
         component: DeliveryOptionsComponent
     },
-        {
-        path: 'payment-method',
+    {
+        path: 'method',
         component: PaymentMethodComponent
     }
 ];
@@ -24,4 +24,4 @@ const routes = [
     exports: [RouterModule]
 })
 
-export class PaymentRoutingModule {}
+export class PaymentRoutingModule { }

@@ -18,20 +18,18 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.router.navigate(['/firstPage'], {relativeTo: this.route});
-    // this.showHeaderFooter();
+    this.router.navigate(['firstPage'], { relativeTo: this.route });
+    this.showHeaderFooter();
   }
 
-  // showHeaderFooter() {
-
-  //   const url = this.router.url;
-  //   if (url === 'auth/client/signUp' || url === 'auth/seller/signUp') {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  showHeaderFooter() {
+    const url = this.router.url;
+    if (url === 'auth/client/signUp' || url === 'auth/seller/signUp') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
 

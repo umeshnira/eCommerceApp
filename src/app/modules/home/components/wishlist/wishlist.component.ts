@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { LocalCartStorageService } from '../../../../shared/services/local-cart-storage.service';
-import { LocalWhishListService } from '../../services/local-whish-list.service';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { LocalWhishListService } from '../../services/local-whish-list.service';
+import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 
 @Component({
   selector: 'app-wishlist',

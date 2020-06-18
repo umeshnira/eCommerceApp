@@ -3,14 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
-
 const productRoutes: Routes = [
   {
-    path: 'productList',
+    path: '',
     component: ProductListComponent,
   },
   {
-    path: 'productDetail/:id',
+    path: ':id',
     component: ProductDetailComponent,
   },
 ];
@@ -20,4 +19,4 @@ const productRoutes: Routes = [
   exports: [RouterModule],
 })
 
-export class ProductRoutingModule {}
+export class ProductRoutingModule { }

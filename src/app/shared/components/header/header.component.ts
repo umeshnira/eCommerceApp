@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   goToSubProductList(event) {
 
     this.typeId = event.target.value;
-    this.router.navigate(['/product/productList'], { queryParams: { id: this.typeId } });
+    this.router.navigate(['/product'], { queryParams: { id: this.typeId } });
   }
 
   cartQuantityCal() {

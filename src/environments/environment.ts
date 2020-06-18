@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  api : {
+  api: {
     baseUrl: 'http://localhost:8100',
   }
-}
+};
 
 /*
  * In development mode, to ignore zone related error stack frames such as
