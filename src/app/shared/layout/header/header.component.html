@@ -56,10 +56,10 @@
             <div class="aa-header-top-right">
               <ul class="aa-head-top-nav-right">
                 <li><a href="account.html">My Account</a></li>
-                <li class="hidden-xs" routerLink="/wishlist">
+                <li class="hidden-xs" (click)="routeToWishListPage()">
                   <a>Wishlist</a>
                 </li>
-                <li routerLink="/cartView" class="hidden-xs">
+                <li class="hidden-xs" (click)="routeToMyCartPage()">
                   <a>My Cart</a>
                 </li>
                 <li routerLink="/orders" class="hidden-xs">
@@ -614,7 +614,7 @@
 <div class="container">
   <div class="agileits-navi_search">
     <form action="#" method="post">
-      <select id="agileinfo-nav_search" name="agileinfo_search" required="" (change)="goToSubProductList($event)">
+      <select id="agileinfo-nav_search" name="agileinfo_search" required="" (change)="routeToProductCategories($event)">
         <option value="">All Categories</option>
         <option *ngFor="let x of categoryList" [value]="x.ProductTypeId">{{x.ProductTypeName}}</option>
 

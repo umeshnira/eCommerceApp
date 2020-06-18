@@ -3,7 +3,7 @@ import { LocalCartStorageService } from 'src/app/shared/services/local-cart-stor
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-header',
@@ -33,10 +33,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.getCategories();
   }
 
-  goToSubProductList(event) {
-
+  routeToProductCategories(event) {
     this.typeId = event.target.value;
-    this.router.navigate(['/product'], { queryParams: { id: this.typeId } });
+    this.router.navigate([RoutePathConfig.Products], { queryParams: { id: this.typeId }, relativeTo: this.route });
+  }
+
+  routeToWishListPage() {
+    this.router.navigate([RoutePathConfig.WishList], { relativeTo: this.route });
+  }
+
+  routeToMyCartPage() {
+    this.router.navigate([RoutePathConfig.Cart], { relativeTo: this.route });
   }
 
   cartQuantityCal() {
@@ -50,14 +57,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
 
   private getCategories() {
-
     this.subscription = this.service.getCategories().subscribe((response) => {
       this.categoryList = response;
     },

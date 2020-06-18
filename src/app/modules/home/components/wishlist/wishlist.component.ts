@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { LocalWhishListService } from '../../services/local-whish-list.service';
 import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 
