@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ClientSignUpComponent } from './components/client-signUp/client-sign-up.component';
-import { SellerSignUpComponent } from './components/seller-signUp/sign-up.component';
+import { ClientRegistrationComponent } from './components/client-registration/client-registration.component';
+import { SellerRegistrationComponent } from './components/seller-registration/seller-registration.component';
 
 const routes = [
     {
-        path: 'client/signUp',
-        component: ClientSignUpComponent
+        path: '',
+        redirectTo: 'seller/register',
+        pathMatch: 'full',
     },
     {
-        path: 'seller/signUp',
-        component: SellerSignUpComponent
+        path: 'client/register',
+        component: ClientRegistrationComponent
+    },
+    {
+        path: 'seller/register',
+        component: SellerRegistrationComponent
     }
 ];
 

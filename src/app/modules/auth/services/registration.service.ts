@@ -11,7 +11,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   register(model) {
-
     return this.http.post<any>(this.url + '/auth/signUp', model);
   }
 }
