@@ -1,0 +1,11 @@
+.text-centre {
+  text-align: center;
+}
+
+.valid-error {
+  color: red;
+  font-size: 13px;
+}
+.m-l-80{
+  margin-left: 80px;
+}

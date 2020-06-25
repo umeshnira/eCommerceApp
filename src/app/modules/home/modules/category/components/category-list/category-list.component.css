@@ -1,0 +1,53 @@
+.page-header {
+    margin-bottom: 1.875rem;
+}
+
+
+
+.fa-plus:before {
+    content: "\f067";
+}
+
+.add-btn:hover,
+.add-btn:focus,
+.add-btn:active {
+    background-color: #f10e1d;
+    border: 1px solid #f10e1d;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #f43b48;
+    border: 1px solid #f43b48;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.active,
+.btn-primary:active,
+.open>.dropdown-toggle.btn-primary {
+    background-color: #f10e1d;
+    border: 1px solid #f10e1d;
+}
+
+.table {
+    color: #333;
+}
+
+.continue-btn,
+.cancel-btn {
+    background-color: #fff;
+    border: 1px solid #f43b48;
+    border-radius: 50px;
+    color: #f43b48;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.modal-header .close {
+    padding: unset !important;
+    margin: unset !important;
+}
