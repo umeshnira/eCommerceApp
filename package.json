@@ -23,6 +23,7 @@
     "@syncfusion/ej2-angular-lists": "^18.1.53",
     "@syncfusion/ej2-angular-navigations": "^18.1.54",
     "@syncfusion/ej2-ng-navigations": "^16.2.50",
+    "ngx-toastr": "^12.1.0",
     "rxjs": "6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

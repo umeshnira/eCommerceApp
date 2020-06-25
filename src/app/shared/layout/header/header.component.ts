@@ -46,6 +46,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate([RoutePathConfig.Cart], { relativeTo: this.route });
   }
 
+  routeToCreateCategory() {
+    this.router.navigate([RoutePathConfig.CreateCategory], { relativeTo: this.route });
+  }
+
+  routeToCreateSubCategory() {
+    this.router.navigate([RoutePathConfig.CreateSubCategory], { relativeTo: this.route });
+  }
+
   cartQuantityCal() {
 
     this.cartItems = 0;

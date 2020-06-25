@@ -12,7 +12,7 @@ export class HeaderService {
 
   getCategories() {
 
-    return this.http.get<any>(this.url + '/productTypes/getAllProductTypes');
+    return this.http.get<any>(this.url + '/ecommerce/categories');
   }
 }
 
