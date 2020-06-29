@@ -622,7 +622,7 @@
     <form action="#" method="post">
       <select id="agileinfo-nav_search" name="agileinfo_search" required="" (change)="routeToProductCategories($event)">
         <option value="">All Categories</option>
-        <option *ngFor="let x of categoryList" [value]="x.ProductTypeId">{{x.ProductTypeName}}</option>
+        <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}</option>
 
       </select>
     </form>

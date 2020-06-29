@@ -3,8 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SubCategoryModel } from '../../models/sub-category.model';
 import { SubCategoryService } from '../../services/sub-category.service';
-import { CategoryService } from '../../services/category.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-sub-category',
@@ -29,6 +28,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   constructor(
     private service: SubCategoryService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -83,6 +83,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
       this.formSubmitted = false;
       this.subCategoryForm.reset();
+      this.router.navigate(['home/categories/sub-categories']);
     },
       (error) => {
         console.log(error);
