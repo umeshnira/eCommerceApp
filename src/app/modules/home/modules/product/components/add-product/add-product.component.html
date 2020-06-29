@@ -1,0 +1,115 @@
+<hr>
+<div class="container p-b-20">
+  <tabset>
+    <!-- categories -->
+    <tab heading="Select Categories" id="tab1">
+      <div class='row m-b-10'>
+        <h3 class="text-centre">Select Category</h3>
+      </div>
+      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
+      </ejs-treeview>
+      <div class="row p-t-20">
+        <div class='col-md-4'></div>
+        <div class='col-md-4'></div>
+        <div class='col-md-4'>
+          <button type="submit" class="m-l-10">Next</button>
+          <button type="button" class="m-l-10">Cancel</button>
+        </div>
+      </div>
+
+    </tab>
+    <!-- images -->
+    <tab heading="Select Images">
+      <div class='row m-b-10'>
+        <h3 class="text-centre p-b-50">Select Images</h3>
+      </div>
+      <div class="dropzone p-t-20" appDnd>
+        <input type="file" #fileDropRef id="fileDropRef" multiple />
+        <img src="" alt="">
+        <h3>Drag and drop files here</h3>
+        <h3>or</h3>
+        <label for="fileDropRef">Browse for file</label>
+      </div>
+    </tab>
+    <!-- product details -->
+    <tab heading="Product Details">
+      <div class='card m-b-30'>
+        <div class='col-md-12'>
+          <div class='row m-b-10'>
+            <h3 class="text-centre p-b-50">Add Product Details</h3>
+          </div>
+        </div>
+        <form [formGroup]="productDetailsForm">
+          <div class="row p-t-10">
+            <div class='col-md-6'>
+              <label class="f-weight"> Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Name of product"
+                formControlName="productName">
+            </div>
+            <div class='col-md-6'>
+              <label class="f-weight"> Description</label>
+              <input type="text" class="form-control" id="Description" placeholder="Description"
+                formControlName="description">
+            </div>
+          </div>
+          <div class="row p-t-10">
+            <div class='col-md-6'>
+              <label class="f-weight"> Batch No:</label>
+              <input type="text" class="form-control" id="Batch" placeholder="Batch No:" formControlName="batch">
+            </div>
+            <div class='col-md-6'>
+              <label class="f-weight"> Expiry Date</label>
+              <input type="text" class="form-control" id="Expiry" placeholder="Expiry Date" formControlName="expDate">
+            </div>
+          </div>
+          <div class="row p-t-10">
+            <div class='col-md-6'>
+              <label class="f-weight"> Bar Code</label>
+              <input type="text" class="form-control" id="BarCode" placeholder="Bar Code" formControlName="barCode">
+            </div>
+            <div class='col-md-6'>
+              <label class="f-weight"> Star Rate</label>
+              <input type="text" class="form-control" id="StarRate" placeholder="Star Rate" formControlName="starRate">
+            </div>
+          </div>
+          <div class="row p-t-10">
+            <div class='col-md-6'>
+              <label class="f-weight"> Quantity</label>
+              <input type="text" class="form-control" id="Quantity" placeholder="Quantity" formControlName="leftQty">
+            </div>
+            <div class='col-md-6'>
+              <label class="f-weight"> Total Quantity</label>
+              <input type="text" class="form-control" id="TotalQuantity" placeholder="Price" formControlName="totalQty">
+            </div>
+          </div>
+          <div class="row p-t-10">
+            <div class='col-md-6'>
+              <label class="f-weight"> Price</label>
+              <input type="text" class="form-control" id="Price" placeholder="Price" formControlName="price">
+            </div>
+            <div class='col-md-6'>
+              <label class="f-weight"> Price Without Offer</label>
+              <input type="text" class="form-control" id="Offer" placeholder="PriceWithoutOffer"
+                formControlName="priceWithoutOffer">
+            </div>
+          </div>
+          <div class="row p-t-10">
+            <div class="col-md-12">
+              <label class="f-weight">About</label>
+              <textarea class="form-control" id="About" placeholder="About" formControlName="about"></textarea>
+            </div>
+          </div>
+          <div class="row p-t-20">
+            <div class='col-md-4'></div>
+            <div class='col-md-4'></div>
+            <div class='col-md-4'>
+              <button type="button">Previous</button>
+              <button type="submit" class="m-l-10" (click)="addProduct()">Add Product</button>
+              <button type="button" class="m-l-10">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </tab>
+  </tabset>
+</div>

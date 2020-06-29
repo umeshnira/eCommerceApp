@@ -11,3 +11,4 @@ export class SubProductType {
     id: string;
     name: string;
 }
+
