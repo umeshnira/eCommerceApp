@@ -26,7 +26,7 @@
         <label for="fileDropRef">Browse for file</label>
       </div>
       <div class="files-list p-t-20">
-        <div class="info">
+        <div class="info align-image">
           <div class="single-file p-l-20" *ngFor="let file of files ; let i = index">
             <img [src]="file" alt="" width="100" height="100">
             <div class="delete" (click)="deleteFile(i)">
