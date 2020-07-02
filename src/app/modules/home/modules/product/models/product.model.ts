@@ -1,3 +1,4 @@
+import { Images } from './product-details.model';
 
 export class ProductModel {
 
@@ -14,6 +15,7 @@ export class ProductModel {
     quantity: Quantity;
     category: Category;
     price: Price;
+    images: Images[] = [];
 }
 
 export class Quantity {

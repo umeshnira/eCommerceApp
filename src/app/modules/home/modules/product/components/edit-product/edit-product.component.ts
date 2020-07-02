@@ -6,6 +6,8 @@ import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SubCategoryService } from '../../services/sub-category.service';
+import { ProductModel, Quantity, Price, Category } from '../../models/product.model';
+import { Images } from '../../models/product-details.model';
 
 @Component({
   selector: 'app-edit-product',
@@ -17,11 +19,13 @@ export class EditProductComponent implements OnInit, OnDestroy {
   image: string;
   formSubmitted: boolean;
   fileOver: boolean;
+  isNewImage: boolean;
   categoryId: any;
   productId: any;
   productDetails: any;
   result: any;
   files: any[] = [];
+  imageList: any[] = [];
 
   field: Object;
   formData: FormData = new FormData();
@@ -42,6 +46,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
     this.formInitialization();
     this.productId = this.route.snapshot.queryParams.productId;
+    this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getProductDetails(this.productId);
   }
 
@@ -49,7 +54,13 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
     this.formSubmitted = true;
 
-    this.editProductSubscription = this.service.editProduct(this.formData).subscribe(response => {
+    const jsonData = this.prepareRequestModel();
+    const value = JSON.stringify(jsonData);
+    if (value) {
+      this.formData.append('data', value);
+    }
+
+    this.editProductSubscription = this.service.editProduct(this.productId, this.formData).subscribe(response => {
       alert('Successful');
     },
       (error) => {
@@ -63,7 +74,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
-    this.router.navigate(['home']);
+    this.router.navigate(['home/products']);
   }
 
   fileBrowseHandler(files) {
@@ -77,6 +88,10 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
   deleteFile(index: number) {
     this.files.splice(index, 1);
+  }
+
+  deleteImage(index: number) {
+    this.imageList.splice(index, 1);
   }
 
   nodeclicked(event) {
@@ -102,7 +117,45 @@ export class EditProductComponent implements OnInit, OnDestroy {
     }
   }
 
+  private prepareRequestModel() {
+
+    const producModel = new ProductModel();
+    const quantity = new Quantity();
+    const price = new Price();
+    const category = new Category();
+    const images = new Images();
+
+    producModel.name = this.productDetailsForm?.controls['productName'].value;
+    producModel.description = this.productDetailsForm?.controls['description'].value;
+    producModel.batch_no = this.productDetailsForm?.controls['batch'].value;
+    producModel.exp_date = this.productDetailsForm?.controls['expDate'].value;
+    producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
+    producModel.about = this.productDetailsForm?.controls['about'].value;
+    producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
+    quantity.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    quantity.tota_qty = this.productDetailsForm?.controls['totalQty'].value;
+    price.price = this.productDetailsForm?.controls['price'].value;
+    price.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
+
+    if (this.categoryId) {
+      category.category_id = this.categoryId;
+    }
+    producModel.category = category;
+    producModel.price = price;
+    producModel.quantity = quantity;
+
+    this.imageList.forEach(element => {
+      images.image = element.image;
+      images.path = element.path;
+      producModel.images.push(images);
+    });
+
+    return producModel;
+  }
+
   private prepareFilesList(files: Array<any>) {
+
+    this.isNewImage = true;
 
     for (const item of files) {
       const reader = new FileReader();
@@ -125,12 +178,19 @@ export class EditProductComponent implements OnInit, OnDestroy {
     this.productDetailsForm?.controls['batch'].setValue(this.productDetails?.batch_no);
     this.productDetailsForm?.controls['expDate'].setValue(this.productDetails?.exp_date);
     this.productDetailsForm?.controls['barCode'].setValue(this.productDetails?.bar_code);
-    // this.productDetailsForm?.controls['about'].setValue(this.productDetails?.name);
+    this.productDetailsForm?.controls['about'].setValue(this.productDetails?.about);
     this.productDetailsForm?.controls['starRate'].setValue(this.productDetails?.star_rate);
     this.productDetailsForm?.controls['leftQty'].setValue(this.productDetails?.left_qty);
     this.productDetailsForm?.controls['totalQty'].setValue(this.productDetails?.tota_qty);
     this.productDetailsForm?.controls['price'].setValue(this.productDetails?.price);
     this.productDetailsForm?.controls['priceWithoutOffer'].setValue(this.productDetails?.price_without_offer);
+
+    if (this.productDetails.images) {
+
+      this.productDetails.images.forEach(element => {
+        this.imageList.push(element);
+      });
+    }
   }
 
   private getProductDetails(productId) {

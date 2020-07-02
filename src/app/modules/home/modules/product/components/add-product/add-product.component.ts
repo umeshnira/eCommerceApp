@@ -100,7 +100,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cancel() {
-    this.router.navigate(['home']);
+    this.router.navigate(['home/products']);
   }
 
   get form() {

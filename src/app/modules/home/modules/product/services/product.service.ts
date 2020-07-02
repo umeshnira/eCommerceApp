@@ -17,19 +17,19 @@ export class ProductService {
     return this.http.post<ApiResponseModel>(this.url + '/ecommerce/products', model);
   }
 
-  editProduct(model: FormData) {
-    return this.http.put<ApiResponseModel>(this.url + '/ecommerce/products', model);
+  editProduct(id: number, model: FormData) {
+    return this.http.put<ApiResponseModel>(this.url + '/ecommerce/products/' + id, model);
   }
 
-  getProductDetails(id) {
+  getProductDetails(id: number) {
     return this.http.get<ProductModel>(this.url + '/ecommerce/products/' + id);
   }
 
-  getProducts(id) {
+  getProducts(id: number) {
     return this.http.get<ProductDetailsModel>(this.url + '/ecommerce/categories/' + id + '/products');
   }
 
-  deleteProduct(id) {
+  deleteProduct(id: number) {
     return this.http.delete<ApiResponseModel>(this.url + '/ecommerce/products/' + id);
   }
 

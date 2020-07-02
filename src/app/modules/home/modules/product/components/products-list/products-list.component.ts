@@ -62,11 +62,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       });
   }
 
-  goToEditPage(id) {
+  goToEditPage(id, categoryId) {
 
     let navigationExtras: NavigationExtras;
     navigationExtras = {
-      queryParams: { productId: id },
+      queryParams: { productId: id, categoryId: categoryId },
       relativeTo: this.route
     };
     this.router.navigate(['edit'], navigationExtras);
