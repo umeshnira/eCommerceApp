@@ -11,6 +11,8 @@
 @import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
 
 @import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
 /* @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"); */
 .float {
   float: right;
@@ -51,6 +53,30 @@
 .m-l-30 {
   margin-left: 30px;
 }
+.m-b-50 {
+  margin-bottom: 50px;
+}
+.p-t-10 {
+  padding-top: 10px;
+}
+.p-t-20 {
+  padding-top: 20px;
+}
+.p-b-20 {
+  padding-bottom: 20px;
+}
+.p-b-10{
+  padding-bottom: 10px;
+}
+.p-b-50 {
+  padding-bottom: 50px;
+}
+.p-l-20{
+  padding-left: 20px;
+}
+.m-l-80 {
+  margin-left: 80px;
+}
 .text-style {
   color: #111;
 }
@@ -77,4 +103,7 @@
 }
 .f-weight{
   font-weight: lighter;
+}
+.text-centre {
+  text-align: center;
 }

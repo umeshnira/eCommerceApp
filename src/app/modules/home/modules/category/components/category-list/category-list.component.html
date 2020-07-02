@@ -26,14 +26,14 @@
                   <td>{{category?.name}}</td>
                   <td>{{category?.inserted_at |date}}</td>
                   <td>{{category?.inserted_by}}</td>
-                  <td> 
-                        <a class="dropdown-item font-12"><i
-                            class="fa fa-pencil m-r-5" (click)="goToEditPage(category?.id)"></i>
-                          </a>
+                  <td>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
+                        (click)="goToEditPage(category?.id)"></i>
+                    </a>
 
-                      <a class="dropdown-item font-12"><i
-                          class="fa fa-trash m-r-5 m-l-10" (click)="deleteCategory(category?.id)"></i>
-                        </a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
+                        (click)="deleteCategory(category?.id)"></i>
+                    </a>
                   </td>
                 </tr>
               </tbody>

@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@syncfusion/ej2-angular-buttons": "^18.1.52",
+    "@syncfusion/ej2-angular-calendars": "^18.1.57",
     "@syncfusion/ej2-angular-lists": "^18.1.53",
     "@syncfusion/ej2-angular-navigations": "^18.1.54",
     "@syncfusion/ej2-ng-navigations": "^16.2.50",

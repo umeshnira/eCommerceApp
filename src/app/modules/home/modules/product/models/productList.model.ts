@@ -1,12 +1,12 @@
-export class SubProductTypeList {
+export class Categories {
 
     id: string;
     name: string;
     expanded: boolean;
-    subProductType: SubProductType[];
+    subCategories: SubCategories[];
 }
 
-export class SubProductType {
+export class SubCategories {
 
     id: string;
     name: string;

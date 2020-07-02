@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CategoryModel } from '../models/category.model';
+import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 
 @Injectable()
 
@@ -12,7 +13,7 @@ export class CategoryService {
     constructor(private http: HttpClient) { }
 
     addCategory(model) {
-        return this.http.post<any>(this.url + '/ecommerce/categories', model);
+        return this.http.post<ApiResponseModel>(this.url + '/ecommerce/categories', model);
     }
 
     getCategories() {
@@ -28,7 +29,7 @@ export class CategoryService {
     }
 
     deleteCategory(id) {
-        return this.http.delete<any>(this.url + '/ecommerce/categories/' + id);
+        return this.http.delete<ApiResponseModel>(this.url + '/ecommerce/categories/' + id);
     }
 
 }

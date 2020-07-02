@@ -73,13 +73,13 @@
 <hr>
 
 <div class='container'>
-  <div class="side-bar col-md-3" >
+  <div class="side-bar col-md-3">
     <div class="search-hotel" *ngIf="!isEdit">
       <h3 class="h1-color">Categories</h3>
-      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)' >
+      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
 
       </ejs-treeview>
-      
+
     </div>
   </div>
   <!-- <div class='col-md-3'></div> -->
@@ -87,8 +87,8 @@
     <div class='card m-b-30'>
       <div class='col-md-12'>
         <div class='row m-b-10'>
-          <h1 class="text-centre" *ngIf= "!isEdit">Add SubCategory</h1>
-          <h1 class="text-centre" *ngIf= "isEdit">Edit SubCategory</h1>
+          <h1 class="text-centre" *ngIf="!isEdit">Add SubCategory</h1>
+          <h1 class="text-centre" *ngIf="isEdit">Edit SubCategory</h1>
         </div>
       </div>
       <form [formGroup]="subCategoryForm" (submit)="submitForm()">
@@ -98,8 +98,10 @@
               <label for="username" class="f-weight">Category</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Name of category" formControlName="parentCategory" readonly>
-              <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is required.
+              <input type="text" class="form-control" id="" placeholder="Name of category"
+                formControlName="parentCategory" readonly>
+              <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
+                required.
               </div>
             </div>
           </div>
@@ -116,31 +118,33 @@
             </div>
           </div>
         </div>
-          <div class="form-group">
-            <div class='col-md-12 m-t-20'>
-              <div class='col-md-3'>
-                <label for="" class="f-weight">Description</label>
-              </div>
-              <div class='col-md-9'>
-                <input type="text" class="form-control" id="" placeholder="Description" formControlName="description">
-                <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
-                  required.
-                </div>
+        <div class="form-group">
+          <div class='col-md-12 m-t-20'>
+            <div class='col-md-3'>
+              <label for="" class="f-weight">Description</label>
+            </div>
+            <div class='col-md-9'>
+              <input type="text" class="form-control" id="" placeholder="Description" formControlName="description">
+              <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
+                required.
               </div>
             </div>
           </div>
-          <div class="col-md-12 m-t-30 m-l-80">
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
-              <button type="submit" *ngIf= "!isEdit" class="btn btn-warning btn-width w-100 m-b-30">Add SubCategory</button>
-              <button type="submit" *ngIf= "isEdit" class="btn btn-warning btn-width w-100 m-b-30" (click)="editSubCategory()">Edit SubCategory</button>
-            </div>
-            <div class="col-md-4">
-              <button type="submit" class="btn btn-warning btn-width w-100 m-b-30">Cancel</button>
-            </div>
-            <div class="col-md-2"></div>
+        </div>
+        <div class="col-md-12 m-t-30 m-l-80">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <button type="submit" *ngIf="!isEdit" class="btn btn-warning btn-width w-100 m-b-30">Add
+              SubCategory</button>
+            <button type="submit" *ngIf="isEdit" class="btn btn-warning btn-width w-100 m-b-30"
+              (click)="editSubCategory()">Edit SubCategory</button>
           </div>
-      
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30">Cancel</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
       </form>
 
     </div>

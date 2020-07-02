@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SubProductTypeService } from './subProductType.service';
+import { SubCategoryService } from './sub-category.service';
 
 describe('SubProductTypeService', () => {
-  let service: SubProductTypeService;
+  let service: SubCategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SubProductTypeService);
+    service = TestBed.inject(SubCategoryService);
   });
 
   it('should be created', () => {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SubCategoryModel } from '../models/sub-category.model';
+import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 
 @Injectable()
 
@@ -12,7 +13,7 @@ export class SubCategoryService {
     constructor(private http: HttpClient) { }
 
     addSubCategory(model: SubCategoryModel) {
-        return this.http.post<any>(this.url + '/ecommerce/subcategories', model);
+        return this.http.post<ApiResponseModel>(this.url + '/ecommerce/subcategories', model);
     }
 
     getSubCategoriesTree() {
@@ -20,7 +21,7 @@ export class SubCategoryService {
     }
 
     editSubCategory(id, model: SubCategoryModel) {
-        return this.http.put<any>(this.url + '/ecommerce/subcategories/' + id , model);
+        return this.http.put<ApiResponseModel>(this.url + '/ecommerce/subcategories/' + id , model);
     }
 
     getSubCategory(id) {
@@ -28,10 +29,10 @@ export class SubCategoryService {
     }
 
     deleteSubCategory(id) {
-        return this.http.delete<any>(this.url + '/ecommerce/subcategories/' + id);
+        return this.http.delete<ApiResponseModel>(this.url + '/ecommerce/subcategories/' + id);
     }
 
     getAllSubCategories() {
-        return this.http.get<any>(this.url + '/ecommerce/subcategories/path');
+        return this.http.get<ApiResponseModel>(this.url + '/ecommerce/subcategories/path');
     }
 }

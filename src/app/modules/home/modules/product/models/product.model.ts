@@ -1,5 +1,5 @@
 
-export class FormDataModel {
+export class ProductModel {
 
     name: string;
     description: string;
@@ -11,9 +11,9 @@ export class FormDataModel {
     star_rate: number;
     is_returnable = false;
     inserted_by = 'Seller';
-    quantity: Quantity[] = [];
-    category: Category[] = [];
-    price: Price[] = [];
+    quantity: Quantity;
+    category: Category;
+    price: Price;
 }
 
 export class Quantity {
