@@ -7,11 +7,12 @@ import { HeaderService } from './services/header.service';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { LocalCartStorageService } from './services/local-cart-storage.service';
 
 const components = [HeaderComponent, FooterComponent];
 
-const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule];
+const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule, DatePickerModule];
 
 const providers = [HeaderService, LocalCartStorageService];
 

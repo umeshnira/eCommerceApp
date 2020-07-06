@@ -3,6 +3,8 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryModel } from '../../models/sub-category.model';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-category',
@@ -16,15 +18,16 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
   categories: any;
   categoriesByPath: any;
 
-  subCategories: SubCategoryModel;
-  subscription: ISubscription;
-  getCategoriesSubscription: ISubscription;
   field: Object;
+  subCategories: SubCategoryModel;
+  getAllCategoriesSubscription: ISubscription;
+  deleteSubCategorySubscription: ISubscription;
 
   constructor(
     private service: SubCategoryService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -47,30 +50,43 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
 
   deleteSubCategory(id) {
 
-    this.service.deleteSubCategory(id).subscribe(response => {
+    this.deleteSubCategorySubscription = this.service.deleteSubCategory(id).subscribe(response => {
       console.log('Deleted sub category');
     }, (error) => {
-      console.log(error);
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.error('', error.error.message);
+        console.log(error);
+      } else {
+        this.toastr.error('', error);
+      }
     });
   }
 
   ngOnDestroy() {
 
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.getAllCategoriesSubscription) {
+      this.getAllCategoriesSubscription.unsubscribe();
+    }
+    if (this.deleteSubCategorySubscription) {
+      this.deleteSubCategorySubscription.unsubscribe();
     }
   }
 
   private getAllCategories() {
 
-    this.subscription = this.service.getAllSubCategories().subscribe(response => {
+    this.getAllCategoriesSubscription = this.service.getAllSubCategories().subscribe(response => {
       if (response) {
         this.categoriesByPath = response;
 
       }
     },
       (error) => {
-        console.log(error);
+        if (error instanceof HttpErrorResponse) {
+          this.toastr.error('', error.error.message);
+          console.log(error);
+        } else {
+          this.toastr.error('', error);
+        }
       }
     );
   }

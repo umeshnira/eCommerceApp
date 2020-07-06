@@ -4,6 +4,8 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SubCategoryModel } from '../../models/sub-category.model';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-edit-sub-category',
@@ -22,13 +24,16 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   subCategory: SubCategoryModel;
   field: Object;
   subCategoryForm: FormGroup;
-  subscription: ISubscription;
+  addSubCategorySubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
+  editSubCategorySubscription: ISubscription;
+  getSubCategorySubscription: ISubscription;
 
   constructor(
     private service: SubCategoryService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -54,18 +59,24 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
       subCategoryModel.description = this.subCategoryForm.controls['description'].value;
       subCategoryModel.inserted_by = 'Seller';
 
-      this.subscription = this.service.addSubCategory(subCategoryModel).subscribe((response) => {
+      this.addSubCategorySubscription = this.service.addSubCategory(subCategoryModel).subscribe((response) => {
 
         this.formSubmitted = false;
         this.subCategoryForm.reset();
       },
         (error) => {
-          console.log(error);
+          if (error instanceof HttpErrorResponse) {
+            this.toastr.error('', error.error.message);
+            console.log(error);
+          } else {
+            this.toastr.error('', error);
+          }
         });
     }
   }
 
   nodeclicked(event) {
+
     const value = event.node.textContent;
     this.subCategoryForm?.controls['parentCategory'].setValue(value);
     this.categoryId = event.node.dataset.uid;
@@ -79,14 +90,19 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     subCategoryModel.name = this.subCategoryForm.controls['name'].value;
     subCategoryModel.description = this.subCategoryForm.controls['description'].value;
 
-    this.service.editSubCategory(this.subCategoryId, subCategoryModel).subscribe((response) => {
+    this.editSubCategorySubscription = this.service.editSubCategory(this.subCategoryId, subCategoryModel).subscribe((response) => {
 
       this.formSubmitted = false;
       this.subCategoryForm.reset();
       this.router.navigate(['home/categories/sub-categories']);
     },
       (error) => {
-        console.log(error);
+        if (error instanceof HttpErrorResponse) {
+          this.toastr.error('', error.error.message);
+          console.log(error);
+        } else {
+          this.toastr.error('', error);
+        }
       });
   }
 
@@ -97,14 +113,23 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
 
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.addSubCategorySubscription) {
+      this.addSubCategorySubscription.unsubscribe();
+    }
+    if (this.editSubCategorySubscription) {
+      this.editSubCategorySubscription.unsubscribe();
+    }
+    if (this.getSubCategorySubscription) {
+      this.getSubCategorySubscription.unsubscribe();
+    }
+    if (this.getCategoriesSubscription) {
+      this.getCategoriesSubscription.unsubscribe();
     }
   }
 
   private getSubCategory(subCategoryId) {
 
-    this.service.getSubCategory(subCategoryId).subscribe(response => {
+    this.getSubCategorySubscription = this.service.getSubCategory(subCategoryId).subscribe(response => {
       if (response) {
         this.subCategory = response;
         if (this.subCategory.name) {
@@ -115,7 +140,12 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
         }
       }
     }, (error) => {
-      console.log(error);
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.error('', error.error.message);
+        console.log(error);
+      } else {
+        this.toastr.error('', error);
+      }
     });
   }
 
@@ -140,7 +170,12 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
       }
     },
       (error) => {
-        console.log(error);
+        if (error instanceof HttpErrorResponse) {
+          this.toastr.error('', error.error.message);
+          console.log(error);
+        } else {
+          this.toastr.error('', error);
+        }
       }
     );
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SubProductTypeList, SubProductType } from '../../models/productList.model';
-import { SubProductTypeService } from '../../services/subProductType.service';
+import { SubCategoryService } from '../../services/sub-category.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Categories, SubCategories } from '../../models/productList.model';
 
 @Component({
   selector: 'app-product-list',
@@ -18,11 +18,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
   result: any;
   id: any;
   field: Object;
-  modelResult: SubProductTypeList[] = [];
+  modelResult: Categories[] = [];
   subscription: ISubscription;
 
   constructor(
-    private service: SubProductTypeService,
+    private service: SubCategoryService,
     private route: ActivatedRoute
   ) { }
 
@@ -41,27 +41,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private getSubProductList() {
 
-    this.subscription = this.service.getSubProductListAganistProductTypeId(this.id).subscribe(response => {
+    this.subscription = this.service.getSubCategoriesByCategoryId(this.id).subscribe(response => {
       if (response) {
         this.result = response;
-        const model = new SubProductTypeList();
-        model.id = this.result[0].productTypeId;
-        model.name = this.result[0].productTypeName;
-        model.expanded = true;
-        model.subProductType = [];
-
-        if (this.result && this.result.length > 0) {
-
-          this.result.forEach(element => {
-            const subProductTypeModel = new SubProductType();
-            subProductTypeModel.id = element.subProductTypeId;
-            subProductTypeModel.name = element.subProductTypeName;
-            model.subProductType.push(subProductTypeModel);
-          });
-        }
-        this.modelResult.push(model);
-        this.field = { dataSource: this.modelResult, id: 'id', text: 'name', child: 'subProductType' };
-
+        this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
       }
     });
   }

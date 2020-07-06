@@ -1,0 +1,69 @@
+<div class="page-head_agile_info_w3l"></div>
+<div class="services-breadcrumb">
+  <div class="agile_inner_breadcrumb">
+    <div class="container">
+      <ul class="w3_short">
+        <li>
+          <a href="index.html">Home</a>
+          <i>|</i>
+        </li>
+        <li>Products</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- //page -->
+<!-- top Products -->
+<div class="ads-grid">
+  <div class="container">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l">
+      Products List
+      <span class="heading-style">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    </h3>
+    <!-- product left -->
+    <div class="side-bar col-md-3">
+      <h3 class="h1-color">SubCategories</h3>
+      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
+      </ejs-treeview>
+    </div>
+    <!-- //product left -->
+    <!-- product right -->
+    <div class="agileinfo-ads-display col-md-9 w3l-rightpro">
+      <div class="wrapper">
+        <!-- first section -->
+        <div class="product-sec1">
+          <div class="col-xs-4 product-men item" *ngFor="let product of products">
+            <div class="men-pro-item simpleCart_shelfItem ">
+              <div class="men-thumb-item p-t-10">
+                <img [src]="product.image" alt="" height="100" width="100" />
+              </div>
+              <div class="item-info-product">
+                <h4>
+                  <a href="single2.html">{{product.name}}</a>
+                </h4>
+                <div class="info-product-price">
+                  <span class="item_price"><small>$</small>{{product.price}}</span>
+                </div>
+                <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
+                    (click)="goToEditPage(product?.id, product?.category_id)"></i>
+                </a>
+
+                <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
+                    (click)="deleteProduct(product?.id)"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //product right -->
+  </div>
+</div>
+<!-- //top products -->

@@ -77,8 +77,8 @@
     <div class='card m-b-30'>
       <div class='col-md-12'>
         <div class='row m-b-10'>
-          <h1  *ngIf="isEdit" class="text-centre">Edit Category</h1>
-          <h1  *ngIf="!isEdit" class="text-centre">Add Category</h1>
+          <h1 *ngIf="isEdit" class="text-centre">Edit Category</h1>
+          <h1 *ngIf="!isEdit" class="text-centre">Add Category</h1>
         </div>
       </div>
       <form [formGroup]="categoryForm" (submit)="addCategory()">
@@ -101,23 +101,25 @@
             </div>
             <div class='col-md-9'>
               <input type="text" class="form-control" id="" placeholder="Description" formControlName="description">
-              <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is required.
+              <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
+                required.
               </div>
             </div>
           </div>
         </div>
-          <div class="col-md-12 m-t-30 m-l-80">
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
-              <button *ngIf="!isEdit" type="submit" class="btn btn-warning btn-width w-100 m-b-30">Add Category</button>
-              <button *ngIf="isEdit" type="button" class="btn btn-warning btn-width w-100 m-b-30" (click)="editCategory()">Edit Category</button>
-            </div>
-            <div class="col-md-4">
-              <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="reset()">Cancel</button>
-            </div>
-            <div class="col-md-2"></div>
+        <div class="col-md-12 m-t-30 m-l-80">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <button *ngIf="!isEdit" type="submit" class="btn btn-warning btn-width w-100 m-b-30">Add Category</button>
+            <button *ngIf="isEdit" type="button" class="btn btn-warning btn-width w-100 m-b-30"
+              (click)="editCategory()">Edit Category</button>
           </div>
-        
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="reset()">Cancel</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
       </form>
 
     </div>

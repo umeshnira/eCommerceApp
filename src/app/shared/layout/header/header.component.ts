@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.getCategories();
   }
 
-  routeToProductCategories(event) {
+  routeToProductList(event) {
     this.typeId = event.target.value;
     this.router.navigate([RoutePathConfig.Products], { queryParams: { id: this.typeId }, relativeTo: this.route });
   }
