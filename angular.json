@@ -25,6 +25,7 @@
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
+              "./node_modules/crypto-js/crypto-js.js",
               "src/assets/products/js/jquery-2.1.4.min.js",
               "src/assets/products/js/jquery-ui.js",
               "src/assets/products/js/easyResponsiveTabs.js",

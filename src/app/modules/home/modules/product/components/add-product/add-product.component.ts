@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SubCategoryService } from '../../services/sub-category.service';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-add-product',
@@ -152,12 +153,14 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
     producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
     producModel.about = this.productDetailsForm?.controls['about'].value;
     producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
+    producModel.status = Status.Active;
     quantity.left_qty = this.productDetailsForm?.controls['leftQty'].value;
     quantity.tota_qty = this.productDetailsForm?.controls['totalQty'].value;
     price.price = this.productDetailsForm?.controls['price'].value;
     price.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
 
     category.category_id = this.categoryId;
+    category.status = Status.Active;
     producModel.category = category;
     producModel.price = price;
     producModel.quantity = quantity;

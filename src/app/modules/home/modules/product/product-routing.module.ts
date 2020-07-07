@@ -15,10 +15,10 @@ const productRoutes: Routes = [
   //   path: '',
   //   component: ProductListComponent,
   // },
-  // {
-  //   path: ':id',
-  //   component: ProductDetailComponent,
-  // },
+  {
+    path: 'user/view',
+    component: ProductDetailComponent,
+  },
   {
     path: 'add',
     component: AddProductComponent

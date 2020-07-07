@@ -1,4 +1,5 @@
-import { Images } from './product-details.model';
+// import { Images } from './product-details.model';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 export class ProductModel {
 
@@ -8,14 +9,15 @@ export class ProductModel {
     exp_date: Date;
     bar_code: string;
     about: string;
-    status = false;
+    status: Status;
     star_rate: number;
-    is_returnable = false;
-    inserted_by = 'Seller';
+    is_returnable = true;
+    created_by = 'Seller';
+    updated_by: string;
     quantity: Quantity;
     category: Category;
     price: Price;
-    images: Images[] = [];
+    // images: Images[] = [];
 }
 
 export class Quantity {
@@ -28,7 +30,7 @@ export class Quantity {
 
 export class Category {
 
-    status: boolean;
+    status: Status;
     updated_by: string;
     inserted_by = 'Seller';
     category_id: number;
@@ -41,7 +43,6 @@ export class Price {
     inserted_at: Date;
     updated_at: Date;
 }
-
 
 
 

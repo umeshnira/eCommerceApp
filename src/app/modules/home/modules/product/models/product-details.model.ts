@@ -10,17 +10,17 @@ export class ProductDetailsModel {
     p_bar_code: number;
     p_about: string;
     p_is_returnable: boolean;
-    p_inserted_by: string;
-    p_inserted_at: Date;
+    p_created_by: string;
+    p_created_at: Date;
     p_updated_at: Date;
     p_updated_by: string;
     price: number;
-    image: Images[] = [];
+    // image: Images[] = [];
     category_name: string;
     category_id: number;
 }
 
-export class Images {
-    image: string;
-    path: string;
-}
+// export class Images {
+//     image: string;
+//     path: string;
+// }

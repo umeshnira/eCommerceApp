@@ -1,0 +1,41 @@
+<div class='container'>
+    <div class='col-md-12 row'>
+    </div>
+    <div class='col-md-4'></div>
+    <div class='col-md-4'>
+      <div class='card m-b-30'>
+        <div class='col-md-12'>
+          <div class='row m-b-10'>
+            <h1 class="text-centre">Login</h1>
+          </div>
+        </div>
+        <form [formGroup]="loginForm" (submit)="submitForm()">
+          <div class="form-group">
+            <label for="username" class="f-weight">Username</label>
+            <input type="text" class="form-control" id="" placeholder="Enter email or phone number"
+              formControlName="username">
+            <div *ngIf="formSubmitted && form.username.errors?.required" class="valid-error">Username is required.
+            </div>
+            <div *ngIf="formSubmitted && form.username.errors" class="valid-error">Please enter a valid email or phone
+              number</div>
+          </div>
+          <div class="form-group">
+            <label for="" class="f-weight">Password</label>
+            <input type="password" class="form-control" id="" placeholder="password" formControlName="password">
+            <div *ngIf="formSubmitted && form.password.errors?.required" class="valid-error">Password is required.
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30">Login</button>
+          </div>
+          <div>
+            <label for="">Create a new account?</label>
+            <a class="m-l-10" href="">Sign Up</a>
+          </div>
+        </form>
+  
+      </div>
+    </div>
+    <div class='col-md-4'> </div>
+  </div>
+  

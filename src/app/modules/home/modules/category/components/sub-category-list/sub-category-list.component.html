@@ -35,8 +35,8 @@
                 <tr *ngFor="let subCategory of categoriesByPath">
                   <td>{{subCategory?.name}}</td>
                   <td>{{subCategory?.path}}</td>
-                  <td>{{subCategory?.inserted_at |date}}</td>
-                  <td>{{subCategory?.inserted_by}}</td>
+                  <td>{{subCategory?.created_at |date}}</td>
+                  <td>{{subCategory?.created_by}}</td>
                   <td>
                     <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
                         (click)="goToEditPage(subCategory?.id)"></i>
