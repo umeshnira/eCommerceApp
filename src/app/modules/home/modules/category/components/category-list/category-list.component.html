@@ -24,8 +24,8 @@
               <tbody>
                 <tr *ngFor="let category of categories">
                   <td>{{category?.name}}</td>
-                  <td>{{category?.inserted_at |date}}</td>
-                  <td>{{category?.inserted_by}}</td>
+                  <td>{{category?.created_at |date}}</td>
+                  <td>{{category?.created_by}}</td>
                   <td>
                     <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
                         (click)="goToEditPage(category?.id)"></i>

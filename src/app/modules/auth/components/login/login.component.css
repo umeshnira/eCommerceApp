@@ -1,0 +1,27 @@
+.card {
+    margin-top: 100px;
+    padding: 14px 18px;
+    border: 1px solid #d1c8c8;
+    border-radius: 20px;
+    width: 400px;
+  }
+  
+  .form-control {
+    border-radius: 25px !important;
+    height: 40px !important;
+  }
+  
+  .btn {
+    border-radius: 25px !important;
+    height: 40px !important;
+  }
+  
+  .m-l-100 {
+    margin-left: 100px;
+  }
+  
+  .valid-error {
+    color: red;
+    font-size: 13px;
+  }
+  

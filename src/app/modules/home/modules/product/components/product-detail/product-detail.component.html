@@ -18,14 +18,14 @@
       <div class="grid images_3_of_2">
 
         <div class="flexslider">
-          <ul class="slides">
-            <li data-thumb="../../../assets/products/images/se1.jpg">
+          <ul class="slides" *ngFor="let image of imageList">
+            <li>
               <div class="thumb-image">
-                <img src="../../../assets/products/images/se1.jpg" data-imagezoom="true" class="img-responsive"
+                <img [src]="image.path" data-imagezoom="true" class="img-responsive"
                   alt="" />
               </div>
             </li>
-            <li data-thumb="../../../assets/products/images/se2.jpg">
+            <!-- <li data-thumb="../../../assets/products/images/se2.jpg">
               <div class="thumb-image">
                 <img src="../../../assets/products/images/se2.jpg" data-imagezoom="true" class="img-responsive"
                   alt="" />
@@ -36,14 +36,14 @@
                 <img src="../../../assets/products/images/se3.jpg" data-imagezoom="true" class="img-responsive"
                   alt="" />
               </div>
-            </li>
+            </li> -->
           </ul>
           <div class="clearfix"></div>
         </div>
       </div>
     </div>
     <div class="col-md-6 single-right-left simpleCart_shelfItem">
-      <h3>Ambipur Air Freshener - 275 g</h3>
+      <h3>{{productDetails.name}}</h3>
       <div class="rating1">
         <span class="starRating">
           <input id="rating5" type="radio" name="rating" value="5" />
@@ -60,24 +60,24 @@
         <a class="small-font">554 ratings | 31 answered questions</a>
       </div>
       <p>
-        <span class="item_price">$265.00
+        <span class="item_price">{{productDetails.price}}
           <span class="small-font font-style">
             FREE Delivery on orders over ₹ 499.00 . Details Inclusive of all
             taxes
           </span>
         </span>
-        <del>$285.00</del>
+        <!-- <del>$285.00</del> -->
       </p>
 
       <div class="single-infoagile">
         <ul>
           <li>
-            Best Before: 25 Sep 2020
+            Best Before: {{productDetails.expiry_date}}
           </li>
           <li class="text-success">
             In stock
           </li>
-          <li>Delivery by: Sat, May 16 <a>Details</a></li>
+          <!-- <li>Delivery by: Sat, May 16 <a>Details</a></li> -->
           <li>
             <i class="fa fa-map-marker"></i>
             <a class="m-l-10">Deliver to ABC - Kanyakumari 629179</a>

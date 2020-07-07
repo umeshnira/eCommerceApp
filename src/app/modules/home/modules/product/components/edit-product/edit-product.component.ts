@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { ProductModel, Quantity, Price, Category } from '../../models/product.model';
-import { Images } from '../../models/product-details.model';
 
 @Component({
   selector: 'app-edit-product',
@@ -123,7 +122,6 @@ export class EditProductComponent implements OnInit, OnDestroy {
     const quantity = new Quantity();
     const price = new Price();
     const category = new Category();
-    const images = new Images();
 
     producModel.name = this.productDetailsForm?.controls['productName'].value;
     producModel.description = this.productDetailsForm?.controls['description'].value;
@@ -132,6 +130,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
     producModel.about = this.productDetailsForm?.controls['about'].value;
     producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
+    producModel.updated_by = 'Seller';
     quantity.left_qty = this.productDetailsForm?.controls['leftQty'].value;
     quantity.tota_qty = this.productDetailsForm?.controls['totalQty'].value;
     price.price = this.productDetailsForm?.controls['price'].value;
@@ -144,11 +143,12 @@ export class EditProductComponent implements OnInit, OnDestroy {
     producModel.price = price;
     producModel.quantity = quantity;
 
-    this.imageList.forEach(element => {
-      images.image = element.image;
-      images.path = element.path;
-      producModel.images.push(images);
-    });
+    if(this.imageList && this.imageList.length > 0){
+      for (let i = 0; i < this.imageList.length; i++) {
+        this.formData.append('image', this.imageList[i]);
+      }
+    }
+  
 
     return producModel;
   }
@@ -190,6 +190,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
       this.productDetails.images.forEach(element => {
         this.imageList.push(element);
       });
+      // this.prepareFilesList(this.imageList);
     }
   }
 

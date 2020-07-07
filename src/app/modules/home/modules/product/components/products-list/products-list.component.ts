@@ -20,6 +20,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   products: any;
   result: any;
   id: any;
+  isUser: boolean;
   modelResult: Categories[] = [];
   field: Object;
   subCategoryListSubscription: ISubscription;
@@ -35,7 +36,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
+   
+    // if (this.route.snapshot.url[0].path === 'user') {
+    //   this.isUser = true;
+    // }
     this.id = this.route.snapshot.queryParams.id;
     this.getSubCategoryList();
     this.getProducts(this.id);
@@ -72,6 +76,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
+  goToDetailPage(id) {
+
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { productId: id },
+      relativeTo: this.route
+    };
+    this.router.navigate(['user/view'], navigationExtras);
+  }
+
   ngOnDestroy() {
 
     if (this.subCategoryListSubscription) {
@@ -105,10 +119,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   private getSubCategoryList() {
 
     this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.id).subscribe(response => {
-      if (response) {
         this.result = response;
         this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
-      }
     },
       (error) => {
         if (error instanceof HttpErrorResponse) {

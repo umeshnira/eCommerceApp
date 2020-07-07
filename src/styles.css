@@ -146,3 +146,6 @@
   display: inline-flex;
   flex-wrap: wrap;
 }
+.cursor{
+  cursor: pointer;
+}

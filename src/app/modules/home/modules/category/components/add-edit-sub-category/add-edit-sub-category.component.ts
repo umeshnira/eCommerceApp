@@ -57,7 +57,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
       subCategoryModel.parent_category_id = this.categoryId;
       subCategoryModel.name = this.subCategoryForm.controls['name'].value;
       subCategoryModel.description = this.subCategoryForm.controls['description'].value;
-      subCategoryModel.inserted_by = 'Seller';
+      subCategoryModel.created_by = 'Admin';
 
       this.addSubCategorySubscription = this.service.addSubCategory(subCategoryModel).subscribe((response) => {
 
@@ -80,6 +80,11 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     const value = event.node.textContent;
     this.subCategoryForm?.controls['parentCategory'].setValue(value);
     this.categoryId = event.node.dataset.uid;
+  }
+
+  cancel() {
+
+    this.router.navigate(['home']);
   }
 
   editSubCategory() {

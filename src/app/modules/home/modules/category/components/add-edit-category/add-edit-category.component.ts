@@ -3,9 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryModel } from '../../models/category.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryService } from '../../services/category.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -30,6 +31,7 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
     private service: CategoryService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,21 +53,22 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
       const categoryModel = new CategoryModel();
       categoryModel.name = this.categoryForm.controls['name'].value;
       categoryModel.description = this.categoryForm.controls['description'].value;
-      categoryModel.created_by = 'Seller';
+      categoryModel.status = Status.Active;
+      categoryModel.created_by = 'Admin';
 
       this.addCategorySubscription = this.service.addCategory(categoryModel).subscribe((response) => {
 
         this.formSubmitted = false;
         this.categoryForm.reset();
       },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            this.toastr.error('', error.error.message);
+            console.log(error);
+          } else {
+            this.toastr.error('', error);
+          }
+        });
     }
   }
 
@@ -78,27 +81,27 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
       const categoryModel = new CategoryModel();
       categoryModel.name = this.categoryForm.controls['name'].value;
       categoryModel.description = this.categoryForm.controls['description'].value;
-      categoryModel.created_by = 'Seller';
+      categoryModel.created_by = 'Admin';
 
       this.editCategorySubscription = this.service.editCategory(this.categoryId, categoryModel).subscribe((response) => {
 
         this.formSubmitted = false;
         this.categoryForm.reset();
       },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            this.toastr.error('', error.error.message);
+            console.log(error);
+          } else {
+            this.toastr.error('', error);
+          }
+        });
     }
   }
 
   reset() {
 
-    this.categoryForm.reset();
+    this.router.navigate(['home']);
   }
 
   get form() {
@@ -122,24 +125,24 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
   private getCategory(categoryId) {
 
     this.getCategorySubscription = this.service.getCategory(categoryId).subscribe(response => {
-     if (response) {
-       this.category = response;
-       if (this.category.name) {
-         this.categoryForm?.controls['name'].setValue(this.category.name);
-       }
-       if (this.category.description) {
-         this.categoryForm?.controls['description'].setValue(this.category.description);
-       }
-     }
-   }, (error) => {
-     if (error instanceof HttpErrorResponse) {
-       this.toastr.error('', error.error.message);
-       console.log(error);
-     } else {
-       this.toastr.error('', error);
-     }
-   });
- }
+      if (response) {
+        this.category = response;
+        if (this.category.name) {
+          this.categoryForm?.controls['name'].setValue(this.category.name);
+        }
+        if (this.category.description) {
+          this.categoryForm?.controls['description'].setValue(this.category.description);
+        }
+      }
+    }, (error) => {
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.error('', error.error.message);
+        console.log(error);
+      } else {
+        this.toastr.error('', error);
+      }
+    });
+  }
 
   private formInitialization() {
 

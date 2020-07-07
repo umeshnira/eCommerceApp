@@ -41,6 +41,11 @@
             <div class="men-pro-item simpleCart_shelfItem ">
               <div class="men-thumb-item p-t-10">
                 <img [src]="product.image" alt="" height="100" width="100" />
+                <!-- <div *ngIf="isUser" class="men-cart-pro">
+                  <div class="inner-men-cart-pro">
+                    <a (click)="goToDetailPage(product?.id)" class="link-product-add-cart">Quick View</a>
+                  </div>
+                </div> -->
               </div>
               <div class="item-info-product">
                 <h4>
@@ -49,14 +54,16 @@
                 <div class="info-product-price">
                   <span class="item_price"><small>$</small>{{product.price}}</span>
                 </div>
-                <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
+                <!-- <div *ngIf="!isUser"> -->
+                <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 cursor"
                     (click)="goToEditPage(product?.id, product?.category_id)"></i>
                 </a>
 
-                <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
+                <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 cursor"
                     (click)="deleteProduct(product?.id)"></i>
                 </a>
               </div>
+              <!-- </div> -->
             </div>
           </div>
           <div class="clearfix"></div>
