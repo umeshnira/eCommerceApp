@@ -15,7 +15,6 @@ export class HomePageComponent implements OnInit {
   prodList;
   cartItems = 0;
   cartList = [];
-  @Input() header: HeaderComponent;
 
   constructor(
     private fps: FirstPageService,
@@ -39,8 +38,5 @@ export class HomePageComponent implements OnInit {
     this.locWhishList.addToMyWhishList(prod);
   }
 
-  cartQuantityCal() {
-
-    this.header.cartQuantityCal();
-  }
+ 
 }

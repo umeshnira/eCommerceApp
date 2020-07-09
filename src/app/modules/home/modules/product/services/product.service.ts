@@ -4,33 +4,57 @@ import { environment } from 'src/environments/environment';
 import { ApiResponseModel } from '../../../../../shared/models/api-response.model';
 import { ProductModel } from '../models/product.model';
 import { ProductDetailsModel } from '../models/product-details.model';
+import { catchError } from 'rxjs/operators';
+import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 
 @Injectable()
 
-export class ProductService {
+export class ProductService extends HttpBaseService {
 
-  url = environment.api.baseUrl;
+  baseUrl = environment.api.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   addProduct(model: FormData) {
-    return this.http.post<ApiResponseModel>(this.url + '/ecommerce/products', model);
+
+    const url = `${this.baseUrl}/products`;
+    return this.http.post<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
   }
 
   editProduct(id: number, model: FormData) {
-    return this.http.put<ApiResponseModel>(this.url + '/ecommerce/products/' + id, model);
+
+    const url = `${this.baseUrl}/products/${id}`;
+    return this.http.put<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
   }
 
   getProductDetails(id: number) {
-    return this.http.get<ProductModel>(this.url + '/ecommerce/products/' + id);
+
+    const url = `${this.baseUrl}/products/${id}`;
+    return this.http.get<ProductModel>(url)
+      .pipe(catchError(this.handleError)
+      );
   }
 
   getProducts(id: number) {
-    return this.http.get<ProductDetailsModel>(this.url + '/ecommerce/categories/' + id + '/products');
+
+    const url = `${this.baseUrl}/categories/${id}/products`;
+    return this.http.get<ProductDetailsModel>(url)
+      .pipe(catchError(this.handleError)
+      );
   }
 
   deleteProduct(id: number) {
-    return this.http.delete<ApiResponseModel>(this.url + '/ecommerce/products/' + id);
+
+    const url = `${this.baseUrl}/products/${id}`;
+    return this.http.delete<ApiResponseModel>(url)
+      .pipe(catchError(this.handleError)
+      );
   }
 
 }

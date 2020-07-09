@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryModel } from '../../models/category.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../../../../../shared/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Status } from 'src/app/shared/enums/user-status.enum';
+import { Constants } from 'src/app/shared/models/constants';
+import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -16,7 +18,7 @@ import { Status } from 'src/app/shared/enums/user-status.enum';
 
 export class AddEditCategoryComponent implements OnInit, OnDestroy {
 
-  categoryId: any;
+  categoryId: number;
   formSubmitted: boolean;
   isEdit: boolean;
 
@@ -29,14 +31,14 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: CategoryService,
-    private route: ActivatedRoute,
     private toastr: ToastrService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
 
-    this.formInitialization();
+    this.categoryFormInitialization();
     if (this.route.snapshot.url[0].path === 'edit') {
       this.categoryId = this.route.snapshot.queryParams.categoryId;
       this.getCategory(this.categoryId);
@@ -54,7 +56,7 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
       categoryModel.name = this.categoryForm.controls['name'].value;
       categoryModel.description = this.categoryForm.controls['description'].value;
       categoryModel.status = Status.Active;
-      categoryModel.created_by = 'Admin';
+      categoryModel.created_by = Constants.admin;
 
       this.addCategorySubscription = this.service.addCategory(categoryModel).subscribe((response) => {
 
@@ -81,7 +83,7 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
       const categoryModel = new CategoryModel();
       categoryModel.name = this.categoryForm.controls['name'].value;
       categoryModel.description = this.categoryForm.controls['description'].value;
-      categoryModel.created_by = 'Admin';
+      categoryModel.created_by = Constants.admin;
 
       this.editCategorySubscription = this.service.editCategory(this.categoryId, categoryModel).subscribe((response) => {
 
@@ -144,13 +146,13 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
     });
   }
 
-  private formInitialization() {
+  private categoryFormInitialization() {
 
     this.categoryForm = new FormGroup({
       name: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
       description: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
     });
   }
 

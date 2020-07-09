@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../../../../../shared/services/category.service';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SubCategoryService } from '../../services/sub-category.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Categories, SubCategories } from '../../models/productList.model';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 
 @Component({
   selector: 'app-product-list',

@@ -97,7 +97,7 @@
             </div>
             <div class='col-md-6'>
               <label class="f-weight p-b-10"> Star Rate</label>
-              <input type="text" class="form-control" id="StarRate" placeholder="Star Rate" formControlName="starRate">
+              <input type="number" class="form-control" id="StarRate" placeholder="Star Rate" formControlName="starRate">
               <div *ngIf="formSubmitted && form.starRate.errors?.required" class="valid-error">Star Rate is required.
               </div>
             </div>

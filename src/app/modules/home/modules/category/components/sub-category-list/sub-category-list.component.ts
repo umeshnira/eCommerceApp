@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { SubCategoryService } from '../../services/sub-category.service';
+import { SubCategoryService } from '../../../../../../shared/services/sub-category.service';
 import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryModel } from '../../models/sub-category.model';
 import { ToastrService } from 'ngx-toastr';

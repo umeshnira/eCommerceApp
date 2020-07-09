@@ -7,6 +7,7 @@ export class SubCategoryModel {
     status: Status;
     parent_category_id: number;
     created_by: string;
+    updated_by: string;
 }
 
 

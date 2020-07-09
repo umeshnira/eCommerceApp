@@ -16,7 +16,7 @@ const productRoutes: Routes = [
   //   component: ProductListComponent,
   // },
   {
-    path: 'user/view',
+    path: 'details',
     component: ProductDetailComponent,
   },
   {

@@ -11,17 +11,12 @@ export class SubCategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getProductList() {
-
-    return this.http.get<any>(this.url + '/subProductTypes/getAllSubProdctTypes');
-  }
-
   getSubCategoriesByCategoryId(id) {
 
-    return this.http.get<any>(this.url + '/ecommerce/categories/' + id + '/subcategories');
+    return this.http.get<any>(this.url + '/categories/' + id + '/subcategories');
   }
 
   getSubCategoriesTree() {
-    return this.http.get<SubCategoryModel>(this.url + '/ecommerce/subcategories');
+    return this.http.get<SubCategoryModel>(this.url + '/subcategories');
 }
 }
