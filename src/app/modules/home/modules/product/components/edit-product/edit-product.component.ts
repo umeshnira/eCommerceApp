@@ -5,8 +5,9 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SubCategoryService } from '../../services/sub-category.service';
 import { ProductModel, Quantity, Price, Category } from '../../models/product.model';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
+import { Constants } from 'src/app/shared/models/constants';
 
 @Component({
   selector: 'app-edit-product',
@@ -119,9 +120,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
   private prepareRequestModel() {
 
     const producModel = new ProductModel();
-    const quantity = new Quantity();
-    const price = new Price();
-    const category = new Category();
+    // const quantity = new Quantity();
+    // const price = new Price();
+    // const category = new Category();
 
     producModel.name = this.productDetailsForm?.controls['productName'].value;
     producModel.description = this.productDetailsForm?.controls['description'].value;
@@ -130,25 +131,25 @@ export class EditProductComponent implements OnInit, OnDestroy {
     producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
     producModel.about = this.productDetailsForm?.controls['about'].value;
     producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
-    producModel.updated_by = 'Seller';
-    quantity.left_qty = this.productDetailsForm?.controls['leftQty'].value;
-    quantity.tota_qty = this.productDetailsForm?.controls['totalQty'].value;
-    price.price = this.productDetailsForm?.controls['price'].value;
-    price.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
+    producModel.updated_by = Constants.seller;
+    producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
+    producModel.price = this.productDetailsForm?.controls['price'].value;
+    producModel.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
 
     if (this.categoryId) {
-      category.category_id = this.categoryId;
+      producModel.category_id = this.categoryId;
     }
-    producModel.category = category;
-    producModel.price = price;
-    producModel.quantity = quantity;
+    // producModel.category = category;
+    // producModel.price = price;
+    // producModel.quantity = quantity;
 
-    if(this.imageList && this.imageList.length > 0){
+    if (this.imageList && this.imageList.length > 0) {
       for (let i = 0; i < this.imageList.length; i++) {
         this.formData.append('image', this.imageList[i]);
       }
     }
-  
+
 
     return producModel;
   }

@@ -4,6 +4,7 @@ import { RegistrationService } from '../../services/registration.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ClientModel } from '../../models/client.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-client-sign-up',
@@ -19,7 +20,10 @@ export class ClientRegistrationComponent implements OnInit, OnDestroy {
   subscription: ISubscription;
   signUpForm: FormGroup;
 
-  constructor(private service: RegistrationService) { }
+  constructor(
+    private service: RegistrationService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
 
@@ -44,7 +48,7 @@ export class ClientRegistrationComponent implements OnInit, OnDestroy {
         }
       },
         (error) => {
-          console.log(error);
+          this.toastr.error('', error.console.error.message);
         });
     }
   }

@@ -5,7 +5,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Constants } from 'src/app/shared/models/constants';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { EncryptDecryptService } from '../../services/encrypt-decrypt.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: LoginService,
-    private cryptoService: EncryptDecryptService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -37,15 +37,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       const loginModel = new LoginModel();
       loginModel.user_name = this.loginForm.controls['username'].value;
-      // loginModel.password = this.loginForm.controls['password'].value;
-      const password = this.loginForm.controls['password'].value;
-      loginModel.password = this.cryptoService.set('123456$#@$^@1ERF', password);
+      loginModel.password = this.loginForm.controls['password'].value;
+
       this.loginSubscription = this.service.login(loginModel).subscribe((response) => {
 
         if (response) {
+          this.authService.setCookie(response.role);
+          if (response.role === Constants.client) {
+            this.router.navigate(['home']);
+          } else {
+            this.router.navigate(['home']);
+          }
           this.formSubmitted = false;
           this.loginForm.reset();
-          this.router.navigate(['home']);
         }
       },
         (error) => {

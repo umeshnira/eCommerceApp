@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HeaderService } from '../../services/header.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { CategoryService } from '../../services/category.service';
+import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -13,15 +15,15 @@ import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  cartItems = 0;
-  typeId: any;
+  typeId: number;
   cartList = [];
-  categoryList = [];
-  subscription: ISubscription;
+  categoryList: CategoryModel;
+  getCategoriesSubscription: ISubscription;
 
   constructor(
     public locCart: LocalCartStorageService,
-    private service: HeaderService,
+    private categoryService: CategoryService,
+    private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -29,7 +31,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.cartList = this.locCart.localCart;
-    this.cartQuantityCal();
     this.getCategories();
   }
 
@@ -54,28 +55,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate([RoutePathConfig.CreateSubCategory], { relativeTo: this.route });
   }
 
-  cartQuantityCal() {
-
-    this.cartItems = 0;
-
-    for (let i = 0; i < this.cartList.length; i++) {
-      // tslint:disable-next-line: radix
-      this.cartItems = this.cartItems + parseInt(this.cartList[i].cartQuant);
-    }
-  }
-
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.getCategoriesSubscription) {
+      this.getCategoriesSubscription.unsubscribe();
     }
   }
 
   private getCategories() {
-    this.subscription = this.service.getCategories().subscribe((response) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;
     },
       (error) => {
-        console.log(error);
-      });
+        this.toastr.error('', error.error.message);
+      }
+      );
   }
 }

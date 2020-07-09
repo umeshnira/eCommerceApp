@@ -3,8 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { HttpBaseService } from './services/http-base-service.service';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './services/auth.service';
+import { ViewGuard } from './guards/view-guard.guard';
 
-const providers = [];
+const providers = [HttpBaseService, CookieService, AuthService, ViewGuard];
 
 const modules = [CommonModule, BrowserModule, HttpClientModule];
 

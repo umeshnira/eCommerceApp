@@ -2,10 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SubCategoryModel } from '../../models/sub-category.model';
-import { SubCategoryService } from '../../services/sub-category.service';
+import { SubCategoryService } from '../../../../../../shared/services/sub-category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Constants } from 'src/app/shared/models/constants';
 
 @Component({
   selector: 'app-add-edit-sub-category',
@@ -57,7 +58,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
       subCategoryModel.parent_category_id = this.categoryId;
       subCategoryModel.name = this.subCategoryForm.controls['name'].value;
       subCategoryModel.description = this.subCategoryForm.controls['description'].value;
-      subCategoryModel.created_by = 'Admin';
+      subCategoryModel.created_by = Constants.admin;
 
       this.addSubCategorySubscription = this.service.addSubCategory(subCategoryModel).subscribe((response) => {
 
@@ -79,7 +80,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
     const value = event.node.textContent;
     this.subCategoryForm?.controls['parentCategory'].setValue(value);
-    this.categoryId = event.node.dataset.uid;
+    this.categoryId = Number(event.node.dataset.uid);
   }
 
   cancel() {
@@ -94,6 +95,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     const subCategoryModel = new SubCategoryModel();
     subCategoryModel.name = this.subCategoryForm.controls['name'].value;
     subCategoryModel.description = this.subCategoryForm.controls['description'].value;
+    subCategoryModel.updated_by = Constants.admin;
 
     this.editSubCategorySubscription = this.service.editSubCategory(this.subCategoryId, subCategoryModel).subscribe((response) => {
 

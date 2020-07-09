@@ -5,14 +5,13 @@ import { ClientRegistrationComponent } from './components/client-registration/cl
 import { SellerRegistrationComponent } from './components/seller-registration/seller-registration.component';
 import { RegistrationService } from './services/registration.service';
 import { LoginComponent } from './components/login/login.component';
-import { EncryptDecryptService } from './services/encrypt-decrypt.service';
 import { LoginService } from './services/login.service';
 
 const modules = [SharedModule, AuthRoutingModule];
 
 const components = [ClientRegistrationComponent, SellerRegistrationComponent, LoginComponent];
 
-const providers = [RegistrationService, EncryptDecryptService, LoginService];
+const providers = [RegistrationService, LoginService];
 
 @NgModule({
     imports: modules,

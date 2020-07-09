@@ -7,8 +7,8 @@ import { ProductService } from '../../services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SubCategoryService } from '../../services/sub-category.service';
 import { Status } from 'src/app/shared/enums/user-status.enum';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 
 @Component({
   selector: 'app-add-product',
@@ -142,9 +142,9 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   private addingValues() {
 
     const producModel = new ProductModel();
-    const quantity = new Quantity();
-    const price = new Price();
-    const category = new Category();
+    // const quantity = new Quantity();
+    // const price = new Price();
+    // const category = new Category();
 
     producModel.name = this.productDetailsForm?.controls['productName'].value;
     producModel.description = this.productDetailsForm?.controls['description'].value;
@@ -154,16 +154,16 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
     producModel.about = this.productDetailsForm?.controls['about'].value;
     producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
     producModel.status = Status.Active;
-    quantity.left_qty = this.productDetailsForm?.controls['leftQty'].value;
-    quantity.tota_qty = this.productDetailsForm?.controls['totalQty'].value;
-    price.price = this.productDetailsForm?.controls['price'].value;
-    price.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
+    producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
+    producModel.price = this.productDetailsForm?.controls['price'].value;
+    producModel.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
+    producModel.category_id = this.categoryId;
 
-    category.category_id = this.categoryId;
-    category.status = Status.Active;
-    producModel.category = category;
-    producModel.price = price;
-    producModel.quantity = quantity;
+    // category.status = Status.Active;
+    // producModel.category = category;
+    // producModel.price = price;
+    // producModel.quantity = quantity;
 
     return producModel;
   }

@@ -3,18 +3,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { HeaderService } from './services/header.service';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { LocalCartStorageService } from './services/local-cart-storage.service';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { CategoryService } from './services/category.service';
+import { SubCategoryService } from './services/sub-category.service';
+
+
 
 const components = [HeaderComponent, FooterComponent];
 
-const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule, CheckBoxModule, DatePickerModule];
+const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule,
+                 CheckBoxModule, DatePickerModule, TabsModule];
 
-const providers = [HeaderService, LocalCartStorageService];
+const providers = [LocalCartStorageService, CategoryService, SubCategoryService];
 
 @NgModule({
   imports: modules,

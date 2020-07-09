@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Categories } from '../../models/productList.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { SubCategoryService } from '../../services/sub-category.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Constants } from 'src/app/shared/models/constants';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-products-list',
@@ -19,36 +22,41 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   productTypes: any;
   products: any;
   result: any;
-  id: any;
+  productImage: string;
+  productId: number;
   isUser: boolean;
+  imageList: any[] = [];
   modelResult: Categories[] = [];
   field: Object;
   subCategoryListSubscription: ISubscription;
   getProductsSubscription: ISubscription;
   deleteProductSubscription: ISubscription;
 
+
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-   
-    // if (this.route.snapshot.url[0].path === 'user') {
-    //   this.isUser = true;
-    // }
-    this.id = this.route.snapshot.queryParams.id;
+
+    const userRole = this.authService.getCookie();
+    if (userRole === Constants.client) {
+      this.isUser = true;
+    }
+    this.productId = this.route.snapshot.queryParams.id;
     this.getSubCategoryList();
-    this.getProducts(this.id);
+    this.getProducts(this.productId);
   }
 
   nodeclicked(event) {
 
-    this.id = event.node.dataset.uid;
-    this.getProducts(this.id);
+    this.productId = event.node.dataset.uid;
+    this.getProducts(this.productId);
   }
 
   deleteProduct(id) {
@@ -66,11 +74,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       });
   }
 
-  goToEditPage(id, categoryId) {
+  goToEditPage(productId, categoryId) {
 
     let navigationExtras: NavigationExtras;
     navigationExtras = {
-      queryParams: { productId: id, categoryId: categoryId },
+      queryParams: { productId: productId, categoryId: categoryId },
       relativeTo: this.route
     };
     this.router.navigate(['edit'], navigationExtras);
@@ -83,7 +91,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       queryParams: { productId: id },
       relativeTo: this.route
     };
-    this.router.navigate(['user/view'], navigationExtras);
+    this.router.navigate(['details'], navigationExtras);
   }
 
   ngOnDestroy() {
@@ -99,11 +107,18 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getProducts(id) {
+  prepareProductsImage() {
+      this.products.forEach(element => {
+        this.imageList.push(element.images);
+      });
+  }
 
-    this.getProductsSubscription = this.service.getProducts(id).subscribe((response) => {
+  private getProducts(productId) {
+
+    this.getProductsSubscription = this.service.getProducts(productId).subscribe((response) => {
 
       this.products = response;
+
     },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -118,9 +133,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   private getSubCategoryList() {
 
-    this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.id).subscribe(response => {
-        this.result = response;
-        this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
+    this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.productId).subscribe(response => {
+      this.result = response;
+      this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
     },
       (error) => {
         if (error instanceof HttpErrorResponse) {

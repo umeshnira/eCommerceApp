@@ -16,16 +16,15 @@
   <div class="container-fluid">
     <div class="col-md-4 single-right-left">
       <div class="grid images_3_of_2">
-
         <div class="flexslider">
-          <ul class="slides" *ngFor="let image of imageList">
-            <li>
+          <ul class="slides">
+            <li data-thumb="../../../assets/products/images/se1.jpg">
               <div class="thumb-image">
-                <img [src]="image.path" data-imagezoom="true" class="img-responsive"
+                <img src="../../../assets/products/images/se1.jpg" data-imagezoom="true" class="img-responsive"
                   alt="" />
               </div>
             </li>
-            <!-- <li data-thumb="../../../assets/products/images/se2.jpg">
+            <li data-thumb="../../../assets/products/images/se2.jpg">
               <div class="thumb-image">
                 <img src="../../../assets/products/images/se2.jpg" data-imagezoom="true" class="img-responsive"
                   alt="" />
@@ -36,21 +35,21 @@
                 <img src="../../../assets/products/images/se3.jpg" data-imagezoom="true" class="img-responsive"
                   alt="" />
               </div>
-            </li> -->
+            </li>
           </ul>
           <div class="clearfix"></div>
         </div>
       </div>
     </div>
     <div class="col-md-6 single-right-left simpleCart_shelfItem">
-      <h3>{{productDetails.name}}</h3>
+      <h3>{{productDetails?.name}}</h3>
       <div class="rating1">
         <span class="starRating">
-          <input id="rating5" type="radio" name="rating" value="5" />
+          <input id="rating5" type="radio" name="rating" value="6" />
           <label for="rating5">5</label>
-          <input id="rating4" type="radio" name="rating" value="4" />
+          <input id="rating4" type="radio" name="rating" value="4" checked="" />
           <label for="rating4">4</label>
-          <input id="rating3" type="radio" name="rating" value="3" checked="" />
+          <input id="rating3" type="radio" name="rating" value="3" />
           <label for="rating3">3</label>
           <input id="rating2" type="radio" name="rating" value="2" />
           <label for="rating2">2</label>
@@ -60,7 +59,7 @@
         <a class="small-font">554 ratings | 31 answered questions</a>
       </div>
       <p>
-        <span class="item_price">{{productDetails.price}}
+        <span class="item_price"><span>₹</span>{{productDetails.price}}
           <span class="small-font font-style">
             FREE Delivery on orders over ₹ 499.00 . Details Inclusive of all
             taxes
@@ -72,32 +71,33 @@
       <div class="single-infoagile">
         <ul>
           <li>
-            Best Before: {{productDetails.expiry_date}}
+            Best Before: {{productDetails.exp_date | date}}
           </li>
           <li class="text-success">
-            In stock
+            In stock : {{productDetails.left_qty}}
           </li>
           <!-- <li>Delivery by: Sat, May 16 <a>Details</a></li> -->
-          <li>
+          <!-- <li>
             <i class="fa fa-map-marker"></i>
             <a class="m-l-10">Deliver to ABC - Kanyakumari 629179</a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             Sold by <a>Cloudtail India</a> (4.5 out of 5 | 204,563 ratings) and
             <a>Fulfilled by Amazon.</a>
-          </li>
+          </li> -->
           <li>
-            2 offer from
-            <span class="item_price">$285.00</span>
+            Price :
+            <span class="item_price"><span>₹</span>{{productDetails.price}}</span>
+            <del><span>₹</span>{{productDetails.price_without_offer}}</del>
           </li>
         </ul>
       </div>
       <div class="product-single-w3l">
         <p>
-          <i class="fa fa-hand-o-right" aria-hidden="true"></i>Pantry Cashback
-          Offer
+          <i class="fa fa-hand-o-right" aria-hidden="true"></i>About
         </p>
-        <ul>
+        <p>{{productDetails.p_about}}</p>
+        <!-- <ul>
           <li>
             Doesn't just cover, Truly removes odours
           </li>
@@ -112,10 +112,10 @@
           <li>
             Transforms your home from smelly to smiley
           </li>
-        </ul>
-        <p>
-          <i class="fa fa-refresh" aria-hidden="true"></i>All food products are
-          <label>returnable.</label>
+        </ul> -->
+        <p *ngIf="productDetails.p_is_returnable">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+          <label>Returnable.</label>
         </p>
       </div>
       <div class="occasion-cart">
