@@ -11,10 +11,11 @@ import { LocalCartStorageService } from './services/local-cart-storage.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CategoryService } from './services/category.service';
 import { SubCategoryService } from './services/sub-category.service';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 
 
-const components = [HeaderComponent, FooterComponent];
+const components = [HeaderComponent, FooterComponent, DragAndDropDirective];
 
 const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule,
                  CheckBoxModule, DatePickerModule, TabsModule];

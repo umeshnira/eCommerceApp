@@ -36,12 +36,12 @@ export class ProductService extends HttpBaseService {
   getProductDetails(id: number) {
 
     const url = `${this.baseUrl}/products/${id}`;
-    return this.http.get<ProductModel>(url)
+    return this.http.get<ProductDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
-  getProducts(id: number) {
+  getProductsByCategoryId(id: number) {
 
     const url = `${this.baseUrl}/categories/${id}/products`;
     return this.http.get<ProductDetailsModel>(url)

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { CategoryService } from '../../services/category.service';
@@ -15,13 +14,11 @@ import { ToastrService } from 'ngx-toastr';
 
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  typeId: number;
-  cartList = [];
+  categoryId: number;
   categoryList: CategoryModel;
   getCategoriesSubscription: ISubscription;
 
   constructor(
-    public locCart: LocalCartStorageService,
     private categoryService: CategoryService,
     private toastr: ToastrService,
     private router: Router,
@@ -30,13 +27,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.cartList = this.locCart.localCart;
     this.getCategories();
   }
 
   routeToProductList(event) {
-    this.typeId = event.target.value;
-    this.router.navigate([RoutePathConfig.Products], { queryParams: { id: this.typeId }, relativeTo: this.route });
+
+    this.categoryId = event.target.value;
+
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { categoryId: this.categoryId },
+      relativeTo: this.route
+    };
+    this.router.navigate([RoutePathConfig.Products], navigationExtras);
   }
 
   routeToWishListPage() {
@@ -62,12 +65,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
       this.categoryList = response;
     },
       (error) => {
         this.toastr.error('', error.error.message);
       }
-      );
+    );
   }
 }

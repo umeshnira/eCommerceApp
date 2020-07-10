@@ -5,9 +5,12 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ProductModel, Quantity, Price, Category } from '../../models/product.model';
+import { ProductModel} from '../../models/product.model';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { Constants } from 'src/app/shared/models/constants';
+import { ProductDetailsModel } from '../../models/product-details.model';
+import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
+import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 
 @Component({
   selector: 'app-edit-product',
@@ -18,15 +21,14 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
   image: string;
   formSubmitted: boolean;
-  fileOver: boolean;
   isNewImage: boolean;
-  categoryId: any;
-  productId: any;
-  productDetails: any;
-  result: any;
+  categoryId: number;
+  productId: number;
   files: any[] = [];
   imageList: any[] = [];
 
+  productDetails: ProductDetailsModel;
+  result: CategoryTreeViewModel;
   field: Object;
   formData: FormData = new FormData();
   productDetailsForm: FormGroup;
@@ -48,6 +50,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     this.productId = this.route.snapshot.queryParams.productId;
     this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getProductDetails(this.productId);
+
   }
 
   editProduct() {
@@ -61,19 +64,16 @@ export class EditProductComponent implements OnInit, OnDestroy {
     }
 
     this.editProductSubscription = this.service.editProduct(this.productId, this.formData).subscribe(response => {
-      alert('Successful');
+
+      this.formData.delete('data');
+      this.formData.delete('image');
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
   }
 
-  cancel() {
+  cancelEdit() {
     this.router.navigate(['home/products']);
   }
 
@@ -131,11 +131,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
     producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
     producModel.about = this.productDetailsForm?.controls['about'].value;
     producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
-    producModel.updated_by = Constants.seller;
     producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
     producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     producModel.price = this.productDetailsForm?.controls['price'].value;
-    producModel.price_without_offer = this.productDetailsForm?.controls['priceWithoutOffer'].value;
 
     if (this.categoryId) {
       producModel.category_id = this.categoryId;
@@ -144,11 +142,11 @@ export class EditProductComponent implements OnInit, OnDestroy {
     // producModel.price = price;
     // producModel.quantity = quantity;
 
-    if (this.imageList && this.imageList.length > 0) {
-      for (let i = 0; i < this.imageList.length; i++) {
-        this.formData.append('image', this.imageList[i]);
-      }
-    }
+    // if (this.imageList && this.imageList.length > 0) {
+    //   for (let i = 0; i < this.imageList.length; i++) {
+    //     this.formData.append('image', this.imageList[i]);
+    //   }
+    // }
 
 
     return producModel;
@@ -176,15 +174,14 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
     this.productDetailsForm?.controls['productName'].setValue(this.productDetails?.name);
     this.productDetailsForm?.controls['description'].setValue(this.productDetails?.description);
-    this.productDetailsForm?.controls['batch'].setValue(this.productDetails?.batch_no);
+    this.productDetailsForm?.controls['batch'].setValue(this.productDetails?.p_batch_no);
     this.productDetailsForm?.controls['expDate'].setValue(this.productDetails?.exp_date);
     this.productDetailsForm?.controls['barCode'].setValue(this.productDetails?.bar_code);
     this.productDetailsForm?.controls['about'].setValue(this.productDetails?.about);
     this.productDetailsForm?.controls['starRate'].setValue(this.productDetails?.star_rate);
     this.productDetailsForm?.controls['leftQty'].setValue(this.productDetails?.left_qty);
-    this.productDetailsForm?.controls['totalQty'].setValue(this.productDetails?.tota_qty);
+    this.productDetailsForm?.controls['totalQty'].setValue(this.productDetails?.total_qty);
     this.productDetailsForm?.controls['price'].setValue(this.productDetails?.price);
-    this.productDetailsForm?.controls['priceWithoutOffer'].setValue(this.productDetails?.price_without_offer);
 
     if (this.productDetails.images) {
 
@@ -195,7 +192,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getProductDetails(productId) {
+  private getProductDetails(productId: number) {
 
     this.getProductSubscription = this.service.getProductDetails(productId).subscribe((response) => {
 
@@ -205,61 +202,44 @@ export class EditProductComponent implements OnInit, OnDestroy {
       }
       this.setValues();
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
 
   }
 
-  private getCategoryTree(id) {
-    this.getCategoryTreeSubscription = this.subCategoryService.getSubCategoriesByCategoryId(id).subscribe(response => {
+  private getCategoryTree(categoryId: number) {
+    this.getCategoryTreeSubscription = this.subCategoryService.getSubCategoriesByCategoryId(categoryId).subscribe(response => {
       if (response) {
         this.result = response;
         this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
       }
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
   }
 
   private formInitialization() {
 
     this.productDetailsForm = new FormGroup({
       categoryName: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
       productName: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
       description: new FormControl('',
-        Validators.compose([Validators.required])),
-      batch: new FormControl('',
-        Validators.compose([Validators.required])),
-      expDate: new FormControl('',
-        Validators.compose([Validators.required])),
-      barCode: new FormControl('',
-        Validators.compose([Validators.required])),
-      about: new FormControl('',
-        Validators.compose([Validators.required])),
-      starRate: new FormControl('',
-        Validators.compose([Validators.required])),
-      leftQty: new FormControl('',
-        Validators.compose([Validators.required])),
-      totalQty: new FormControl('',
-        Validators.compose([Validators.required])),
-      price: new FormControl('',
-        Validators.compose([Validators.required])),
-      priceWithoutOffer: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      batch: new FormControl('', [Validators.required]),
+      expDate: new FormControl('', [Validators.required]),
+      barCode: new FormControl('', [Validators.required]),
+      about: new FormControl('', [Validators.required]),
+      starRate: new FormControl('', [Validators.required]),
+      leftQty: new FormControl('', [Validators.required]),
+      totalQty: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
     });
   }
 

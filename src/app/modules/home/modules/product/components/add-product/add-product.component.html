@@ -97,7 +97,8 @@
             </div>
             <div class='col-md-6'>
               <label class="f-weight p-b-10"> Star Rate</label>
-              <input type="number" class="form-control" id="StarRate" placeholder="Star Rate" formControlName="starRate">
+              <input type="number" class="form-control" id="StarRate" placeholder="Star Rate"
+                formControlName="starRate">
               <div *ngIf="formSubmitted && form.starRate.errors?.required" class="valid-error">Star Rate is required.
               </div>
             </div>
@@ -123,14 +124,6 @@
               <label class="f-weight p-b-10"> Price</label>
               <input type="number" class="form-control" id="Price" placeholder="Price" formControlName="price">
               <div *ngIf="formSubmitted && form.price.errors?.required" class="valid-error">Price is required.
-              </div>
-            </div>
-            <div class='col-md-6'>
-              <label class="f-weight p-b-10"> Price Without Offer</label>
-              <input type="number" class="form-control" id="Offer" placeholder="PriceWithoutOffer"
-                formControlName="priceWithoutOffer">
-              <div *ngIf="formSubmitted && form.priceWithoutOffer.errors?.required" class="valid-error">Price Without
-                Offer is required.
               </div>
             </div>
           </div>

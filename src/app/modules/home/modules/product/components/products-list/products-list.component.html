@@ -28,7 +28,7 @@
     <!-- product left -->
     <div class="side-bar col-md-3">
       <h3 class="h1-color">SubCategories</h3>
-      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
+      <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
       </ejs-treeview>
     </div>
     <!-- //product left -->
@@ -40,10 +40,10 @@
           <div class="col-xs-4 product-men item" *ngFor="let product of products">
             <div class="men-pro-item simpleCart_shelfItem ">
               <div class="men-thumb-item p-t-10">
-                <img [src]="prepareProductsImage()" alt="" height="100" width="100" />
+                <img [src]="product.images[0].path" alt="" height="100" width="100" />
                 <div *ngIf="isUser" class="men-cart-pro">
                   <div class="inner-men-cart-pro">
-                    <a (click)="goToDetailPage(product?.id)" class="link-product-add-cart">Quick View</a>
+                    <a (click)="navigateToDetailPage(product?.id)" class="link-product-add-cart">Quick View</a>
                   </div>
                 </div>
               </div>
@@ -55,14 +55,14 @@
                   <span class="item_price"><small>$</small>{{product.price}}</span>
                 </div>
                 <div *ngIf="!isUser">
-                <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 cursor"
-                    (click)="goToEditPage(product?.id, product?.category_id)"></i>
-                </a>
+                  <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 cursor"
+                      (click)="goToEditPage(product?.id, product?.category_id)"></i>
+                  </a>
 
-                <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 cursor"
-                    (click)="deleteProduct(product?.id)"></i>
-                </a>
-              </div>
+                  <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 cursor"
+                      (click)="deleteProduct(product?.id)"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

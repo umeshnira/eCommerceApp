@@ -5,6 +5,7 @@ import { SubCategoryModel } from '../../modules/home/modules/category/models/sub
 import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 import { catchError } from 'rxjs/operators';
+import { CategoryTreeViewModel } from 'src/app/modules/home/modules/category/models/category-tree-view.model';
 
 @Injectable()
 
@@ -31,21 +32,21 @@ export class SubCategoryService extends HttpBaseService {
             );
     }
 
-    editSubCategory(id, model: SubCategoryModel) {
+    editSubCategory(id: number, model: SubCategoryModel) {
         const url = `${this.baseUrl}/subcategories/${id}`;
         return this.http.put<ApiResponseModel>(url, model)
             .pipe(catchError(this.handleError)
             );
     }
 
-    getSubCategory(id) {
+    getSubCategory(id: number) {
         const url = `${this.baseUrl}/subcategories/${id}`;
         return this.http.get<SubCategoryModel>(url)
             .pipe(catchError(this.handleError)
             );
     }
 
-    deleteSubCategory(id) {
+    deleteSubCategory(id: number) {
         const url = `${this.baseUrl}/subcategories/${id}`;
         return this.http.delete<ApiResponseModel>(url)
             .pipe(catchError(this.handleError)
@@ -54,13 +55,13 @@ export class SubCategoryService extends HttpBaseService {
 
     getAllSubCategories() {
         const url = `${this.baseUrl}/subcategories/path`;
-        return this.http.get<ApiResponseModel>(url)
+        return this.http.get<SubCategoryModel>(url)
             .pipe(catchError(this.handleError)
             );
     }
 
-    getSubCategoriesByCategoryId(id) {
+    getSubCategoriesByCategoryId(id: number) {
         const url = `${this.baseUrl}/categories/${id}/subcategories`;
-        return this.http.get<any>(url);
+        return this.http.get<CategoryTreeViewModel>(url);
       }
 }
