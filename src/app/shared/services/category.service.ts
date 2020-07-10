@@ -17,7 +17,7 @@ export class CategoryService extends HttpBaseService {
         super();
     }
 
-    addCategory(model) {
+    addCategory(model: CategoryModel) {
         const url = `${this.baseUrl}/categories`;
         return this.http.post<ApiResponseModel>(url, model)
             .pipe(catchError(this.handleError)
@@ -31,21 +31,21 @@ export class CategoryService extends HttpBaseService {
             );
     }
 
-    getCategory(id) {
+    getCategory(id: number) {
         const url = `${this.baseUrl}/categories/${id}`;
         return this.http.get<CategoryModel>(url)
             .pipe(catchError(this.handleError)
             );
     }
 
-    editCategory(id, model: CategoryModel) {
+    editCategory(id: number, model: CategoryModel) {
         const url = `${this.baseUrl}/categories/${id}`;
-        return this.http.put<any>(url, model)
+        return this.http.put<ApiResponseModel>(url, model)
             .pipe(catchError(this.handleError)
             );
     }
 
-    deleteCategory(id) {
+    deleteCategory(id: number) {
         const url = `${this.baseUrl}/categories/${id}`;
         return this.http.delete<ApiResponseModel>(url)
             .pipe(catchError(this.handleError)

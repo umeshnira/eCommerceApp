@@ -18,31 +18,17 @@
       <div class="grid images_3_of_2">
         <div class="flexslider">
           <ul class="slides">
-            <li data-thumb="../../../assets/products/images/se1.jpg">
+            <li attr.data-thumb="{{image.path}}" *ngFor="let image of imageObject">
               <div class="thumb-image">
-                <img src="../../../assets/products/images/se1.jpg" data-imagezoom="true" class="img-responsive"
-                  alt="" />
-              </div>
-            </li>
-            <li data-thumb="../../../assets/products/images/se2.jpg">
-              <div class="thumb-image">
-                <img src="../../../assets/products/images/se2.jpg" data-imagezoom="true" class="img-responsive"
-                  alt="" />
-              </div>
-            </li>
-            <li data-thumb="../../../assets/products/images/se3.jpg">
-              <div class="thumb-image">
-                <img src="../../../assets/products/images/se3.jpg" data-imagezoom="true" class="img-responsive"
-                  alt="" />
+                <img [src]="image.path" data-imagezoom="true" class="img-responsive" alt="" />
               </div>
             </li>
           </ul>
-          <div class="clearfix"></div>
         </div>
       </div>
     </div>
     <div class="col-md-6 single-right-left simpleCart_shelfItem">
-      <h3>{{productDetails?.name}}</h3>
+      <h3>{{productDetails.name}}</h3>
       <div class="rating1">
         <span class="starRating">
           <input id="rating5" type="radio" name="rating" value="6" />
@@ -59,7 +45,7 @@
         <a class="small-font">554 ratings | 31 answered questions</a>
       </div>
       <p>
-        <span class="item_price"><span>₹</span>{{productDetails.price}}
+        <span class="item_price"><span>₹</span>{{productDetails?.price}}
           <span class="small-font font-style">
             FREE Delivery on orders over ₹ 499.00 . Details Inclusive of all
             taxes
@@ -88,7 +74,6 @@
           <li>
             Price :
             <span class="item_price"><span>₹</span>{{productDetails.price}}</span>
-            <del><span>₹</span>{{productDetails.price_without_offer}}</del>
           </li>
         </ul>
       </div>
@@ -96,7 +81,7 @@
         <p>
           <i class="fa fa-hand-o-right" aria-hidden="true"></i>About
         </p>
-        <p>{{productDetails.p_about}}</p>
+        <!-- <p>{{productDetails?.p_about}}</p> -->
         <!-- <ul>
           <li>
             Doesn't just cover, Truly removes odours
@@ -113,7 +98,7 @@
             Transforms your home from smelly to smiley
           </li>
         </ul> -->
-        <p *ngIf="productDetails.p_is_returnable">
+        <p *ngIf="productDetails.is_returnable">
           <i class="fa fa-refresh" aria-hidden="true"></i>
           <label>Returnable.</label>
         </p>

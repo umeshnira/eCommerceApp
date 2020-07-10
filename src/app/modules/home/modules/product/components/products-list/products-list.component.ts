@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Categories } from '../../models/productList.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
-import { element } from 'protractor';
+import { ProductDetailsModel } from '../../models/product-details.model';
+import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 
 @Component({
   selector: 'app-products-list',
@@ -17,19 +16,13 @@ import { element } from 'protractor';
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
 
-  subCategoryList: any;
-  subProductTypes: any;
-  productTypes: any;
-  products: any;
-  result: any;
-  productImage: string;
-  productId: number;
+  categoryId: number;
   isUser: boolean;
-  imageList: any[] = [];
-  modelResult: Categories[] = [];
+  products: ProductDetailsModel[];
+  result: CategoryTreeViewModel;
   field: Object;
   subCategoryListSubscription: ISubscription;
-  getProductsSubscription: ISubscription;
+  getProductsByCategoryIdSubscription: ISubscription;
   deleteProductSubscription: ISubscription;
 
 
@@ -37,8 +30,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     private subCategoryService: SubCategoryService,
     private service: ProductService,
     private authService: AuthService,
-    private route: ActivatedRoute,
     private toastr: ToastrService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -48,33 +41,28 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     if (userRole === Constants.client) {
       this.isUser = true;
     }
-    this.productId = this.route.snapshot.queryParams.id;
+    this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getSubCategoryList();
-    this.getProducts(this.productId);
+    this.getProductsByCategoryId(this.categoryId);
   }
 
-  nodeclicked(event) {
+  categoryNodeclicked(event) {
 
-    this.productId = event.node.dataset.uid;
-    this.getProducts(this.productId);
+    this.categoryId = event.node.dataset.uid;
+    this.getProductsByCategoryId(this.categoryId);
   }
 
-  deleteProduct(id) {
+  deleteProduct(id: number) {
 
     this.deleteProductSubscription = this.service.deleteProduct(id).subscribe(response => {
 
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
   }
 
-  goToEditPage(productId, categoryId) {
+  goToEditPage(productId: number, categoryId: number) {
 
     let navigationExtras: NavigationExtras;
     navigationExtras = {
@@ -84,11 +72,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
-  goToDetailPage(id) {
+  navigateToDetailPage(productId: number) {
 
     let navigationExtras: NavigationExtras;
     navigationExtras = {
-      queryParams: { productId: id },
+      queryParams: { productId: productId },
       relativeTo: this.route
     };
     this.router.navigate(['details'], navigationExtras);
@@ -99,52 +87,36 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     if (this.subCategoryListSubscription) {
       this.subCategoryListSubscription.unsubscribe();
     }
-    if (this.getProductsSubscription) {
-      this.getProductsSubscription.unsubscribe();
+    if (this.getProductsByCategoryIdSubscription) {
+      this.getProductsByCategoryIdSubscription.unsubscribe();
     }
     if (this.deleteProductSubscription) {
       this.deleteProductSubscription.unsubscribe();
     }
   }
 
-  prepareProductsImage() {
-      this.products.forEach(element => {
-        this.imageList.push(element.images);
-      });
-  }
+  private getProductsByCategoryId(categoryId: number) {
 
-  private getProducts(productId) {
-
-    this.getProductsSubscription = this.service.getProducts(productId).subscribe((response) => {
+    this.getProductsByCategoryIdSubscription = this.service.getProductsByCategoryId(categoryId).subscribe((response) => {
 
       this.products = response;
 
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
 
   }
 
   private getSubCategoryList() {
 
-    this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.productId).subscribe(response => {
+    this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.categoryId).subscribe(response => {
       this.result = response;
       this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
     },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
+    (error) => {
+      this.toastr.error('', error.error.message);
+    });
   }
 
 }

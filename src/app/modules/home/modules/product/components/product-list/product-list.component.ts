@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { Categories, SubCategories } from '../../models/productList.model';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   result: any;
   id: any;
   field: Object;
-  modelResult: Categories[] = [];
   subscription: ISubscription;
 
   constructor(

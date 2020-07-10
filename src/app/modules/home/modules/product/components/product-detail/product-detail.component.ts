@@ -1,24 +1,24 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SlideImage } from '../../models/slide-image.model';
-import { element } from 'protractor';
+import { ProductDetailsModel } from '../../models/product-details.model';
+import { Image } from '../../models/product-image.model';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
-  productId: any;
-  productDetails: any;
-  imageList: any[] = [];
-  slideImageArray = new Array<SlideImage>();
- 
 
+export class ProductDetailComponent implements OnInit, OnDestroy {
+
+  productId: number;
+  productDetails = new ProductDetailsModel();
+  imageList: Image[] = [];
+  imageObject: { name: string; path: string; }[];
   getProductSubscription: ISubscription;
 
   constructor(
@@ -29,19 +29,41 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.productId = this.route.snapshot.queryParams.id;
+    this.productId = this.route.snapshot.queryParams.productId;
     this.getProductDetails(this.productId);
-    const imageObject = [{
-      image: '../../../assets/products/images/se3.jpg',
-      thumbImage: '../../../assets/products/images/se3.jpg',
+    // this.imageObject = [{
+    //   name: 'test',
+    //   path: 'http://localhost:1337/images/products/1594283804864-890312773-download (1).jfif'
+
+    // }, {
+    //   name: 'test',
+    //   path: 'http://localhost:1337/images/products/1594283805241-355373324-download (1).jpg' // Support base64 image
+
+    // }
+    // ];
+    // console.log(this.imageObject);
+  }
+
+  prepareImageList() {
+
+    // if (this.productDetails.images && this.productDetails.images.length > 0) {
+    //   this.productDetails.images.forEach(element => {
+    //     this.imageList.push(element);
+    //   });
+    // }
+    // console.log(this.imageList);
+    this.imageObject = [{
+      name: 'test',
+      path: 'http://localhost:1337/images/products/1594283804864-890312773-download (1).jfif'
 
     }, {
-      image: '../../../assets/products/images/se3.jpg', // Support base64 image
-      thumbImage: '../../../assets/products/images/se3.jpg', // Support base64 image
+      name: 'test',
+      path: 'http://localhost:1337/images/products/1594283805241-355373324-download (1).jpg' // Support base64 image
 
     }
     ];
-    console.log(imageObject);
+    console.log(this.imageObject);
+
   }
 
   ngOnDestroy() {
@@ -51,37 +73,26 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  private prepareSlideImage() {
-debugger;
-    
-    this.imageList.forEach(element => {
-      const slideImage = new SlideImage();
-      slideImage.image = element.path;
-      slideImage.thumbImage = element.path;
-      this.slideImageArray.push(slideImage);
-    });
-console.log('slide', this.slideImageArray);
-  }
+  private getProductDetails(productId: number) {
 
-  private getProductDetails(productId) {
-
-    this.getProductSubscription = this.service.getProductDetails(productId).subscribe((response) => {
+    this.getProductSubscription = this.service.getProductDetails(productId).subscribe((response: ProductDetailsModel) => {
 
       this.productDetails = response;
-      if (this.productDetails.images) {
-        this.productDetails.images.forEach(element => {
-          this.imageList.push(element);
-        });
-      }
-      this.prepareSlideImage();
+      this.prepareImageList();
+      // this.imageObject = [{
+      //   name: 'test',
+      //   path: 'http://localhost:1337/images/products/1594283804864-890312773-download (1).jfif'
+
+      // }, {
+      //   name: 'test',
+      //   path: 'http://localhost:1337/images/products/1594283805241-355373324-download (1).jpg' // Support base64 image
+
+      // }
+      // ];
+      // console.log(this.imageObject);
     },
       (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
+        this.toastr.error('', error.error.message);
       });
 
   }

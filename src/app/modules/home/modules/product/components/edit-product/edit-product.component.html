@@ -90,14 +90,6 @@
             <div *ngIf="formSubmitted && form.price.errors?.required" class="valid-error">Price is required.
             </div>
           </div>
-          <div class='col-md-6'>
-            <label class="f-weight p-b-10"> Price Without Offer</label>
-            <input type="number" class="form-control" id="Offer" placeholder="PriceWithoutOffer"
-              formControlName="priceWithoutOffer">
-            <div *ngIf="formSubmitted && form.priceWithoutOffer.errors?.required" class="valid-error">Price Without
-              Offer is required.
-            </div>
-          </div>
         </div>
         <div class="row p-t-10">
           <div class="col-md-12">
@@ -149,7 +141,7 @@
     </div>
     <div class="float-r">
       <button type="submit" class="btn btn-success m-l-10" (click)="editProduct()">Submit</button>
-      <button type="button" class="btn btn-default m-l-10" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-default m-l-10" (click)="cancelEdit()">Cancel</button>
     </div>
   </div>
 </div>
