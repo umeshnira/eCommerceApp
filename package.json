@@ -25,6 +25,7 @@
     "@syncfusion/ej2-angular-navigations": "^18.1.54",
     "@syncfusion/ej2-ng-navigations": "^16.2.50",
     "crypto-js": "^4.0.0",
+    "ez-plus": "^1.2.1",
     "imagesloaded": "^4.1.4",
     "jquery": "^3.5.1",
     "ng-image-slider": "^2.5.0",

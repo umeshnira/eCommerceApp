@@ -54,9 +54,15 @@ a:hover {
 .btn-width {
   width: 88%;
 }
-/* .slide-image{
-  width: 840px; 
-  height: 500px; 
-  text-align:center;
-  margin:0; padding:0;
-} */
+
+#exzoom {
+  width: 400px;
+}
+
+.exzoom-container {
+  max-width: 960px;
+}
+
+.hidden {
+  display: none;
+}

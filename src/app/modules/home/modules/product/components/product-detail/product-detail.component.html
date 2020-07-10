@@ -16,14 +16,21 @@
   <div class="container-fluid">
     <div class="col-md-4 single-right-left">
       <div class="grid images_3_of_2">
-        <div class="flexslider">
-          <ul class="slides">
-            <li attr.data-thumb="{{image.path}}" *ngFor="let image of imageObject">
-              <div class="thumb-image">
-                <img [src]="image.path" data-imagezoom="true" class="img-responsive" alt="" />
-              </div>
-            </li>
-          </ul>
+        <div class="exzoom-container">
+          <div class="exzoom hidden" id="exzoom">
+            <div class="exzoom_img_box">
+              <ul class='exzoom_img_ul'>
+                <li *ngFor="let image of images">
+                  <img [src]="image.path" /></li>
+              </ul>
+            </div>
+            <div class="exzoom_nav"></div>
+            <p class="exzoom_btn">
+              <a href="javascript:void(0);" class="exzoom_prev_btn">
+                < </a>
+                  <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -22,7 +22,8 @@
             "assets": ["src/favicon.ico", "src/assets", "src/web.config"],
             "styles": [
               "src/styles.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/jquery.exzoom.css"
             ],
             "scripts": [
               "./node_modules/crypto-js/crypto-js.js",
@@ -38,6 +39,7 @@
               "src/assets/products/js/jquery.flexslider.js",
               "src/assets/products/js/bootstrap.js",
               "src/assets/products/js/carousel.js",
+              "src/assets/js/jquery.exzoom.js",
               "./node_modules/imagesloaded/imagesloaded.pkgd.min.js"
             ]
           },
