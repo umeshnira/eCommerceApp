@@ -8,7 +8,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es5",
+    "types": ["jquery"],
     "typeRoots": [
       "node_modules/@types"
     ],
