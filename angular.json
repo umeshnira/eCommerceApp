@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Ecart": {
+    "e-cart": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Ecart",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -37,7 +37,8 @@
               "src/assets/products/js/jquery.flexisel.js",
               "src/assets/products/js/jquery.flexslider.js",
               "src/assets/products/js/bootstrap.js",
-              "src/assets/products/js/carousel.js"
+              "src/assets/products/js/carousel.js",
+              "./node_modules/imagesloaded/imagesloaded.pkgd.min.js"
             ]
           },
           "configurations": {
@@ -71,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Ecart:build"
+            "browserTarget": "e-cart:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Ecart:build:production"
+              "browserTarget": "e-cart:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Ecart:build"
+            "browserTarget": "e-cart:build"
           }
         },
         "test": {
@@ -125,16 +126,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Ecart:serve"
+            "devServerTarget": "e-cart:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ecart:serve:production"
+              "devServerTarget": "e-cart:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Ecart"
+  "defaultProject": "e-cart"
 }
