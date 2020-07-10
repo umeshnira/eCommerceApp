@@ -3,11 +3,11 @@ import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { SlideImage } from '../../models/slide-image.model';
 import { ProductDetailsModel } from '../../models/product-details.model';
 import { Image } from '../../models/product-image.model';
 
 declare var $: any;
+declare var init_ExZoom_Container: any;
 
 @Component({
   selector: 'app-product-detail',
@@ -51,11 +51,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   prepareImageList(images: Image[]) {
     images.forEach(image => this.images.push(image));
-    $('.exzoom-container').imagesLoaded(function () {
-      $('#exzoom').exzoom({
-        autoPlay: false,
-      });
-      $('#exzoom').removeClass('hidden');
-    });
+    init_ExZoom_Container();
   }
 }

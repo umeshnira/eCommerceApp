@@ -39,6 +39,7 @@
               "src/assets/products/js/jquery.flexslider.js",
               "src/assets/products/js/bootstrap.js",
               "src/assets/products/js/carousel.js",
+              "src/assets/js/ui-changes.js",
               "src/assets/js/jquery.exzoom.js",
               "./node_modules/imagesloaded/imagesloaded.pkgd.min.js"
             ]
