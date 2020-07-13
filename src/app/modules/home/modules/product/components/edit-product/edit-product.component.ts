@@ -5,12 +5,13 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ProductModel} from '../../models/product.model';
+import { ProductModel } from '../../models/product.model';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { Constants } from 'src/app/shared/models/constants';
 import { ProductDetailsModel } from '../../models/product-details.model';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-edit-product',
@@ -32,9 +33,14 @@ export class EditProductComponent implements OnInit, OnDestroy {
   field: Object;
   formData: FormData = new FormData();
   productDetailsForm: FormGroup;
+
   getProductSubscription: ISubscription;
   editProductSubscription: ISubscription;
   getCategoryTreeSubscription: ISubscription;
+
+  get form() {
+    return this.productDetailsForm.controls;
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -45,45 +51,28 @@ export class EditProductComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
-    this.formInitialization();
+    this.productEditFormInitialization();
     this.productId = this.route.snapshot.queryParams.productId;
     this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getProductDetails(this.productId);
-
   }
 
   editProduct() {
-
     this.formSubmitted = true;
 
-    const jsonData = this.prepareRequestModel();
-    const value = JSON.stringify(jsonData);
-    if (value) {
-      this.formData.append('data', value);
-    }
+    this.prepareRequestModel();
 
     this.editProductSubscription = this.service.editProduct(this.productId, this.formData).subscribe(response => {
-
       this.formData.delete('data');
-      this.formData.delete('image');
     },
-    (error) => {
-      this.toastr.error('', error.error.message);
-    });
+      (error) => {
+        this.formData.delete('data');
+        this.toastr.error('', error.error.message);
+      });
   }
 
-  cancelEdit() {
-    this.router.navigate(['home/products']);
-  }
-
-  fileBrowseHandler(files) {
-
-    this.prepareFilesList(files);
-  }
-
-  onFileDropped($event) {
-    this.prepareFilesList($event);
+  exitEditPage() {
+    this.router.navigate([RoutePathConfig.Home]);
   }
 
   deleteFile(index: number) {
@@ -95,65 +84,10 @@ export class EditProductComponent implements OnInit, OnDestroy {
   }
 
   nodeclicked(event) {
-
     this.categoryId = event.node.dataset.uid;
   }
 
-  get form() {
-
-    return this.productDetailsForm.controls;
-  }
-
-  ngOnDestroy() {
-
-    if (this.getProductSubscription) {
-      this.getProductSubscription.unsubscribe();
-    }
-    if (this.getCategoryTreeSubscription) {
-      this.getCategoryTreeSubscription.unsubscribe();
-    }
-    if (this.editProductSubscription) {
-      this.editProductSubscription.unsubscribe();
-    }
-  }
-
-  private prepareRequestModel() {
-
-    const producModel = new ProductModel();
-    // const quantity = new Quantity();
-    // const price = new Price();
-    // const category = new Category();
-
-    producModel.name = this.productDetailsForm?.controls['productName'].value;
-    producModel.description = this.productDetailsForm?.controls['description'].value;
-    producModel.batch_no = this.productDetailsForm?.controls['batch'].value;
-    producModel.exp_date = this.productDetailsForm?.controls['expDate'].value;
-    producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
-    producModel.about = this.productDetailsForm?.controls['about'].value;
-    producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
-    producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
-    producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
-    producModel.price = this.productDetailsForm?.controls['price'].value;
-
-    if (this.categoryId) {
-      producModel.category_id = this.categoryId;
-    }
-    // producModel.category = category;
-    // producModel.price = price;
-    // producModel.quantity = quantity;
-
-    // if (this.imageList && this.imageList.length > 0) {
-    //   for (let i = 0; i < this.imageList.length; i++) {
-    //     this.formData.append('image', this.imageList[i]);
-    //   }
-    // }
-
-
-    return producModel;
-  }
-
-  private prepareFilesList(files: Array<any>) {
-
+  prepareImageFilesList(files: Array<any>) {
     this.isNewImage = true;
 
     for (const item of files) {
@@ -170,11 +104,47 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
   }
 
-  private setValues() {
+  ngOnDestroy() {
+    if (this.getProductSubscription) {
+      this.getProductSubscription.unsubscribe();
+    }
+    if (this.getCategoryTreeSubscription) {
+      this.getCategoryTreeSubscription.unsubscribe();
+    }
+    if (this.editProductSubscription) {
+      this.editProductSubscription.unsubscribe();
+    }
+  }
 
+  private prepareRequestModel() {
+    const producModel = new ProductModel();
+
+    producModel.name = this.productDetailsForm?.controls['productName'].value;
+    producModel.description = this.productDetailsForm?.controls['description'].value;
+    producModel.batch_no = this.productDetailsForm?.controls['batch'].value;
+    producModel.exp_date = this.productDetailsForm?.controls['expDate'].value;
+    producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
+    producModel.about = this.productDetailsForm?.controls['about'].value;
+    producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
+    producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
+    producModel.price = this.productDetailsForm?.controls['price'].value;
+    producModel.images = this.imageList;
+
+    if (this.categoryId) {
+      producModel.category_id = this.categoryId;
+    }
+
+    const model = JSON.stringify(producModel);
+    if (model) {
+      this.formData.append('data', model);
+    }
+  }
+
+  private setValues() {
     this.productDetailsForm?.controls['productName'].setValue(this.productDetails?.name);
     this.productDetailsForm?.controls['description'].setValue(this.productDetails?.description);
-    this.productDetailsForm?.controls['batch'].setValue(this.productDetails?.p_batch_no);
+    this.productDetailsForm?.controls['batch'].setValue(this.productDetails?.batch_no);
     this.productDetailsForm?.controls['expDate'].setValue(this.productDetails?.exp_date);
     this.productDetailsForm?.controls['barCode'].setValue(this.productDetails?.bar_code);
     this.productDetailsForm?.controls['about'].setValue(this.productDetails?.about);
@@ -188,12 +158,10 @@ export class EditProductComponent implements OnInit, OnDestroy {
       this.productDetails.images.forEach(element => {
         this.imageList.push(element);
       });
-      // this.prepareFilesList(this.imageList);
     }
   }
 
   private getProductDetails(productId: number) {
-
     this.getProductSubscription = this.service.getProductDetails(productId).subscribe((response) => {
 
       this.productDetails = response;
@@ -202,9 +170,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
       }
       this.setValues();
     },
-    (error) => {
-      this.toastr.error('', error.error.message);
-    });
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
 
   }
 
@@ -215,13 +183,12 @@ export class EditProductComponent implements OnInit, OnDestroy {
         this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
       }
     },
-    (error) => {
-      this.toastr.error('', error.error.message);
-    });
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
-  private formInitialization() {
-
+  private productEditFormInitialization() {
     this.productDetailsForm = new FormGroup({
       categoryName: new FormControl('',
         Validators.compose([Validators.required,

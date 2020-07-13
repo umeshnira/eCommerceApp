@@ -4,7 +4,6 @@ import { SubCategoryService } from '../../../../../../shared/services/sub-catego
 import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryModel } from '../../models/sub-category.model';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-category',
@@ -14,12 +13,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class ListSubCategoryComponent implements OnInit, OnDestroy {
 
-  categoryId: any;
-  categories: any;
-  categoriesByPath: any;
+  categoryId: number;
 
-  field: Object;
-  subCategories: SubCategoryModel;
+  subCategoriesList: SubCategoryModel;
+
   getAllCategoriesSubscription: ISubscription;
   deleteSubCategorySubscription: ISubscription;
 
@@ -31,38 +28,27 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
-    this.getAllCategories();
+    this.getSubcategoriesList();
   }
 
-  goToEditPage(id) {
-
+  navigateToEditPage(subCategoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
-      queryParams: {
-        subCategoryId: id,
-      },
+      queryParams: { subCategoryId: subCategoryId },
       relativeTo: this.route
     };
-    this.router.navigate(['edit'], navigationExtras);
 
+    this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteSubCategory(id) {
-
-    this.deleteSubCategorySubscription = this.service.deleteSubCategory(id).subscribe(response => {
+  deleteSubCategory(subCategoryId: number) {
+    this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategoryId).subscribe(response => {
     }, (error) => {
-      if (error instanceof HttpErrorResponse) {
-        this.toastr.error('', error.error.message);
-        console.log(error);
-      } else {
-        this.toastr.error('', error);
-      }
+      this.toastr.error('', error.error.message);
     });
   }
 
   ngOnDestroy() {
-
     if (this.getAllCategoriesSubscription) {
       this.getAllCategoriesSubscription.unsubscribe();
     }
@@ -71,21 +57,15 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getAllCategories() {
-
+  private getSubcategoriesList() {
     this.getAllCategoriesSubscription = this.service.getAllSubCategories().subscribe(response => {
-      if (response) {
-        this.categoriesByPath = response;
 
+      if (response) {
+        this.subCategoriesList = response;
       }
     },
       (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
+        this.toastr.error('', error.error.message);
       }
     );
   }

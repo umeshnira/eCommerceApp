@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDetailsModel } from '../../models/product-details.model';
-import { Image } from '../../models/product-image.model';
 
 declare var $: any;
 declare var init_ExZoom_Container: any;
@@ -19,7 +18,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   productId: number;
   productDetails = new ProductDetailsModel();
-  images: Image[] = [];
   getProductSubscription: ISubscription;
 
   constructor(
@@ -42,15 +40,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   private getProductDetails(productId: number) {
     this.getProductSubscription = this.service.getProductDetails(productId).subscribe((response: ProductDetailsModel) => {
       this.productDetails = response;
-      this.prepareImageList(response.images);
+      init_ExZoom_Container();
     },
       (error) => {
         this.toastr.error('', error.error.message);
       });
   }
 
-  prepareImageList(images: Image[]) {
-    images.forEach(image => this.images.push(image));
-    init_ExZoom_Container();
-  }
 }

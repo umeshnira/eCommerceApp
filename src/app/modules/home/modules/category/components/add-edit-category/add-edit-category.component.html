@@ -88,7 +88,7 @@
               <label for="username" class="f-weight"> Name</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Name of category" formControlName="name">
+              <input type="text" class="form-control" id="name" placeholder="Name of category" formControlName="name">
               <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
               </div>
             </div>
@@ -100,7 +100,7 @@
               <label for="username" class="f-weight"> Description</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Description" formControlName="description">
+              <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
               <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
                 required.
               </div>
@@ -115,7 +115,7 @@
               (click)="editCategory()">Edit Category</button>
           </div>
           <div class="col-md-4">
-            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="reset()">Cancel</button>
+            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="navigateToHomePage()">Cancel</button>
           </div>
           <div class="col-md-2"></div>
         </div>

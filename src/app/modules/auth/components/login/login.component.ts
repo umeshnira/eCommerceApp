@@ -6,6 +6,8 @@ import { Constants } from 'src/app/shared/models/constants';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,23 +20,25 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   loginSubscription: ISubscription;
 
+  get form() {
+    return this.loginForm.controls;
+  }
+
   constructor(
     private service: LoginService,
     private authService: AuthService,
+    private toastr: ToastrService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-
-    this.formInitialization();
+    this.loginFormInitialization();
   }
 
-  submitForm() {
-
+  submitLoginForm() {
     this.formSubmitted = true;
 
     if (this.loginForm.valid) {
-
       const loginModel = new LoginModel();
       loginModel.user_name = this.loginForm.controls['username'].value;
       loginModel.password = this.loginForm.controls['password'].value;
@@ -44,34 +48,27 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (response) {
           this.authService.setCookie(response.role);
           if (response.role === Constants.client) {
-            this.router.navigate(['home']);
+            this.router.navigate([RoutePathConfig.Home]);
           } else {
-            this.router.navigate(['home']);
+            this.router.navigate([RoutePathConfig.Home]);
           }
           this.formSubmitted = false;
           this.loginForm.reset();
         }
       },
         (error) => {
-          console.log(error);
+          this.toastr.error('', error.error.message);
         });
     }
   }
 
-  get form() {
-
-    return this.loginForm.controls;
-  }
-
   ngOnDestroy() {
-
     if (this.loginSubscription) {
       this.loginSubscription.unsubscribe();
     }
   }
 
-  private formInitialization() {
-
+  private loginFormInitialization() {
     this.loginForm = new FormGroup({
       username: new FormControl('',
         Validators.compose([Validators.required,
@@ -80,5 +77,4 @@ export class LoginComponent implements OnInit, OnDestroy {
         Validators.compose([Validators.required])),
     });
   }
-
 }

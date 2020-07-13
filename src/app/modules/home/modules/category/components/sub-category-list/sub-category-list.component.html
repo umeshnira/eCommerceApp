@@ -32,14 +32,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let subCategory of categoriesByPath">
+                <tr *ngFor="let subCategory of subCategoriesList">
                   <td>{{subCategory?.name}}</td>
                   <td>{{subCategory?.path}}</td>
                   <td>{{subCategory?.created_at |date}}</td>
                   <td>{{subCategory?.created_by}}</td>
                   <td>
                     <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
-                        (click)="goToEditPage(subCategory?.id)"></i>
+                        (click)="navigateToEditPage(subCategory?.id)"></i>
                     </a>
                     <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
                         (click)="deleteSubCategory(subCategory?.id)"></i>

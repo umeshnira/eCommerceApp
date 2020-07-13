@@ -5,22 +5,22 @@
     <tab heading="Select Categories" id="tab1">
       <div class='row m-b-10'>
       </div>
-      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
+      <ejs-treeview [fields]='field' (nodeClicked)='categoryTreeNodeClicked($event)'>
       </ejs-treeview>
       <div class="row p-t-20">
         <div class='col-md-4'></div>
         <div class='col-md-4'></div>
         <div class='col-md-4'>
-          <button type="submit" class="btn btn-success m-l-10" (click)="toNextTab(1)">Next</button>
-          <button type="button" class="btn btn-default m-l-10" (click)="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-success m-l-10" (click)="navigateToNextTab(1)">Next</button>
+          <button type="button" class="btn btn-default m-l-10" (click)="navigateToHomePage()">Cancel</button>
         </div>
       </div>
 
     </tab>
     <!-- images -->
     <tab heading="Select Images">
-      <div class="dropzone p-t-20" appDnd (fileDropped)="onFileDropped($event)">
-        <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+      <div class="dropzone p-t-20" appDnd (fileDropped)="prepareImageFilesList($event)">
+        <input type="file" #fileDropRef id="fileDropRef" multiple (change)="prepareImageFilesList($event.target.files)" />
         <h3>Drag and drop files here</h3>
         <h3>or</h3>
         <label for="fileDropRef">Browse for file</label>
@@ -42,9 +42,9 @@
         <div class='col-md-4'></div>
         <div class='col-md-4'></div>
         <div class='col-md-4'>
-          <button type="submit" class="btn btn-success m-l-10" (click)="toPreviousTab(0)">Previous</button>
-          <button type="submit" class="btn btn-success m-l-10" (click)="toNextTab(2)">Next</button>
-          <button type="button" class="btn btn-default m-l-10" (click)="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-success m-l-10" (click)="navigateToPreviousTab(0)">Previous</button>
+          <button type="submit" class="btn btn-success m-l-10" (click)="navigateToNextTab(2)">Next</button>
+          <button type="button" class="btn btn-default m-l-10" (click)="navigateToHomePage()">Cancel</button>
         </div>
       </div>
     </tab>
@@ -139,9 +139,9 @@
             <div class='col-md-4'></div>
             <div class='col-md-4'></div>
             <div class='col-md-4'>
-              <button type="submit" class="btn btn-success m-l-10" (click)="toPreviousTab(1)">Previous</button>
+              <button type="submit" class="btn btn-success m-l-10" (click)="navigateToPreviousTab(1)">Previous</button>
               <button type="submit" class="btn btn-success m-l-10" (click)="addProduct()">Add Product</button>
-              <button type="button" class="btn btn-default m-l-10" (click)="cancel()">Cancel</button>
+              <button type="button" class="btn btn-default m-l-10" (click)="navigateToHomePage()">Cancel</button>
             </div>
           </div>
         </form>

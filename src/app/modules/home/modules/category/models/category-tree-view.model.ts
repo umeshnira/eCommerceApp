@@ -1,5 +1,4 @@
 export class CategoryTreeViewModel {
-
     id: number;
     name: string;
     parent_category_id: number;

@@ -26,12 +26,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
     this.getCategories();
   }
 
   routeToProductList(event) {
-
     this.categoryId = event.target.value;
 
     let navigationExtras: NavigationExtras;

@@ -5,8 +5,10 @@ import { SubCategoryModel } from '../../models/sub-category.model';
 import { SubCategoryService } from '../../../../../../shared/services/sub-category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Constants } from 'src/app/shared/models/constants';
+import { CategoryTreeViewModel } from '../../models/category-tree-view.model';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-add-edit-sub-category',
@@ -16,19 +18,24 @@ import { Constants } from 'src/app/shared/models/constants';
 
 export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
-  categories: any;
-  subCategoryId: any;
+  subCategoryId: number;
   categoryId: number;
   formSubmitted: boolean;
   isEdit: boolean;
 
+  categories: CategoryTreeViewModel;
   subCategory: SubCategoryModel;
   field: Object;
   subCategoryForm: FormGroup;
+
   addSubCategorySubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
   editSubCategorySubscription: ISubscription;
   getSubCategorySubscription: ISubscription;
+
+  get form() {
+    return this.subCategoryForm.controls;
+  }
 
   constructor(
     private service: SubCategoryService,
@@ -38,9 +45,9 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
-    this.formInitialization();
+    this.subCategoryFormInitialization();
     this.getCategories();
+
     if (this.route.snapshot.url[1].path === 'edit') {
       this.subCategoryId = this.route.snapshot.queryParams.subCategoryId;
       this.getSubCategory(this.subCategoryId);
@@ -48,78 +55,54 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  submitForm() {
-
+  addSubCategory() {
     this.formSubmitted = true;
 
     if (this.subCategoryForm.valid) {
+      const subCategoryModel = this.prepareSubCategoryRequestModel();
 
-      const subCategoryModel = new SubCategoryModel();
-      subCategoryModel.parent_category_id = this.categoryId;
-      subCategoryModel.name = this.subCategoryForm.controls['name'].value;
-      subCategoryModel.description = this.subCategoryForm.controls['description'].value;
-      subCategoryModel.created_by = Constants.admin;
+      this.addSubCategorySubscription = this.service.addSubCategory(subCategoryModel)
+        .subscribe((response) => {
 
-      this.addSubCategorySubscription = this.service.addSubCategory(subCategoryModel).subscribe((response) => {
-
-        this.formSubmitted = false;
-        this.subCategoryForm.reset();
-      },
-        (error) => {
-          if (error instanceof HttpErrorResponse) {
+          this.formSubmitted = false;
+          this.subCategoryForm.reset();
+        },
+          (error) => {
             this.toastr.error('', error.error.message);
-            console.log(error);
-          } else {
-            this.toastr.error('', error);
-          }
-        });
+          });
     }
   }
 
-  nodeclicked(event) {
-
+  categoryNodeclicked(event) {
     const value = event.node.textContent;
     this.subCategoryForm?.controls['parentCategory'].setValue(value);
     this.categoryId = Number(event.node.dataset.uid);
   }
 
-  cancel() {
-
-    this.router.navigate(['home']);
+  navigateToHomePage() {
+    this.router.navigate([RoutePathConfig.Home]);
   }
 
   editSubCategory() {
-
     this.formSubmitted = true;
 
-    const subCategoryModel = new SubCategoryModel();
-    subCategoryModel.name = this.subCategoryForm.controls['name'].value;
-    subCategoryModel.description = this.subCategoryForm.controls['description'].value;
-    subCategoryModel.updated_by = Constants.admin;
+    const subCategoryModel = this.prepareSubCategoryRequestModel();
 
-    this.editSubCategorySubscription = this.service.editSubCategory(this.subCategoryId, subCategoryModel).subscribe((response) => {
+    if (this.subCategoryId && subCategoryModel) {
+      this.editSubCategorySubscription = this.service.editSubCategory(this.subCategoryId, subCategoryModel)
+        .subscribe((response) => {
 
-      this.formSubmitted = false;
-      this.subCategoryForm.reset();
-      this.router.navigate(['home/categories/sub-categories']);
-    },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
-      });
-  }
-
-  get form() {
-
-    return this.subCategoryForm.controls;
+          this.formSubmitted = false;
+          this.subCategoryForm.reset();
+          this.router.navigate([RoutePathConfig.Home]);
+        },
+          (error) => {
+            this.toastr.error('', error.error.message);
+          });
+    }
   }
 
   ngOnDestroy() {
-
     if (this.addSubCategorySubscription) {
       this.addSubCategorySubscription.unsubscribe();
     }
@@ -134,8 +117,16 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getSubCategory(subCategoryId) {
+  prepareSubCategoryRequestModel() {
+    const subCategoryModel = new SubCategoryModel();
+    subCategoryModel.parent_category_id = this.categoryId;
+    subCategoryModel.name = this.subCategoryForm?.controls['name'].value;
+    subCategoryModel.description = this.subCategoryForm?.controls['description'].value;
 
+    return subCategoryModel;
+  }
+
+  private getSubCategory(subCategoryId) {
     this.getSubCategorySubscription = this.service.getSubCategory(subCategoryId).subscribe(response => {
       if (response) {
         this.subCategory = response;
@@ -147,17 +138,11 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
         }
       }
     }, (error) => {
-      if (error instanceof HttpErrorResponse) {
-        this.toastr.error('', error.error.message);
-        console.log(error);
-      } else {
-        this.toastr.error('', error);
-      }
+      this.toastr.error('', error.error.message);
     });
   }
 
-  private formInitialization() {
-
+  private subCategoryFormInitialization() {
     this.subCategoryForm = new FormGroup({
       parentCategory: new FormControl('',
         Validators.compose([Validators.required])),
@@ -169,7 +154,6 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-
     this.getCategoriesSubscription = this.service.getSubCategoriesTree().subscribe(response => {
       if (response) {
         this.categories = response;
@@ -177,12 +161,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
       }
     },
       (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
+        this.toastr.error('', error.error.message);
       }
     );
   }

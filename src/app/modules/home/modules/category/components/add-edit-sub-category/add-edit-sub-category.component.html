@@ -76,7 +76,7 @@
   <div class="side-bar col-md-3">
     <div class="search-hotel" *ngIf="!isEdit">
       <h3 class="h1-color">Categories</h3>
-      <ejs-treeview [fields]='field' (nodeClicked)='nodeclicked($event)'>
+      <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
 
       </ejs-treeview>
 
@@ -91,14 +91,14 @@
           <h1 class="text-centre" *ngIf="isEdit">Edit SubCategory</h1>
         </div>
       </div>
-      <form [formGroup]="subCategoryForm" (submit)="submitForm()">
+      <form [formGroup]="subCategoryForm" (submit)="addSubCategory()">
         <div class="form-group" *ngIf="!isEdit">
           <div class='col-md-12 m-t-20'>
             <div class='col-md-3'>
               <label for="username" class="f-weight">Category</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Name of category"
+              <input type="text" class="form-control" id="parentCategory" placeholder="Name of category"
                 formControlName="parentCategory" readonly>
               <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
                 required.
@@ -112,7 +112,7 @@
               <label for="username" class="f-weight">SubCategory Name</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Name of Subcategory" formControlName="name">
+              <input type="text" class="form-control" id="name" placeholder="Name of Subcategory" formControlName="name">
               <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
               </div>
             </div>
@@ -124,7 +124,7 @@
               <label for="" class="f-weight">Description</label>
             </div>
             <div class='col-md-9'>
-              <input type="text" class="form-control" id="" placeholder="Description" formControlName="description">
+              <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
               <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
                 required.
               </div>
@@ -140,7 +140,7 @@
               (click)="editSubCategory()">Edit SubCategory</button>
           </div>
           <div class="col-md-4">
-            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-warning btn-width w-100 m-b-30" (click)="navigateToHomePage()">Cancel</button>
           </div>
           <div class="col-md-2"></div>
         </div>

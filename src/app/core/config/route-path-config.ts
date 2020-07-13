@@ -6,6 +6,7 @@ export class RoutePathConfig {
     // Home
     public static readonly Cart = 'cart';
     public static readonly WishList = 'wishlist';
+    public static readonly Home = 'home';
 
     // Order
     public static readonly Order = 'order';

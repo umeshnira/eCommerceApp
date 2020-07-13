@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { ProductModel } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-add-product',
@@ -24,8 +24,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
   productId: number;
   image: string;
   formSubmitted: boolean;
-  fileOver: boolean;
-  isEdit: boolean;
   files: any[] = [];
 
   field: Object;
@@ -38,88 +36,58 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   @ViewChild('tabset', { static: false }) tabset: TabsetComponent;
 
+  get form() {
+    return this.productDetailsForm.controls;
+  }
+
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
     private toastr: ToastrService,
     private router: Router,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-
     this.getCategories();
-    this.formInitialization();
+    this.productFormInitialization();
   }
 
-  nodeclicked(event) {
-
+  categoryTreeNodeClicked(event) {
     this.categoryId = event.node.dataset.uid;
   }
 
-  toNextTab(id) {
-
-    this.tabset.tabs[id].active = true;
+  navigateToNextTab(tabId: number) {
+    this.tabset.tabs[tabId].active = true;
   }
 
-  toPreviousTab(id) {
-
-    this.tabset.tabs[id].active = true;
+  navigateToPreviousTab(tabId: number) {
+    this.tabset.tabs[tabId].active = true;
   }
 
   addProduct() {
+    this.addingValues();
 
-    const jsonData = this.addingValues();
-    const value = JSON.stringify(jsonData);
-    if (value) {
-      this.formData.append('data', value);
-    }
     this.formSubmitted = true;
 
     this.addProductSubscription = this.service.addProduct(this.formData).subscribe(response => {
       alert('Successful');
       this.formData.delete('data');
-      this.formData.delete('image');
     },
-    (error) => {
-      this.toastr.error('', error.error.message);
-    });
-  }
-
-  fileBrowseHandler(files) {
-
-    this.prepareFilesList(files);
-  }
-
-  onFileDropped($event) {
-    this.prepareFilesList($event);
+      (error) => {
+        this.formData.delete('data');
+        this.toastr.error('', error.error.message);
+      });
   }
 
   deleteFile(index: number) {
     this.files.splice(index, 1);
   }
 
-  cancel() {
-    this.router.navigate(['home/products']);
+  navigateToHomePage() {
+    this.router.navigate([RoutePathConfig.Home]);
   }
 
-  get form() {
-
-    return this.productDetailsForm.controls;
-  }
-
-  ngOnDestroy() {
-
-    if (this.getCategoriesSubscription) {
-      this.getCategoriesSubscription.unsubscribe();
-    }
-    if (this.addProductSubscription) {
-      this.addProductSubscription.unsubscribe();
-    }
-  }
-
-  private prepareFilesList(files: Array<any>) {
-
+  prepareImageFilesList(files: Array<any>) {
     for (const item of files) {
       const reader = new FileReader();
       reader.onload = (event: any) => {
@@ -134,12 +102,17 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   }
 
-  private addingValues() {
+  ngOnDestroy() {
+    if (this.getCategoriesSubscription) {
+      this.getCategoriesSubscription.unsubscribe();
+    }
+    if (this.addProductSubscription) {
+      this.addProductSubscription.unsubscribe();
+    }
+  }
 
+  private addingValues() {
     const producModel = new ProductModel();
-    // const quantity = new Quantity();
-    // const price = new Price();
-    // const category = new Category();
 
     producModel.name = this.productDetailsForm?.controls['productName'].value;
     producModel.description = this.productDetailsForm?.controls['description'].value;
@@ -154,16 +127,13 @@ export class AddProductComponent implements OnInit, OnDestroy {
     producModel.price = this.productDetailsForm?.controls['price'].value;
     producModel.category_id = this.categoryId;
 
-    // category.status = Status.Active;
-    // producModel.category = category;
-    // producModel.price = price;
-    // producModel.quantity = quantity;
-
-    return producModel;
+    const model = JSON.stringify(producModel);
+    if (model) {
+      this.formData.append('data', model);
+    }
   }
 
-  private formInitialization() {
-
+  private productFormInitialization() {
     this.productDetailsForm = new FormGroup({
       categoryName: new FormControl('',
         Validators.compose([Validators.required,
@@ -186,16 +156,15 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-
     this.getCategoriesSubscription = this.subCategoryService.getSubCategoriesTree().subscribe(response => {
       if (response) {
         this.categories = response;
         this.field = { dataSource: this.categories, id: 'id', text: 'name', child: 'subCategories' };
       }
     },
-    (error) => {
-      this.toastr.error('', error.error.message);
-    }
+      (error) => {
+        this.toastr.error('', error.error.message);
+      }
     );
   }
 }

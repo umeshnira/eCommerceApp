@@ -16,9 +16,9 @@ export class ProductDetailsModel {
     left_qty: number;
     offer_id: number;
     total_qty: number;
+    batch_no: number;
 
     p_status: boolean;
-    p_batch_no: number;
     p_created_by: string;
     p_created_at: Date;
     p_updated_at: Date;

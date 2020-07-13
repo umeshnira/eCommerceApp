@@ -9,7 +9,51 @@
           <h1 class="text-centre">Sign Up</h1>
         </div>
       </div>
-      <form [formGroup]="signUpForm" (submit)="submitForm()">
+      <form [formGroup]="clientSignUpForm" (submit)="submitClientRegisterForm()">
+        <div class="form-group">
+          <label for="username" class="f-weight">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName="name">
+          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
+          </div>
+          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">Please enter a valid Name</div>
+        </div>
+        <div class="form-group">
+          <label for="address" class="f-weight">Address</label>
+          <textarea type="text" class="form-control" id="address" placeholder="Enter Address"
+            formControlName="address"></textarea>
+          <div *ngIf="formSubmitted && form.address.errors?.required" class="valid-error">Address is required.
+          </div>
+          <div *ngIf="formSubmitted && form.address.errors" class="valid-error">Please enter a valid Address</div>
+        </div>
+        <div class="form-group">
+          <label for="landmark" class="f-weight">Landmark</label>
+          <input type="text" class="form-control" id="landmark" placeholder="Enter Landmark" formControlName="landmark">
+          <div *ngIf="formSubmitted && form.landmark.errors?.required" class="valid-error">Landmark is required.
+          </div>
+          <div *ngIf="formSubmitted && form.landmark.errors" class="valid-error">Please enter a valid Landmark</div>
+        </div>
+        <div class="form-group">
+          <label for="pin_code" class="f-weight">Pincode:</label>
+          <input type="text" class="form-control" id="pin_code" placeholder="Enter Pincode" formControlName="pin_code">
+          <div *ngIf="formSubmitted && form.pin_code.errors?.required" class="valid-error">Pincode is required.
+          </div>
+          <div *ngIf="formSubmitted && form.pin_code.errors" class="valid-error">Please enter a valid Pincode</div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="f-weight">Email Id:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+          <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
+          </div>
+          <div *ngIf="formSubmitted && form.email.errors" class="valid-error">Please enter a valid email</div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="f-weight">Phone No:</label>
+          <input type="text" class="form-control" id="phone" placeholder="Enter phone number" formControlName="phone">
+          <div *ngIf="formSubmitted && form.phone.errors?.required" class="valid-error">Phone No is required.
+          </div>
+          <div *ngIf="formSubmitted && form.phone.errors" class="valid-error">Please enter phone
+            number</div>
+        </div>
         <div class="form-group">
           <label for="username" class="f-weight">Username</label>
           <input type="text" class="form-control" id="" placeholder="Enter email or phone number"

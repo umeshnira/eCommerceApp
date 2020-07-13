@@ -3,7 +3,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryService } from '../../../../../../shared/services/category.service';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse } from '@angular/common/http';
+import { CategoryModel } from '../../models/category.model';
 
 @Component({
   selector: 'app-list-category',
@@ -12,7 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ListCategoryComponent implements OnInit, OnDestroy {
 
-  categories: any;
+  categories: CategoryModel;
+
   getCategoriesSubscription: ISubscription;
   deleteCategorySubscription: ISubscription;
 
@@ -24,39 +25,30 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-
     this.getCategories();
   }
 
-  goToEditPage(id) {
-
+  goToEditPage(categoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
-      queryParams: { categoryId: id },
+      queryParams: { categoryId: categoryId },
       relativeTo: this.route
     };
-    this.router.navigate(['edit'], navigationExtras);
 
+    this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteCategory(id) {
-
-    this.deleteCategorySubscription = this.service.deleteCategory(id).subscribe(response => {
+  deleteCategory(categoryId: number) {
+    this.deleteCategorySubscription = this.service.deleteCategory(categoryId).subscribe(response => {
       this.toastr.success('', 'Deleted Category');
     },
       (error) => {
-        if (error instanceof HttpErrorResponse) {
-          this.toastr.error('', error.error.message);
-          console.log(error);
-        } else {
-          this.toastr.error('', error);
-        }
+        this.toastr.error('', error.error.message);
       }
     );
   }
 
   ngOnDestroy() {
-
     if (this.getCategoriesSubscription) {
       this.getCategoriesSubscription.unsubscribe();
     }
@@ -66,19 +58,13 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-
     this.getCategoriesSubscription = this.service.getCategories().subscribe(response => {
       if (response) {
         this.categories = response;
 
       }
     }, (error) => {
-      if (error instanceof HttpErrorResponse) {
-        this.toastr.error('', error.error.message);
-        console.log(error);
-      } else {
-        this.toastr.error('', error);
-      }
+      this.toastr.error('', error.error.message);
     });
   }
 }

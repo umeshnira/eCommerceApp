@@ -5,6 +5,9 @@ import { Constants } from 'src/app/shared/models/constants';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ClientModel } from '../../models/client.model';
 import { ToastrService } from 'ngx-toastr';
+import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
+import { UserRole } from 'src/app/shared/enums/user-role.enum';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-client-sign-up',
@@ -14,37 +17,45 @@ import { ToastrService } from 'ngx-toastr';
 
 export class ClientRegistrationComponent implements OnInit, OnDestroy {
 
-  username: any;
-  password: any;
-  formSubmitted = false;
-  subscription: ISubscription;
-  signUpForm: FormGroup;
+  formSubmitted: boolean;
+  clientSignUpForm: FormGroup;
+  clientRegisterSubscription: ISubscription;
+
+  get form() {
+    return this.clientSignUpForm.controls;
+  }
 
   constructor(
     private service: RegistrationService,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-
-    this.formInitialization();
+    this.clientFormInitialization();
   }
 
-  submitForm() {
-
+  submitClientRegisterForm() {
     this.formSubmitted = true;
 
-    if (this.signUpForm.valid) {
-
+    if (this.clientSignUpForm.valid) {
       const clientModel = new ClientModel();
-      clientModel.userName = this.signUpForm.controls['username'].value;
-      clientModel.password = this.signUpForm.controls['password'].value;
+      clientModel.name = this.clientSignUpForm.controls['name'].value;
+      clientModel.address = this.clientSignUpForm.controls['address'].value;
+      clientModel.landmark = this.clientSignUpForm.controls['landmark'].value;
+      clientModel.pin_code = this.clientSignUpForm.controls['pin_code'].value;
+      clientModel.email = this.clientSignUpForm.controls['email'].value;
+      clientModel.phone = this.clientSignUpForm.controls['phone'].value;
+      clientModel.user_name = this.clientSignUpForm.controls['username'].value;
+      clientModel.password = this.clientSignUpForm.controls['password'].value;
+      clientModel.created_by = Constants.admin;
+      clientModel.role = UserRole.Client;
+      clientModel.status = Status.Active;
 
-      this.subscription = this.service.register(clientModel).subscribe((response) => {
+      this.clientRegisterSubscription = this.service.registerClient(clientModel).subscribe((response) => {
 
         if (response) {
           this.formSubmitted = false;
-          this.signUpForm.reset();
+          this.clientSignUpForm.reset();
         }
       },
         (error) => {
@@ -53,27 +64,38 @@ export class ClientRegistrationComponent implements OnInit, OnDestroy {
     }
   }
 
-  get form() {
-
-    return this.signUpForm.controls;
-  }
-
   ngOnDestroy() {
-
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.clientRegisterSubscription) {
+      this.clientRegisterSubscription.unsubscribe();
     }
   }
 
-  private formInitialization() {
-
-    this.signUpForm = new FormGroup({
+  private clientFormInitialization() {
+    this.clientSignUpForm = new FormGroup({
+      name: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      address: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      landmark: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      pin_code: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
+      email: new FormControl('',
+        Validators.compose([Validators.required,
+          Validators.pattern(Constants.emailPattern)])),
+      phone: new FormControl('',
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
       username: new FormControl('',
         Validators.compose([Validators.required,
         Validators.pattern(Constants.validationPattern)])),
       password: new FormControl('',
-        Validators.compose([Validators.required])),
+        Validators.compose([Validators.required,
+        CustomFormValidator.cannotContainSpace])),
     });
   }
-
 }

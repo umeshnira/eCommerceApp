@@ -66,3 +66,11 @@ a:hover {
 .hidden {
   display: none;
 }
+
+.exzoom .exzoom_img_ul_outer{
+  border: 1px solid #fff;
+}
+
+.exzoom .exzoom_img_box {
+  background: #fff;
+}

@@ -1,20 +1,26 @@
-import { Constants } from 'src/app/shared/models/constants';
+import { Status } from 'src/app/shared/enums/user-status.enum';
+import { UserRole } from 'src/app/shared/enums/user-role.enum';
 
 export class SellerModel {
-
-    sellerId: any;
-    sellerName: string;
-    address: any;
-    landMark: any;
-    pincode: any;
+    id: number;
+    status: Status;
+    name: string;
+    address: string;
+    landmark: string;
+    pin_code: string;
     email: string;
-    isDeleted: boolean;
-    phoneNo: string;
-    loginId: any;
-    aadharCard: any;
-    pancard: any;
-    bankActNo: any;
-    isfcCode: any;
-    password: any;
-    role =  Constants.seller;
+    phone: string;
+    aadhar_card_no: string;
+    pan_card_no: string;
+    bank_name: string;
+    bank_ac_no: string;
+    branch_name: string;
+    ifsc_code: string;
+    created_by: string;
+    created_at: Date;
+    updated_by: string;
+    updated_at: Date;
+    user_name: string;
+    password: string;
+    role: UserRole;
 }
