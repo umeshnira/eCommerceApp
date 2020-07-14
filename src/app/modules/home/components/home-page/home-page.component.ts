@@ -23,7 +23,6 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.prodList = this.fps.loadRandomProductsList;
     this.cartList = this.locCart.localCart;
   }

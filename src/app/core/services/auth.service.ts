@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { UserStorageDetailsModel } from '../models/user-storage-detail.model';
 
 @Injectable()
 export class AuthService {
@@ -8,12 +9,18 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  setCookie(value: string) {
-    this.cookieService.set('role', value);
+  setUserDetailsInCookie(user: UserStorageDetailsModel) {
+    this.cookieService.set('role', user.role);
+    this.cookieService.set('userId', String(user.user_id));
+    this.cookieService.set('cartId', String(user.cart_id));
   }
 
-  getCookie() {
-    return this.cookieService.get('role');
+  getUserDetailsFromCookie() {
+    const user = new UserStorageDetailsModel();
+    user.role = this.cookieService.get('role');
+    user.user_id = Number(this.cookieService.get('userId'));
+    user.cart_id = Number(this.cookieService.get('cartId'));
+    return user;
   }
 
 }
