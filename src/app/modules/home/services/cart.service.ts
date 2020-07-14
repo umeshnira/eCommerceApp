@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CartModel } from '../modules/product/models/cart.model';
 import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 import { catchError } from 'rxjs/operators';
+import { CartDetailsModel } from '../models/cart-details.model';
 
 @Injectable()
 export class CartService extends HttpBaseService {
@@ -22,8 +23,8 @@ export class CartService extends HttpBaseService {
       );
   }
 
-  editCartDetails(model: CartModel) {
-    const url = `${this.baseUrl}/carts`;
+  editCartDetails(cartId: number, model: CartDetailsModel) {
+    const url = `${this.baseUrl}/carts/${cartId}`;
     return this.http.put<ApiResponseModel>(url, model)
       .pipe(catchError(this.handleError)
       );
@@ -36,9 +37,9 @@ export class CartService extends HttpBaseService {
       );
   }
 
-  getCartDetails(cartId: number) {
-    const url = `${this.baseUrl}/carts/${cartId}`;
-    return this.http.get<ApiResponseModel>(url)
+  getCartDetails(userId: number) {
+    const url = `${this.baseUrl}/carts/${userId}`;
+    return this.http.get<CartDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
