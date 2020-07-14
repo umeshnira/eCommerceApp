@@ -55,7 +55,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   routeToCreateSubCategory() {
     this.router.navigate([RoutePathConfig.CreateSubCategory], { relativeTo: this.route });
   }
-
+  routeToOrderPage() {
+    this.router.navigate([RoutePathConfig.Order], { relativeTo: this.route });
+  }
   ngOnDestroy() {
     if (this.getCategoriesSubscription) {
       this.getCategoriesSubscription.unsubscribe();
