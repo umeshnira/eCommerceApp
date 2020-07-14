@@ -112,22 +112,22 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   private addingValues() {
-    const producModel = new ProductModel();
+    const productModel = new ProductModel();
 
-    producModel.name = this.productDetailsForm?.controls['productName'].value;
-    producModel.description = this.productDetailsForm?.controls['description'].value;
-    producModel.batch_no = this.productDetailsForm?.controls['batch'].value;
-    producModel.exp_date = this.productDetailsForm?.controls['expDate'].value;
-    producModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
-    producModel.about = this.productDetailsForm?.controls['about'].value;
-    producModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
-    producModel.status = Status.Active;
-    producModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
-    producModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
-    producModel.price = this.productDetailsForm?.controls['price'].value;
-    producModel.category_id = this.categoryId;
+    productModel.name = this.productDetailsForm?.controls['productName'].value;
+    productModel.description = this.productDetailsForm?.controls['description'].value;
+    productModel.batch_no = this.productDetailsForm?.controls['batch'].value;
+    productModel.exp_date = this.productDetailsForm?.controls['expDate'].value;
+    productModel.bar_code = this.productDetailsForm?.controls['barCode'].value;
+    productModel.about = this.productDetailsForm?.controls['about'].value;
+    productModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
+    productModel.status = Status.Active;
+    productModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
+    productModel.price = this.productDetailsForm?.controls['price'].value;
+    productModel.category_id = this.categoryId;
 
-    const model = JSON.stringify(producModel);
+    const model = JSON.stringify(productModel);
     if (model) {
       this.formData.append('data', model);
     }

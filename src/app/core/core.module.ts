@@ -5,9 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpBaseService } from './services/http-base-service.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
-import { ViewGuard } from './guards/view-guard.guard';
+import { HomeViewGuard } from './guards/home-view-guard.guard';
 
-const providers = [HttpBaseService, CookieService, AuthService, ViewGuard];
+const providers = [HttpBaseService, CookieService, AuthService, HomeViewGuard];
 
 const modules = [CommonModule, BrowserModule, HttpClientModule];
 

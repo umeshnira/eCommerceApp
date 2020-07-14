@@ -40,7 +40,7 @@
                 This will be a gift<a class="m-l-10">Learn More</a>
               </li>
               <li>
-                <select [(ngModel)]="x.cartQuant" (change)="cartQuantityCal();header.cartQuantityCal()"
+                <select [(ngModel)]="x.cartQuant" (change)="cartQuantityCal();"
                   class="m-r-10 dropdown-style">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -49,11 +49,10 @@
                   <option value="5">5</option>
                   <option value="6">6</option>
                 </select>
-                |<a (click)="removeCartItem(x.productID);cartQuantityCal();header.cartQuantityCal()"
+                |<a (click)="removeCartItem(x.productID);cartQuantityCal();"
                   class="small-font m-l-10 m-r-10">Delete</a>|
-                <a (click)="addSaveLaterList(x);removeCartItem(x.productID);header.cartQuantityCal()"
-                  class="small-font m-l-10 m-r-10">Save for
-                  later</a>|<a class="small-font m-l-10 m-r-10">See more like this</a>
+                <!-- <a (click)="addSaveLaterList(x);removeCartItem(x.productID);
+                  later</a>|<a class="small-font m-l-10 m-r-10">See more like this</a> -->
               </li>
             </ul>
           </div>
@@ -85,9 +84,9 @@
               Sold by come ffall in love
             </li>
             <li>
-              <a (click)="deletesaveLaterList(x.productID);cartQuantityCal();" class="small-font m-r-10">Delete</a>|<a
+              <!-- <a (click)="deletesaveLaterList(x.productID);cartQuantityCal();" class="small-font m-r-10">Delete</a>|<a
                 (click)="addTocart(x);deletesaveLaterList(x.productID);header.cartQuantityCal()"
-                class="small-font m-l-10 m-r-10">Move to Cart</a>|
+                class="small-font m-l-10 m-r-10">Move to Cart</a>| -->
               <a class="small-font m-l-10 m-r-10">Move to Wish List</a>|
               <a class="small-font m-l-10 m-r-10">See more
                 like this</a>

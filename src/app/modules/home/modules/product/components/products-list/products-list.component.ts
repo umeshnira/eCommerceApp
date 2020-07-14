@@ -38,8 +38,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    const userRole = this.authService.getCookie();
-
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    const userRole = userDetails.role;
     if (userRole === Constants.client) {
       this.isUser = true;
     }
