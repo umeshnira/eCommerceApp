@@ -1,8 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 import { LocalWhishListService } from '../../services/local-whish-list.service';
 import { SaveForLaterService } from '../../services/save-for-later.service';
+import { CartService } from '../../services/cart.service';
+import { SubscriptionLike as ISubscription } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { CartDetailsModel } from '../../models/cart-details.model';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-view',
@@ -10,62 +17,101 @@ import { SaveForLaterService } from '../../services/save-for-later.service';
   styleUrls: ['./cart-view.component.css'],
 })
 
-export class CartViewComponent implements OnInit {
+export class CartViewComponent implements OnInit, OnDestroy {
 
-  quantity;
-  cartItems = 0;
-  totalPrice = 0;
-  saveLaterList = [];
-  cartView = [];
-
-  @Input() header: HeaderComponent;
+  cartDetails: CartDetailsModel;
+  getCartDetailsSubscription: ISubscription;
+  editCartDetailsSubscription: ISubscription;
+  removeProductFromCartSubscription: ISubscription;
 
   constructor(
-    public locCart: LocalCartStorageService,
-    public locWhishList: LocalWhishListService,
-    public saveLate: SaveForLaterService
+    private cartService: CartService,
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-
-    this.cartView = this.locCart.getCartValues();
-    this.saveLaterList = this.saveLate.getLaterList();
-    this.cartQuantityCal();
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    const userId = userDetails.user_id;
+    this.getCartDetails(userId);
   }
 
-  cartQuantityCal() {
+  editCartDetails(cartId: number) {
+    const cartDetailsModel = new CartDetailsModel();
+    this.editCartDetailsSubscription = this.cartService.editCartDetails(cartId, cartDetailsModel).subscribe(response => {
 
-    this.cartItems = 0;
-    this.totalPrice = 0;
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
 
-    for (let i = 0; i < this.cartView.length; i++) {
-      // tslint:disable-next-line: radix
-      this.cartItems = this.cartItems + parseInt(this.cartView[i].cartQuant);
-      // tslint:disable-next-line: radix
-      this.totalPrice = this.totalPrice + parseInt(this.cartView[i].price) * parseInt(this.cartView[i].cartQuant);
+  removeProductFromCart(cartId: number) {
+    this.removeProductFromCartSubscription = this.cartService.deleteProductFromCart(cartId).subscribe(response => {
+
+      this.router.navigate([RoutePathConfig.Home]);
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.getCartDetailsSubscription) {
+      this.getCartDetailsSubscription.unsubscribe();
+    }
+    if (this.editCartDetailsSubscription) {
+      this.editCartDetailsSubscription.unsubscribe();
     }
   }
 
-  removeCartItem(productID) {
+  private getCartDetails(userId: number) {
+    this.getCartDetailsSubscription = this.cartService.getCartDetails(userId).subscribe(response => {
 
-    this.cartView = this.locCart.deleteCartItem(productID);
-    this.cartQuantityCal();
+      if (response) {
+        this.cartDetails = response;
+      }
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
-  addSaveLaterList(prod) {
-
-    this.saveLate.addToMylaterList(prod);
-    this.cartQuantityCal();
-  }
-
-  addTocart(prod) {
-
-    this.locCart.addToCartValues(prod);
-    this.cartQuantityCal();
-  }
-
-  deletesaveLaterList(productID) {
-
-    this.saveLate.deleteLaterListItem(productID);
-  }
 }
+
+  // cartQuantityCal() {
+
+  //   this.cartItems = 0;
+  //   this.totalPrice = 0;
+
+  //   for (let i = 0; i < this.cartView.length; i++) {
+  //     // tslint:disable-next-line: radix
+  //     this.cartItems = this.cartItems + parseInt(this.cartView[i].cartQuant);
+  //     // tslint:disable-next-line: radix
+  //     this.totalPrice = this.totalPrice + parseInt(this.cartView[i].price) * parseInt(this.cartView[i].cartQuant);
+  //   }
+  // }
+
+  // removeCartItem(productID) {
+
+  //   this.cartView = this.locCart.deleteCartItem(productID);
+  //   this.cartQuantityCal();
+  // }
+
+  // addSaveLaterList(prod) {
+
+  //   this.saveLate.addToMylaterList(prod);
+  //   this.cartQuantityCal();
+  // }
+
+  // addTocart(prod) {
+
+  //   this.locCart.addToCartValues(prod);
+  //   this.cartQuantityCal();
+  // }
+
+  // deletesaveLaterList(productID) {
+
+  //   this.saveLate.deleteLaterListItem(productID);
+  // }

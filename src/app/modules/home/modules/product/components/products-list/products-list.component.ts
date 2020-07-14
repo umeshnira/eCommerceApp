@@ -63,8 +63,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       });
   }
 
-  getProductImage(images: Array<Image>) {
-    return images[0].path;
+  getProductImage(product) {
+    return product.path;
   }
 
   navigateToEditPage(productId: number, categoryId: number) {
