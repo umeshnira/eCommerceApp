@@ -41,8 +41,8 @@
             <div class="men-pro-item simpleCart_shelfItem ">
               <div class="men-thumb-item p-t-10 w-200">
                 <img [src]="getProductImage(product)" alt="" height="100" width="100" />
-                <div *ngIf="isUser" class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
+                <div *ngIf="isUser" class="men-cart-pro ">
+                  <div class="inner-men-cart-pro h-100">
                     <a (click)="navigateToDetailPage(product?.id)" class="link-product-add-cart">Quick View</a>
                   </div>
                 </div>
@@ -53,6 +53,9 @@
                 </h4>
                 <div class="info-product-price">
                   <span class="item_price"><small>$</small>{{product.price}}</span>
+                </div>
+                <div *ngIf="isUser">
+                  <button class="btn btn-info w-100p" (click)="addProductToCart(product.id)">Add To Cart</button>
                 </div>
                 <div *ngIf="!isUser">
                   <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 cursor"

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { OrderService } from '../../services/order.service'
-import { OrderDetailsModel } from '../../models/order-details.model'
+import { OrderService } from '../../services/order.service';
+import { OrderDetailsModel } from '../../models/order-details.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
