@@ -1,32 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { SaveLaterModel } from '../models/save-later.model';
+import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 
-export class SaveForLaterService {
+export class SaveForLaterService extends HttpBaseService {
 
-  public saveLaterList = [];
+  baseUrl = environment.api.baseUrl;
 
-  constructor() { }
-
-  addToMylaterList(prod) {
-
-    this.saveLaterList.push(prod);
+  constructor(private http: HttpClient) {
+    super();
   }
 
-  getLaterList() {
-
-    return this.saveLaterList;
+  moveCartItemToSaveLater(model: SaveLaterModel) {
+    const url = `${this.baseUrl}/savelater`;
+    return this.http.post<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
   }
 
-  deleteLaterListItem(productID) {
+  getSaveLaterItems(cartId: number) {
+    const url = `${this.baseUrl}/savelater/${cartId}`;
+    return this.http.get<ApiResponseModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
 
-    for (let i = 0; i < this.saveLaterList.length; i++) {
-      if (this.saveLaterList[i].productID === productID) {
-        this.saveLaterList.splice(i, 1);
-        break;
-      }
-    }
-    return this.saveLaterList;
+  deleteItemFromSaveLater(productID: number) {
+    const url = `${this.baseUrl}/savelater/${productID}`;
+    return this.http.delete<ApiResponseModel>(url)
+      .pipe(catchError(this.handleError)
+      );
   }
 
 }

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   api: {
     baseUrl: 'http://localhost:1337/ecommerce',
-    orderUrl:'http://localhost:1338/ecommerce'
+    orderUrl: 'http://localhost:1338/ecommerce'
   }
 };
 

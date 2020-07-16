@@ -23,7 +23,7 @@ export class CartService extends HttpBaseService {
       );
   }
 
-  editCartDetails(cartId: number, model: CartDetailsModel) {
+  editCartDetails(cartId: number, model: CartModel) {
     const url = `${this.baseUrl}/carts/${cartId}`;
     return this.http.put<ApiResponseModel>(url, model)
       .pipe(catchError(this.handleError)

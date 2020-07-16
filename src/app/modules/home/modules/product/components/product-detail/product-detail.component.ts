@@ -47,7 +47,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     const cartModel = new CartModel();
     cartModel.user_id = this.userId;
     cartModel.product_id = this.productId;
-    cartModel.quantity = this.productDetails?.total_qty;
+    cartModel.quantity = 1;
     cartModel.created_by = Constants.client;
     this.addProductToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
 

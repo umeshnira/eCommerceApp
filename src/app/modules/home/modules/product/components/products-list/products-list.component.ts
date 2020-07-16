@@ -9,6 +9,9 @@ import { SubCategoryService } from 'src/app/shared/services/sub-category.service
 import { ProductDetailsModel } from '../../models/product-details.model';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 import { Image } from '../../models/product-image.model';
+import { CartModel } from '../../models/cart.model';
+import { CartService } from 'src/app/modules/home/services/cart.service';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-products-list',
@@ -18,6 +21,7 @@ import { Image } from '../../models/product-image.model';
 export class ProductsListComponent implements OnInit, OnDestroy {
 
   categoryId: number;
+  userId: number;
   isUser: boolean;
 
   products: ProductDetailsModel[];
@@ -27,11 +31,13 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   subCategoryListSubscription: ISubscription;
   getProductsByCategoryIdSubscription: ISubscription;
   deleteProductSubscription: ISubscription;
+  addProductToCartSubscription: ISubscription;
 
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
     private authService: AuthService,
+    private cartService: CartService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
@@ -39,6 +45,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     const userRole = userDetails.role;
     if (userRole === Constants.client) {
       this.isUser = true;
@@ -65,6 +72,23 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   getProductImage(product) {
     return product.path;
+  }
+
+  addProductToCart(productId: number) {
+    const cartModel = new CartModel();
+    cartModel.user_id = this.userId;
+    cartModel.product_id = productId;
+    cartModel.quantity = 1;
+    cartModel.created_by = Constants.client;
+    this.addProductToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
+
+      if (response) {
+        this.router.navigate([RoutePathConfig.Home]);
+      }
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
   navigateToEditPage(productId: number, categoryId: number) {
@@ -97,6 +121,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     }
     if (this.deleteProductSubscription) {
       this.deleteProductSubscription.unsubscribe();
+    }
+    if (this.addProductToCartSubscription) {
+      this.addProductToCartSubscription.unsubscribe();
     }
   }
 
