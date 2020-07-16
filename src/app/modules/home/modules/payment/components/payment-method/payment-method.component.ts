@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SubscriptionLike as ISubscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { OrderService } from '../../../order/services/order.service'
 
 @Component({
   selector: 'app-payment-method',
@@ -6,16 +10,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-method.component.css'],
 })
 
-export class PaymentMethodComponent implements OnInit {
+export class PaymentMethodComponent implements OnInit, OnDestroy {
 
   savedCards = true;
   atmCard: boolean;
   netBanking: boolean;
   upi: boolean;
 
-  constructor() { }
+  orderModel;
 
-  ngOnInit(): void { }
+  addOrderSubcri: ISubscription;
+  sendMailSubcri: ISubscription;
+
+  constructor(
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private OrderService: OrderService
+  ) { }
+
+  ngOnInit(): void {
+    debugger;
+    this.orderModel = this.OrderService.orderStorage;
+
+  }
+  orderProducts() {
+    this.addOrderSubcri = this.OrderService.addOrder(this.orderModel).subscribe(response => {
+      debugger;
+      if (response) {
+        alert("Product purchased !");
+        this.OrderService.orderStorage = [];
+        this.sendMailSubcri = this.OrderService.sendMail(response).subscribe(response => {
+          debugger;
+          if (response) {
+            alert("Product purchased !");
+            this.OrderService.orderStorage = [];
+
+          }
+        },
+          (error) => {
+            this.toastr.error('', error.error.message);
+          });
+      }
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
 
   radioChange(value: string) {
 
@@ -39,6 +79,15 @@ export class PaymentMethodComponent implements OnInit {
       this.netBanking = false;
       this.atmCard = false;
       this.upi = false;
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.addOrderSubcri) {
+      this.addOrderSubcri.unsubscribe();
+    }
+    if (this.sendMailSubcri) {
+      this.sendMailSubcri.unsubscribe();
     }
   }
 }

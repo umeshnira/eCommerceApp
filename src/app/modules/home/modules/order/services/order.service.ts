@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { OrderDetailsModel } from '../models/order-details.model'
+import { OrderLocationTableModel } from '../models/order-location-table.model'
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 import { ApiResponseModel } from '../../../../../shared/models/api-response.model';
 
@@ -12,6 +13,12 @@ import { ApiResponseModel } from '../../../../../shared/models/api-response.mode
 export class OrderService extends HttpBaseService {
 
   orderUrl = environment.api.orderUrl;
+  baseUrl = environment.api.baseUrl;
+  notificUrl = environment.api.notificUrl;
+
+  orderStorage;//for store order details
+
+
   constructor(private http: HttpClient) {
     super();
   }
@@ -28,8 +35,22 @@ export class OrderService extends HttpBaseService {
       .pipe(catchError(this.handleError)
       );
   }
+  getLocationDetails(id:number){
+    const url = `${this.baseUrl}/clients/user/${id}`;
+    return this.http.get<OrderLocationTableModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
   cancelOrder(id: number) {
     const url = `${this.orderUrl}/cancel/orders/${id}`;
+    return this.http.post<ApiResponseModel>(url,{})
+      .pipe(catchError(this.handleError)
+      );
+  }
+
+  sendMail(id: number) {
+    const url = `${this.notificUrl}/mail/${id}`;
     return this.http.post<ApiResponseModel>(url,{})
       .pipe(catchError(this.handleError)
       );

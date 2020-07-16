@@ -5,11 +5,16 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CartDetailsModel } from '../../models/cart-details.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { SaveLaterModel } from '../../models/save-later.model';
 import { Constants } from 'src/app/shared/models/constants';
 import { SaveLaterDetails } from '../../models/save-later-details.model';
 import { CartModel } from '../../modules/product/models/cart.model';
+import { OrderDetailsTableModel } from '../../modules/order/models/order-details-table.model'
+import { OrderLocationTableModel } from '../../modules/order/models/order-location-table.model'
+import { OrderOffersTableModel } from '../../modules/order/models/order-offer-table.model'
+import { CreateOrderModel } from '../../modules/order/models/create-order.model'
+import { OrderService } from '../../modules/order/services/order.service'
 
 @Component({
   selector: 'app-cart-view',
@@ -25,6 +30,7 @@ export class CartViewComponent implements OnInit, OnDestroy {
 
   cartDetails: CartDetailsModel[];
   saveLaterItems: SaveLaterDetails[];
+  locationDetails: OrderLocationTableModel[];
 
   getCartDetailsSubscription: ISubscription;
   editCartDetailsSubscription: ISubscription;
@@ -33,13 +39,16 @@ export class CartViewComponent implements OnInit, OnDestroy {
   getSaveLaterItemsSubscription: ISubscription;
   deleteItemFromSaveLaterSubscription: ISubscription;
   addProductToCartSubscription: ISubscription;
+  getlocationDetailsSubscription: ISubscription;
 
   constructor(
     private cartService: CartService,
+    private OrderService: OrderService,
     private authService: AuthService,
     private saveLaterSerice: SaveForLaterService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +56,7 @@ export class CartViewComponent implements OnInit, OnDestroy {
     this.userId = userDetails.user_id;
     this.getCartDetails(this.userId);
     this.getSaveLaterItems(this.userId);
+    this.getUserDetails(this.userId);
   }
 
   editCartDetails(cartId: number) {
@@ -165,6 +175,9 @@ export class CartViewComponent implements OnInit, OnDestroy {
     if (this.addProductToCartSubscription) {
       this.addProductToCartSubscription.unsubscribe();
     }
+    if (this.getlocationDetailsSubscription) {
+      this.getlocationDetailsSubscription.unsubscribe();
+    }
   }
 
   private getCartDetails(userId: number) {
@@ -194,5 +207,48 @@ export class CartViewComponent implements OnInit, OnDestroy {
           this.toastr.error('', error.error.message);
         });
   }
+  private getUserDetails(userId) {
+    this.getlocationDetailsSubscription = this.OrderService.getLocationDetails(userId).subscribe(response => {
+
+      if (response) {
+        this.locationDetails = response;
+      }
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+
+  placeOrder() {
+    const orderModel = {
+      data: {
+        created_by: this.userId.toString(),
+        user_id: this.userId,
+        location: this.locationDetails,
+        details: [],
+        offer: []
+      }
+    };
+    this.cartDetails.forEach(x => {
+      const detaisModel = new OrderDetailsTableModel();
+      detaisModel.created_by = this.userId.toString();
+      detaisModel.price = x.price;
+      detaisModel.qty = x.quantity;
+      detaisModel.product_id = x.id;
+
+      orderModel.data.details.push(detaisModel);
+
+      const offerModel = new OrderOffersTableModel();
+      offerModel.created_by = this.userId.toString();
+      offerModel.offer_id = x.offer_id;
+
+      orderModel.data.offer.push(offerModel);
+    });
+    this.OrderService.orderStorage = orderModel;
+    this.router.navigate(['home/payment/method']);
+
+  }
+
+
 }
 
