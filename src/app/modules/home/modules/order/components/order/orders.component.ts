@@ -3,6 +3,7 @@ import { OrderService } from '../../services/order.service'
 import { OrderDetailsModel } from '../../models/order-details.model'
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-orders',
@@ -11,17 +12,23 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderComponent implements OnInit, OnDestroy {
 
-  getOrderSubscrip: ISubscription;
-  userId: number;
-  orderDetails = new OrderDetailsModel();
+  private getOrderSubscrip: ISubscription;
+  private getCancelOrderSubscrip: ISubscription;
 
+  public orderDetails = new OrderDetailsModel();
+  public cancelOrderDetails = new OrderDetailsModel();
+  
   constructor(
     private service: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) { }
 
+  private userId: number;
+
   ngOnInit(): void {
-    this.userId = 19;
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     this.getUserOrderDetails(this.userId);
   }
 
@@ -29,12 +36,33 @@ export class OrderComponent implements OnInit, OnDestroy {
     if (this.getOrderSubscrip) {
       this.getOrderSubscrip.unsubscribe();
     }
+    if (this.getCancelOrderSubscrip) {
+      this.getCancelOrderSubscrip.unsubscribe();
+    }
   }
 
-  getUserOrderDetails(id: number) {
+  private getUserOrderDetails(id: number) {
     this.getOrderSubscrip = this.service.getUserOrders(id).subscribe((res: OrderDetailsModel) => {
       this.orderDetails = res;
 
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+  public getCancelledOrders() {
+    this.getCancelOrderSubscrip = this.service.getCancelledOrders(this.userId).subscribe((res: OrderDetailsModel) => {
+      this.cancelOrderDetails = res;
+
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+  private cancelOrder(id: number) {
+    this.service.cancelOrder(id).subscribe((res: OrderDetailsModel) => {
+      alert("order cancelled")
+      this.getUserOrderDetails(this.userId);
     },
       (error) => {
         this.toastr.error('', error.error.message);

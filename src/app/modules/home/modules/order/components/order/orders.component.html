@@ -30,7 +30,7 @@
       </a>
     </li>
     <li>
-      <a class="text-style" href="#settings" role="tab" data-toggle="tab">
+      <a (click)="getCancelledOrders()" class="text-style" href="#settings" role="tab" data-toggle="tab">
         Cancelled orders
       </a>
     </li>
@@ -127,24 +127,24 @@
               </div>
               <div class="col-md-3 heading-style">
                 <ul>
-                  <li class="line-height-style">
+                  <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
                     <button class="btn btn-secondary btn-width">
                       Track package
                     </button>
                   </li>
-                  <li class="line-height-style">
+                  <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
+                    <button (click)="cancelOrder(x.order_detail_id)" class="btn btn-secondary btn-width">
+                     Cancel Order
+                    </button>
+                  </li>
+                  <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
                     <button class="btn btn-secondary btn-width">
                       Return items
                     </button>
                   </li>
-                  <li class="line-height-style">
+                  <li  class="line-height-style">
                     <button class="btn btn-secondary btn-width">
-                      Share gift receipt
-                    </button>
-                  </li>
-                  <li class="line-height-style">
-                    <button class="btn btn-secondary btn-width">
-                      Leave delivery feedback
+                      Leave feedback
                     </button>
                   </li>
                   <li class="line-height-style">
@@ -152,7 +152,7 @@
                       Write a product review
                     </button>
                   </li>
-                  <li class="line-height-style">
+                  <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
                     <button class="btn btn-secondary btn-width">
                       Archive order
                     </button>
@@ -238,10 +238,109 @@
       </p>
     </div>
     <div class="tab-pane fade" id="settings">
-      <p class="font-class text-style padding-30">
-        We aren't finding any cancelled orders (for orders placed in the last 6
-        months). <a>View all orders</a>
-      </p>
+
+
+        <div *ngFor="let x of cancelOrderDetails" class="panel panel-default m-t-20">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-3">
+                <span class="font-13">ORDER PLACED</span>
+                <div><span class="font-13">{{x.ordered_date}}</span></div>
+              </div>
+              <div class="col-md-3">
+                <span class="font-13">TOTAL</span>
+                <div><span class="font-13">{{x.qty*x.price}}</span></div>
+              </div>
+              <div class="col-md-3">
+                <span class="font-13">SHIP TO</span>
+                <div>
+                  <a
+                    tabindex="0"
+                    data-placement="bottom"
+                    data-html="true"
+                    data-toggle="popover"
+                    data-trigger="hover"
+                    data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>"
+                  >
+                    <span class="font-13">Address</span
+                    ><i class="fa fa-chevron-down m-l-10"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="col-md-3 float">
+                <span class="font-13">ORDER # {{x.id}}</span>
+                <div>
+                  <a> <span class="font-13 m-r-10">Order Details</span></a
+                  >|
+                  <a
+                    tabindex="0"
+                    role="button"
+                    data-placement="bottom"
+                    data-html="true"
+                    data-toggle="popover"
+                    data-trigger="focus"
+                    data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>"
+                  >
+                    <span class="font-13">Invoice</span
+                    ><i class="fa fa-chevron-down m-l-10"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="checkout-right list-style">
+              <h5 class="font-class"><b>{{x.order_status}} {{x.delivered_date}}</b></h5>
+              <br>
+              <div class="row tablecart">
+                <div class="col-md-3">
+                  <img
+                    src="{{x.path}}"
+                    class="img-responsive"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li class="font-class">
+                      <a
+                        href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
+                        >{{x.name}}</a
+                      >
+                    </li>
+                    
+                    <li class="font-13 text-warning">
+                      {{x.qty}}x ₹{{x.price}}
+                    </li>
+                    <li>
+                      <button class="btn btn-warning">
+                        <i class="fa fa-refresh m-r-10"></i>Buy it again
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 heading-style">
+                  <ul>
+
+
+
+                    <li class="line-height-style">
+                      <button class="btn btn-secondary btn-width">
+                        Leave  feedback
+                      </button>
+                    </li>
+                    <li class="line-height-style">
+                      <button class="btn btn-secondary btn-width">
+                        Write a product review
+                      </button>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
     </div>
   </div>
 </div>
