@@ -40,7 +40,8 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
 
   deleteCategory(categoryId: number) {
     this.deleteCategorySubscription = this.service.deleteCategory(categoryId).subscribe(response => {
-      this.toastr.success('', 'Deleted Category');
+      this.getCategories();
+      this.toastr.success('Category Deleted Successfully', 'Success');
     },
       (error) => {
         this.toastr.error('', error.error.message);

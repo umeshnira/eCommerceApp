@@ -22,7 +22,13 @@
   <div class="row">
     <div class="col-md-9">
       <div class="checkout-right">
-        <div *ngFor="let cart of cartDetails" class="row tablecart">
+        <div *ngFor="let cart of cartDetails; let i = index;" class="row tablecart">
+          <div *ngIf="limitedStock && i=== itemIndex" class="limitedStock-message">
+            <i class="fa fa-exclamation-triangle warning-icon-color-cart" aria-hidden="true"></i>
+            <label class="font-light">This seller has a limit of {{cart.total_qty}} per customer.
+              To see if more are available from another seller,<a (click)="navigateToProductDetailPage(cart.id)">go to
+                the product detail page.</a></label>
+          </div>
           <div class="col-md-3">
             <img src="http://localhost:1337/images/products/{{cart.image}}" alt=" "
               class="img-responsive cart-image-style" />
@@ -42,8 +48,7 @@
               </li>
               <li>
                 <select [(ngModel)]="cart.quantity"
-                  (change)="updateCartQuantity(cart.CartId, cart.id);calculateCartQuantity();"
-                  class="m-r-10 dropdown-style">
+                  (change)="updateCartQuantity(cart.CartId, cart.id, cart.total_qty, i);" class="m-r-10 dropdown-style">
                   <option value="1">Qty:1</option>
                   <option value="2">Qty:2</option>
                   <option value="3">Qty:3</option>
@@ -52,7 +57,7 @@
                   <option value="6">Qty:6</option>
                 </select>
                 |<a (click)="removeCartItem(cart.CartId);" class="small-font m-l-10 m-r-10">Delete</a>|
-                <a class="small-font m-l-10 m-r-10" (click)="moveCartItemToSaveLater(cart.id,cart.CartId);">
+                <a class="small-font m-l-10 m-r-10" (click)="moveCartItemToSaveLater(cart, i)">
                   Save for later</a>|<a class="small-font m-l-10 m-r-10">See more like this</a>
               </li>
             </ul>
@@ -69,7 +74,7 @@
       <h4 *ngIf="saveLaterItems.length>0" class="text-left heading-style">
         Saved for later ({{saveLaterItems.length}} items)
       </h4>
-      <div *ngFor="let item of saveLaterItems" class="row tablecart">
+      <div *ngFor="let item of saveLaterItems; let i = index;" class="row tablecart">
         <div class="col-md-3">
           <img src="http://localhost:1337/images/products/{{item.image}}" alt=" " class="img-responsive" />
         </div>
@@ -79,27 +84,18 @@
               <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart">{{item.name}}</a>
             </li>
             <li>
-              <small class="text-warning">Only 3 left in stock.</small>
+              <small class="text-warning">Only {{item.left_qty}} left in stock.</small>
             </li>
             <li class="small-font">
               Sold by come ffall in love
             </li>
             <li>
-              <a (click)="deleteItemFromSaveLaterList(item.productId);" class="small-font m-r-10">Delete</a>|<a
-                (click)="addProductToCart(item);deleteItemFromSaveLaterList(item.productId)"
-                class="small-font m-l-10 m-r-10">Move to Cart</a>|
+              <a (click)="deleteItemFromSaveLaterList(item.id);" class="small-font m-r-10">Delete</a>|<a
+                (click)="moveSaveItemToCart(item, i)" class="small-font m-l-10 m-r-10">Move to Cart</a>|
               <a class="small-font m-l-10 m-r-10">Move to Wish List</a>|
               <a class="small-font m-l-10 m-r-10">See more
                 like this</a>
             </li>
-            <!-- <li>
-              <a (click)="deletesaveLaterList(item.productID);cartQuantityCal();" class="small-font m-r-10">Delete</a>|<a
-                (click)="addTocart(x);deletesaveLaterList(item.productID)"
-                class="small-font m-l-10 m-r-10">Move to Cart</a>|
-              <a class="small-font m-l-10 m-r-10">Move to Wish List</a>|
-              <a class="small-font m-l-10 m-r-10">See more
-                like this</a>
-            </li> -->
           </ul>
         </div>
         <div class="col-md-3 text-right heading-style">
@@ -108,6 +104,8 @@
       </div>
 
     </div>
+
+
     <div class="col-md-3">
       <div class="text-center rightCardStyle">
         <i class="fa fa-check text-success"></i><small class="text-success">Your order is eligible for FREE

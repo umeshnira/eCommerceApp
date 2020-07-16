@@ -66,6 +66,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
           this.formSubmitted = false;
           this.subCategoryForm.reset();
+          this.toastr.success('SubCategory Added Successfully', 'Success');
         },
           (error) => {
             this.toastr.error('', error.error.message);
@@ -94,7 +95,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
           this.formSubmitted = false;
           this.subCategoryForm.reset();
-          this.router.navigate([RoutePathConfig.Home]);
+          this.toastr.success('SubCategory Updated Successfully', 'Success');
         },
           (error) => {
             this.toastr.error('', error.error.message);

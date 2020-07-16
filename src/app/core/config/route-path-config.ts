@@ -15,10 +15,11 @@ export class RoutePathConfig {
     // Payment
     public static readonly Payment = 'payment';
     public static readonly PaymentDelivery = 'delivery';
-    public static readonly PaymentMethod = 'method';
+    public static readonly PaymentMethod = 'payment/method';
 
     // Products
     public static readonly Products = 'products';
+    public static readonly ProductsDetail = 'products/details';
 
     // Category
     public static readonly CreateCategory = 'categories/create';

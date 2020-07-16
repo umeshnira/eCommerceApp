@@ -16,7 +16,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 30000,
+      timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

@@ -43,6 +43,10 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
 
   deleteSubCategory(subCategoryId: number) {
     this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategoryId).subscribe(response => {
+
+      if (response) {
+        this.toastr.success('SubCategory Deleted Successfully', 'Success');
+      }
     }, (error) => {
       this.toastr.error('', error.error.message);
     });

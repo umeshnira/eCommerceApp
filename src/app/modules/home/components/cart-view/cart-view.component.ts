@@ -10,11 +10,11 @@ import { SaveLaterModel } from '../../models/save-later.model';
 import { Constants } from 'src/app/shared/models/constants';
 import { SaveLaterDetails } from '../../models/save-later-details.model';
 import { CartModel } from '../../modules/product/models/cart.model';
-import { OrderDetailsTableModel } from '../../modules/order/models/order-details-table.model'
-import { OrderLocationTableModel } from '../../modules/order/models/order-location-table.model'
-import { OrderOffersTableModel } from '../../modules/order/models/order-offer-table.model'
-import { CreateOrderModel } from '../../modules/order/models/create-order.model'
-import { OrderService } from '../../modules/order/services/order.service'
+import { OrderDetailsTableModel } from '../../modules/order/models/order-details-table.model';
+import { OrderLocationTableModel } from '../../modules/order/models/order-location-table.model';
+import { OrderOffersTableModel } from '../../modules/order/models/order-offer-table.model';
+import { OrderService } from '../../modules/order/services/order.service';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-cart-view',
@@ -27,6 +27,8 @@ export class CartViewComponent implements OnInit, OnDestroy {
   cartItems = 0;
   totalPrice = 0;
   userId: number;
+  itemIndex: number;
+  limitedStock: boolean;
 
   cartDetails: CartDetailsModel[];
   saveLaterItems: SaveLaterDetails[];
@@ -39,11 +41,12 @@ export class CartViewComponent implements OnInit, OnDestroy {
   getSaveLaterItemsSubscription: ISubscription;
   deleteItemFromSaveLaterSubscription: ISubscription;
   addProductToCartSubscription: ISubscription;
+  moveSaveItemToCartSubscription: ISubscription;
   getlocationDetailsSubscription: ISubscription;
 
   constructor(
     private cartService: CartService,
-    private OrderService: OrderService,
+    private orderService: OrderService,
     private authService: AuthService,
     private saveLaterSerice: SaveForLaterService,
     private toastr: ToastrService,
@@ -81,34 +84,46 @@ export class CartViewComponent implements OnInit, OnDestroy {
         });
   }
 
-  updateCartQuantity(cartId: number, productId: number) {
-    const cartModel = new CartModel();
-    cartModel.quantity = this.cartItems;
-    cartModel.product_id = productId;
-    cartModel.user_id = this.userId;
-    cartModel.updated_by = Constants.client;
+  updateCartQuantity(cartId: number, productId: number, totalQty: number, itemIndex: number) {
+    this.limitedStock = false;
 
-    this.editCartDetailsSubscription = this.cartService.editCartDetails(cartId, cartModel)
-      .subscribe(response => {
+    this.calculateCartQuantity();
 
-      },
-        (error) => {
-          this.toastr.error('', error.error.message);
-        });
+    if (this.cartDetails[itemIndex].quantity > totalQty) {
+      this.limitedStock = true;
+      this.itemIndex = itemIndex;
+    } else {
+
+      const cartModel = new CartModel();
+      cartModel.quantity = this.cartItems;
+      cartModel.product_id = productId;
+      cartModel.user_id = this.userId;
+      cartModel.updated_by = Constants.client;
+
+      this.editCartDetailsSubscription = this.cartService.editCartDetails(cartId, cartModel)
+        .subscribe(response => {
+
+        },
+          (error) => {
+            this.toastr.error('', error.error.message);
+          });
+    }
+
   }
 
-  moveCartItemToSaveLater(productId: number, cartId: number) {
+  moveCartItemToSaveLater(item: CartModel, index: number) {
     const saveLaterModel = new SaveLaterModel();
     saveLaterModel.user_id = this.userId;
-    saveLaterModel.product_id = productId;
+    saveLaterModel.product_id = item.id;
     saveLaterModel.created_by = Constants.client;
 
     this.moveItemToSaveLaterSubscription = this.saveLaterSerice.moveCartItemToSaveLater(saveLaterModel)
       .subscribe(response => {
 
         if (response) {
-          this.getCartDetails(this.userId);
+          this.cartDetails.splice(index, 1);
           this.getSaveLaterItems(this.userId);
+          this.calculateCartQuantity();
         }
       },
         (error) => {
@@ -116,8 +131,8 @@ export class CartViewComponent implements OnInit, OnDestroy {
         });
   }
 
-  deleteItemFromSaveLaterList(productId: number) {
-    this.deleteItemFromSaveLaterSubscription = this.saveLaterSerice.deleteItemFromSaveLater(productId)
+  deleteItemFromSaveLaterList(saveLaterId: number) {
+    this.deleteItemFromSaveLaterSubscription = this.saveLaterSerice.deleteItemFromSaveLater(saveLaterId)
       .subscribe(response => {
 
       },
@@ -127,17 +142,17 @@ export class CartViewComponent implements OnInit, OnDestroy {
 
   }
 
-  addProductToCart(item: SaveLaterDetails) {
+  moveSaveItemToCart(item: SaveLaterDetails, index: number) {
     const cartModel = new CartModel();
     cartModel.user_id = this.userId;
     cartModel.product_id = item.productId;
     cartModel.quantity = 1;
     cartModel.created_by = Constants.client;
-    this.addProductToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
+    this.moveSaveItemToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
 
       if (response) {
+        this.saveLaterItems.splice(index, 1);
         this.getCartDetails(this.userId);
-        this.getSaveLaterItems(this.userId);
       }
     },
       (error) => {
@@ -152,8 +167,18 @@ export class CartViewComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.cartDetails.length; i++) {
       this.cartItems = this.cartItems + Number(this.cartDetails[i].quantity);
       this.totalPrice = this.totalPrice + Number(this.cartDetails[i].price) * Number(this.cartDetails[i].quantity);
-
     }
+  }
+
+  navigateToProductDetailPage(productId: number) {
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { productId: productId }
+    };
+
+    const path = `${RoutePathConfig.Home}/${RoutePathConfig.ProductsDetail}`;
+
+    this.router.navigate([path], navigationExtras);
   }
 
   ngOnDestroy() {
@@ -172,8 +197,8 @@ export class CartViewComponent implements OnInit, OnDestroy {
     if (this.deleteItemFromSaveLaterSubscription) {
       this.deleteItemFromSaveLaterSubscription.unsubscribe();
     }
-    if (this.addProductToCartSubscription) {
-      this.addProductToCartSubscription.unsubscribe();
+    if (this.moveSaveItemToCartSubscription) {
+      this.moveSaveItemToCartSubscription.unsubscribe();
     }
     if (this.getlocationDetailsSubscription) {
       this.getlocationDetailsSubscription.unsubscribe();
@@ -207,8 +232,8 @@ export class CartViewComponent implements OnInit, OnDestroy {
           this.toastr.error('', error.error.message);
         });
   }
-  private getUserDetails(userId) {
-    this.getlocationDetailsSubscription = this.OrderService.getLocationDetails(userId).subscribe(response => {
+  private getUserDetails(userId: number) {
+    this.getlocationDetailsSubscription = this.orderService.getLocationDetails(userId).subscribe(response => {
 
       if (response) {
         this.locationDetails = response;
@@ -244,8 +269,9 @@ export class CartViewComponent implements OnInit, OnDestroy {
 
       orderModel.data.offer.push(offerModel);
     });
-    this.OrderService.orderStorage = orderModel;
-    this.router.navigate(['home/payment/method']);
+    this.orderService.orderStorage = orderModel;
+    const path = `${RoutePathConfig.Home}/${RoutePathConfig.PaymentMethod}`;
+    this.router.navigate([path]);
 
   }
 

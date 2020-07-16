@@ -70,8 +70,12 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.formSubmitted = true;
 
     this.addProductSubscription = this.service.addProduct(this.formData).subscribe(response => {
-      alert('Successful');
+
+      this.toastr.success('Product Added Successfully', 'Success');
       this.formData.delete('data');
+      this.productDetailsForm.reset();
+      this.formSubmitted = false;
+      this.router.navigate([RoutePathConfig.Home]);
     },
       (error) => {
         this.formData.delete('data');

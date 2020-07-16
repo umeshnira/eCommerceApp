@@ -30,8 +30,8 @@ export class SaveForLaterService extends HttpBaseService {
       );
   }
 
-  deleteItemFromSaveLater(productID: number) {
-    const url = `${this.baseUrl}/savelater/${productID}`;
+  deleteItemFromSaveLater(saveLaterID: number) {
+    const url = `${this.baseUrl}/savelater/${saveLaterID}`;
     return this.http.delete<ApiResponseModel>(url)
       .pipe(catchError(this.handleError)
       );

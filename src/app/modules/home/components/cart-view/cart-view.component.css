@@ -65,11 +65,26 @@ a:hover {
   border-color: #eeb933 #eeb933 #eeb933;
   color: #111;
 }
-.cart-image-style{
+
+.cart-image-style {
   width: 200px;
   height: 200px;
 }
+
 .cart-buttons {
   margin: 10px;
   width: 100px;
+}
+
+.limitedStock-message {
+  padding: 5px;
+  border: 1px solid #ae6953;
+  margin-bottom: 10px;
+  font-weight: lighter!important;
+}
+.warning-icon-color-cart{
+  color: #db7900
+}
+.font-light{
+  font-weight: lighter;
 }

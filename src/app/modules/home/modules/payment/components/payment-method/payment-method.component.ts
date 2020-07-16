@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { OrderService } from '../../../order/services/order.service'
+import { OrderService } from '../../../order/services/order.service';
 
 @Component({
   selector: 'app-payment-method',
@@ -25,25 +25,22 @@ export class PaymentMethodComponent implements OnInit, OnDestroy {
   constructor(
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private OrderService: OrderService
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
-    debugger;
-    this.orderModel = this.OrderService.orderStorage;
+    this.orderModel = this.orderService.orderStorage;
 
   }
   orderProducts() {
-    this.addOrderSubcri = this.OrderService.addOrder(this.orderModel).subscribe(response => {
-      debugger;
+    this.addOrderSubcri = this.orderService.addOrder(this.orderModel).subscribe(response => {
       if (response) {
-        alert("Product purchased !");
-        this.OrderService.orderStorage = [];
-        this.sendMailSubcri = this.OrderService.sendMail(response).subscribe(response => {
-          debugger;
-          if (response) {
-            alert("Product purchased !");
-            this.OrderService.orderStorage = [];
+        alert('Product purchased !');
+        this.orderService.orderStorage = [];
+        this.sendMailSubcri = this.orderService.sendMail(response).subscribe(res => {
+          if (res) {
+            alert('Product purchased !');
+            this.orderService.orderStorage = [];
 
           }
         },
