@@ -61,36 +61,19 @@
             <div class="col-md-3">
               <span class="font-13">SHIP TO</span>
               <div>
-                <a
-                  tabindex="0"
-                  data-placement="bottom"
-                  data-html="true"
-                  data-toggle="popover"
-                  data-trigger="hover"
-                  data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>"
-                >
-                  <span class="font-13">Address</span
-                  ><i class="fa fa-chevron-down m-l-10"></i
-                ></a>
+                <a tabindex="0" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover"
+                  data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>">
+                  <span class="font-13">Address</span><i class="fa fa-chevron-down m-l-10"></i></a>
               </div>
             </div>
             <div class="col-md-3 float">
               <span class="font-13">ORDER # {{x.id}}</span>
               <div>
-                <a> <span class="font-13 m-r-10">Order Details</span></a
-                >|
-                <a
-                  tabindex="0"
-                  role="button"
-                  data-placement="bottom"
-                  data-html="true"
-                  data-toggle="popover"
+                <a> <span class="font-13 m-r-10">Order Details</span></a>|
+                <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                   data-trigger="focus"
-                  data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>"
-                >
-                  <span class="font-13">Invoice</span
-                  ><i class="fa fa-chevron-down m-l-10"></i
-                ></a>
+                  data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
+                  <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
               </div>
             </div>
           </div>
@@ -101,20 +84,14 @@
             <br>
             <div class="row tablecart">
               <div class="col-md-3">
-                <img
-                  src="{{x.path}}"
-                  class="img-responsive"
-                />
+                <img src="{{x.path}}" class="img-responsive" />
               </div>
               <div class="col-md-6">
                 <ul>
                   <li class="font-class">
-                    <a
-                      href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
-                      >{{x.name}}</a
-                    >
+                    <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart">{{x.name}}</a>
                   </li>
-                  
+
                   <li class="font-13 text-warning">
                     {{x.qty}}x ₹{{x.price}}
                   </li>
@@ -134,7 +111,7 @@
                   </li>
                   <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
                     <button (click)="cancelOrder(x.order_detail_id)" class="btn btn-secondary btn-width">
-                     Cancel Order
+                      Cancel Order
                     </button>
                   </li>
                   <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
@@ -142,7 +119,7 @@
                       Return items
                     </button>
                   </li>
-                  <li  class="line-height-style">
+                  <li class="line-height-style">
                     <button class="btn btn-secondary btn-width">
                       Leave feedback
                     </button>
@@ -170,16 +147,10 @@
         <div class="col-md-4 product-men grid-style m-r-10">
           <div class="men-pro-item simpleCart_shelfItem">
             <div class="men-thumb-item">
-              <img
-                src="../../../assets/products/images/k1.jpg"
-                alt=""
-                title="Zeeba Basmati Rice"
-              />
+              <img src="../../../assets/products/images/k1.jpg" alt="" title="Zeeba Basmati Rice" />
               <div class="men-cart-pro">
                 <div class="inner-men-cart-pro">
-                  <a href="single.html" class="link-product-add-cart"
-                    >Quick View</a
-                  >
+                  <a href="single.html" class="link-product-add-cart">Quick View</a>
                 </div>
               </div>
             </div>
@@ -188,9 +159,7 @@
               <div class="info-product-price">
                 <span class="item_price">$78.00</span>
               </div>
-              <div
-                class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
-              >
+              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                 <button class="btn btn-secondary btn-width">
                   See all buying options
                 </button>
@@ -201,16 +170,10 @@
         <div class="col-md-4 product-men grid-style">
           <div class="men-pro-item simpleCart_shelfItem">
             <div class="men-thumb-item">
-              <img
-                src="../../../assets/products/images/k10.jpg"
-                alt=""
-                title="Snickers"
-              />
+              <img src="../../../assets/products/images/k10.jpg" alt="" title="Snickers" />
               <div class="men-cart-pro">
                 <div class="inner-men-cart-pro">
-                  <a href="single.html" class="link-product-add-cart"
-                    >Quick View</a
-                  >
+                  <a href="single.html" class="link-product-add-cart">Quick View</a>
                 </div>
               </div>
             </div>
@@ -219,9 +182,7 @@
               <div class="info-product-price">
                 <span class="item_price">$78.00</span>
               </div>
-              <div
-                class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
-              >
+              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                 <button class="btn btn-warning btn-width">
                   Add to Cart
                 </button>
@@ -239,7 +200,7 @@
     </div>
     <div class="tab-pane fade" id="settings">
 
-
+      <div *ngIf="cancelOrderDetails.length>0">
         <div *ngFor="let x of cancelOrderDetails" class="panel panel-default m-t-20">
           <div class="panel-heading">
             <div class="row">
@@ -254,36 +215,19 @@
               <div class="col-md-3">
                 <span class="font-13">SHIP TO</span>
                 <div>
-                  <a
-                    tabindex="0"
-                    data-placement="bottom"
-                    data-html="true"
-                    data-toggle="popover"
-                    data-trigger="hover"
-                    data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>"
-                  >
-                    <span class="font-13">Address</span
-                    ><i class="fa fa-chevron-down m-l-10"></i
-                  ></a>
+                  <a tabindex="0" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover"
+                    data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>">
+                    <span class="font-13">Address</span><i class="fa fa-chevron-down m-l-10"></i></a>
                 </div>
               </div>
               <div class="col-md-3 float">
                 <span class="font-13">ORDER # {{x.id}}</span>
                 <div>
-                  <a> <span class="font-13 m-r-10">Order Details</span></a
-                  >|
-                  <a
-                    tabindex="0"
-                    role="button"
-                    data-placement="bottom"
-                    data-html="true"
-                    data-toggle="popover"
+                  <a> <span class="font-13 m-r-10">Order Details</span></a>|
+                  <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                     data-trigger="focus"
-                    data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>"
-                  >
-                    <span class="font-13">Invoice</span
-                    ><i class="fa fa-chevron-down m-l-10"></i
-                  ></a>
+                    data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
+                    <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
                 </div>
               </div>
             </div>
@@ -294,20 +238,14 @@
               <br>
               <div class="row tablecart">
                 <div class="col-md-3">
-                  <img
-                    src="{{x.path}}"
-                    class="img-responsive"
-                  />
+                  <img src="{{x.path}}" class="img-responsive" />
                 </div>
                 <div class="col-md-6">
                   <ul>
                     <li class="font-class">
-                      <a
-                        href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart"
-                        >{{x.name}}</a
-                      >
+                      <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart">{{x.name}}</a>
                     </li>
-                    
+
                     <li class="font-13 text-warning">
                       {{x.qty}}x ₹{{x.price}}
                     </li>
@@ -325,7 +263,7 @@
 
                     <li class="line-height-style">
                       <button class="btn btn-secondary btn-width">
-                        Leave  feedback
+                        Leave feedback
                       </button>
                     </li>
                     <li class="line-height-style">
@@ -340,7 +278,7 @@
             </div>
           </div>
         </div>
-      
+      </div>
     </div>
   </div>
 </div>
