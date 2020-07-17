@@ -62,6 +62,8 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
     this.editProductSubscription = this.service.editProduct(this.productId, this.formData).subscribe(response => {
       this.formData.delete('data');
+      this.toastr.success('Product Updated Successfully', 'Success');
+      this.router.navigate([RoutePathConfig.Home]);
     },
       (error) => {
         this.formData.delete('data');
@@ -127,7 +129,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
     productModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
     productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.price = this.productDetailsForm?.controls['price'].value;
-    productModel.images = this.imageList;
+    this.imageList.forEach(element => {
+      productModel.images.push(element.name);
+    });
 
     if (this.categoryId) {
       productModel.category_id = this.categoryId;

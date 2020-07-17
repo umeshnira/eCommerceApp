@@ -15,7 +15,7 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
 
   categoryId: number;
 
-  subCategoriesList: SubCategoryModel;
+  subCategoriesList: SubCategoryModel[];
 
   getAllCategoriesSubscription: ISubscription;
   deleteSubCategorySubscription: ISubscription;
@@ -41,10 +41,11 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteSubCategory(subCategoryId: number) {
+  deleteSubCategory(subCategoryId: number, index: number) {
     this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategoryId).subscribe(response => {
 
       if (response) {
+        this.subCategoriesList.splice(index, 1);
         this.toastr.success('SubCategory Deleted Successfully', 'Success');
       }
     }, (error) => {

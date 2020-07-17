@@ -30,7 +30,7 @@
                 the product detail page.</a></label>
           </div>
           <div class="col-md-3">
-            <img src="http://localhost:1337/images/products/{{cart.image}}" alt=" "
+            <img [src]="cart.path" alt=" "
               class="img-responsive cart-image-style" />
           </div>
           <div class="col-md-6">
@@ -76,7 +76,7 @@
       </h4>
       <div *ngFor="let item of saveLaterItems; let i = index;" class="row tablecart">
         <div class="col-md-3">
-          <img src="http://localhost:1337/images/products/{{item.image}}" alt=" " class="img-responsive" />
+          <img [src]="item.path" alt=" " class="img-responsive" />
         </div>
         <div class="col-md-6">
           <ul>

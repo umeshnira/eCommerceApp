@@ -23,7 +23,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   formSubmitted: boolean;
   isEdit: boolean;
 
-  categories: CategoryTreeViewModel;
+  categories: CategoryTreeViewModel[];
   subCategory: SubCategoryModel;
   field: Object;
   subCategoryForm: FormGroup;
@@ -67,6 +67,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
           this.formSubmitted = false;
           this.subCategoryForm.reset();
           this.toastr.success('SubCategory Added Successfully', 'Success');
+          this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.SubCategoryList}`]);
         },
           (error) => {
             this.toastr.error('', error.error.message);
@@ -75,8 +76,8 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   }
 
   categoryNodeclicked(event) {
-    const value = event.node.textContent;
-    this.subCategoryForm?.controls['parentCategory'].setValue(value);
+    const categoryName = event.node.textContent;
+    this.subCategoryForm?.controls['parentCategory'].setValue(categoryName);
     this.categoryId = Number(event.node.dataset.uid);
   }
 
@@ -96,6 +97,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
           this.formSubmitted = false;
           this.subCategoryForm.reset();
           this.toastr.success('SubCategory Updated Successfully', 'Success');
+          this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.SubCategoryList}`]);
         },
           (error) => {
             this.toastr.error('', error.error.message);

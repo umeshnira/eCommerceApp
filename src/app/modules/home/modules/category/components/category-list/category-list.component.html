@@ -22,7 +22,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let category of categories">
+                <tr *ngFor="let category of categories; let i = index;">
                   <td>{{category?.name}}</td>
                   <td>{{category?.created_at |date}}</td>
                   <td>{{category?.created_by}}</td>
@@ -32,7 +32,7 @@
                     </a>
 
                     <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
-                        (click)="deleteCategory(category?.id)"></i>
+                        (click)="deleteCategory(category?.id, i)"></i>
                     </a>
                   </td>
                 </tr>

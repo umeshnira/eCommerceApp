@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
+import { SubscriptionLike as ISubscription, Subject, AsyncSubject, Observer } from 'rxjs';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,17 +8,17 @@ import { Constants } from 'src/app/shared/models/constants';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { ProductDetailsModel } from '../../models/product-details.model';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
-import { Image } from '../../models/product-image.model';
 import { CartModel } from '../../models/cart.model';
 import { CartService } from 'src/app/modules/home/services/cart.service';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { HeaderService } from 'src/app/shared/services/header.service';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
-export class ProductsListComponent implements OnInit, OnDestroy {
+export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
 
   categoryId: number;
   userId: number;
@@ -38,12 +38,19 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     private service: ProductService,
     private authService: AuthService,
     private cartService: CartService,
+    private header: HeaderService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.header.getCategoryId().subscribe(res => {
+      debugger;
+        this.categoryId = res;
+      });
+      // this.getProductsByCategoryId(this.categoryId);
+
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
     const userRole = userDetails.role;
@@ -56,14 +63,24 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.getProductsByCategoryId(this.categoryId);
   }
 
+  ngOnChanges() {
+    // console.log('hi');
+    // this.header.getCategoryId().subscribe(res => {
+    //   this.categoryId = res;
+    // })
+    // this.getProductsByCategoryId(this.categoryId);
+  }
+
   categoryNodeclicked(event) {
     this.categoryId = event.node.dataset.uid;
     this.getProductsByCategoryId(this.categoryId);
   }
 
-  deleteProduct(productId: number) {
+  deleteProduct(productId: number, index: number) {
     this.deleteProductSubscription = this.service.deleteProduct(productId).subscribe(response => {
 
+      this.products.splice(index, 1);
+      this.toastr.success('Deleted Product Successfully', 'Success');
     },
       (error) => {
         this.toastr.error('', error.error.message);
@@ -83,6 +100,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.addProductToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
 
       if (response) {
+        this.toastr.success('Product Added to Cart Successfully', 'Success');
         this.router.navigate([RoutePathConfig.Home]);
       }
     },

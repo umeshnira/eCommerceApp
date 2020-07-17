@@ -62,6 +62,7 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
             this.formSubmitted = false;
             this.categoryForm.reset();
             this.toastr.success('Category Added Successfully', 'Success');
+            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.CategoryList}`]);
           },
             (error) => {
               this.toastr.error('', error.error.message);
@@ -83,6 +84,7 @@ export class AddEditCategoryComponent implements OnInit, OnDestroy {
             this.formSubmitted = false;
             this.categoryForm.reset();
             this.toastr.success('Category Updated Successfully', 'Success');
+            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.CategoryList}`]);
           },
             (error) => {
               this.toastr.error('', error.error.message);

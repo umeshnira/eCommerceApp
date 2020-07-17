@@ -12,7 +12,7 @@ import { CategoryModel } from '../../models/category.model';
 })
 export class ListCategoryComponent implements OnInit, OnDestroy {
 
-  categories: CategoryModel;
+  categories: CategoryModel[];
 
   getCategoriesSubscription: ISubscription;
   deleteCategorySubscription: ISubscription;
@@ -38,9 +38,10 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteCategory(categoryId: number) {
+  deleteCategory(categoryId: number, index: number) {
     this.deleteCategorySubscription = this.service.deleteCategory(categoryId).subscribe(response => {
-      this.getCategories();
+
+      this.categories.splice(index, 1);
       this.toastr.success('Category Deleted Successfully', 'Success');
     },
       (error) => {

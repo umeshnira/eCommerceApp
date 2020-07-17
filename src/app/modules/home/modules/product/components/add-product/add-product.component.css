@@ -34,3 +34,9 @@
   font-weight:100px;
   color: #38424c;
 }
+.h-60 {
+  height: 60px!important;
+}
+.m-topN-25{
+  margin-top: -25px;
+}

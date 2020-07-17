@@ -8,3 +8,7 @@
 .w-100p {
     width: 100%;
 }
+.cart-button {
+    margin: 10px;
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  }

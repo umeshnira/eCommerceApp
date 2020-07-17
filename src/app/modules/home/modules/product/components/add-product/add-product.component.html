@@ -81,10 +81,10 @@
               <div *ngIf="formSubmitted && form.batch.errors?.required" class="valid-error">Batch No is required.
               </div>
             </div>
-            <div class='col-md-6'>
+            <div class='col-md-6 h-60'>
               <label class="f-weight p-b-10"> Expiry Date</label>
               <ejs-datepicker placeholder='Enter date' formControlName="expDate"></ejs-datepicker>`
-              <div *ngIf="formSubmitted && form.expDate.errors?.required" class="valid-error">Expiry Date is required.
+              <div *ngIf="formSubmitted && form.expDate.errors?.required" class="valid-error m-topN-25">Expiry Date is required.
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ export class RoutePathConfig {
     // Auth
     public static readonly ClientRegister = 'client/register';
     public static readonly SellerRegister = 'seller/register';
+    public static readonly Login = 'auth/login';
 
     // Home
     public static readonly Cart = 'cart';
@@ -20,11 +21,14 @@ export class RoutePathConfig {
     // Products
     public static readonly Products = 'products';
     public static readonly ProductsDetail = 'products/details';
+    public static readonly CreateProducts = 'products/add';
 
     // Category
     public static readonly CreateCategory = 'categories/create';
+    public static readonly CategoryList = 'categories';
 
     // Sub-categories
     public static readonly CreateSubCategory = 'categories/sub-categories/create';
+    public static readonly SubCategoryList = 'categories/sub-categories';
 }
 

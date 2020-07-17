@@ -9,4 +9,5 @@ export class CartDetailsModel {
     price: number;
     total_qty: number;
     quantity: number;
+    path: string;
 }

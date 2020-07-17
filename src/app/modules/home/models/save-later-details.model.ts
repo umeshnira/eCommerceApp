@@ -8,4 +8,5 @@ export class SaveLaterDetails {
     price: number;
     productId: number;
     total_qty: number;
+    path: string;
 }

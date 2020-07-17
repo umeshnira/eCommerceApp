@@ -135,6 +135,9 @@ export class CartViewComponent implements OnInit, OnDestroy {
     this.deleteItemFromSaveLaterSubscription = this.saveLaterSerice.deleteItemFromSaveLater(saveLaterId)
       .subscribe(response => {
 
+        if(response){
+          // this.saveLaterItems.splice(index, 1)
+        }
       },
         (error) => {
           this.toastr.error('', error.error.message);
