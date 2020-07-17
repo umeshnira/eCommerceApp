@@ -14,10 +14,11 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   private getOrderSubscrip: ISubscription;
   private getCancelOrderSubscrip: ISubscription;
+  private cancelOrderSubscrip: ISubscription;
 
   public orderDetails = new OrderDetailsModel();
   public cancelOrderDetails = new OrderDetailsModel();
-  
+
   constructor(
     private service: OrderService,
     private toastr: ToastrService,
@@ -32,6 +33,19 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.getUserOrderDetails(this.userId);
   }
 
+  cancelOrder(id: number) {
+    this.cancelOrderSubscrip = this.service.cancelOrder(id).subscribe(res => {
+      if (res) {
+        alert("order cancelled");
+        this.getUserOrderDetails(this.userId);
+      }
+
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+
   ngOnDestroy() {
     if (this.getOrderSubscrip) {
       this.getOrderSubscrip.unsubscribe();
@@ -39,33 +53,43 @@ export class OrderComponent implements OnInit, OnDestroy {
     if (this.getCancelOrderSubscrip) {
       this.getCancelOrderSubscrip.unsubscribe();
     }
+    if (this.cancelOrderSubscrip) {
+      this.cancelOrderSubscrip.unsubscribe();
+    }
   }
 
   private getUserOrderDetails(id: number) {
-    this.getOrderSubscrip = this.service.getUserOrders(id).subscribe((res: OrderDetailsModel) => {
+    this.getOrderSubscrip = this.service.getUserOrders(id).subscribe((res) => {
+    
+      res.forEach(x => {
+        x.ordered_date = this.formatDate(x.ordered_date);
+      });
       this.orderDetails = res;
-
     },
       (error) => {
         this.toastr.error('', error.error.message);
       });
   }
   public getCancelledOrders() {
-    this.getCancelOrderSubscrip = this.service.getCancelledOrders(this.userId).subscribe((res: OrderDetailsModel) => {
+    this.getCancelOrderSubscrip = this.service.getCancelledOrders(this.userId).subscribe((res) => {
+      res.forEach(x => {
+        x.ordered_date = this.formatDate(x.ordered_date);
+      });
       this.cancelOrderDetails = res;
-
     },
       (error) => {
         this.toastr.error('', error.error.message);
       });
   }
-  private cancelOrder(id: number) {
-    this.service.cancelOrder(id).subscribe((res: OrderDetailsModel) => {
-      alert("order cancelled")
-      this.getUserOrderDetails(this.userId);
-    },
-      (error) => {
-        this.toastr.error('', error.error.message);
-      });
+  private formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [day, month, year].join('-');
   }
 }
