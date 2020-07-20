@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, Input, OnChanges } from '@angular/core';
-import { SubscriptionLike as ISubscription, Subject, AsyncSubject, Observer } from 'rxjs';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { SubscriptionLike as ISubscription} from 'rxjs';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,14 +11,15 @@ import { CategoryTreeViewModel } from '../../../category/models/category-tree-vi
 import { CartModel } from '../../models/cart.model';
 import { CartService } from 'src/app/modules/home/services/cart.service';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
-import { HeaderService } from 'src/app/shared/services/header.service';
+import { GenericStateManagerService } from 'src/app/shared/services/generic-state-manager.service';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
-export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
+
+export class ProductsListComponent implements OnInit, OnDestroy {
 
   categoryId: number;
   userId: number;
@@ -32,25 +33,20 @@ export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
   getProductsByCategoryIdSubscription: ISubscription;
   deleteProductSubscription: ISubscription;
   addProductToCartSubscription: ISubscription;
+  changeInCategoryIdSubscription: ISubscription;
 
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
     private authService: AuthService,
     private cartService: CartService,
-    private header: HeaderService,
+    private genericService: GenericStateManagerService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.header.getCategoryId().subscribe(res => {
-      debugger;
-        this.categoryId = res;
-      });
-      // this.getProductsByCategoryId(this.categoryId);
-
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
     const userRole = userDetails.role;
@@ -58,17 +54,10 @@ export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
       this.isUser = true;
     }
 
+    this.changeInCategoryId();
     this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getSubCategoryList();
     this.getProductsByCategoryId(this.categoryId);
-  }
-
-  ngOnChanges() {
-    // console.log('hi');
-    // this.header.getCategoryId().subscribe(res => {
-    //   this.categoryId = res;
-    // })
-    // this.getProductsByCategoryId(this.categoryId);
   }
 
   categoryNodeclicked(event) {
@@ -143,6 +132,9 @@ export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
     if (this.addProductToCartSubscription) {
       this.addProductToCartSubscription.unsubscribe();
     }
+    if (this.changeInCategoryIdSubscription) {
+      this.changeInCategoryIdSubscription.unsubscribe();
+    }
   }
 
   private getProductsByCategoryId(categoryId: number) {
@@ -155,6 +147,13 @@ export class ProductsListComponent implements OnInit, OnDestroy, OnChanges {
           this.toastr.error('', error.error.message);
         });
 
+  }
+
+  private changeInCategoryId() {
+    this.changeInCategoryIdSubscription = this.genericService.categoryIdChanged.subscribe((res: number) => {
+      this.categoryId = res;
+      this.getProductsByCategoryId(this.categoryId);
+    });
   }
 
   private getSubCategoryList() {

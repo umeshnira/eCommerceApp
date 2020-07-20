@@ -65,22 +65,31 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   addProduct() {
-    this.addingValues();
+    const productModel = this.addingValues();
 
-    this.formSubmitted = true;
+    if (!productModel.category_id) {
+      this.toastr.warning('Please select a category to proceed', 'Warning');
+    } else {
+      const model = JSON.stringify(productModel);
+      if (model) {
+        this.formData.append('data', model);
+      }
 
-    this.addProductSubscription = this.service.addProduct(this.formData).subscribe(response => {
+      this.formSubmitted = true;
 
-      this.toastr.success('Product Added Successfully', 'Success');
-      this.formData.delete('data');
-      this.productDetailsForm.reset();
-      this.formSubmitted = false;
-      this.router.navigate([RoutePathConfig.Home]);
-    },
-      (error) => {
+      this.addProductSubscription = this.service.addProduct(this.formData).subscribe(response => {
+
+        this.toastr.success('Product Added Successfully', 'Success');
         this.formData.delete('data');
-        this.toastr.error('', error.error.message);
-      });
+        this.productDetailsForm.reset();
+        this.formSubmitted = false;
+        this.router.navigate([RoutePathConfig.Home]);
+      },
+        (error) => {
+          this.formData.delete('data');
+          this.toastr.error('', error.error.message);
+        });
+    }
   }
 
   deleteFile(index: number) {
@@ -131,10 +140,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
     productModel.price = this.productDetailsForm?.controls['price'].value;
     productModel.category_id = this.categoryId;
 
-    const model = JSON.stringify(productModel);
-    if (model) {
-      this.formData.append('data', model);
-    }
+    return productModel;
+
   }
 
   private productFormInitialization() {

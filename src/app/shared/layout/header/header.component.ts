@@ -5,7 +5,7 @@ import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { CategoryService } from '../../services/category.service';
 import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
 import { ToastrService } from 'ngx-toastr';
-import { HeaderService } from '../../services/header.service';
+import { GenericStateManagerService } from '../../services/generic-state-manager.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService,
-    private header: HeaderService,
+    private genericService: GenericStateManagerService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -36,15 +36,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   routeToProductList(event) {
     this.categoryId = event.target.value;
 
-    this.header.emitCategoryId(this.categoryId);
-    // this.router.navigate([RoutePathConfig.Products]);
-    // this.change.emit(this.categoryId);
-    let navigationExtras: NavigationExtras;
-    navigationExtras = {
-      queryParams: { categoryId: this.categoryId },
-      relativeTo: this.route
-    };
-    this.router.navigate([RoutePathConfig.Products], navigationExtras);
+    const currentRoute = this.router.url;
+
+    if (currentRoute === `/${RoutePathConfig.Home}`) {
+
+      let navigationExtras: NavigationExtras;
+      navigationExtras = {
+        queryParams: { categoryId: this.categoryId },
+        relativeTo: this.route
+      };
+      this.router.navigate([RoutePathConfig.Products], navigationExtras);
+
+    } else {
+      this.genericService.emitCategoryId(this.categoryId);
+    }
+
   }
 
   routeToProductPage() {

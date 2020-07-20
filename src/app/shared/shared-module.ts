@@ -12,7 +12,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CategoryService } from './services/category.service';
 import { SubCategoryService } from './services/sub-category.service';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
-import { HeaderService } from './services/header.service';
+import { GenericStateManagerService } from './services/generic-state-manager.service';
 
 
 
@@ -21,7 +21,7 @@ const components = [HeaderComponent, FooterComponent, DragAndDropDirective];
 const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule,
                  CheckBoxModule, DatePickerModule, TabsModule];
 
-const providers = [LocalCartStorageService, CategoryService, SubCategoryService, HeaderService];
+const providers = [LocalCartStorageService, CategoryService, SubCategoryService, GenericStateManagerService];
 
 @NgModule({
   imports: modules,

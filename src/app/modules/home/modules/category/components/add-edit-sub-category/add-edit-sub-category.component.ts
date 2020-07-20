@@ -20,6 +20,7 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
 
   subCategoryId: number;
   categoryId: number;
+  categoryName: string;
   formSubmitted: boolean;
   isEdit: boolean;
 
@@ -76,9 +77,11 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   }
 
   categoryNodeclicked(event) {
-    const categoryName = event.node.textContent;
-    this.subCategoryForm?.controls['parentCategory'].setValue(categoryName);
+    // const categoryName = event.node.textContent;
     this.categoryId = Number(event.node.dataset.uid);
+    const category = this.getCategoryName(this.categories, this.categoryId);
+    this.categoryName = category.name;
+    this.subCategoryForm?.controls['parentCategory'].setValue(this.categoryName);
   }
 
   navigateToHomePage() {
@@ -120,13 +123,31 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  prepareSubCategoryRequestModel() {
+ private  prepareSubCategoryRequestModel() {
     const subCategoryModel = new SubCategoryModel();
     subCategoryModel.parent_category_id = this.categoryId;
     subCategoryModel.name = this.subCategoryForm?.controls['name'].value;
     subCategoryModel.description = this.subCategoryForm?.controls['description'].value;
 
     return subCategoryModel;
+  }
+
+  private getCategoryName(categories: Array<CategoryTreeViewModel>, id) {
+    const category = categories.find(x => x.id === id);
+    if (category) {
+      return category;
+    } else {
+      for (const cat of categories) {
+        const subCategories = cat.subCategories.find(x => x.id === id);
+        if (subCategories) {
+          return subCategories;
+          break;
+        } else {
+          this.getCategoryName(cat.subCategories, id);
+        }
+      }
+    }
+
   }
 
   private getSubCategory(subCategoryId) {
