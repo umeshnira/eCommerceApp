@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
@@ -19,8 +19,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   categoryList: CategoryModel;
   getCategoriesSubscription: ISubscription;
 
-  @Output() change = new EventEmitter();
-
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService,
@@ -38,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     const currentRoute = this.router.url;
 
-    if (currentRoute === `/${RoutePathConfig.Home}`) {
+    if (currentRoute.substring(0, 14) !== `/${RoutePathConfig.Home}/${RoutePathConfig.Products}`) {
 
       let navigationExtras: NavigationExtras;
       navigationExtras = {

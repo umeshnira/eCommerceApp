@@ -9,12 +9,13 @@ import { FirstPageService } from './services/first-page.service';
 import { LocalWhishListService } from './services/local-whish-list.service';
 import { SaveForLaterService } from './services/save-for-later.service';
 import { CartService } from './services/cart.service';
+import { WishListService } from './services/wish-list.service';
 
 const modules = [HomeRoutingModule, SharedModule];
 
 const components = [CartViewComponent, HomePageComponent, WishlistComponent, HomeLayoutComponent];
 
-const providers = [FirstPageService, LocalWhishListService, SaveForLaterService, CartService];
+const providers = [FirstPageService, LocalWhishListService, SaveForLaterService, CartService, WishListService];
 
 @NgModule({
     imports: modules,

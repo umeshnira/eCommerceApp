@@ -152,6 +152,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   private changeInCategoryId() {
     this.changeInCategoryIdSubscription = this.genericService.categoryIdChanged.subscribe((res: number) => {
       this.categoryId = res;
+      this.getSubCategoryList();
       this.getProductsByCategoryId(this.categoryId);
     });
   }

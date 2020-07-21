@@ -77,7 +77,6 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
   }
 
   categoryNodeclicked(event) {
-    // const categoryName = event.node.textContent;
     this.categoryId = Number(event.node.dataset.uid);
     const category = this.getCategoryName(this.categories, this.categoryId);
     this.categoryName = category.name;
@@ -132,22 +131,18 @@ export class AddEditSubCategoryComponent implements OnInit, OnDestroy {
     return subCategoryModel;
   }
 
-  private getCategoryName(categories: Array<CategoryTreeViewModel>, id) {
-    const category = categories.find(x => x.id === id);
-    if (category) {
-      return category;
-    } else {
-      for (const cat of categories) {
-        const subCategories = cat.subCategories.find(x => x.id === id);
-        if (subCategories) {
-          return subCategories;
-          break;
-        } else {
-          this.getCategoryName(cat.subCategories, id);
+  private getCategoryName(categories: Array<CategoryTreeViewModel>, id: number) {
+    if (categories) {
+      for (let i = 0; i < categories.length; i++) {
+        if (categories[i].id === id) {
+          return categories[i];
+        }
+        const hasFoundCategory = this.getCategoryName(categories[i].subCategories, id);
+        if (hasFoundCategory) {
+          return hasFoundCategory;
         }
       }
     }
-
   }
 
   private getSubCategory(subCategoryId) {

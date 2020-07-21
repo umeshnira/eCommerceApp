@@ -66,7 +66,9 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
     this.getAllCategoriesSubscription = this.service.getAllSubCategories().subscribe(response => {
 
       if (response) {
-        this.subCategoriesList = response;
+        const responseList = response;
+
+        this.subCategoriesList = responseList.filter(x => x.parent_category_id !== null);
       }
     },
       (error) => {
@@ -74,5 +76,7 @@ export class ListSubCategoryComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+
 
 }

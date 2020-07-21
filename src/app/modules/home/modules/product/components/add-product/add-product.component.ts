@@ -135,7 +135,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     productModel.about = this.productDetailsForm?.controls['about'].value;
     productModel.star_rate = this.productDetailsForm?.controls['starRate'].value;
     productModel.status = Status.Active;
-    productModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
+    productModel.left_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.price = this.productDetailsForm?.controls['price'].value;
     productModel.category_id = this.categoryId;
@@ -160,7 +160,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
       barCode: new FormControl('', [Validators.required]),
       about: new FormControl('', [Validators.required]),
       starRate: new FormControl('', [Validators.required]),
-      leftQty: new FormControl('', [Validators.required]),
       totalQty: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
     });

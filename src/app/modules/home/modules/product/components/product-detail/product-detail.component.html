@@ -66,8 +66,11 @@
           <li>
             Best Before: {{productDetails.exp_date | date}}
           </li>
-          <li class="text-success">
+          <li class="text-success" *ngIf="!outOfStock">
             In stock : {{productDetails.left_qty}}
+          </li>
+          <li class="text-danger" *ngIf="outOfStock">
+            Out of stock 
           </li>
           <!-- <li>Delivery by: Sat, May 16 <a>Details</a></li> -->
           <!-- <li>

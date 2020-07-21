@@ -6,5 +6,5 @@ export class CreateOrderModel {
         location: [];
         details: [];
         offer: [];
-    }
+    };
 }

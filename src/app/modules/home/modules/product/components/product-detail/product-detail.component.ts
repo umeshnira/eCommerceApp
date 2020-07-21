@@ -23,6 +23,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   productId: number;
   userId: number;
+  outOfStock: boolean;
+
   productDetails = new ProductDetailsModel();
   getProductSubscription: ISubscription;
   addProductToCartSubscription: ISubscription;
@@ -73,11 +75,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   private getProductDetails(productId: number) {
     this.getProductSubscription = this.productService.getProductDetails(productId).subscribe((response: ProductDetailsModel) => {
       this.productDetails = response;
+      this.checkStock();
       init_ExZoom_Container();
     },
       (error) => {
         this.toastr.error('', error.error.message);
       });
+  }
+
+  private checkStock() {
+    if (this.productDetails.left_qty === 0) {
+      this.outOfStock = true;
+    }
   }
 
 }

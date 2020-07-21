@@ -88,3 +88,7 @@ a:hover {
 .font-light{
   font-weight: lighter;
 }
+.cart-rupees-text {
+  font-weight: 600;
+  color: #ae2727;
+}

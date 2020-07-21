@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { CartModel } from '../modules/product/models/cart.model';
+import { WishListModel } from '../models/wish-list.model';
 import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 import { catchError } from 'rxjs/operators';
-import { CartDetailsModel } from '../models/cart-details.model';
 
 @Injectable()
-export class CartService extends HttpBaseService {
+
+export class WishListService extends HttpBaseService {
 
   baseUrl = environment.api.baseUrl;
 
@@ -16,31 +16,25 @@ export class CartService extends HttpBaseService {
     super();
   }
 
-  addProductToCart(model: CartModel) {
-    const url = `${this.baseUrl}/carts`;
+  moveSaveLaterItemToWishList(model: WishListModel) {
+    const url = `${this.baseUrl}/wishlist`;
     return this.http.post<ApiResponseModel>(url, model)
       .pipe(catchError(this.handleError)
       );
   }
 
-  editCartDetails(cartId: number, model: CartModel) {
-    const url = `${this.baseUrl}/carts/${cartId}`;
-    return this.http.patch<ApiResponseModel>(url, model)
+  getWishListItemsByUserId(userId: number) {
+    const url = `${this.baseUrl}/wishlist/${userId}`;
+    return this.http.get<ApiResponseModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
-  deleteProductFromCart(cartId: number) {
-    const url = `${this.baseUrl}/carts/${cartId}`;
+  deleteWishListItem(wishListId: number) {
+    const url = `${this.baseUrl}/savelater/${wishListId}`;
     return this.http.delete<ApiResponseModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
-  getCartDetails(userId: number) {
-    const url = `${this.baseUrl}/carts/${userId}`;
-    return this.http.get<CartDetailsModel>(url)
-      .pipe(catchError(this.handleError)
-      );
-  }
 }

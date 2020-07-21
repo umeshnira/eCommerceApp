@@ -105,12 +105,6 @@
           </div>
           <div class="row p-t-10">
             <div class='col-md-6'>
-              <label class="f-weight p-b-10"> Quantity</label>
-              <input type="number" class="form-control" id="Quantity" placeholder="Quantity" formControlName="leftQty">
-              <div *ngIf="formSubmitted && form.leftQty.errors?.required" class="valid-error">Quantity is required.
-              </div>
-            </div>
-            <div class='col-md-6'>
               <label class="f-weight p-b-10"> Total Quantity</label>
               <input type="number" class="form-control" id="TotalQuantity" placeholder="Total Quantity"
                 formControlName="totalQty">
@@ -118,8 +112,6 @@
                 required.
               </div>
             </div>
-          </div>
-          <div class="row p-t-10">
             <div class='col-md-6'>
               <label class="f-weight p-b-10"> Price</label>
               <input type="number" class="form-control" id="Price" placeholder="Price" formControlName="price">

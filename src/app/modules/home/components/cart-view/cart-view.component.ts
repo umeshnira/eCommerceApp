@@ -15,6 +15,8 @@ import { OrderLocationTableModel } from '../../modules/order/models/order-locati
 import { OrderOffersTableModel } from '../../modules/order/models/order-offer-table.model';
 import { OrderService } from '../../modules/order/services/order.service';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { WishListModel } from '../../models/wish-list.model';
+import { WishListService } from '../../services/wish-list.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -29,6 +31,7 @@ export class CartViewComponent implements OnInit, OnDestroy {
   userId: number;
   itemIndex: number;
   limitedStock: boolean;
+  outOfStock: boolean;
 
   cartDetails: CartDetailsModel[];
   saveLaterItems: SaveLaterDetails[];
@@ -43,12 +46,14 @@ export class CartViewComponent implements OnInit, OnDestroy {
   addProductToCartSubscription: ISubscription;
   moveSaveItemToCartSubscription: ISubscription;
   getlocationDetailsSubscription: ISubscription;
+  moveItemToWishListSubscription: ISubscription;
 
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
     private authService: AuthService,
     private saveLaterSerice: SaveForLaterService,
+    private wishListService: WishListService,
     private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute
@@ -84,23 +89,25 @@ export class CartViewComponent implements OnInit, OnDestroy {
         });
   }
 
-  updateCartQuantity(cartId: number, productId: number, totalQty: number, itemIndex: number) {
+  updateCartQuantity(item: CartDetailsModel, event: any, itemIndex: number) {
     this.limitedStock = false;
+
+    const newQuantity = event.target.value;
 
     this.calculateCartQuantity();
 
-    if (this.cartDetails[itemIndex].quantity > totalQty) {
+    if (newQuantity > item.left_qty) {
       this.limitedStock = true;
       this.itemIndex = itemIndex;
     } else {
 
       const cartModel = new CartModel();
-      cartModel.quantity = this.cartItems;
-      cartModel.product_id = productId;
+      cartModel.quantity = newQuantity;
+      cartModel.product_id = item.id;
       cartModel.user_id = this.userId;
       cartModel.updated_by = Constants.client;
 
-      this.editCartDetailsSubscription = this.cartService.editCartDetails(cartId, cartModel)
+      this.editCartDetailsSubscription = this.cartService.editCartDetails(item.CartId, cartModel)
         .subscribe(response => {
 
         },
@@ -131,12 +138,31 @@ export class CartViewComponent implements OnInit, OnDestroy {
         });
   }
 
-  deleteItemFromSaveLaterList(saveLaterId: number) {
+  moveItemToWishList(item: SaveLaterDetails, index: number) {
+    const wishListModel = new WishListModel();
+    wishListModel.user_id = this.userId;
+    wishListModel.product_id = item.productId;
+    wishListModel.created_by = Constants.client;
+
+    this.moveItemToWishListSubscription = this.wishListService.moveSaveLaterItemToWishList(wishListModel)
+      .subscribe(response => {
+
+        if (response) {
+          this.toastr.success('Item Successfully moved to WishList', 'Success');
+          this.saveLaterItems.splice(index, 1);
+        }
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+  }
+
+  deleteItemFromSaveLaterList(saveLaterId: number, index: number) {
     this.deleteItemFromSaveLaterSubscription = this.saveLaterSerice.deleteItemFromSaveLater(saveLaterId)
       .subscribe(response => {
 
-        if(response){
-          // this.saveLaterItems.splice(index, 1)
+        if (response) {
+          this.saveLaterItems.splice(index, 1);
         }
       },
         (error) => {
@@ -184,6 +210,46 @@ export class CartViewComponent implements OnInit, OnDestroy {
     this.router.navigate([path], navigationExtras);
   }
 
+  placeOrder() {
+    const orderModel = {
+      data: {
+        created_by: this.userId.toString(),
+        user_id: this.userId,
+        location: this.locationDetails,
+        details: [],
+        offer: []
+      }
+    };
+
+    const checkOutOfStock = this.cartDetails.filter(x => x.left_qty === 0);
+
+    if (checkOutOfStock && checkOutOfStock.length > 0) {
+      this.toastr.warning('Please remove the out of stock item from the cart');
+    } else {
+
+      this.cartDetails.forEach(x => {
+
+        const detaisModel = new OrderDetailsTableModel();
+        detaisModel.created_by = this.userId.toString();
+        detaisModel.price = x.price;
+        detaisModel.qty = x.quantity;
+        detaisModel.product_id = x.id;
+
+        orderModel.data.details.push(detaisModel);
+
+        const offerModel = new OrderOffersTableModel();
+        offerModel.created_by = this.userId.toString();
+        offerModel.offer_id = x.offer_id;
+
+        orderModel.data.offer.push(offerModel);
+      });
+
+      this.orderService.orderStorage = orderModel;
+      const path = `${RoutePathConfig.Home}/${RoutePathConfig.PaymentMethod}`;
+      this.router.navigate([path]);
+    }
+  }
+
   ngOnDestroy() {
     if (this.getCartDetailsSubscription) {
       this.getCartDetailsSubscription.unsubscribe();
@@ -202,6 +268,9 @@ export class CartViewComponent implements OnInit, OnDestroy {
     }
     if (this.moveSaveItemToCartSubscription) {
       this.moveSaveItemToCartSubscription.unsubscribe();
+    }
+    if (this.getlocationDetailsSubscription) {
+      this.getlocationDetailsSubscription.unsubscribe();
     }
     if (this.getlocationDetailsSubscription) {
       this.getlocationDetailsSubscription.unsubscribe();
@@ -246,38 +315,6 @@ export class CartViewComponent implements OnInit, OnDestroy {
         this.toastr.error('', error.error.message);
       });
   }
-
-  placeOrder() {
-    const orderModel = {
-      data: {
-        created_by: this.userId.toString(),
-        user_id: this.userId,
-        location: this.locationDetails,
-        details: [],
-        offer: []
-      }
-    };
-    this.cartDetails.forEach(x => {
-      const detaisModel = new OrderDetailsTableModel();
-      detaisModel.created_by = this.userId.toString();
-      detaisModel.price = x.price;
-      detaisModel.qty = x.quantity;
-      detaisModel.product_id = x.id;
-
-      orderModel.data.details.push(detaisModel);
-
-      const offerModel = new OrderOffersTableModel();
-      offerModel.created_by = this.userId.toString();
-      offerModel.offer_id = x.offer_id;
-
-      orderModel.data.offer.push(offerModel);
-    });
-    this.orderService.orderStorage = orderModel;
-    const path = `${RoutePathConfig.Home}/${RoutePathConfig.PaymentMethod}`;
-    this.router.navigate([path]);
-
-  }
-
 
 }
 
