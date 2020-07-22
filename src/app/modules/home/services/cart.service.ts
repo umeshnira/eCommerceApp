@@ -43,4 +43,11 @@ export class CartService extends HttpBaseService {
       .pipe(catchError(this.handleError)
       );
   }
+
+  moveItemToCart(model: CartModel) {
+    const url = `${this.baseUrl}/carts`;
+    return this.http.put<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
+  }
 }

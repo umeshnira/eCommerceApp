@@ -1,7 +1,12 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
-import { LocalWhishListService } from '../../services/local-whish-list.service';
-import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { SubscriptionLike as ISubscription } from 'rxjs';
+import { WishListService } from '../../services/wish-list.service';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { WishListDetails } from '../../models/wish-list-details.model';
+import { CartModel } from '../../modules/product/models/cart.model';
+import { CartService } from '../../services/cart.service';
+import { Constants } from 'src/app/shared/models/constants';
 
 @Component({
   selector: 'app-wishlist',
@@ -9,35 +14,85 @@ import { LocalCartStorageService } from 'src/app/shared/services/local-cart-stor
   styleUrls: ['./wishlist.component.css'],
 })
 
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit, OnDestroy {
+  userId: number;
+  ratingClicked: number;
+  itemIdRatingClicked: string;
 
-  wishList = [];
+  wishList: WishListDetails[];
 
-  @Input() header: HeaderComponent;
+  getWhishListSubscription: ISubscription;
+  getlocationDetailsSubscription: ISubscription;
+  addToCartSubscription: ISubscription;
+  removeWishListItemSubscription: ISubscription;
 
   constructor(
-    public locCart: LocalCartStorageService,
-    public wishListSer: LocalWhishListService
+    private wishListService: WishListService,
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
-
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     this.getWhishList();
   }
 
-  getWhishList() {
+  moveToCart(item: WishListDetails) {
+    const cartModel = new CartModel();
+    cartModel.user_id = this.userId;
+    cartModel.product_id = item.productId;
+    cartModel.quantity = 1;
+    cartModel.created_by = Constants.client;
 
-    this.wishList = this.wishListSer.getWhishList();
+    this.addToCartSubscription = this.cartService.moveItemToCart(cartModel)
+      .subscribe(response => {
+        if (response) {
+          this.toastr.success('Item moved to Cart Successfully', 'Success');
+          this.removeWishList(item.id);
+        }
+
+      }, (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
-  addToCart(prod) {
+  removeWishList(wishListId: number) {
+    this.removeWishListItemSubscription = this.wishListService.deleteWishListItem(wishListId)
+      .subscribe(response => {
+        if (response) {
+          this.toastr.success('Removed Item from WishList Successfully', 'Success');
+          this.getWhishList();
+        }
 
-    this.locCart.addToCartValues(prod);
+      }, (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
-  removeWishList(productID) {
+  ngOnDestroy() {
+    if (this.getWhishListSubscription) {
+      this.getWhishListSubscription.unsubscribe();
+    }
+    if (this.removeWishListItemSubscription) {
+      this.removeWishListItemSubscription.unsubscribe();
+    }
+    if (this.addToCartSubscription) {
+      this.addToCartSubscription.unsubscribe();
+    }
+  }
 
-    this.wishListSer.deleteWhishListItem(productID);
+  private getWhishList() {
+    this.getWhishListSubscription = this.wishListService.getWishListItemsByUserId(this.userId)
+      .subscribe(response => {
+        if (response) {
+          this.wishList = response;
+        }
+
+      }, (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
 }

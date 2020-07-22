@@ -9,4 +9,6 @@ export class WishListDetails {
     productId: number;
     total_qty: number;
     path: string;
+    createdDate: Date;
+    star_rate: number;
 }

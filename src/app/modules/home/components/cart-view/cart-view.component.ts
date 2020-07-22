@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SaveForLaterService } from '../../services/save-for-later.service';
 import { CartService } from '../../services/cart.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -144,12 +144,12 @@ export class CartViewComponent implements OnInit, OnDestroy {
     wishListModel.product_id = item.productId;
     wishListModel.created_by = Constants.client;
 
-    this.moveItemToWishListSubscription = this.wishListService.moveSaveLaterItemToWishList(wishListModel)
+    this.moveItemToWishListSubscription = this.wishListService.moveItemToWishList(wishListModel)
       .subscribe(response => {
 
         if (response) {
           this.toastr.success('Item Successfully moved to WishList', 'Success');
-          this.saveLaterItems.splice(index, 1);
+          this.deleteItemFromSaveLaterList(item.id, index);
         }
       },
         (error) => {
@@ -177,11 +177,12 @@ export class CartViewComponent implements OnInit, OnDestroy {
     cartModel.product_id = item.productId;
     cartModel.quantity = 1;
     cartModel.created_by = Constants.client;
-    this.moveSaveItemToCartSubscription = this.cartService.addProductToCart(cartModel).subscribe(response => {
+    this.moveSaveItemToCartSubscription = this.cartService.moveItemToCart(cartModel).subscribe(response => {
 
       if (response) {
-        this.saveLaterItems.splice(index, 1);
+        this.deleteItemFromSaveLaterList(item.id, index);
         this.getCartDetails(this.userId);
+        this.toastr.success(`Item Successfully moved to Cart`, 'Success');
       }
     },
       (error) => {

@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     const currentRoute = this.router.url;
 
-    if (currentRoute.substring(0, 14) !== `/${RoutePathConfig.Home}/${RoutePathConfig.Products}`) {
+    if (currentRoute.substring(0, 25) !== `/${RoutePathConfig.Home}/${RoutePathConfig.Products}?categoryId`) {
 
       let navigationExtras: NavigationExtras;
       navigationExtras = {
@@ -69,6 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   routeToOrderPage() {
     this.router.navigate([RoutePathConfig.Order], { relativeTo: this.route });
+  }
+
+  routeToMyWishListPage() {
+    this.router.navigate([RoutePathConfig.WishList], { relativeTo: this.route });
   }
 
   navigateToLoginPage() {

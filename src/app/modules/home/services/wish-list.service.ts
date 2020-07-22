@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { WishListModel } from '../models/wish-list.model';
 import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
 import { catchError } from 'rxjs/operators';
+import { WishListDetails } from '../models/wish-list-details.model';
 
 @Injectable()
 
@@ -16,22 +17,22 @@ export class WishListService extends HttpBaseService {
     super();
   }
 
-  moveSaveLaterItemToWishList(model: WishListModel) {
+  moveItemToWishList(model: WishListModel) {
     const url = `${this.baseUrl}/wishlist`;
-    return this.http.post<ApiResponseModel>(url, model)
+    return this.http.put<ApiResponseModel>(url, model)
       .pipe(catchError(this.handleError)
       );
   }
 
   getWishListItemsByUserId(userId: number) {
     const url = `${this.baseUrl}/wishlist/${userId}`;
-    return this.http.get<ApiResponseModel>(url)
+    return this.http.get<WishListDetails>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
   deleteWishListItem(wishListId: number) {
-    const url = `${this.baseUrl}/savelater/${wishListId}`;
+    const url = `${this.baseUrl}/wishlist/${wishListId}`;
     return this.http.delete<ApiResponseModel>(url)
       .pipe(catchError(this.handleError)
       );
