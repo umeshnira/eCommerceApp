@@ -15,22 +15,22 @@
   </div>
   <ul class="nav nav-tabs border-class" role="tablist">
     <li class="active">
-      <a class="text-style" href="#home" role="tab" data-toggle="tab">
+      <a (click)="getOrders()" class="text-style" href="#home" role="tab" data-toggle="tab">
         Orders
       </a>
     </li>
     <li>
-      <a class="text-style" href="#profile" role="tab" data-toggle="tab">
+      <a (click)="getBuyAgain()" class="text-style" href="#buyAgain" role="tab" data-toggle="tab">
         Buy Again
       </a>
     </li>
     <li>
-      <a class="text-style" href="#messages" role="tab" data-toggle="tab">
+      <a (click)="getOpenOrder()" class="text-style" href="#openOrder" role="tab" data-toggle="tab">
         Open Orders
       </a>
     </li>
     <li>
-      <a (click)="getCancelledOrders()" class="text-style" href="#settings" role="tab" data-toggle="tab">
+      <a (click)="getCancelledOrders()" class="text-style" href="#cancelOrder" role="tab" data-toggle="tab">
         Cancelled orders
       </a>
     </li>
@@ -96,7 +96,7 @@
                     {{x.qty}}x ₹{{x.price}}
                   </li>
                   <li>
-                    <button class="btn btn-warning">
+                    <button (click)="redirectToDetails(x.product_id)" class="btn btn-warning">
                       <i class="fa fa-refresh m-r-10"></i>Buy it again
                     </button>
                   </li>
@@ -114,9 +114,9 @@
                       Cancel Order
                     </button>
                   </li>
-                  <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
-                    <button class="btn btn-secondary btn-width">
-                      Return items
+                  <li *ngIf="x.order_status=='Ordered' && x.dateGap<=15" class="line-height-style">
+                    <button (click)="returnOrder(x.order_detail_id)" class="btn btn-secondary btn-width">
+                      Return item
                     </button>
                   </li>
                   <li class="line-height-style">
@@ -142,63 +142,139 @@
       </div>
 
     </div>
-    <div class="tab-pane fade" id="profile">
-      <div class="row m-b-10">
-        <div class="col-md-4 product-men grid-style m-r-10">
+    <div class="tab-pane fade" id="buyAgain">
+      <div *ngIf="buyAgainDetails.length>0" class="row m-b-10">
+        <div *ngFor="let x of buyAgainDetails" class="col-md-4 product-men grid-style m-r-10">
           <div class="men-pro-item simpleCart_shelfItem">
             <div class="men-thumb-item">
-              <img src="../../../assets/products/images/k1.jpg" alt="" title="Zeeba Basmati Rice" />
-              <div class="men-cart-pro">
+              <img src="{{x.path}}" alt=""  />
+              <!-- <div class="men-cart-pro">
                 <div class="inner-men-cart-pro">
                   <a href="single.html" class="link-product-add-cart">Quick View</a>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="item-info-product">
-              <span class="item_price">Zeemba Rice</span>
+              <span class="item_price">{{x.name}}</span>
               <div class="info-product-price">
-                <span class="item_price">$78.00</span>
+                <span class="item_price">{{x.price}}</span>
               </div>
               <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <button class="btn btn-secondary btn-width">
-                  See all buying options
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 product-men grid-style">
-          <div class="men-pro-item simpleCart_shelfItem">
-            <div class="men-thumb-item">
-              <img src="../../../assets/products/images/k10.jpg" alt="" title="Snickers" />
-              <div class="men-cart-pro">
-                <div class="inner-men-cart-pro">
-                  <a href="single.html" class="link-product-add-cart">Quick View</a>
-                </div>
-              </div>
-            </div>
-            <div class="item-info-product">
-              <span class="item_price">Snickers</span>
-              <div class="info-product-price">
-                <span class="item_price">$78.00</span>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <button class="btn btn-warning btn-width">
+                <button (click)="redirectToDetails(x.product_id)" class="btn btn-secondary btn-width">
                   Add to Cart
                 </button>
               </div>
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
-    <div class="tab-pane fade" id="messages">
-      <p class="font-class text-style padding-30">
+    <div class="tab-pane fade" id="openOrder">
+
+      <!-- <p class="font-class text-style padding-30">
         Looking for an order? All of your orders have been dispatched.
         <a>View all orders</a>
-      </p>
+      </p> -->
+
+      <div *ngIf="openOrderDetails.length>0">
+        <div *ngFor="let x of openOrderDetails" class="panel panel-default m-t-20">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-3">
+                <span class="font-13">ORDER PLACED</span>
+                <div><span class="font-13">{{x.ordered_date}}</span></div>
+              </div>
+              <div class="col-md-3">
+                <span class="font-13">TOTAL</span>
+                <div><span class="font-13">{{x.qty*x.price}}</span></div>
+              </div>
+              <div class="col-md-3">
+                <span class="font-13">SHIP TO</span>
+                <div>
+                  <a tabindex="0" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover"
+                    data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>">
+                    <span class="font-13">Address</span><i class="fa fa-chevron-down m-l-10"></i></a>
+                </div>
+              </div>
+              <div class="col-md-3 float">
+                <span class="font-13">ORDER # {{x.id}}</span>
+                <div>
+                  <a> <span class="font-13 m-r-10">Order Details</span></a>|
+                  <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
+                    data-trigger="focus"
+                    data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
+                    <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="checkout-right list-style">
+              <h5 class="font-class"><b>{{x.order_status}} {{x.delivered_date}}</b></h5>
+              <br>
+              <div class="row tablecart">
+                <div class="col-md-3">
+                  <img src="{{x.path}}" class="img-responsive" />
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li class="font-class">
+                      <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart">{{x.name}}</a>
+                    </li>
+
+                    <li class="font-13 text-warning">
+                      {{x.qty}}x ₹{{x.price}}
+                    </li>
+                    <li>
+                      <button (click)="redirectToDetails(x.product_id)" class="btn btn-warning">
+                        <i class="fa fa-refresh m-r-10"></i>Buy it again
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 heading-style">
+                  <ul>
+                    <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
+                      <button class="btn btn-secondary btn-width">
+                        Track package
+                      </button>
+                    </li>
+                    <li *ngIf="x.order_status=='Ordered'" class="line-height-style">
+                      <button (click)="cancelOrder(x.order_detail_id)" class="btn btn-secondary btn-width">
+                        Cancel Order
+                      </button>
+                    </li>
+                    <li *ngIf="x.order_status=='Ordered' && x.dateGap<=15" class="line-height-style">
+                      <button (click)="returnOrder(x.order_detail_id)" class="btn btn-secondary btn-width">
+                        Return item
+                      </button>
+                    </li>
+
+
+                    <li class="line-height-style">
+                      <button class="btn btn-secondary btn-width">
+                        Leave feedback
+                      </button>
+                    </li>
+                    <li class="line-height-style">
+                      <button class="btn btn-secondary btn-width">
+                        Write a product review
+                      </button>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
-    <div class="tab-pane fade" id="settings">
+    <div class="tab-pane fade" id="cancelOrder">
 
       <div *ngIf="cancelOrderDetails.length>0">
         <div *ngFor="let x of cancelOrderDetails" class="panel panel-default m-t-20">
@@ -250,7 +326,7 @@
                       {{x.qty}}x ₹{{x.price}}
                     </li>
                     <li>
-                      <button class="btn btn-warning">
+                      <button (click)="redirectToDetails(x.product_id)" class="btn btn-warning">
                         <i class="fa fa-refresh m-r-10"></i>Buy it again
                       </button>
                     </li>

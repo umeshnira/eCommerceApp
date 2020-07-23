@@ -19,4 +19,5 @@ export class OrderDetailsModel {
     address: string;
     email: string;
     length: number;
+    dateGap:number;
 }

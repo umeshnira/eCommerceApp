@@ -1,0 +1,31 @@
+<div class="container m-t-30 m-b-30">
+    <h3 class="text-style"><b>Order Return</b></h3>
+    <small class="border-class">A request for return can only be raised post 24 hours of receipt of product. All returns
+        requests must be received within 15 days of delivery. To return a product.
+    </small>
+
+    <div class="m-t-20 row">
+        <div class="col-md-6">
+            <h4>Reason</h4>
+            <small>Please provide your product details and the reason for your return.</small>
+            <form [formGroup]="returnForm">
+                <div class="first-row form-group">
+                    <div class="controls">
+                        <!-- <label class="control-label font-13">Full Name</label> -->
+                        <input class="form-control" type="text" id="reason" name="reason"
+                            formControlName="reason" />
+                        <div *ngIf="formSubmitted && form.reason.errors?.required" class="valid-error">reason is
+                            required.
+                        </div>
+                    </div>
+                </div>
+                <button (click)="returnOrder()" class="btn btn-warning" type="submit">
+                    <span>Return </span>
+                </button>
+            </form>
+        </div>
+
+
+
+    </div>
+</div>

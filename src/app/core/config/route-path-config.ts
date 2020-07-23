@@ -12,6 +12,7 @@ export class RoutePathConfig {
     // Order
     public static readonly Order = 'order';
     public static readonly OrderCreate = 'create';
+    public static readonly OrderReturn = 'return';
 
     // Payment
     public static readonly Payment = 'payment';
