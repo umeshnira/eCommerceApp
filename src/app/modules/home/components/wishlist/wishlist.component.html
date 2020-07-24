@@ -9,7 +9,7 @@
       <li class="active"><a data-toggle="tab" href="#menu1">Your Lists</a></li>
       <li><a data-toggle="tab" href="#menu2">Your Idea Lists</a></li>
       <li><a data-toggle="tab" href="#menu3">Your Friends</a></li>
-      <a class="float m-t-10 m-r-10 font-13">Create a list</a>
+      <a class="float m-t-10 m-r-10 font-13" data-toggle="modal" data-target="#modalCreateList">Create a list</a>
     </ul>
     <div class="tab-content">
       <div id="menu1" class="tab-pane fade in active">
@@ -234,6 +234,40 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal popup -->
+
+<div class="modal fade" id="modalCreateList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content w-400">
+      <div class="modal-header header-color">
+        <h4 class="modal-title w-100 font-weight-bold header">
+          <label class="small-font">Create a new list</label>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <label for="list-name" class="small-font">List name</label>
+          <input type="text" id="list-name" class="form-control" [(ngModel)]="wishListName">
+        </div>
+
+        <div >
+         <span class="small-font">Use lists to save items for later. All lists are private unless you share them with others.
+
+         </span>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center header-color">
+        <button class="btn btn-default header-color">Cancel</button>
+        <button class="btn btn-warning " (click)="createWishList()">Create List</button>
       </div>
     </div>
   </div>

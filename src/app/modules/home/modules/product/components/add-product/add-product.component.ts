@@ -5,12 +5,13 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { ProductModel } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-add-product',
@@ -22,6 +23,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   categoryId: number;
   productId: number;
+  userId: number;
   image: string;
   formSubmitted: boolean;
   files: any[] = [];
@@ -43,11 +45,14 @@ export class AddProductComponent implements OnInit, OnDestroy {
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
+    private authService: AuthService,
     private toastr: ToastrService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     this.getCategories();
     this.productFormInitialization();
   }
@@ -139,6 +144,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
     productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.price = this.productDetailsForm?.controls['price'].value;
     productModel.category_id = this.categoryId;
+    productModel.seller_id = this.userId;
 
     return productModel;
 

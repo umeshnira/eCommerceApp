@@ -64,7 +64,7 @@ export class SellerRegistrationComponent implements OnInit, OnDestroy {
     sellerModel.name = this.sellerSignUpForm.controls['name'].value;
     sellerModel.address = this.sellerSignUpForm.controls['address'].value;
     sellerModel.landmark = this.sellerSignUpForm.controls['landmark'].value;
-    sellerModel.pin_code = this.sellerSignUpForm.controls['pincode'].value;
+    sellerModel.pincode = this.sellerSignUpForm.controls['pincode'].value;
     sellerModel.email = this.sellerSignUpForm.controls['email'].value;
     sellerModel.phone = this.sellerSignUpForm.controls['phone'].value;
     sellerModel.aadhar_card_no = this.sellerSignUpForm.controls['aadhar_card_no'].value;

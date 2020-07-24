@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { WishListService } from '../../services/wish-list.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -7,6 +7,7 @@ import { WishListDetails } from '../../models/wish-list-details.model';
 import { CartModel } from '../../modules/product/models/cart.model';
 import { CartService } from '../../services/cart.service';
 import { Constants } from 'src/app/shared/models/constants';
+import { WishListModel } from '../../models/wish-list.model';
 
 @Component({
   selector: 'app-wishlist',
@@ -18,6 +19,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
   userId: number;
   ratingClicked: number;
   itemIdRatingClicked: string;
+  wishListName: string;
 
   wishList: WishListDetails[];
 
@@ -25,6 +27,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
   getlocationDetailsSubscription: ISubscription;
   addToCartSubscription: ISubscription;
   removeWishListItemSubscription: ISubscription;
+  createWishListSubscription: ISubscription;
 
   constructor(
     private wishListService: WishListService,
@@ -71,6 +74,24 @@ export class WishlistComponent implements OnInit, OnDestroy {
       });
   }
 
+  createWishList() {
+    const wishListModel = new WishListModel();
+    wishListModel.name = this.wishListName;
+    wishListModel.created_by = Constants.seller;
+    this.createWishListSubscription = this.wishListService.createWishList(wishListModel)
+    .subscribe(response => {
+      if (response) {
+      }
+
+    }, (error) => {
+      this.toastr.error('', error.error.message);
+    });
+  }
+
+  getWishList(){
+    
+  }
+
   ngOnDestroy() {
     if (this.getWhishListSubscription) {
       this.getWhishListSubscription.unsubscribe();
@@ -80,6 +101,9 @@ export class WishlistComponent implements OnInit, OnDestroy {
     }
     if (this.addToCartSubscription) {
       this.addToCartSubscription.unsubscribe();
+    }
+    if (this.createWishListSubscription) {
+      this.createWishListSubscription.unsubscribe();
     }
   }
 

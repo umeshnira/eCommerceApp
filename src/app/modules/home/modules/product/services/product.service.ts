@@ -25,33 +25,41 @@ export class ProductService extends HttpBaseService {
       );
   }
 
-  editProduct(id: number, model: FormData) {
+  editProduct(productId: number, model: FormData) {
 
-    const url = `${this.baseUrl}/products/${id}`;
+    const url = `${this.baseUrl}/products/${productId}`;
     return this.http.put<ApiResponseModel>(url, model)
       .pipe(catchError(this.handleError)
       );
   }
 
-  getProductDetails(id: number) {
+  getProductDetails(productId: number) {
 
-    const url = `${this.baseUrl}/products/${id}`;
+    const url = `${this.baseUrl}/products/${productId}`;
     return this.http.get<ProductDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
-  getProductsByCategoryId(id: number) {
+  getProductsByCategoryId(categoryId: number) {
 
-    const url = `${this.baseUrl}/categories/${id}/products`;
+    const url = `${this.baseUrl}/categories/${categoryId}/products`;
     return this.http.get<ProductDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
-  deleteProduct(id: number) {
+  getProductsBySellerId(sellerId: number) {
 
-    const url = `${this.baseUrl}/products/${id}`;
+    const url = `${this.baseUrl}/sellers/${sellerId}/products`;
+    return this.http.get<ProductDetailsModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
+  deleteProduct(productId: number) {
+
+    const url = `${this.baseUrl}/products/${productId}`;
     return this.http.delete<ApiResponseModel>(url)
       .pipe(catchError(this.handleError)
       );

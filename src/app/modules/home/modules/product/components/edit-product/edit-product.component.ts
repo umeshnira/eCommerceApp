@@ -10,6 +10,7 @@ import { ProductDetailsModel } from '../../models/product-details.model';
 import { CategoryTreeViewModel } from '../../../category/models/category-tree-view.model';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -23,6 +24,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
   isNewImage: boolean;
   categoryId: number;
   productId: number;
+  userId: number;
   files: any[] = [];
   imageList: any[] = [];
 
@@ -43,12 +45,15 @@ export class EditProductComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private service: ProductService,
+    private authService: AuthService,
     private toastr: ToastrService,
     private subCategoryService: SubCategoryService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     this.productEditFormInitialization();
     this.productId = this.route.snapshot.queryParams.productId;
     this.categoryId = this.route.snapshot.queryParams.categoryId;
@@ -129,6 +134,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     productModel.left_qty = this.productDetailsForm?.controls['leftQty'].value;
     productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.price = this.productDetailsForm?.controls['price'].value;
+    productModel.seller_id = this.userId;
     this.imageList.forEach(element => {
       productModel.images.push(element.name);
     });

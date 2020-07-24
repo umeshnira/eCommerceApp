@@ -24,6 +24,13 @@ export class WishListService extends HttpBaseService {
       );
   }
 
+  createWishList(model: WishListModel) {
+    const url = `${this.baseUrl}/wishlist`;
+    return this.http.post<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
   getWishListItemsByUserId(userId: number) {
     const url = `${this.baseUrl}/wishlist/${userId}`;
     return this.http.get<WishListDetails>(url)

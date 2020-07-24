@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           if (response.role === Constants.client) {
             this.router.navigate([RoutePathConfig.Home]);
           } else {
-            this.router.navigate([RoutePathConfig.Home]);
+            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.Products}`]);
           }
           this.formSubmitted = false;
           this.loginForm.reset();

@@ -23,6 +23,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   categoryId: number;
   userId: number;
+  userRole: string;
   isUser: boolean;
 
   products: ProductDetailsModel[];
@@ -34,10 +35,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   deleteProductSubscription: ISubscription;
   addProductToCartSubscription: ISubscription;
   changeInCategoryIdSubscription: ISubscription;
+  getProductsBySellerIdSubscription: ISubscription;
 
   constructor(
     private subCategoryService: SubCategoryService,
-    private service: ProductService,
+    private productService: ProductService,
     private authService: AuthService,
     private cartService: CartService,
     private genericService: GenericStateManagerService,
@@ -49,15 +51,17 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
-    const userRole = userDetails.role;
-    if (userRole === Constants.client) {
+    this.userRole = userDetails.role;
+    if (this.userRole === Constants.client) {
       this.isUser = true;
+      this.getProductsByCategoryId(this.categoryId);
     }
-
+    if (this.userRole === Constants.seller) {
+      this.getProductsBySellerId();
+    }
     this.changeInCategoryId();
     this.categoryId = this.route.snapshot.queryParams.categoryId;
     this.getSubCategoryList();
-    this.getProductsByCategoryId(this.categoryId);
   }
 
   categoryNodeclicked(event) {
@@ -66,7 +70,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   deleteProduct(productId: number, index: number) {
-    this.deleteProductSubscription = this.service.deleteProduct(productId).subscribe(response => {
+    this.deleteProductSubscription = this.productService.deleteProduct(productId).subscribe(response => {
 
       this.products.splice(index, 1);
       this.toastr.success('Deleted Product Successfully', 'Success');
@@ -135,18 +139,32 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     if (this.changeInCategoryIdSubscription) {
       this.changeInCategoryIdSubscription.unsubscribe();
     }
+    if (this.getProductsBySellerIdSubscription) {
+      this.getProductsBySellerIdSubscription.unsubscribe();
+    }
   }
 
   private getProductsByCategoryId(categoryId: number) {
-    this.getProductsByCategoryIdSubscription = this.service.getProductsByCategoryId(categoryId)
+    this.getProductsByCategoryIdSubscription = this.productService.getProductsByCategoryId(categoryId)
       .subscribe((response) => {
 
-        this.products = response;
+        if (response) {
+          if (this.isUser) {
+            this.products = response;
+          } else {
+            this.getProductsByCategoryIdForSeller(response);
+          }
+        }
       },
         (error) => {
           this.toastr.error('', error.error.message);
         });
 
+  }
+
+  private getProductsByCategoryIdForSeller(response: ProductDetailsModel[]) {
+    const productsList = response.filter(x => x.seller_id === this.userId);
+    this.products = productsList;
   }
 
   private changeInCategoryId() {
@@ -162,6 +180,17 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         this.result = response;
         this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+  }
+
+  private getProductsBySellerId() {
+    this.getProductsBySellerIdSubscription = this.productService.getProductsBySellerId(this.userId)
+      .subscribe((response) => {
+
+        this.products = response;
       },
         (error) => {
           this.toastr.error('', error.error.message);

@@ -19,6 +19,7 @@ export class ProductModel {
     left_qty: number;
     total_qty: number;
     category_id: number;
+    seller_id: number;
     price: number;
     images: Image[] = [];
 }

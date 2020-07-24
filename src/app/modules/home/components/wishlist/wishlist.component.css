@@ -177,3 +177,14 @@ a:hover {
   border-color: #eeb933 #eeb933 #eeb933;
   color: #111;
 }
+.header {
+  text-align: left;
+  height: 0px;
+  
+}
+.header-color {
+  background-color: #f3f3f3;
+}
+.w-400 {
+  width: 400px;
+}
