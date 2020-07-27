@@ -26,7 +26,19 @@
 .m-t-10 {
   margin-top: 10px;
 }
-
+.btn-style{
+  background-color: #e91e63;
+  color:white;
+  font-weight: 600;
+}
+.float-right{
+float:right
+}
+.btn-style:hover{
+  background-color: #e91e63;
+  color:white;
+  font-weight: 600;
+}
 .m-l-17 {
   margin-left: 17px;
 }
@@ -34,7 +46,9 @@
 .m-b-10 {
   margin-bottom: 10px;
 }
-
+.padding-20 {
+  padding: 20px;
+}
 .m-r-10 {
   margin-right: 10px;
 }
@@ -62,7 +76,9 @@
 .padding-30 {
   padding: 30px;
 }
-
+a {
+  cursor:pointer;
+}
 .m-l-30 {
   margin-left: 30px;
 }
@@ -158,3 +174,11 @@
 .h-300{
   height: 300px;
 }
+.table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  padding: 10px !important;
+}
+.form-control{
+  border-radius:5px;
+}
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

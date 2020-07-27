@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="panel">
+        <div class="content container-fluid padding-20">
+            <div class="m-t-20">
+                <div class="row text-center ">
+                    <div class="col">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="tittle-w3l">
+                                Sub Categories
+
+                                <span class="heading-style">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="float-right">
+                                <button class="btn btn-style m-b-10"
+                                    routerLink="/dashboard/products/add-sub-categories">Create Sub Category</button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped example1 m-t-10">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Parent Category</th>
+                        <th>Created Date</th>
+                        <th>Created By</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let subCategory of subCategoriesList; let i = index;">
+                    <td>{{subCategory?.name}}</td>
+                    <td>{{subCategory?.path}}</td>
+                    <td>{{subCategory?.created_at |date}}</td>
+                    <td>{{subCategory?.created_by}}</td>
+                    <td>
+                        <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
+                                (click)="navigateToEditPage(subCategory?.id)"></i>
+                        </a>
+                        <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
+                                (click)="deleteSubCategory(subCategory?.id, i)"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Parent Category</th>
+                        <th>Created Date</th>
+                        <th>Created By</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+    style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

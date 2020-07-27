@@ -1,0 +1,7 @@
+.fa{
+    color:#e91e63;
+    font-size: 16px;
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: thin!important;
+}

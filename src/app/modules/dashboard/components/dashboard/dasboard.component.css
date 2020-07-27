@@ -1,0 +1,74 @@
+@import"../../../../../assets/bootstrap/css/bootstrap.min.css";
+@import"../../../../../assets/dist/css/AdminLTE.min.css";
+@import"../../../../../assets/dist/css/skins/_all-skins.min.css";
+@import"../../../../../assets/plugins/iCheck/flat/blue.css";
+@import"../../../../../assets/plugins/morris/morris.css";
+@import"../../../../../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css";
+@import"../../../../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
+
+.profileName{
+    color: white;
+    font-size: 14px;
+}
+.sectionStyle{
+    margin-right: 45px;
+}
+.m-r-20{
+    margin-right: 35px;
+}
+.m-t-0{
+    margin-top: 0;
+}
+.m-b-10{
+    margin-bottom: 10px;
+}
+.m-b-20{
+    margin-bottom: 20px;
+}
+.m-t-10{
+    margin-top: 10px;
+}
+.box{
+    border-top: unset;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #e91e63;
+}
+body{
+    font-size:16px!important
+}
+.skin-blue .main-header .logo {
+    background-color: #e91e63;
+}
+.skin-blue .main-header .logo:hover {
+    background-color: #e91e63;
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+    background-color: #e91e63; 
+}
+.small-box .icon{
+    font-size:70px;
+}
+.small-box:hover {
+    text-decoration: none;
+    color: black!important;
+}
+.avatar{
+    background-color: #aaa;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+}
+.text-style{
+    color:#999;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-left:10px;
+}
+#width{
+    width:30%!important
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: thin!important;
+}

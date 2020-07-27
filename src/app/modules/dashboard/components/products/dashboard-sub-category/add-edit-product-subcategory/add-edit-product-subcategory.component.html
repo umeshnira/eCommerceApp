@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="panel">
+    <div class="content container-fluid">
+      <div class="m-t-20">
+        <div class="row text-center ">
+          <div class="col">
+            <h3 *ngIf="isEdit" class="tittle-w3l">Edit Sub Category
+              <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+            </h3>
+            <h3 *ngIf="!isEdit" class="tittle-w3l">Add Sub Category
+              <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+            </h3>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="side-bar col-md-4 m-t-20">
+        <div class="search-hotel" *ngIf="!isEdit">
+          <h3 class="h1-color">Categories</h3>
+          <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
+
+          </ejs-treeview>
+
+        </div>
+      </div>
+      <!-- <div class='col-md-3'></div> -->
+      <div class='col-md-7'>
+        <div class='card m-b-30'>
+          <form [formGroup]="subCategoryForm" (submit)="addSubCategory()">
+            <div class="form-group" *ngIf="!isEdit">
+              <div class='col-md-12 m-t-20'>
+                <div class='col-md-3'>
+                  <label for="username" class="control-label">Category</label>
+                </div>
+                <div class='col-md-9'>
+                  <input type="text" class="form-control" id="parentCategory" placeholder="Name of category"
+                    formControlName="parentCategory" readonly>
+                  <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
+                    required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class='col-md-12 m-t-20'>
+                <div class='col-md-3'>
+                  <label for="username" class="control-label">Sub Category</label>
+                </div>
+                <div class='col-md-9'>
+                  <input type="text" class="form-control" id="name" placeholder="Name of Subcategory"
+                    formControlName="name">
+                  <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Sub category is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class='col-md-12 m-t-20'>
+                <div class='col-md-3'>
+                  <label for="" class="control-label">Description</label>
+                </div>
+                <div class='col-md-9'>
+                  <input type="text" class="form-control" id="description" placeholder="Description"
+                    formControlName="description">
+                  <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
+                    required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center col-md-12 m-t-30">
+              <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-9">
+                  <button type="submit" *ngIf="!isEdit" class="btn btn-style btn-width w-45 m-b-30">Add
+                    Sub Category</button>
+                  <button type="submit" *ngIf="isEdit" class="btn btn-style btn-width w-45 m-b-30"
+                    (click)="editSubCategory()">Edit Sub Category</button>
+                  <button type="submit" class="btn btn-style btn-width w-45 m-b-30 m-l-10"
+                    (click)="navigateToHomePage()">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      <div class='col-md-3 m-b-30'> </div>
+
+    </div>
+  </div>
+
+
+</div>

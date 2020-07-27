@@ -12,6 +12,10 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always'
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

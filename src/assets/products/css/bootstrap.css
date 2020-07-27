@@ -4711,6 +4711,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
   display: inline-block;
   padding-left: 0;
+  float:right;
   margin: 20px 0;
   border-radius: 4px;
 }
@@ -4732,12 +4733,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   margin-left: 0;
+  color: #e91e63;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 4px;
+  color: #e91e63;
   border-bottom-right-radius: 4px;
 }
 .pagination > li > a:hover,
@@ -4758,8 +4761,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color:#e91e63;
+  border-color:#e91e63;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,

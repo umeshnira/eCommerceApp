@@ -1,0 +1,21 @@
+.text-centre {
+    text-align: center;
+  }
+  
+  .valid-error {
+    color: red;
+    font-size: 13px;
+  }
+  .m-l-80{
+    margin-left: 80px;
+  }
+  .w-45{
+      width: 45%;
+  }
+  .control-label{
+    font-weight: 600;
+}
+.form-control{
+  border-color: #e91e63;
+  background-color: unset;
+}

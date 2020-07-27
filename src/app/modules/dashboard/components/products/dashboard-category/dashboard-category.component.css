@@ -1,0 +1,22 @@
+
+.page-header {
+     padding-bottom: unset; 
+     margin: 30px 12px 19px -18px;
+    border-bottom: unset;
+}
+.table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 10px !important;
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: thin!important;
+}
+input, button, select, textarea{
+    border-color:#e91e63
+}
+h3.tittle-w3l:after {
+    right: 19.5%;
+}
+.fa{
+    color:#e91e63;
+    font-size: 16px;
+}

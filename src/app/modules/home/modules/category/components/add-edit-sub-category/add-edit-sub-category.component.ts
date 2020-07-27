@@ -5,10 +5,8 @@ import { SubCategoryModel } from '../../models/sub-category.model';
 import { SubCategoryService } from '../../../../../../shared/services/sub-category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Constants } from 'src/app/shared/models/constants';
 import { CategoryTreeViewModel } from '../../models/category-tree-view.model';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
-import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-add-edit-sub-category',

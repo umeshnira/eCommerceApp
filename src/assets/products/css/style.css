@@ -1072,7 +1072,7 @@ footer,
 /*-- tittle heading --*/
 h3.tittle-w3l {
   color: #000;
-  font-size: 3em;
+  font-size: 2em;
   text-align: center;
   margin-bottom: 50px;
   position: relative;
@@ -1091,7 +1091,7 @@ span.heading-style {
   width: 10px;
   height: 10px;
   background-color: #ff5722;
-  margin: 0 -4px;
+  margin: 0 7px;
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);

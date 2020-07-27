@@ -1,0 +1,338 @@
+<!-- Main content -->
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row ">
+        <div class="col-lg-2 col-xs-6 sectionStyle">
+            <!-- small box -->
+            <div class="small-box info-box">
+                <div class="inner">
+                    <h3>150</h3>
+                    <p>Customers</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add text-primary"></i>
+                </div>
+
+
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-2 col-xs-6 sectionStyle">
+            <!-- small box -->
+            <div class="small-box info-box">
+                <div class="inner">
+                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <p>Seller</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars text-info"></i>
+                </div>
+
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-2 col-xs-6 sectionStyle">
+            <!-- small box -->
+            <div class="small-box info-box">
+                <div class="inner">
+                    <h3>44</h3>
+                    <p>Products</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag text-success"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-2 col-xs-6 sectionStyle">
+            <!-- small box -->
+            <div class="small-box info-box">
+                <div class="inner">
+                    <h3>6K</h3>
+                    <p>Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph text-warning"></i>
+                </div>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-2 col-xs-6 ">
+            <!-- small box -->
+            <div class="small-box info-box">
+                <div class="inner">
+                    <h3>6</h3>
+                    <p>Returns</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph text-danger"></i>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+
+                    <li class="pull-left header"><i class="fa fa-inbox"></i> Revenue By Category</li>
+                </ul>
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+                <div class="chart tab-pane active" id="sales-chart"
+                    style="position: relative; height: 300px;cursor: pointer;">
+                </div>
+            </div><!-- /.nav-tabs-custom -->
+        </section><!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+            <!-- /.box -->
+            <!-- solid sales graph -->
+            <div class="box box-solid bg-teal-gradient">
+                <div class="box-header">
+                    <i class="fa fa-th"></i>
+                    <h3 class="box-title">Total Revenue</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body border-radius-none">
+                    <div class="chart" id="line-chart" style="height: 277px;"></div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </section><!-- right col -->
+    </div><!-- /.row (main row) -->
+
+    <div class="box-footer no-border">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="box-title m-t-0 m-b-10">Monthly Status</h3>
+                <div class="col-xs-2 text-center m-r-20" style="border-right: 1px solid #f4f4f4">
+                    <input type="text" class="knob" data-readonly="true" value="40%" data-width="60" data-height="60"
+                        data-fgColor="#39CCCC" />
+                    <div class="knob-label">New Orders</div>
+                </div>
+                <div class="col-xs-2 text-center m-r-20" style="border-right: 1px solid #f4f4f4">
+                    <input type="text" class="knob" data-readonly="true" value="50%" data-width="60" data-height="60"
+                        data-fgColor="#39CCCC" />
+                    <div class="knob-label">New Users</div>
+                </div>
+                <div class="col-xs-2 text-center m-r-20" style="border-right: 1px solid #f4f4f4">
+                    <input type="text" class="knob" data-readonly="true" value="90%" data-width="60" data-height="60"
+                        data-fgColor="#39CCCC" />
+                    <div class="knob-label">New Sellers</div>
+                </div>
+                <div class="col-xs-2 text-center m-r-20" style="border-right: 1px solid #f4f4f4">
+                    <input type="text" class="knob" data-readonly="true" value="30%" data-width="60" data-height="60"
+                        data-fgColor="#39CCCC" />
+                    <div class="knob-label">Reviews</div>
+                </div>
+                <div class="col-xs-2 text-center m-r-20">
+                    <input type="text" class="knob" data-readonly="true" value="50%" data-width="60" data-height="60"
+                        data-fgColor="#39CCCC" />
+                    <div class="knob-label">Returns</div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.box-footer -->
+    <section class="content">
+        <div class="row">
+            <div class="box">
+                <div class="box-header nav nav-tabs m-b-20">
+                    <h3 class="box-title">Weekly Orders</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered table-striped example1">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Id</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Order Time</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg">
+                                </td>
+                                <td>404-6406383-3953104</td>
+                                <td>Electronics</td>
+                                <td>2</td>
+                                <td>450</td>
+                                <td>17 Jul 2020</td>
+                                <td>Alan</td>
+                                <td>Delivered</td>
+                            </tr>
+                            <tr>
+                                <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg">
+                                </td>
+                                <td>404-6406383-3953104</td>
+                                <td>Electronics</td>
+                                <td>2</td>
+                                <td>450</td>
+                                <td>17 Jul 2020</td>
+                                <td>Alan</td>
+                                <td>Delivered</td>
+                            </tr>
+                            <tr>
+                                <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg">
+                                </td>
+                                <td>404-6406383-3953104</td>
+                                <td>Electronics</td>
+                                <td>2</td>
+                                <td>450</td>
+                                <td>17 Jul 2020</td>
+                                <td>Alan</td>
+                                <td>Delivered</td>
+                            </tr>
+                            <tr>
+                                <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg">
+                                </td>
+                                <td>404-6406383-3953104</td>
+                                <td>Electronics</td>
+                                <td>2</td>
+                                <td>450</td>
+                                <td>17 Jul 2020</td>
+                                <td>Alan</td>
+                                <td>Delivered</td>
+                            </tr>
+                            <tr>
+                                <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg">
+                                </td>
+                                <td>404-6406383-3953104</td>
+                                <td>Electronics</td>
+                                <td>2</td>
+                                <td>450</td>
+                                <td>17 Jul 2020</td>
+                                <td>Alan</td>
+                                <td>Delivered</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Id</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Order Time</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+            <div class="box">
+                <div class="box-header nav nav-tabs m-b-20">
+                    <h3 class="box-title">New Customers</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered table-striped example1">
+                        <thead>
+                            <tr>
+                                <th id="width">Customer Name</th>
+                                <th>Email Id</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="pull-left image">
+                                        <img src="../../../assets/images/1.jpeg" class="img-circle avatar"
+                                            alt="User Image">
+                                    </div>
+                                    <div class="pull-left info">
+                                        <p class="text-style">Alexander Pierce</p>
+                                    </div>
+                                </td>
+                                <td>alan@gmail.com</td>
+                                <td>7894561237</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Email Id</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.row -->
+    </section><!-- /.content -->
+</section><!-- /.content -->

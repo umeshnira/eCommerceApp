@@ -1,0 +1,75 @@
+<div class="container-fluid m-t-20">
+  <!-- tittle heading -->
+  <h3 class="tittle-w3l">
+    Products
+    <span class="heading-style">
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+  </h3>
+  <!-- //tittle heading -->
+  <!-- product right -->
+
+  <div class="agileinfo-ads-display col-md-12 m-t-30">
+    <div class="wrapper">
+      <div class="row">
+        <div *ngFor="let product of products; let i= index;">
+          <div class="col-md-4">
+            <div class="panel padding-20">
+              <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                  <img [src]="getProductImage(product)" alt="" height="100" width="100" />
+                  <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                        View</a>
+                      <a class="dropdown-item font-12"
+                        (click)="navigateToEditPage(product?.id, product?.category_id)"><i
+                          class="fa fa-pencil m-r-10 m-l-10"></i>
+                        Edit</a>
+                      <a class="dropdown-item font-12" (click)="deleteProduct(product?.id, i)"><i
+                          class="fa fa-trash m-r-10 m-l-10"></i>
+                        Delete</a>
+                    </div>
+                  </span>
+                </div>
+                <div class="item-info-product">
+                  <h4>
+                    <a href="single2.html">{{product.name}}</a>
+                  </h4>
+                  <div class="info-product-price">
+                    <span class="item_price"><small>$</small>{{product.price}}</span>
+                  </div>
+                  <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="#" method="post">
+                      <fieldset>
+                        <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="add" value="1" />
+                        <input type="hidden" name="business" value=" " />
+                        <input type="hidden" name="item_name" value="Fortune Oil, 5L" />
+                        <input type="hidden" name="amount" value="399.99" />
+                        <input type="hidden" name="discount_amount" value="1.00" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="hidden" name="return" value=" " />
+                        <input type="hidden" name="cancel_return" value=" " />
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //product right -->
+</div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+  style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

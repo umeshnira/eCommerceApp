@@ -1,0 +1,11 @@
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: thin!important;
+}
+.fa{
+    color:#e91e63;
+    font-size: 16px;
+}
+h3.tittle-w3l:after {
+    right: 38.5%;
+    width: 262px;
+}

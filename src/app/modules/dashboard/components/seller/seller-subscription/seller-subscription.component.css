@@ -1,0 +1,39 @@
+
+.card-header {
+    padding: .75rem 1.25rem;
+    cursor: pointer;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.card-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.accordion .card-header.collapsed:after {
+    content: "\f067";
+}
+.accordion .card-header:after {
+    font-family: 'FontAwesome';
+    content: "\f068";
+    color:#e91e63;
+    float: right;
+}
+.accordion .card-header:after {
+    font-family: 'FontAwesome';
+    content: "\f068";
+    float: right;
+    color:#e91e63
+}
+.card-body {
+    padding: 1.25rem;
+    border: 1px solid #f7e9e9
+}
+h3.tittle-w3l:after {
+    right: 38.5%;
+    width: 262px;
+}
+h3.tittle-w3l{
+    margin-bottom:20px;
+}

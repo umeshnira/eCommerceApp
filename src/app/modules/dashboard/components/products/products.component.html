@@ -1,0 +1,448 @@
+<div class="container-fluid m-t-20">
+  <!-- tittle heading -->
+  <h3 class="tittle-w3l">
+    Top Selling Products
+    <span class="heading-style">
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+  </h3>
+  <!-- //tittle heading -->
+  <!-- product right -->
+  <div class="card">
+    <div class="container-fluid">
+      <form method="POST">
+        <div class="row">
+          <div class="col-md-3">
+            <select class="form-control">
+              <option value="0">Seller </option>
+              <option value="1">Seller 1 </option>
+              <option value="2">Seller 1 </option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-control">
+              <option value="0">Category </option>
+              <option value="1">Fashion</option>
+              <option value="2">Jewellery </option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <ul class="dropdown-menu6">
+              <li>
+                <div id="slider-range"></div>
+                <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-danger btn-width btn-style" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="agileinfo-ads-display col-md-12 m-t-30">
+    <div class="wrapper">
+      <!-- first section (nuts) -->
+      <div class="row">
+        <div *ngFor="let x of prodList">
+          <div class="col-md-4 ">
+            <div class="panel padding-20">
+              <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                  <img src="../../../assets/products/images/{{ x.imageName }}" alt="" />
+                  <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu">
+
+                      <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                        View</a>
+                      <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                        Review</a>
+                      <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                        Edit</a>
+                      <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                        Delete</a>
+
+                    </div>
+                  </span>
+                </div>
+
+                <div class="item-info-product">
+                  <h5>
+                    <span>Nuts</span>
+                  </h5>
+                  <h4 class="m-t-10">
+                    <a routerLink="DetailsPage">{{ x.ProductName }}</a>
+                  </h4>
+                  <div class="info-product-price row">
+                    <div class="col-md-6">
+                      <span class="item_price">${{ x.price }}</span>
+                      <del>${{ x.actualPrice }}</del>
+                    </div>
+                    <div class="col-md-6">
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                  <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="#" method="post">
+                      <fieldset>
+
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="clearfix"></div>
+      <!-- //first section (nuts) -->
+      <!-- third section (oils) -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk4.jpg" alt="" />
+
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Oils</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Freedom Oil,1L</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$205.00</span>
+                    <del>$255.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk5.jpg" alt="" />
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Oils</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Saffola Gold,1L</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$135.00</span>
+                    <del>$155.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk6.jpg" alt="" />
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Oils</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Fortune Oil, 1L</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$399.00</span>
+                    <del>$415.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- //third section (oils) -->
+      <!-- fourth section (noodles) -->
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk7.jpg" alt="" />
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Pasta & Noodles</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Yippee Noodles, 65g</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$15.00</span>
+                    <del>$25.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk8.jpg" alt="" />
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Pasta & Noodles</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Wheat Pasta</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$15.00</span>
+                    <del>$25.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel padding-20">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="../../../assets/products/images/mk9.jpg" alt="" />
+                <span class="product-new-top"><a type="button" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      View</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                      Review</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                      Edit</a>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                      Delete</a>
+                  </div>
+                </span>
+              </div>
+              <div class="item-info-product">
+                <h5>
+                  <span>Pasta & Noodles</span>
+                </h5>
+                <h4 class="m-t-10">
+                  <a href="single.html">Chinese Noodles, 6g</a>
+                </h4>
+                <div class="info-product-price row">
+                  <div class="col-md-6">
+                    <span class="item_price">$11.00</span>
+                    <del>$25.00</del>
+                  </div>
+                  <div class="col-md-6">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <!-- //fourth section (noodles) -->
+    </div>
+  </div>
+  <!-- //product right -->
+</div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+  style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

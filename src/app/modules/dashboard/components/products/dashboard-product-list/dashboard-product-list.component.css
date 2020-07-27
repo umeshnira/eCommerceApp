@@ -1,0 +1,30 @@
+.product-sec1{
+    background-color: white;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+.product-new-top{
+    background-color: unset;
+    font-size: 18px;
+}
+.fa{
+    color:#e91e63
+}
+h3.tittle-w3l {
+    margin-bottom: unset;
+    font-size: 2em;
+}

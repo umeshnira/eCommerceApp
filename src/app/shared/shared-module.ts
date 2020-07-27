@@ -14,8 +14,6 @@ import { SubCategoryService } from './services/sub-category.service';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { GenericStateManagerService } from './services/generic-state-manager.service';
 
-
-
 const components = [HeaderComponent, FooterComponent, DragAndDropDirective];
 
 const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule,

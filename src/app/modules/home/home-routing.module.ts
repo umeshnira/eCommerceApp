@@ -4,7 +4,6 @@ import { HomeLayoutComponent } from './layout/home-layout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-import { HomeViewGuard } from 'src/app/core/guards/home-view-guard.guard';
 
 const routes = [
     {
@@ -14,7 +13,6 @@ const routes = [
             {
                 path: '',
                 component: HomePageComponent,
-                // canActivate: [HomeViewGuard],
             },
             {
                 path: 'cart',
