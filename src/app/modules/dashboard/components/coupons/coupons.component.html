@@ -17,8 +17,7 @@
                         </div>
                         <div class="col-md-4">
                             <span class="float-right">
-                                <button class="btn btn-style m-b-10"
-                                    routerLink="/dashboard/coupons/add-coupons">Create
+                                <button class="btn btn-style m-b-10" routerLink="/dashboard/coupons/add-coupons">Create
                                     Coupons</button>
                             </span>
                         </div>
@@ -43,7 +42,7 @@
                         <td>20% Off</td>
                         <td>Discount #2415</td>
                         <td>Fixed Cart Discount</td>
-                        <td>200</td>
+                        <td>$200</td>
                         <td>1</td>
                         <td>13 Aug,2020</td>
                         <td>
@@ -51,7 +50,7 @@
                             </a>
 
                             <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style"
-                                    title="Delete"></i>
+                                    data-toggle="modal" data-target="#exampleModal" title="Delete"></i>
                             </a>
                         </td>
                     </tr>
@@ -79,3 +78,27 @@
     style="display: none; position: relative; height: 300px;cursor: pointer;">
 </div>
 <div class="chart" id="line-chart" style="display: none; height: 277px;"></div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete the coupons?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

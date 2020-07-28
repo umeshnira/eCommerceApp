@@ -32,6 +32,14 @@ const dashboardRoutes = [
             {
                 path: 'reviews',
                 component: ReviewComponent
+            },
+            {
+                path: 'customers',
+                loadChildren: () => import('./components/customers/customer.module').then(m => m.CustomerModule),
+            },
+            {
+                path: 'subscriptions',
+                loadChildren: () => import('./components/subscription/subscription.module').then(m => m.SubscriptionModule),
             }
         ]
     },

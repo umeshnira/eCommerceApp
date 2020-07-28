@@ -105,6 +105,7 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
     font-size: 12px;
     color: #e91e63;
     }
-    h3.tittle-w3l:after{
-        right: 20.5%;
+    h3.tittle-w3l:after {
+        right: 12.5%;
+        width: 249px;
     }
