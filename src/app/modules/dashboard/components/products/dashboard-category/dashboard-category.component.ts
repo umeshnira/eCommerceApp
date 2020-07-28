@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
   templateUrl: './dashboard-category.component.html',
   styleUrls: ['./dashboard-category.component.css']
 })
-export class DashboardCategoryComponent implements OnInit {
+export class DashboardCategoryComponent implements OnInit, OnDestroy {
 
   categories: CategoryModel[];
 
