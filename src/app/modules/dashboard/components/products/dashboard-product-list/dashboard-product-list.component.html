@@ -9,9 +9,19 @@
     </span>
   </h3>
   <!-- //tittle heading -->
+  <div class="side-bar col-md-3 m-t-30">
+    <select class="form-control">
+      <option value="0">
+        Categories
+      </option>
+    </select>
+    <h3 class="h1-color m-t-10">Sub Categories</h3>
+    <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
+    </ejs-treeview>
+  </div>
   <!-- product right -->
 
-  <div class="agileinfo-ads-display col-md-12 m-t-30">
+  <div class="agileinfo-ads-display col-md-9 m-t-30">
     <div class="wrapper">
       <div class="row">
         <div *ngFor="let product of products; let i= index;">
