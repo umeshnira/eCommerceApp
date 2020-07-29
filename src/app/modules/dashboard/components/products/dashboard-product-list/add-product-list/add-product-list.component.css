@@ -67,8 +67,6 @@
   bottom: 40px;
   right: 100px; 
 }
-
-
 .floating-label-group {
 	position: relative;
 	margin-top: 15px;
@@ -94,6 +92,25 @@
     font-size: 12px;
     color: #e91e63;
 	}
-  .mat-step-header .mat-step-icon {
-    background-color: #e91e63!important;
-}
+	.form-control:focus ~ .floating-label,
+	.form-control:not(:focus):valid ~ .floating-label {
+    top: -8px;
+    bottom: 29px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+  }
+  .form-control:focus ~ .floating-label,
+	.form-control:not(:focus):valid ~ .floating-label {
+    top: -8px;
+    bottom: 29px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+	}
+
+

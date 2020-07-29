@@ -1,0 +1,367 @@
+.a-spacing-base, .a-ws .a-ws-spacing-base {
+    margin-bottom: 14px!important;
+}
+.a-box {
+    display: block;
+    border-radius: 4px;
+    border: 1px #ddd solid;
+    background-color: #fff;
+}
+.a-box .a-box-inner {
+    border-radius: 4px;
+    position: relative;
+    padding: 14px 18px;
+}
+.a-fixed-right-grid {
+    position: relative;
+}
+.a-fixed-left-grid-inner, .a-fixed-right-grid-inner {
+    position: relative;
+    padding: 0;
+}
+.a-fixed-left-grid-inner:after, .a-fixed-left-grid-inner:before, .a-fixed-right-grid-inner:after, .a-fixed-right-grid-inner:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+.a-fixed-right-grid .a-col-left {
+    width: 100%;
+    padding-right: 3.5%;
+}
+.a-fixed-left-grid-col, .a-fixed-right-grid-col {
+    position: relative;
+    overflow: visible;
+    zoom: 1;
+    min-height: 1px;
+}
+.a-row {
+    width: 100%;
+}
+.a-row:after, .a-row:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+.a-ws div.a-column, div.a-column {
+    margin-right: 2%;
+    float: left;
+    min-height: 1px;
+    overflow: visible;
+}
+.a-row .a-span5, .a-ws .a-row .a-ws-span5 {
+    width: 40.448%;
+}
+.a-spacing-none, .a-ws .a-ws-spacing-none {
+    margin-bottom: 0!important;
+}
+.a-spacing-micro, .a-ws .a-ws-spacing-micro {
+    margin-bottom: 4px!important;
+}
+h5 {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+}
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+.a-spacing-micro, .a-ws .a-ws-spacing-micro {
+    margin-bottom: 4px!important;
+}
+.a-row {
+    width: 100%;
+}
+.displayAddressUL {
+    margin: 0;
+}
+.a-ordered-list, .a-unordered-list, ol, ul {
+    padding: 0;
+}
+.a-unordered-list, ul {
+    margin: 0 0 0 18px;
+    color: #111;
+}
+.displayAddressLI {
+    list-style: none;
+    color: #000;
+}
+
+.a-row:after {
+    clear: both;
+}
+.a-row:after, .a-row:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+a-fixed-left-grid-col, .a-fixed-right-grid-col {
+    position: relative;
+    overflow: visible;
+    zoom: 1;
+    min-height: 1px;
+}
+.a-text-left {
+    text-align: left!important;
+}
+.a-spacing-micro, .a-ws .a-ws-spacing-micro {
+    margin-bottom: 4px!important;
+}
+h5 {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+}
+.a-row {
+    width: 100%;
+}
+.a-row:after, .a-row:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+.a-ws div.a-column, div.a-column {
+    margin-right: 2%;
+    float: left;
+    min-height: 1px;
+    overflow: visible;
+}
+.a-row .a-span7, .a-ws .a-row .a-ws-span7 {
+    width: 57.448%;
+}
+.a-text-left {
+    text-align: left!important;
+}
+.a-color-base {
+    color: #111!important;
+}
+.a-ws .a-ws-span12, div.a-column.a-span-last {
+    margin-right: 0;
+    float: right;
+}
+.a-ws div.a-column, div.a-column {
+    margin-right: 2%;
+    float: left;
+    min-height: 1px;
+    overflow: visible;
+}
+.a-column.a-span-last {
+    margin-right: 0;
+    float: right;
+}
+.a-row .a-span5, .a-ws .a-row .a-ws-span5 {
+    width: 40.448%;
+}
+.a-text-right {
+    text-align: right!important;
+}
+
+.currencyINR {
+    background: url(/images/G/31/common/sprites/sprite-site-wide-2._V1_.png) no-repeat scroll -27px -363px transparent;
+    display: inline-block;
+    width: 7px;
+    height: 11px;
+    line-height: 1em;
+    vertical-align: text-bottom;
+    margin-bottom: 2px;
+    margin-right: 1px;
+}
+.a-spacing-mini, .a-ws .a-ws-spacing-mini {
+    margin-bottom: 6px!important;
+}
+.a-fixed-left-grid-inner:after, .a-fixed-right-grid-inner:after {
+    clear: both;
+}
+.a-fixed-left-grid-inner:after, .a-fixed-left-grid-inner:before, .a-fixed-right-grid-inner:after, .a-fixed-right-grid-inner:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+span.heading-style {
+    top: 36px;
+}
+h3.tittle-w3l:after {
+    top: 43px;
+    width: 184px;
+}
+
+.shipment-top-row {
+    min-height: 30px;
+	  position: relative;
+}
+.a-size-medium {
+    text-rendering: optimizeLegibility;
+	 font-size: 17px!important;
+    line-height: 1.255!important;
+}
+
+.a-text-bold {
+    font-weight: 700!important;
+}
+.a-color-success {
+    color: #007600!important;
+}
+.a-hidden, .aok-hidden {
+    display: none!important;
+    visibility: hidden!important;
+}
+.shipment-top-row .actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.a-spacing-top-medium {
+    margin-top: 18px!important;
+}
+.a-fixed-right-grid {
+    position: relative;
+}
+.a-grid-vertical-align.a-fixed-left-grid-inner, .a-grid-vertical-align.a-fixed-right-grid-inner {
+    display: table!important;
+    table-layout: fixed;
+    zoom: 1;
+    border-collapse: collapse;
+    width: 100%;
+}
+.a-fixed-left-grid-inner, .a-fixed-right-grid-inner {
+    position: relative;
+    padding: 0;
+}
+.a-grid-top.a-fixed-left-grid-inner>.a-fixed-left-grid-col, .a-grid-top.a-fixed-right-grid-inner>.a-fixed-right-grid-col, .a-grid-top.a-row>div.a-column {
+    vertical-align: top;
+}
+.a-grid-vertical-align.a-fixed-left-grid-inner>.a-fixed-left-grid-col, .a-grid-vertical-align.a-fixed-right-grid-inner>.a-fixed-right-grid-col {
+    float: none!important;
+    display: table-cell!important;
+    zoom: 1;
+}
+.a-fixed-right-grid .a-col-left {
+    width: 100%;
+    padding-right: 3.5%;
+}
+.a-fixed-left-grid-col, .a-fixed-right-grid-col {
+    position: relative;
+    overflow: visible;
+    zoom: 1;
+    min-height: 1px;
+}
+.a-spacing-none, .a-ws .a-ws-spacing-none {
+    margin-bottom: 0!important;
+}
+.a-fixed-left-grid {
+    position: relative;
+}
+element.style {
+    padding-left: 100px;
+}
+.a-fixed-left-grid-inner, .a-fixed-right-grid-inner {
+    position: relative;
+    padding: 0;
+}
+.a-fixed-right-grid .a-fixed-left-flipped-grid .a-col-left, .a-fixed-right-grid .a-fixed-left-grid .a-col-left {
+    padding-right: 0;
+}
+.a-fixed-right-grid .a-col-left {
+    width: 100%;
+    padding-right: 3.5%;
+}
+.a-text-center {
+    text-align: center!important;
+}
+.a-fixed-left-grid-col, .a-fixed-right-grid-col {
+    position: relative;
+    overflow: visible;
+    zoom: 1;
+    min-height: 1px;
+}
+.item-view-left-col-inner {
+    position: relative;
+    display: inline-block;
+}
+a, a:active, a:link, a:visited {
+    text-decoration: none;
+    color: #0066c0;
+}
+img {
+    vertical-align: top;
+}
+img {
+    max-width: 100%;
+    border: 0;
+}
+.a-fixed-left-grid .a-col-right {
+    width: 100%;
+    padding-left: 3.5%;
+}
+.a-fixed-left-grid-col, .a-fixed-right-grid-col {
+    position: relative;
+    overflow: visible;
+    zoom: 1;
+    min-height: 1px;
+}
+a, a:active, a:link, a:visited {
+    text-decoration: none;
+    color: #0066c0;
+}
+.a-fixed-left-grid-inner:after, .a-fixed-right-grid-inner:after {
+    clear: both;
+}
+.a-fixed-left-grid-inner:after, .a-fixed-left-grid-inner:before, .a-fixed-right-grid-inner:after, .a-fixed-right-grid-inner:before {
+    display: table;
+    content: "";
+    line-height: 0;
+    font-size: 0;
+}
+.a-spacing-base, .a-ws .a-ws-spacing-base {
+    margin-bottom: 14px!important;
+}
+.a-ws div.a-column, div.a-column {
+    margin-right: 2%;
+    float: left;
+    min-height: 1px;
+    overflow: visible;
+}
+
+.a-row .a-span9, .a-ws .a-row .a-ws-span9 {
+    width: 74.448%;
+}
+.a-spacing-top-mini {
+    margin-top: 6px!important;
+}
+.a-spacing-none, .a-ws .a-ws-spacing-none {
+    margin-bottom: 0!important;
+}
+.order-date-invoice-item {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.a-icon-text-separator, .a-text-separator {
+    display: inline-block;
+    margin: -2px .67375em 0;
+    width: 1px;
+    background-color: #ddd;
+    line-height: 0;
+    height: 14px;
+    vertical-align: middle;
+}
+.a-icon, .a-link-emphasis:after {
+    background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e943461…._V2_.png);
+    -webkit-background-size: 400px 900px;
+    background-size: 400px 900px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: top;
+}
+.order-date-invoice-item {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+}

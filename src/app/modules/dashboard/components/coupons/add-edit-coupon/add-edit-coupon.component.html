@@ -1,62 +1,218 @@
-<h1>Responsive CSS Tabs</h1>
-		<div class="tab_container">
-			<input id="tab1" type="radio" name="tabs" checked>
-			<label for="tab1"><i class="fa fa-code"></i><span>Code</span></label>
+<div class="container-fluid">
+    <div class="panel">
+        <div class="content container-fluid padding-20">
+            <div class="m-t-20">
+                <div class="row text-center ">
+                    <div class="col">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="tittle-w3l">
+                                Add Coupons
+                                <span class="heading-style">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </span>
+                            </h3>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
 
-			<input id="tab2" type="radio" name="tabs">
-			<label for="tab2"><i class="fa fa-pencil-square-o"></i><span>About</span></label>
+                <div class="row">
+                    <div class="">
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active m-r-40"><a href="#info" aria-controls="info"
+                                        role="tab" data-toggle="tab">General Info</a></li>
+                                <li role="presentation" class="m-r-40"><a href="#restriction"
+                                        aria-controls="restriction" role="tab" data-toggle="tab">Restriction</a></li>
+                                <li role="presentation" class="m-r-40"><a href="#limit" aria-controls="limit" role="tab"
+                                        data-toggle="tab">Limit</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
 
-			<input id="tab3" type="radio" name="tabs">
-			<label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Services</span></label>
+                                <div role="tabpanel" class="tab-pane active" id="info">
+                                    <div class='panel m-b-30 padding-20 m-l-100 m-r-100'>
+                                        <div class='col-md-12'>
+                                            <div class='row m-b-10'>
+                                            </div>
+                                        </div>
+                                        <form>
+                                            <div class="row p-t-10">
 
-			<input id="tab4" type="radio" name="tabs">
-			<label for="tab4"><i class="fa fa-folder-open-o"></i><span>Portfolio</span></label>
+                                                <div class='col-md-6'>
+                                                    <div class="floating-label-group">
+                                                        <input type="text" class="form-control" autocomplete="off"
+                                                            autofocus required />
+                                                        <label class="floating-label">Title</label>
+                                                    </div>
 
-			<input id="tab5" type="radio" name="tabs">
-			<label for="tab5"><i class="fa fa-envelope-o"></i><span>Contact</span></label>
+                                                </div>
+                                                <div class='col-md-6'>
+                                                    <div class="floating-label-group">
+                                                        <input type="text" class="form-control" autocomplete="off"
+                                                            autofocus required />
+                                                        <label class="floating-label">Code</label>
+                                                    </div>
 
-			<section id="content1" class="tab-content">
-				<h3>Headline 1</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		      	
-			</section>
+                                                </div>
+                                            </div>
+                                            <div class="row p-t-10">
+                                                <div class='col-md-6'>
+                                                    <div class="floating-label-group">
+                                                        <select class="form-control" required autocomplete="off"
+                                                            autofocus>
+                                                            <option value="0">
+                                                                Discount Type
+                                                            </option>
+                                                            <option value="1">
+                                                                Percentage Discount
+                                                            </option>
+                                                            <option value="2">
+                                                                Fixed Cart Discount
+                                                            </option>
+                                                        </select>
 
-			<section id="content2" class="tab-content">
-				<h3>Headline 2</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-		      
-			</section>
+                                                        <label class="floating-label">Discount Type</label>
+                                                    </div>
 
-			<section id="content3" class="tab-content">
-				<h3>Headline 3</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		    
-			</section>
+                                                </div>
+                                                <div class='col-md-6 h-60'>
+                                                    <div class="floating-label-group">
+                                                        <input type="number" class="form-control" autocomplete="off"
+                                                            autofocus required />
+                                                        <label class="floating-label">Amount</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row p-t-10">
+                                                <div class='col-md-6'>
+                                                    <ejs-datepicker placeholder='Coupon Expiry  date'>
+                                                    </ejs-datepicker>
+                                                </div>
+                                                <div class='col-md-6'>
+                                                    <input type="checkbox">
+                                                    <label class="control-label m-l-10">Allow free shipping</label>
 
-			<section id="content4" class="tab-content">
-				<h3>Headline 4</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua.</p>
-		      	
-			</section>
+                                                </div>
+                                            </div>
+                                            <div class="row p-t-10 ">
+                                                <div class='col-md-6 m-t-20'>
+                                                    <input type="checkbox">
+                                                    <label class="control-label m-l-10">Show on store</label>
 
-			<section id="content5" class="tab-content">
-				<h3>Headline 5</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-		      	
-			</section>
-		</div>
+                                                </div>
+                                                <div class='col-md-6'>
+                                                    <div class="floating-label-group">
+                                                        <textarea rows="3" cols="2" class="form-control"
+                                                            autocomplete="off" autofocus required></textarea>
+                                                        <label class="floating-label">Description</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="float-right">
+                                                <button class="btn btn-style">Save</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="restriction">
+                                    <form class="m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="floating-label-group">
+                                                    <input type="text" class="form-control" autocomplete="off" autofocus
+                                                        required />
+                                                    <label class="floating-label">Add Product</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select class="form-control" required autocomplete="off" autofocus>
+                                                    <option value="0">
+                                                        Discount Type
+                                                    </option>
+                                                    <option value="1">
+                                                        Percentage Discount
+                                                    </option>
+                                                    <option value="2">
+                                                        Fixed Cart Discount
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md-4 m-t-5">
+                                                <input type="checkbox" />
+                                                <label class="control-label m-l-10">Individual use only</label>
+                                            </div>
+                                            <div class="col-md-4 m-t-5">
+                                                <input type="checkbox" />
+                                                <label class="control-label m-l-10">Exclude sale items</label>
+                                            </div>
+                                        </div>
+                                        <div class="float-right">
+                                            <button class="btn btn-style">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="limit">
+                                    <form class="m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                                <div class="floating-label-group">
+                                                    <input type="number" class="form-control" autocomplete="off"
+                                                        autofocus required />
+                                                    <label class="floating-label">Usage limit per coupon</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                <div class="floating-label-group">
+                                                    <input type="number" class="form-control" autocomplete="off"
+                                                        autofocus required />
+                                                    <label class="floating-label">Limit usage to X items</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                <div class="floating-label-group">
+                                                    <input type="number" class="form-control" autocomplete="off"
+                                                        autofocus required />
+                                                    <label class="floating-label">Usage limit per user</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="float-right">
+                                            <button class="btn btn-style">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+            <div class="chart tab-pane active" id="sales-chart"
+                style="display: none; position: relative; height: 300px;cursor: pointer;">
+            </div>
+            <div class="chart" id="line-chart" style="display: none; height: 277px;"></div>
+
+        </div>
+    </div>
+</div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+    style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

@@ -65,11 +65,17 @@ export class ProductService extends HttpBaseService {
       .pipe(catchError(this.handleError)
       );
   }
-
   getSellerReviews(id: number) {
 
     const url = `${this.baseUrl}//products/sellerreview/${id}`;
     return this.http.get<ReviewViewDetailsModel>(url)
+    .pipe(catchError(this.handleError)
+    );
+}
+  getProducts() {
+
+    const url = `${this.baseUrl}/products`;
+    return this.http.get<ProductDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }

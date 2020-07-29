@@ -40,7 +40,7 @@
                 </thead>
                 <tr *ngFor="let subCategory of subCategoriesList; let i = index;">
                     <td>{{subCategory?.name}}</td>
-                    <td>{{subCategory?.path}}</td>
+                    <td><input type="checkbox" disabled [checked]="subCategory.parent_category_id"></td>
                     <td>{{subCategory?.created_at |date}}</td>
                     <td>{{subCategory?.created_by}}</td>
                     <td>

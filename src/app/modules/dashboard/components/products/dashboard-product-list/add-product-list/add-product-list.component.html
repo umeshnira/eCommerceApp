@@ -147,7 +147,7 @@
                 <div class="row p-t-10">
                     <div class="col-md-12">
                         <div class="floating-label-group">
-                            <input type="number" id="About" class="form-control" autocomplete="off" autofocus
+                            <input type="text" id="About" class="form-control" autocomplete="off" autofocus
                                 formControlName="about" required />
                             <label class="floating-label">About</label>
                         </div>
@@ -168,7 +168,7 @@
 
         <div class="float-right m-b-10">
             <button class="btn btn-style" type="button" awPreviousStep>Previous Step</button>
-            <button class="btn btn-style m-l-10" type="button">Add Product</button>
+            <button class="btn btn-style m-l-10" type="button" (click)="addProduct()">Add Product</button>
         </div>
 
     </aw-wizard-step>

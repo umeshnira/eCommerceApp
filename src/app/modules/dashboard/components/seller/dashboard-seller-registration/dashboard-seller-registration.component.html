@@ -26,27 +26,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alan</td>
-                        <td>John</td>
-                        <td>alanjohn@gmail.com</td>
-                        <td>No</td>
+                    <tr  *ngFor="let seller of sellersList">
+                        <td>{{seller.name}}</td>
+                        <td>{{seller.username}}</td>
+                        <td>{{seller.email}}</td>
+                        <td>NO</td>
                         <td>350</td>
                         <td>
                             <a class="dropdown-item font-12"><i class="fa fa-eye m-r-5 icon-style" title="View"></i>
                             </a>
 
-                            <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 m-l-10 icon-style"
+                            <a class="dropdown-item font-12" (click)="approveSellerRegistration(seller.user_id, seller)"><i class="fa fa-check m-r-5 m-l-10 icon-style"
                                     title="Approve"></i>
                             </a>
-                            <a class="dropdown-item font-12"><i class="fa fa-times m-r-5 m-l-10 icon-style"
+                            <a class="dropdown-item font-12" (click)="denySellerRegistration(seller.user_id, seller)"><i class="fa fa-times m-r-5 m-l-10 icon-style"
                                     title="Deny"></i>
                             </a>
                         </td>
                     </tr>
 
                 </tbody>
-                <tfoot>
+                <!-- <tfoot>
                     <tr>
                         <th>Order ID</th>
                         <th>Order Date</th>
@@ -55,7 +55,7 @@
                         <th>Total amount</th>
                         <th>Action</th>
                     </tr>
-                </tfoot>
+                </tfoot> -->
             </table>
         </div>
     </div>

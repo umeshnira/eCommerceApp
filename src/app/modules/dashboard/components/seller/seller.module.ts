@@ -5,9 +5,9 @@ import { SellerSubscriptionComponent } from './seller-subscription/seller-subscr
 import { SellerComponent } from './seller.component';
 import { DashboardSellerRegistrationComponent } from './dashboard-seller-registration/dashboard-seller-registration.component';
 
-const modules = [SharedModule,SellerRoutingModule ];
+const modules = [SharedModule, SellerRoutingModule ];
 
-const components = [SellerSubscriptionComponent,SellerComponent,DashboardSellerRegistrationComponent];
+const components = [SellerSubscriptionComponent, SellerComponent, DashboardSellerRegistrationComponent];
 
 const providers = [];
 

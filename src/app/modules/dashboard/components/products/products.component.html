@@ -16,9 +16,8 @@
         <div class="row">
           <div class="col-md-3">
             <select class="form-control">
-              <option value="0">Seller </option>
-              <option value="1">Seller 1 </option>
-              <option value="2">Seller 1 </option>
+              <option value="0">Select Seller</option>
+              <option *ngFor="let x of sellersList" [value]="x.id">{{x.name}}</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -46,8 +45,8 @@
   <div class="agileinfo-ads-display col-md-12 m-t-30">
     <div class="wrapper">
       <!-- first section (nuts) -->
-      <div class="row">
-        <div *ngFor="let x of prodList">
+      <!-- <div class="row">
+        <div *ngFor="let x of productList">
           <div class="col-md-4 ">
             <div class="panel padding-20">
               <div class="men-pro-item simpleCart_shelfItem">
@@ -76,12 +75,12 @@
                     <span>Nuts</span>
                   </h5>
                   <h4 class="m-t-10">
-                    <a routerLink="DetailsPage">{{ x.ProductName }}</a>
+                    <a routerLink="DetailsPage">{{ x.name }}</a>
                   </h4>
                   <div class="info-product-price row">
                     <div class="col-md-6">
                       <span class="item_price">${{ x.price }}</span>
-                      <del>${{ x.actualPrice }}</del>
+                      <del>${{ x.price }}</del>
                     </div>
                     <div class="col-md-6">
                       <ul>
@@ -112,16 +111,16 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
       <div class="clearfix"></div>
       <!-- //first section (nuts) -->
       <!-- third section (oils) -->
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" *ngFor="let x of productList">
           <div class="panel padding-20">
-            <div class="men-pro-item simpleCart_shelfItem">
+            <div class="men-pro-item simpleCart_shelfItem" >
               <div class="men-thumb-item">
-                <img src="../../../assets/products/images/mk4.jpg" alt="" />
+                <img [src]="x.path" alt="" />
 
                 <span class="product-new-top"><a type="button" data-toggle="dropdown">
                     <i class="fa fa-ellipsis-v"></i>
@@ -143,11 +142,11 @@
                   <span>Oils</span>
                 </h5>
                 <h4 class="m-t-10">
-                  <a href="single.html">Freedom Oil,1L</a>
+                  <a href="single.html">{{x.name}}</a>
                 </h4>
                 <div class="info-product-price row">
                   <div class="col-md-6">
-                    <span class="item_price">$205.00</span>
+                    <span class="item_price">{{x.price}}</span>
                     <del>$255.00</del>
                   </div>
                   <div class="col-md-6">
@@ -170,7 +169,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="panel padding-20">
             <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
@@ -273,11 +272,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- //third section (oils) -->
       <!-- fourth section (noodles) -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-4 ">
           <div class="panel padding-20">
             <div class="men-pro-item simpleCart_shelfItem">
@@ -434,7 +433,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="clearfix"></div>
       <!-- //fourth section (noodles) -->
     </div>

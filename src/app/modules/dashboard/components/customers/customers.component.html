@@ -1,1 +1,66 @@
-<p>customers works!</p>
+<div class="container-fluid">
+    <div class="panel">
+        <div class="content container-fluid padding-20">
+            <div class="m-t-20">
+                <div class="row text-center ">
+                    <div class="col">
+                        <h3 class="tittle-w3l">Customers
+                            <span class="heading-style">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                        </h3>
+
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped example1 m-t-10">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Total Orders</th>
+                        <th>Wallet Balance</th>
+                        <th>Revenue</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Julia</td>
+                        <td>julia</td>
+                        <td>julia@gmail.com</td>
+                        <td>$225</td>
+                        <td>$125</td>
+                        <td>6000</td>
+                        <td>
+                            <a routerLink="/dashboard/customers/view-customer" class="dropdown-item font-12"><i class="fa fa-eye m-r-5 icon-style" title="View"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Total Orders</th>
+                        <th>Wallet Balance</th>
+                        <th>Revenue</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+    style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

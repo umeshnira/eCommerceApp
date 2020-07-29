@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductModel } from 'src/app/modules/home/modules/product/models/product.model';
 import { CategoryTreeViewModel } from 'src/app/modules/home/modules/category/models/category-tree-view.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,15 +10,17 @@ import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 @Component({
   selector: 'app-add-product-list',
   templateUrl: './add-product-list.component.html',
   styleUrls: ['./add-product-list.component.css']
 })
-export class AddProductListComponent implements OnInit {
+export class AddProductListComponent implements OnInit, OnDestroy {
 
   categoryId: number;
   productId: number;
+  userId: number;
   image: string;
   formSubmitted: boolean;
   files: any[] = [];
@@ -38,11 +40,14 @@ export class AddProductListComponent implements OnInit {
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
+    private authService: AuthService,
     private toastr: ToastrService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
     this.getCategories();
     this.productFormInitialization();
   }
@@ -50,7 +55,6 @@ export class AddProductListComponent implements OnInit {
   categoryTreeNodeClicked(event) {
     this.categoryId = event.node.dataset.uid;
   }
-
 
   addProduct() {
     const productModel = this.addingValues();
@@ -127,6 +131,7 @@ export class AddProductListComponent implements OnInit {
     productModel.total_qty = this.productDetailsForm?.controls['totalQty'].value;
     productModel.price = this.productDetailsForm?.controls['price'].value;
     productModel.category_id = this.categoryId;
+    productModel.seller_id = this.userId;
 
     return productModel;
 

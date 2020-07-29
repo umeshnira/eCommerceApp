@@ -11,11 +11,13 @@ import { AddEditProductCategoryComponent } from './dashboard-category/add-edit-p
 import { AddEditProductSubcategoryComponent } from './dashboard-sub-category/add-edit-product-subcategory/add-edit-product-subcategory.component';
 import { AddProductListComponent } from './dashboard-product-list/add-product-list/add-product-list.component';
 import { ArchwizardModule } from 'angular-archwizard';
-const modules = [SharedModule, DashboardProductRoutingModule,ArchwizardModule
+const modules = [SharedModule, DashboardProductRoutingModule, ArchwizardModule
 
 ];
 
-const components = [ProductsComponent, DashboardCategoryComponent, AddProductListComponent, AddEditProductCategoryComponent, AddEditProductSubcategoryComponent, DashboardSubCategoryComponent, DashboardProductListComponent];
+const components = [ProductsComponent, DashboardCategoryComponent, AddProductListComponent,
+    AddEditProductCategoryComponent, AddEditProductSubcategoryComponent, DashboardSubCategoryComponent,
+    DashboardProductListComponent];
 
 const providers = [FirstPageService, ProductService];
 
