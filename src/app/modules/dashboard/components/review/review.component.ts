@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ProductService } from 'src/app/modules/home/modules/product/services/product.service';
+import { ReviewViewDetailsModel } from 'src/app/modules/home/modules/product/models/review-view-details.model';
+import { SubscriptionLike as ISubscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-review',
@@ -7,9 +12,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewComponent implements OnInit {
 
-  constructor() { }
+  private getReviewSubscrip: ISubscription;
+
+  public reviewDetails = new ReviewViewDetailsModel();
+
+  private userId: number;
+
+  constructor(
+    private service: ProductService,
+    private toastr: ToastrService,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    this.userId = userDetails.user_id;
+    this.getUserOrderDetails(this.userId);
+  }
+
+
+  ngOnDestroy() {
+    if (this.getReviewSubscrip) {
+      this.getReviewSubscrip.unsubscribe();
+    }
+  }
+
+  private getUserOrderDetails(id: number) {
+    this.getReviewSubscrip = this.service.getSellerReviews(id).subscribe((res) => {
+
+      res.forEach(x => {
+        let a = new Date(x.date);
+        x.date = this.formatDate(x.date);
+      });
+
+      this.reviewDetails = res;
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
+  }
+
+
+
+  private formatDate(date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [day, month, year].join('-');
   }
 
 }

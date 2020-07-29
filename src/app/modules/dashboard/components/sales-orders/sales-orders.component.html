@@ -26,12 +26,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01-512-122</td>
-                        <td>June 12 2020</td>
-                        <td>Delivered</td>
-                        <td>1</td>
-                        <td>150</td>
+                    <tr *ngFor="let x of orderDetails">
+                        <td>{{x.id}}</td>
+                        <td>{{x.ordered_date}}</td>
+                        <td>{{x.order_status}}</td>
+                        <td> {{x.qty}}</td>
+                        <td>{{x.qty*x.price}}</td>
                         <td>
                             <a class="dropdown-item font-12"><i class="fa fa-eye m-r-5 icon-style" title="View"></i>
                             </a>

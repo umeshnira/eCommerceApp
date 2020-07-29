@@ -27,13 +27,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>221</td>
-                        <td>01-512-122</td>
-                        <td>01-512-122</td>
-                        <td>150</td>
-                        <td>NA</td>
-                        <td>Jul 22,2020</td>
+                    <tr *ngFor="x of getOrderSubscrip">
+                        <td>{{x.id}}</td>
+                        <td>{{x.id}}</td>
+                        <td>{{x.id}}</td>
+                        <td>{{x.qty * x.price}}</td>
+                        <td>{{x.reason}}</td>
+                        <td>{{x.ordered_date}}</td>                      
                         <td>
                             <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 icon-style" title="Approve"></i>
                             </a>

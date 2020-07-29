@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ApiResponseModel } from '../../../../../shared/models/api-response.model';
 import { ProductModel } from '../models/product.model';
+import { ReviewViewDetailsModel } from '../models/review-view-details.model';
 import { ProductDetailsModel } from '../models/product-details.model';
 import { catchError } from 'rxjs/operators';
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
@@ -61,6 +62,14 @@ export class ProductService extends HttpBaseService {
 
     const url = `${this.baseUrl}/products/${productId}`;
     return this.http.delete<ApiResponseModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
+  getSellerReviews(id: number) {
+
+    const url = `${this.baseUrl}//products/sellerreview/${id}`;
+    return this.http.get<ReviewViewDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }

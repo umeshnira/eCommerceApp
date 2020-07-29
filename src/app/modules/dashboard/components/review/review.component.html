@@ -27,10 +27,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img class="img-fluid avatar" src="../../../assets/images/1.jpeg"></td>
-                        <td>Michael</td>
-                        <td>Comment</td>
+                    <tr *ngFor="let x of reviewDetails">
+                        <td><img class="img-fluid avatar" src="{{x.path}}"></td>
+                        <td>{{x.author}}</td>
+                        <td>{{x.title}}</td>
                         <td>
                             <ul>
                                 <li>
@@ -45,8 +45,8 @@
                                 </li>
                             </ul>
                         </td>
-                        <td>Pending</td>
-                        <td>13 Aug,2020</td>
+                        <td>{{x.status}}</td>
+                        <td>{{x.date}}</td>
                         <td>
                             <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 icon-style" title="Edit"></i>
                             </a>

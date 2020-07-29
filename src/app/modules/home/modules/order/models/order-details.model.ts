@@ -20,4 +20,5 @@ export class OrderDetailsModel {
     email: string;
     length: number;
     dateGap:number;
+    reason: string;
 }

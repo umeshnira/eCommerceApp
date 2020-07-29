@@ -62,6 +62,20 @@ export class OrderService extends HttpBaseService {
       .pipe(catchError(this.handleError)
       );
   }
+
+  getSellerOrders(id: number) {
+    const url = `${this.orderUrl}/orders/sellerorders/${id}`;
+    return this.http.get<OrderDetailsModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
+  getSellerReturnOrders(id: number) {
+    const url = `${this.orderUrl}/orders/sellerreturnorders/${id}`;
+    return this.http.get<OrderDetailsModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
   returnOrder(obj: OrderReturnTableModel) {
     const url = `${this.orderUrl}/orders/return`;
     return this.http.post<ApiResponseModel>(url, obj)
