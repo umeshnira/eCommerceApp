@@ -26,6 +26,10 @@
 .m-t-10 {
   margin-top: 10px;
 }
+
+.m-t-60 {
+  margin-top: 60px;
+}
 .btn-style{
   background-color: #e91e63;
   color:white;
@@ -52,7 +56,9 @@ float:right
 .m-r-10 {
   margin-right: 10px;
 }
-
+.m-r-20 {
+  margin-right: 20px;
+}
 .m-t-20 {
   margin-top: 20px;
 }
@@ -63,6 +69,9 @@ float:right
 
 .m-l-20 {
   margin-left: 20px;
+}
+.m-l-45 {
+  margin-left: 45px;
 }
 
 .m-t-30 {
@@ -180,5 +189,6 @@ a {
 .form-control{
   border-radius:5px;
 }
+
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DashboardSidebarComponent } from './layout/dashboard-sidebar.component';
 import { DasboardComponent } from './components/dashboard/dasboard.component';
-import { ReviewComponent } from './components/review/review.component';
 
 const dashboardRoutes = [
     {
@@ -31,7 +30,7 @@ const dashboardRoutes = [
             },
             {
                 path: 'reviews',
-                component: ReviewComponent
+                loadChildren: () => import('./components/review/review.module').then(m => m.ReviewModule),
             },
             {
                 path: 'customers',
