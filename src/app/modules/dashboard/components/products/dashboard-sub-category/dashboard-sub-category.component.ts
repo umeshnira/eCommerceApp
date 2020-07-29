@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SubCategoryModel } from 'src/app/modules/home/modules/category/models/sub-category.model';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
@@ -9,7 +9,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
   templateUrl: './dashboard-sub-category.component.html',
   styleUrls: ['./dashboard-sub-category.component.css']
 })
-export class DashboardSubCategoryComponent implements OnInit {
+export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
 
   categoryId: number;
 

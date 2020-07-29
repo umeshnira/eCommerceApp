@@ -39,7 +39,7 @@
         <tbody>
           <tr *ngFor="let category of categories; let i = index;">
             <td>{{category?.name}}</td>
-            <td><input type="checkbox" disabled></td>
+            <td><input type="checkbox" disabled [checked]=""></td>
             <td>{{category?.created_at |date}}</td>
             <td>{{category?.created_by}}</td>
             <td>

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SellerService } from './services/seller.service';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SellerDetailsModel } from './models/seller-details.model';
+import { SellerService } from 'src/app/shared/services/seller.service';
 
 @Component({
   selector: 'app-seller',

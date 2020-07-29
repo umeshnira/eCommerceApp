@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { SellerDetailsModel } from '../models/seller-details.model';
 import { catchError } from 'rxjs/operators';
 import { ApiResponseModel } from 'src/app/shared/models/api-response.model';
+import { SellerDetailsModel } from 'src/app/modules/dashboard/components/seller/models/seller-details.model';
 
 @Injectable()
 export class SellerService extends HttpBaseService {

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SellerDetailsModel } from '../models/seller-details.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { SellerService } from '../services/seller.service';
 import { ToastrService } from 'ngx-toastr';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { Constants } from 'src/app/shared/models/constants';
+import { SellerService } from 'src/app/shared/services/seller.service';
 
 @Component({
   selector: 'app-dashboard-seller-registration',
