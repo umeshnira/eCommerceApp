@@ -51,6 +51,9 @@ p{
 .dropdown-menu {
     top:unset;
     left: 88%;
+    padding: 10px;
     min-width: 123px;
-  
+}
+.m-l-15{
+    margin-left: 15px;
 }

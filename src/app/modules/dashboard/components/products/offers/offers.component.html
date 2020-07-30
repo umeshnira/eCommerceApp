@@ -4,7 +4,7 @@
             <div class="m-t-20">
                 <div class="row text-center ">
                     <div class="col">
-                        <h3 class="tittle-w3l">Reviews
+                        <h3 class="tittle-w3l">Offers
                             <span class="heading-style">
                                 <i></i>
                                 <i></i>
@@ -17,43 +17,39 @@
             <table class="table table-bordered table-striped example1 m-t-10">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Author</th>
-                        <th>Comment</th>
-                        <th>Rating</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reduced Price</th>
+                        <th>Off Percentage</th>
+                        <th>Valid From</th>
+                        <th>Valid To</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Associated With</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let x of reviewDetails">
-                        <td><img class="img-fluid avatar" src="{{x.path}}"></td>
-                        <td>{{x.author}}</td>
-                        <td>{{x.title}}</td>
+                    <tr>
+                        <td>Fashion</td>
+                        <td>Fashion </td>
+                        <td>$123</td>
+                        <td>15%</td>
+                        <td>Jun 10,2020</td>
+                        <td>Jul 22,2020</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                    </a>
-                                </li>
-                            </ul>
+                            <div class="status-toggle">
+                                <input type="checkbox" id="staff_module" class="check">
+                                <label for="staff_module" class="checktoggle">checkbox</label>
+                            </div>
                         </td>
-                        <td>{{x.status}}</td>
-                        <td>{{x.date}}</td>
+                        <td><a class="associatedClass">Link</a></td>
                         <td>
-                            <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details"><i class="fa fa-eye m-r-5 icon-style" title="View"></i>
+                            <a class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
                             </a>
 
-                            <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 m-l-10 icon-style" title="Approve"></i>
+                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style"
+                                    title="Edit"></i>
                             </a>
-
                             <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style"
                                     title="Delete"></i>
                             </a>
@@ -63,12 +59,14 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Image</th>
-                        <th>Author</th>
-                        <th>Comment</th>
-                        <th>Rating</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reduced Price</th>
+                        <th>Off Percentage</th>
+                        <th>Valid From</th>
+                        <th>Valid To</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Associated With</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

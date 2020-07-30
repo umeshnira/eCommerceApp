@@ -9,10 +9,10 @@
 $(function () {
 
   //Activate the iCheck Plugin
-  jQuery('input[type="checkbox"]').iCheck({
-    checkboxClass: 'icheckbox_flat-blue',
-    radioClass: 'iradio_flat-blue'
-  });
+  // jQuery('input[type="checkbox"]').iCheck({
+  //   checkboxClass: 'icheckbox_flat-blue',
+  //   radioClass: 'iradio_flat-blue'
+  // });
   //Make the dashboard widgets sortable Using jquery UI
   jQuery(".connectedSortable").sortable({
     placeholder: "sort-highlight",

@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  *ngFor="let seller of sellersList">
+                    <tr *ngFor="let seller of sellersList">
                         <td>{{seller.name}}</td>
                         <td>{{seller.username}}</td>
                         <td>{{seller.email}}</td>
@@ -36,34 +36,35 @@
                             <a class="dropdown-item font-12"><i class="fa fa-eye m-r-5 icon-style" title="View"></i>
                             </a>
 
-                            <a class="dropdown-item font-12" (click)="approveSellerRegistration(seller.user_id, seller)"><i class="fa fa-check m-r-5 m-l-10 icon-style"
-                                    title="Approve"></i>
+                            <a class="dropdown-item font-12"
+                                (click)="approveSellerRegistration(seller.user_id, seller)"><i
+                                    class="fa fa-check m-r-5 m-l-10 icon-style" title="Approve"></i>
                             </a>
-                            <a class="dropdown-item font-12" (click)="denySellerRegistration(seller.user_id, seller)"><i class="fa fa-times m-r-5 m-l-10 icon-style"
-                                    title="Deny"></i>
+                            <a class="dropdown-item font-12" (click)="denySellerRegistration(seller.user_id, seller)"><i
+                                    class="fa fa-times m-r-5 m-l-10 icon-style" title="Deny"></i>
                             </a>
                         </td>
                     </tr>
 
                 </tbody>
-                <!-- <tfoot>
+                <tfoot>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Order Date</th>
-                        <th>Status</th>
-                        <th>Total items</th>
-                        <th>Total amount</th>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Subscription</th>
+                        <th>Wallet Balance</th>
                         <th>Action</th>
                     </tr>
-                </tfoot> -->
+                </tfoot>
             </table>
         </div>
     </div>
 
 
 </div>
-<!-- <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
 <div class="chart tab-pane active" id="sales-chart"
     style="display: none; position: relative; height: 300px;cursor: pointer;">
 </div>
-<div class="chart" id="line-chart" style="display: none; height: 277px;"></div> -->
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

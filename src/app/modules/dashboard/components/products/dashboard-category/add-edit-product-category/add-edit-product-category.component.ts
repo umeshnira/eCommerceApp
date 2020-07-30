@@ -133,6 +133,7 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
     if (this.category) {
       this.categoryForm?.controls['name'].setValue(this.category.name);
       this.categoryForm?.controls['description'].setValue(this.category.description);
+
     }
   }
 
@@ -142,6 +143,9 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
       description: new FormControl('',
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
+      subCategory: new FormControl(''
+      ),
+
     });
   }
 

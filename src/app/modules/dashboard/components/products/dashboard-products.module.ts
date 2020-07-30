@@ -11,15 +11,16 @@ import { AddEditProductCategoryComponent } from './dashboard-category/add-edit-p
 import { AddEditProductSubcategoryComponent } from './dashboard-sub-category/add-edit-product-subcategory/add-edit-product-subcategory.component';
 import { AddProductListComponent } from './dashboard-product-list/add-product-list/add-product-list.component';
 import { ArchwizardModule } from 'angular-archwizard';
+import { DashboardProductDetailComponent } from './dashboard-product-list/dashboard-product-detail/dashboard-product-detail.component';
+import { CartService } from 'src/app/modules/home/services/cart.service';
+import { OffersComponent } from './offers/offers.component';
 const modules = [SharedModule, DashboardProductRoutingModule, ArchwizardModule
-
 ];
-
 const components = [ProductsComponent, DashboardCategoryComponent, AddProductListComponent,
     AddEditProductCategoryComponent, AddEditProductSubcategoryComponent, DashboardSubCategoryComponent,
-    DashboardProductListComponent];
+    DashboardProductListComponent, DashboardProductDetailComponent, OffersComponent];
 
-const providers = [FirstPageService, ProductService];
+const providers = [FirstPageService, ProductService, CartService];
 
 @NgModule({
     imports: modules,

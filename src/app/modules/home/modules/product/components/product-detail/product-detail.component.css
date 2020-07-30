@@ -77,3 +77,7 @@ a:hover {
 .w-35p{
   width: 35%;
 }
+.border-style{
+  padding: 11px 14px 7px 12px;
+  border:1px solid #e91e63;
+}

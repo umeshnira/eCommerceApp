@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
+import { CategoryService } from 'src/app/shared/services/category.service';
 @Component({
   selector: 'app-add-edit-product-subcategory',
   templateUrl: './add-edit-product-subcategory.component.html',
@@ -24,7 +26,7 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   subCategory: SubCategoryModel;
   field: Object;
   subCategoryForm: FormGroup;
-
+  categoryList: CategoryModel;
   addSubCategorySubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
   editSubCategorySubscription: ISubscription;
@@ -37,6 +39,7 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   constructor(
     private service: SubCategoryService,
     private route: ActivatedRoute,
+    private categoryService: CategoryService,
     private router: Router,
     private toastr: ToastrService,
   ) { }
@@ -44,7 +47,7 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   ngOnInit(): void {
     this.subCategoryFormInitialization();
     this.getCategories();
-
+    this.getCategoryList();
     if (this.route.snapshot.url[1].path === 'edit') {
       this.subCategoryId = this.route.snapshot.queryParams.subCategoryId;
       this.getSubCategory(this.subCategoryId);
@@ -140,7 +143,15 @@ export class AddEditProductSubcategoryComponent implements OnInit {
       }
     }
   }
-
+  private getCategoryList() {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
+      this.categoryList = response;
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      }
+    );
+  }
   private getSubCategory(subCategoryId) {
     this.getSubCategorySubscription = this.service.getSubCategory(subCategoryId).subscribe(response => {
       if (response) {
@@ -182,4 +193,14 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   }
 
 
+  // getCategoryId(event) {
+  //   this.categoryId = event.target.value;
+  //   this.getSubCategoryList();
+  //   if (this.isSeller) {
+  //     this.getProductsByCategoryId(this.categoryId);
+  //   } else {
+  //     this.getProductsByCategoryId(this.categoryId);
+  //   }
+
+  // }
 }

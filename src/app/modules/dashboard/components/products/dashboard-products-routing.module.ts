@@ -7,6 +7,8 @@ import { DashboardProductListComponent } from './dashboard-product-list/dashboar
 import { AddEditProductCategoryComponent } from './dashboard-category/add-edit-product-category/add-edit-product-category.component';
 import { AddEditProductSubcategoryComponent } from './dashboard-sub-category/add-edit-product-subcategory/add-edit-product-subcategory.component';
 import { AddProductListComponent } from './dashboard-product-list/add-product-list/add-product-list.component';
+import { DashboardProductDetailComponent } from './dashboard-product-list/dashboard-product-detail/dashboard-product-detail.component';
+import { OffersComponent } from './offers/offers.component';
 
 const productRoutes = [
     {
@@ -45,6 +47,14 @@ const productRoutes = [
         path: 'add-product-list',
         component: AddProductListComponent
     },
+    {
+        path: 'product-details',
+        component: DashboardProductDetailComponent
+    },
+    {
+        path: 'offers',
+        component: OffersComponent
+    }
 ];
 
 @NgModule({

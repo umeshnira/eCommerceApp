@@ -1,0 +1,48 @@
+.text-upper{
+    text-transform: uppercase;
+    line-height: 34px;
+}
+.card {
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+  }
+  .padding-15{
+      padding:15px
+  }
+  .m-t-40{
+      margin-top: 40px;
+  }
+  .m-l-16{
+      margin-left: 16px;
+  }
+  .font-13 {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-left: 33px;
+    color: #8e8484;
+}
+.smallfont{
+    color:#e91e63;
+    font-weight: 600;
+}
+.item-info-product h4 a {
+    color: #000;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color:#e91e63
+}
+.fa{
+    color:#e91e63
+}
+.m-r-17{
+    margin-right: 17px;
+}
+.panelActive{
+    border:2px solid #e91e63;
+    cursor: pointer;
+}
+.panelClass:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

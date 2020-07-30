@@ -1,9 +1,4 @@
 
-.page-header {
-     padding-bottom: unset; 
-     margin: 30px 12px 19px -18px;
-    border-bottom: unset;
-}
 .table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 10px !important;
 }

@@ -1,0 +1,57 @@
+.notification-list .status-toggle {
+    float: right;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.check {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+.check:checked+.checktoggle {
+    background-color: #55ce63;
+}
+.checktoggle {
+    background-color: #e0001a;
+    border-radius: 12px;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 24px;
+    margin-bottom: 0;
+    position: relative;
+    width: 48px;
+}
+.check:checked+.checktoggle:after {
+    left: 100%;
+    transform: translate(calc(-100% - 5px), -50%);
+}
+.checktoggle:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(5px, -50%);
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: left 300ms ease, transform 300ms ease;
+}
+.fa{
+    color:#e91e63;
+    font-size: 16px;
+}
+.associatedClass{
+    text-decoration: underline;
+    color:blue
+}

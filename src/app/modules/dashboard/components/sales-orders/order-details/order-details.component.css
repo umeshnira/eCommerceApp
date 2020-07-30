@@ -212,6 +212,7 @@ h3.tittle-w3l:after {
 }
 .shipment-top-row .actions {
     position: absolute;
+    top:65px;
     bottom: 0;
     right: 0;
 }
@@ -351,17 +352,13 @@ a, a:active, a:link, a:visited {
     height: 14px;
     vertical-align: middle;
 }
-.a-icon, .a-link-emphasis:after {
-    background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e943461…._V2_.png);
-    -webkit-background-size: 400px 900px;
-    background-size: 400px 900px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    vertical-align: top;
-}
+
 .order-date-invoice-item {
     display: inline-block;
     overflow: hidden;
     vertical-align: middle;
     white-space: nowrap;
+}
+.a-button-text{
+color:black!important
 }

@@ -38,20 +38,22 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tr *ngFor="let subCategory of subCategoriesList; let i = index;">
-                    <td>{{subCategory?.name}}</td>
-                    <td><input type="checkbox" disabled [checked]="subCategory.parent_category_id"></td>
-                    <td>{{subCategory?.created_at |date}}</td>
-                    <td>{{subCategory?.created_by}}</td>
-                    <td>
-                        <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
-                                (click)="navigateToEditPage(subCategory?.id)"></i>
-                        </a>
-                        <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
-                                (click)="deleteSubCategory(subCategory?.id, i)"></i>
-                        </a>
-                    </td>
-                </tr>
+                <tbody *ngFor="let subCategory of subCategoriesList; let i = index;">
+                    <tr>
+                        <td>{{subCategory?.name}}</td>
+                        <td><input type="checkbox" disabled [checked]="subCategory.parent_category_id"></td>
+                        <td>{{subCategory?.created_at |date}}</td>
+                        <td>{{subCategory?.created_by}}</td>
+                        <td>
+                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5"
+                                    (click)="navigateToEditPage(subCategory?.id)"></i>
+                            </a>
+                            <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10"
+                                    (click)="deleteSubCategory(subCategory?.id, i)"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
                 <tfoot>
                     <tr>
                         <th>Name</th>

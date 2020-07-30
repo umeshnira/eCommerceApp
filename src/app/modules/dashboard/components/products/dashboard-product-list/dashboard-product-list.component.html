@@ -9,7 +9,7 @@
     </span>
   </h3>
   <!-- //tittle heading -->
-  <div class="side-bar col-md-3 m-t-30">
+  <div class="col-md-3 m-t-30">
     <select class="form-control" (change)="getCategoryId($event)">
       <option value="">All Categories</option>
       <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}
