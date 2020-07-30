@@ -15,16 +15,17 @@
         <div class="wrapper">
             <!-- third section (oils) -->
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" *ngFor="let seller of sellersList">
                     <div class="panel padding-20">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
+                                <img [src]="seller.image" alt=""*ngIf="seller.image ! == null" />
+                                <img src="../../../../../assets/images/defaultImage.png" alt=""*ngIf="seller.image === null ||seller.image === undefined" />
 
                             </div>
                             <div class="item-info-product">
                                 <h4>
-                                    <a href="single.html">Appario</a>
+                                    <a href="single.html">{{seller.name}}</a>
                                 </h4>
                                 <div class="info-product-price row">
                                     <div class="col-md-6">
@@ -34,202 +35,22 @@
                                     <div class="col-md-6">
                                         <ul>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel padding-20">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
-
-                            </div>
-                            <div class="item-info-product">
-                                <h4>
-                                    <a href="single.html">Amazon Retail Pantry</a>
-                                </h4>
-                                <div class="info-product-price row">
-                                    <div class="col-md-6">
-                                        <span class="item_price m-r-10">Revenue</span>
-                                        <span>335,378</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel padding-20">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
-
-                            </div>
-                            <div class="item-info-product">
-                                <h4>
-                                    <a href="single.html">uRead-Store</a>
-                                </h4>
-                                <div class="info-product-price row">
-                                    <div class="col-md-6">
-                                        <span class="item_price m-r-10">Revenue</span>
-                                        <span>335,378</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- //third section (oils) -->
-            <!-- fourth section (noodles) -->
-            <div class="row">
-                <div class="col-md-4 ">
-                    <div class="panel padding-20">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
-
-                            </div>
-                            <div class="item-info-product">
-                                <h4>
-                                    <a href="single.html">Appario</a>
-                                </h4>
-                                <div class="info-product-price row">
-                                    <div class="col-md-6">
-                                        <span class="item_price m-r-10">Revenue</span>
-                                        <span>335,378</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel padding-20">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
-                            </div>
-                            <div class="item-info-product">
-                                <h4>
-                                    <a href="single.html">Cloudtail Pantry</a>
-                                </h4>
-                                <div class="info-product-price row">
-                                    <div class="col-md-6">
-                                        <span class="item_price m-r-10">Revenue</span>
-                                        <span>335,378</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel padding-20">
-                        <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item">
-                                <img src="../../../assets/images/download.png" alt="" />
-
-                            </div>
-                            <div class="item-info-product">
-                                <h4>
-                                    <a href="single.html"> Cloudtail India</a>
-                                </h4>
-                                <div class="info-product-price row">
-                                    <div class="col-md-6">
-                                        <span class="item_price m-r-10">Revenue</span>
-                                        <span>335,378</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                </a>
+                                                <small class="text-success">
+                                                    <div class="dashboard-rating1">
+                                                      <span class="dashboard-starRating">
+                                                        <input id="rating5" type="radio"  value="5" [checked]="seller.star_rate === 5"/>
+                                                        <label for="rating5"></label>
+                                                        <input id="rating4" type="radio"  value="4" [checked]="seller.star_rate === 4"/>
+                                                        <label for="rating4"></label>
+                                                        <input id="rating3" type="radio"  value="3" [checked]="seller.star_rate === 3" />
+                                                        <label for="rating3"></label>
+                                                        <input id="rating2" type="radio"  value="2" [checked]="seller.star_rate === 2"/>
+                                                        <label for="rating2"></label>
+                                                        <input id="rating1" type="radio"  value="1" [checked]="seller.star_rate === 1"/>
+                                                        <label for="rating1"></label>
+                                                      </span>
+                                                    </div>
+                                                  </small>
                                             </li>
                                         </ul>
                                     </div>

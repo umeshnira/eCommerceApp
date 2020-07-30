@@ -13,6 +13,7 @@ export class ProductDetailsModel {
     price: number;
     images: Image[] = [];
     category_id: number;
+    category: string;
     seller_id: number;
     left_qty: number;
     offer_id: number;

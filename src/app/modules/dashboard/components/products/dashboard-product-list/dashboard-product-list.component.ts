@@ -191,7 +191,7 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
   }
 
   private getProducts() {
-    this.getProductsSubscription = this.productService.getProducts()
+    this.getProductsSubscription = this.productService.getAllProducts()
       .subscribe((response) => {
         this.products = response;
       },

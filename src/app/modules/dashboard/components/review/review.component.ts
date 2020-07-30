@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
-export class ReviewComponent implements OnInit {
+export class ReviewComponent implements OnInit, OnDestroy {
 
   private getReviewSubscrip: ISubscription;
 

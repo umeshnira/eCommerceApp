@@ -18,6 +18,8 @@ export class SellerDetailsModel {
     bank_ac_no: string;
     branch_name: string;
     ifsc_code: string;
+    image: string;
+    star_rate: number;
     created_by: string;
     created_at: Date;
     updated_by: string;

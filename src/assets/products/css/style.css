@@ -2358,6 +2358,7 @@ img.zoom-img:hover {
 .rating1 {
   direction: ltr;
 }
+
 .starRating:not(old) {
   display: inline-block;
   height: 18px;
@@ -2394,6 +2395,40 @@ img.zoom-img:hover {
   opacity: 1;
 }
 /*-- //Ratings --*/
+/* Dashboard star rating */
+.dashboard-rating1 {
+  direction: ltr;
+}
+
+.dashboard-starRating:not(old) > input {
+  margin-right: -26%;
+  opacity: 0;
+}
+
+.dashboard-starRating:not(old) > label {
+  float: right;
+  background: url(../../products/images/star1.png);
+  background-size: contain;
+  margin-right: 2px;
+}
+
+.dashboard-starRating:not(old) > label:before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: url(../../products/images/star22.png);
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.dashboard-starRating:not(old) > label:hover:before,
+.dashboard-starRating:not(old) > label:hover ~ label:before,
+.dashboard-starRating:not(:hover) > :checked ~ label:before {
+  opacity: 1;
+}
+/*-- end of dashboard star rating --*/
 .single-infoagile ul li {
   display: block;
   font-size: 14px;

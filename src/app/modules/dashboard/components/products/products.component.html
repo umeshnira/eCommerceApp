@@ -14,7 +14,7 @@
     <div class="container-fluid">
       <form method="POST">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3" >
             <select class="form-control">
               <option value="0">Select Seller</option>
               <option *ngFor="let x of sellersList" [value]="x.id">{{x.name}}</option>
@@ -22,9 +22,8 @@
           </div>
           <div class="col-md-3">
             <select class="form-control">
-              <option value="0">Category </option>
-              <option value="1">Fashion</option>
-              <option value="2">Jewellery </option>
+              <option value="0">All Categories </option>
+              <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -36,7 +35,7 @@
             </ul>
           </div>
           <div class="col-md-3">
-            <button class="btn btn-danger btn-width btn-style" type="submit">Search</button>
+            <button class="btn btn-danger btn-width btn-style" type="submit" (click)="getProductsBySellerId()">Search</button>
           </div>
         </div>
       </form>
@@ -120,7 +119,7 @@
           <div class="panel padding-20">
             <div class="men-pro-item simpleCart_shelfItem" >
               <div class="men-thumb-item">
-                <img [src]="x.path" alt="" />
+                <img [src]="getImage(x)" alt="" class="image-style"/>
 
                 <span class="product-new-top"><a type="button" data-toggle="dropdown">
                     <i class="fa fa-ellipsis-v"></i>
@@ -130,7 +129,8 @@
                       View</a>
                     <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
                       Review</a>
-                    <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.categoryId)"><i class="fa fa-pencil m-r-10 m-l-10" 
+                      ></i>
                       Edit</a>
                     <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
                       Delete</a>
@@ -139,7 +139,7 @@
               </div>
               <div class="item-info-product">
                 <h5>
-                  <span>Oils</span>
+                  <span>{{x.category}}</span>
                 </h5>
                 <h4 class="m-t-10">
                   <a href="single.html">{{x.name}}</a>
@@ -152,14 +152,22 @@
                   <div class="col-md-6">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                        </a>
+                        <small class="text-success">
+                          <div class="dashboard-rating1">
+                            <span class="dashboard-starRating">
+                              <input id="rating5" type="radio"  value="5" [checked]="x.star_rate === 5"/>
+                              <label for="rating5"></label>
+                              <input id="rating4" type="radio"  value="4" [checked]="x.star_rate === 4"/>
+                              <label for="rating4"></label>
+                              <input id="rating3" type="radio"  value="3" [checked]="x.star_rate === 3" />
+                              <label for="rating3"></label>
+                              <input id="rating2" type="radio"  value="2" [checked]="x.star_rate === 2"/>
+                              <label for="rating2"></label>
+                              <input id="rating1" type="radio"  value="1" [checked]="x.star_rate === 1"/>
+                              <label for="rating1"></label>
+                            </span>
+                          </div>
+                        </small>
                       </li>
                     </ul>
                   </div>
