@@ -4,6 +4,7 @@ import { HomeLayoutComponent } from './layout/home-layout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 const routes = [
     {
@@ -38,6 +39,11 @@ const routes = [
                 path: 'categories',
                 loadChildren: () => import('./modules/category/category.module').then(m => m.CategoryModule),
             },
+            {
+                path: 'user-account',
+               component:UserAccountComponent
+            }
+            
         ]
     }
 ];

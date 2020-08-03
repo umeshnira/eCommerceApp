@@ -10,10 +10,12 @@ import { LocalWhishListService } from './services/local-whish-list.service';
 import { SaveForLaterService } from './services/save-for-later.service';
 import { CartService } from './services/cart.service';
 import { WishListService } from './services/wish-list.service';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 const modules = [HomeRoutingModule, SharedModule];
 
-const components = [CartViewComponent, HomePageComponent, WishlistComponent, HomeLayoutComponent];
+const components = [CartViewComponent, HomePageComponent, WishlistComponent, HomeLayoutComponent,UserAccountComponent];
 
 const providers = [FirstPageService, LocalWhishListService, SaveForLaterService, CartService, WishListService];
 
