@@ -39,7 +39,7 @@
         <tbody>
           <tr *ngFor="let category of categories; let i = index;">
             <td>{{category?.name}}</td>
-            <td><input type="checkbox" disabled [checked]=""></td>
+            <td><input type="checkbox"  disabled [checked]="category.hasSubCategory"></td>
             <td>{{category?.created_at |date}}</td>
             <td>{{category?.created_by}}</td>
             <td>
@@ -47,13 +47,13 @@
                   class="fa fa-pencil m-r-5 icon-style" title="Edit"></i>
               </a>
 
-              <a class="dropdown-item font-12" (click)="deleteCategory(category?.id, i)"><i
+              <a class="dropdown-item font-12" (click)="deleteCategory(category, i)"><i
                   class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
               </a>
             </td>
           </tr>
         </tbody>
-        <tfoot>
+        <!-- <tfoot>
           <tr>
             <th>Name</th>
             <th>Has Sub Category</th>
@@ -61,7 +61,7 @@
             <th>Created By</th>
             <th>Action</th>
           </tr>
-        </tfoot>
+        </tfoot> -->
       </table>
     </div>
   </div>

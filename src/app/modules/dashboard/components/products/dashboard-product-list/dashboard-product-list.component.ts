@@ -10,6 +10,7 @@ import { Constants } from 'src/app/shared/models/constants';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { CategoryModel } from '../models/category.model';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 @Component({
   selector: 'app-dashboard-product-list',
   templateUrl: './dashboard-product-list.component.html',
@@ -19,11 +20,12 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
   categoryId: number;
   userId: number;
   isSeller: boolean;
+  hasSubCategory: boolean;
 
   products: ProductDetailsModel[];
   result: CategoryTreeViewModel;
   field: Object;
-  categoryList: CategoryModel;
+  categoryList: CategoryModel[];
 
   subCategoryListSubscription: ISubscription;
   getProductsByCategoryIdSubscription: ISubscription;
@@ -50,11 +52,11 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
     const userRole = userDetails.role;
     if (userRole === Constants.seller) {
       this.isSeller = true;
+      this.getCategories();
       this.getProductsBySellerId(this.userId);
-      this.getCategories();
     } else {
-      this.getProducts();
       this.getCategories();
+      this.getProducts();
     }
   }
 
@@ -91,7 +93,8 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
       relativeTo: this.route
     };
 
-    this.router.navigate(['edit'], navigationExtras);
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.EditProduct}`;
+    this.router.navigate([path], navigationExtras);
   }
 
   navigateToDetailPage(productId: number) {
@@ -101,10 +104,12 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
       relativeTo: this.route
     };
 
-    this.router.navigate(['details'], navigationExtras);
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.ProductsDetail}`;
+    this.router.navigate([path], navigationExtras);
   }
 
   getCategoryId(event) {
+    this.hasSubCategory = false;
     this.categoryId = event.target.value;
     this.getSubCategoryList();
     if (this.isSeller) {
@@ -163,6 +168,7 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         this.result = response;
         this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
+        this.hasSubCategory = true;
       },
         (error) => {
           this.toastr.error('', error.error.message);
@@ -181,8 +187,9 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;
+      this.categoryList = this.categoryList.filter(x => x.parent_category_id === null);
     },
       (error) => {
         this.toastr.error('', error.error.message);

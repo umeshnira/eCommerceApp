@@ -7,6 +7,7 @@ export class SubCategoryModel {
     description: string;
     status: Status;
     parent_category_id: number;
+    hasSubCategory: boolean;
     created_at: Date;
     updated_at: Date;
     created_by = Constants.admin;

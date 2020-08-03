@@ -4,6 +4,8 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 
 @Component({
   selector: 'app-dashboard-category',
@@ -14,18 +16,19 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
 
   categories: CategoryModel[];
 
-  getCategoriesSubscription: ISubscription;
+  getAllCategoriesSubscription: ISubscription;
   deleteCategorySubscription: ISubscription;
 
   constructor(
     private service: CategoryService,
+    private subCategoryService: SubCategoryService,
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getAllCategories();
   }
 
   goToEditPage(categoryId: number) {
@@ -38,11 +41,38 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteCategory(categoryId: number, index: number) {
-    this.deleteCategorySubscription = this.service.deleteCategory(categoryId).subscribe(response => {
+  deleteCategory(category: CategoryModel, index: number) {
+    if (category.hasSubCategory) {
+      this.toastr.warning('Categories with Subcategory cannot be deleted', 'Warning');
+    } else {
+      this.deleteCategorySubscription = this.service.deleteCategory(category.id).subscribe(response => {
 
-      this.categories.splice(index, 1);
-      this.toastr.success('Category Deleted Successfully', 'Success');
+        this.categories.splice(index, 1);
+        this.toastr.success('Category Deleted Successfully', 'Success');
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        }
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.getAllCategoriesSubscription) {
+      this.getAllCategoriesSubscription.unsubscribe();
+    }
+    if (this.deleteCategorySubscription) {
+      this.deleteCategorySubscription.unsubscribe();
+    }
+  }
+
+  private getAllCategories() {
+    this.getAllCategoriesSubscription = this.service.getCategories().subscribe(response => {
+
+      if (response) {
+        this.categories = response;
+        this.checkHasSubCategory();
+      }
     },
       (error) => {
         this.toastr.error('', error.error.message);
@@ -50,24 +80,21 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-    if (this.getCategoriesSubscription) {
-      this.getCategoriesSubscription.unsubscribe();
-    }
-    if (this.deleteCategorySubscription) {
-      this.deleteCategorySubscription.unsubscribe();
-    }
-  }
-
-  private getCategories() {
-    this.getCategoriesSubscription = this.service.getCategories().subscribe(response => {
-      if (response) {
-        this.categories = response;
-
+  private checkHasSubCategory() {
+    for (let i = 0; i < this.categories.length; i++) {
+      for (let j = 0; j < this.categories.length; j++) {
+        if (this.categories[i].id === this.categories[j].parent_category_id) {
+          this.categories[i].hasSubCategory = true;
+        }
       }
-    }, (error) => {
-      this.toastr.error('', error.error.message);
+    }
+    const newArray = new Array<CategoryModel>();
+    this.categories.forEach(element => {
+      if (element.parent_category_id === null) {
+        newArray.push(element);
+      }
     });
+    this.categories = newArray;
   }
 }
 

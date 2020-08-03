@@ -20,11 +20,11 @@ const productRoutes = [
         component: DashboardCategoryComponent
     },
     {
-        path: 'add-categories',
+        path: 'categories/add',
         component: AddEditProductCategoryComponent
     },
     {
-        path: 'edit-categories',
+        path: 'categories/edit',
         component: AddEditProductCategoryComponent
     },
     {
@@ -36,7 +36,7 @@ const productRoutes = [
         component: AddEditProductSubcategoryComponent
     },
     {
-        path: 'edit-sub-categories',
+        path: 'sub-categories/edit',
         component: AddEditProductSubcategoryComponent
     },
     {
@@ -44,11 +44,15 @@ const productRoutes = [
         component: DashboardProductListComponent
     },
     {
-        path: 'add-product-list',
+        path: 'add',
         component: AddProductListComponent
     },
     {
-        path: 'product-details',
+        path: 'edit',
+        component: AddProductListComponent
+    },
+    {
+        path: 'details',
         component: DashboardProductDetailComponent
     },
     {

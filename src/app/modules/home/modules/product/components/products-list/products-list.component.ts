@@ -52,6 +52,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
     this.userRole = userDetails.role;
+    this.changeInCategoryId();
+    this.categoryId = this.route.snapshot.queryParams.categoryId;
+    this.getSubCategoryList();
     if (this.userRole === Constants.client) {
       this.isUser = true;
       this.getProductsByCategoryId(this.categoryId);
@@ -59,9 +62,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     if (this.userRole === Constants.seller) {
       this.getProductsBySellerId();
     }
-    this.changeInCategoryId();
-    this.categoryId = this.route.snapshot.queryParams.categoryId;
-    this.getSubCategoryList();
   }
 
   categoryNodeclicked(event) {

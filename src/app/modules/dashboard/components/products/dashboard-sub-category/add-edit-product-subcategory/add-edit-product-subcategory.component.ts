@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoryTreeViewModel } from 'src/app/modules/home/modules/category/models/category-tree-view.model';
 import { SubCategoryModel } from 'src/app/modules/home/modules/category/models/sub-category.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
   templateUrl: './add-edit-product-subcategory.component.html',
   styleUrls: ['./add-edit-product-subcategory.component.css']
 })
-export class AddEditProductSubcategoryComponent implements OnInit {
+export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
 
   subCategoryId: number;
   categoryId: number;
@@ -26,7 +26,7 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   subCategory: SubCategoryModel;
   field: Object;
   subCategoryForm: FormGroup;
-  categoryList: CategoryModel;
+  categoryList: CategoryModel[];
   addSubCategorySubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
   editSubCategorySubscription: ISubscription;
@@ -48,7 +48,7 @@ export class AddEditProductSubcategoryComponent implements OnInit {
     this.subCategoryFormInitialization();
     this.getCategories();
     this.getCategoryList();
-    if (this.route.snapshot.url[1].path === 'edit') {
+    if (this.route.snapshot.url[0].path === 'edit-sub-categories') {
       this.subCategoryId = this.route.snapshot.queryParams.subCategoryId;
       this.getSubCategory(this.subCategoryId);
       this.isEdit = true;
@@ -83,7 +83,9 @@ export class AddEditProductSubcategoryComponent implements OnInit {
   }
 
   navigateToHomePage() {
-    this.router.navigate([RoutePathConfig.Home]);
+    debugger;
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.SubCategory}`;
+    this.router.navigate([path]);
   }
 
   editSubCategory() {
@@ -94,11 +96,11 @@ export class AddEditProductSubcategoryComponent implements OnInit {
     if (this.subCategoryId && subCategoryModel) {
       this.editSubCategorySubscription = this.service.editSubCategory(this.subCategoryId, subCategoryModel)
         .subscribe((response) => {
-
           this.formSubmitted = false;
           this.subCategoryForm.reset();
           this.toastr.success('SubCategory Updated Successfully', 'Success');
-          this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.SubCategoryList}`]);
+          const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.SubCategory}`;
+          this.router.navigate([path]);
         },
           (error) => {
             this.toastr.error('', error.error.message);
@@ -144,8 +146,9 @@ export class AddEditProductSubcategoryComponent implements OnInit {
     }
   }
   private getCategoryList() {
-    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;
+      this.categoryList = this.categoryList.filter(x => x.parent_category_id === null);
     },
       (error) => {
         this.toastr.error('', error.error.message);

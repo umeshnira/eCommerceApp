@@ -29,4 +29,11 @@ export class SellerService extends HttpBaseService {
         .pipe(catchError(this.handleError)
         );
 }
+
+getSellerDetailsById(sellerId: number) {
+    const url = `${this.baseUrl}/sellers/${sellerId}`;
+    return this.http.get<SellerDetailsModel[]>(url)
+        .pipe(catchError(this.handleError)
+        );
+}
 }

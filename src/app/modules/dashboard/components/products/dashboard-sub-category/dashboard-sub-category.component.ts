@@ -4,6 +4,7 @@ import { SubCategoryService } from 'src/app/shared/services/sub-category.service
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 @Component({
   selector: 'app-dashboard-sub-category',
   templateUrl: './dashboard-sub-category.component.html',
@@ -67,12 +68,26 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
         const responseList = response;
 
         this.subCategoriesList = responseList.filter(x => x.parent_category_id !== null);
+        this.checkHasSubCategory();
       }
     },
       (error) => {
         this.toastr.error('', error.error.message);
       }
     );
+  }
+
+  private checkHasSubCategory() {
+    let newArray = new Array<SubCategoryModel>();
+    newArray = this.subCategoriesList;
+    for (let i = 0; i < newArray.length; i++) {
+      for (let j = 0; j < newArray.length; j++) {
+          if(newArray[i].id === newArray[j].parent_category_id) {
+            newArray[i].hasSubCategory = true;
+          }
+      }
+    }
+    this.subCategoriesList = newArray;
   }
 
 

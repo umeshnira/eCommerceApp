@@ -3,6 +3,8 @@ import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SellerDetailsModel } from './models/seller-details.model';
 import { SellerService } from 'src/app/shared/services/seller.service';
+import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-seller',
@@ -16,11 +18,23 @@ export class SellerComponent implements OnInit, OnDestroy {
 
   constructor(
     private sellerService: SellerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getAllSellers();
+  }
+
+  navigateToDetailPage(sellerId: number) {
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { sellerId: sellerId },
+    };
+
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Subscriptions}/${RoutePathConfig.SellerDetails}`;
+    this.router.navigate([path], navigationExtras);
   }
 
   ngOnDestroy() {
@@ -42,4 +56,6 @@ export class SellerComponent implements OnInit, OnDestroy {
       });
 
   }
+
+  
 }

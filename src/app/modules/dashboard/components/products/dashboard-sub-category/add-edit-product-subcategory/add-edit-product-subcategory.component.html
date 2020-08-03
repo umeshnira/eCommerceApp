@@ -25,11 +25,11 @@
       </div>
       <div class="col-md-4 m-t-20">
         <div class="search-hotel" *ngIf="!isEdit">
-          <select class="form-control" (change)="getCategoryId($event)">
+          <!-- <select class="form-control" (change)="getCategoryId($event)">
             <option value="">All Categories</option>
             <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}
             </option>
-          </select>
+          </select> -->
           <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
 
           </ejs-treeview>

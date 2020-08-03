@@ -11,12 +11,12 @@
   <!-- //tittle heading -->
   <div class="col-md-3 m-t-30">
     <select class="form-control" (change)="getCategoryId($event)">
-      <option value="">All Categories</option>
+      <option value="0">All Categories</option>
       <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}
       </option>
     </select>
-    <h3 class="h1-color m-t-10">Sub Categories</h3>
-    <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
+    <h3 class="h1-color m-t-10"></h3>
+    <ejs-treeview *ngIf="hasSubCategory" [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
     </ejs-treeview>
   </div>
   <!-- product right -->
@@ -34,40 +34,55 @@
                       <i class="fa fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                      <a class="dropdown-item font-12 " (click)="navigateToDetailPage(product?.id)">
+                        <i class="fa fa-eye m-r-10 m-l-10 cursor"></i>
                         View</a>
-                      <a class="dropdown-item font-12"
+                      <a class="dropdown-item font-12 "
                         (click)="navigateToEditPage(product?.id, product?.category_id)"><i
-                          class="fa fa-pencil m-r-10 m-l-10"></i>
+                          class="fa fa-pencil m-r-10 m-l-10 cursor"></i>
                         Edit</a>
-                      <a class="dropdown-item font-12" (click)="deleteProduct(product?.id, i)"><i
-                          class="fa fa-trash m-r-10 m-l-10"></i>
+                      <a class="dropdown-item font-12 " (click)="deleteProduct(product?.id, i)"><i
+                          class="fa fa-trash m-r-10 m-l-10 cursor"></i>
                         Delete</a>
                     </div>
                   </span>
                 </div>
                 <div class="item-info-product">
-                  <h4>
-                    <a href="single2.html">{{product.name}}</a>
+                  <h5>
+                    <span>{{product.category}}</span>
+                  </h5>
+                  <h4 class="m-t-10">
+                    <a>{{product.name}}</a>
                   </h4>
-                  <div class="info-product-price">
-                    <span class="item_price"><small>$</small>{{product.price}}</span>
+                  <div class="info-product-price row">
+                    <div class="col-md-6">
+                      <span class="item_price">{{product.price}}</span>
+                      <del>$255.00</del>
+                    </div>
+                    <div class="col-md-6 p-l-0">
+                      <ul>
+                        <li>
+                          <small class="text-success">
+                            <div class="dashboard-rating1">
+                              <span class="dashboard-starRating">
+                                <input id="rating5" type="radio"  value="5" [checked]="product.star_rate === 5"/>
+                                <label for="rating5"></label>
+                                <input id="rating4" type="radio"  value="4" [checked]="product.star_rate === 4"/>
+                                <label for="rating4"></label>
+                                <input id="rating3" type="radio"  value="3" [checked]="product.star_rate === 3" />
+                                <label for="rating3"></label>
+                                <input id="rating2" type="radio"  value="2" [checked]="product.star_rate === 2"/>
+                                <label for="rating2"></label>
+                                <input id="rating1" type="radio"  value="1" [checked]="product.star_rate === 1"/>
+                                <label for="rating1"></label>
+                              </span>
+                            </div>
+                          </small>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                    <form action="#" method="post">
-                      <fieldset>
-                        <input type="hidden" name="cmd" value="_cart" />
-                        <input type="hidden" name="add" value="1" />
-                        <input type="hidden" name="business" value=" " />
-                        <input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-                        <input type="hidden" name="amount" value="399.99" />
-                        <input type="hidden" name="discount_amount" value="1.00" />
-                        <input type="hidden" name="currency_code" value="USD" />
-                        <input type="hidden" name="return" value=" " />
-                        <input type="hidden" name="cancel_return" value=" " />
-                      </fieldset>
-                    </form>
-                  </div>
+  
                 </div>
               </div>
             </div>

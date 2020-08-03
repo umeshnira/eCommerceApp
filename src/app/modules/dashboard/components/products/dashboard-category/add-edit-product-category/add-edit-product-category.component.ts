@@ -57,7 +57,8 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
             this.formSubmitted = false;
             this.categoryForm.reset();
             this.toastr.success('Category Added Successfully', 'Success');
-            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.CategoryList}`]);
+            const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.CategoryList}`;
+            this.router.navigate([path]);
           },
             (error) => {
               this.toastr.error('', error.error.message);
@@ -79,7 +80,8 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
             this.formSubmitted = false;
             this.categoryForm.reset();
             this.toastr.success('Category Updated Successfully', 'Success');
-            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.CategoryList}`]);
+            const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.CategoryList}`;
+            this.router.navigate([path]);
           },
             (error) => {
               this.toastr.error('', error.error.message);
@@ -88,8 +90,9 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  navigateToHomePage() {
-    this.router.navigate([RoutePathConfig.Home]);
+  cancel() {
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.CategoryList}`;
+    this.router.navigate([path]);
   }
 
   ngOnDestroy() {
@@ -108,6 +111,9 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
     const categoryModel = new CategoryModel();
     categoryModel.name = this.categoryForm?.controls['name'].value;
     categoryModel.description = this.categoryForm?.controls['description'].value;
+    if (this.categoryForm?.controls['hasSubCategory']?.value !== '') {
+      categoryModel.hasSubCategory = this.categoryForm?.controls['hasSubCategory']?.value;
+    }
 
     return categoryModel;
   }
@@ -133,6 +139,7 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
     if (this.category) {
       this.categoryForm?.controls['name'].setValue(this.category.name);
       this.categoryForm?.controls['description'].setValue(this.category.description);
+      this.categoryForm?.controls['hasSubCategory'].setValue(this.category.hasSubCategory);
 
     }
   }
@@ -143,7 +150,7 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
       description: new FormControl('',
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
-      subCategory: new FormControl(''
+        hasSubCategory: new FormControl(''
       ),
 
     });

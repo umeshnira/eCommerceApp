@@ -14,16 +14,16 @@
     <div class="container-fluid">
       <form method="POST">
         <div class="row">
-          <div class="col-md-3" >
-            <select class="form-control">
-              <option value="0">Select Seller</option>
-              <option *ngFor="let x of sellersList" [value]="x.id">{{x.name}}</option>
-            </select>
-          </div>
           <div class="col-md-3">
             <select class="form-control">
               <option value="0">All Categories </option>
               <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-3" >
+            <select class="form-control">
+              <option value="0">Select Seller</option>
+              <option *ngFor="let x of sellersList" [value]="x.id">{{x.name}}</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -43,79 +43,9 @@
   </div>
   <div class="agileinfo-ads-display col-md-12 m-t-30">
     <div class="wrapper">
-      <!-- first section (nuts) -->
-      <!-- <div class="row">
-        <div *ngFor="let x of productList">
-          <div class="col-md-4 ">
-            <div class="panel padding-20">
-              <div class="men-pro-item simpleCart_shelfItem">
-                <div class="men-thumb-item">
-                  <img src="../../../assets/products/images/{{ x.imageName }}" alt="" />
-                  <span class="product-new-top"><a type="button" data-toggle="dropdown">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu">
-
-                      <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
-                        View</a>
-                      <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
-                        Review</a>
-                      <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
-                        Edit</a>
-                      <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
-                        Delete</a>
-
-                    </div>
-                  </span>
-                </div>
-
-                <div class="item-info-product">
-                  <h5>
-                    <span>Nuts</span>
-                  </h5>
-                  <h4 class="m-t-10">
-                    <a routerLink="DetailsPage">{{ x.name }}</a>
-                  </h4>
-                  <div class="info-product-price row">
-                    <div class="col-md-6">
-                      <span class="item_price">${{ x.price }}</span>
-                      <del>${{ x.price }}</del>
-                    </div>
-                    <div class="col-md-6">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-
-                  </div>
-                  <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                    <form action="#" method="post">
-                      <fieldset>
-
-                      </fieldset>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div> -->
       <div class="clearfix"></div>
-      <!-- //first section (nuts) -->
-      <!-- third section (oils) -->
       <div class="row">
-        <div class="col-md-4" *ngFor="let x of productList">
+        <div class="col-md-4" *ngFor="let x of productList; let i = index;">
           <div class="panel padding-20">
             <div class="men-pro-item simpleCart_shelfItem" >
               <div class="men-thumb-item">
@@ -125,14 +55,14 @@
                     <i class="fa fa-ellipsis-v"></i>
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item font-12"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                    <a class="dropdown-item font-12" (click)="navigateToViewPage(x.id)"><i class="fa fa-eye m-r-10 m-l-10"></i>
                       View</a>
                     <a class="dropdown-item font-12"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
                       Review</a>
-                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.categoryId)"><i class="fa fa-pencil m-r-10 m-l-10" 
+                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.category_id)"><i class="fa fa-pencil m-r-10 m-l-10" 
                       ></i>
                       Edit</a>
-                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10" (click)="deleteProduct(x.id,i)"></i>
                       Delete</a>
                   </div>
                 </span>

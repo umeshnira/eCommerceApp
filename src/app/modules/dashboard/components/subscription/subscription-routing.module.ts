@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { SubscriptionComponent } from "./subscription.component";
-import { ViewSubscriberComponent } from "./view-subscriber/view-subscriber.component";
-import { SellerDetailsComponent } from "./seller-details/seller-details.component";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { SubscriptionComponent } from './subscription.component';
+import { ViewSubscriberComponent } from './view-subscriber/view-subscriber.component';
+import { SellerDetailsComponent } from './seller-details/seller-details.component';
 const subscriptionRoutes = [
     {
         path: '',
@@ -16,7 +16,6 @@ const subscriptionRoutes = [
         path: 'seller-details',
         component: SellerDetailsComponent
     }
-    
 ];
 
 @NgModule({

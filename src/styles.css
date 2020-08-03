@@ -192,6 +192,9 @@ a {
 .form-control{
   border-radius:5px;
 }
+.p-l-0 {
+  padding-left: 0px;
+}
 
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

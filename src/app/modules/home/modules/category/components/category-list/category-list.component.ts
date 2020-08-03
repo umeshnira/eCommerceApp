@@ -63,6 +63,7 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
     this.getCategoriesSubscription = this.service.getCategories().subscribe(response => {
       if (response) {
         this.categories = response;
+        this.categories = this.categories.filter(x => x.parent_category_id === null);
 
       }
     }, (error) => {

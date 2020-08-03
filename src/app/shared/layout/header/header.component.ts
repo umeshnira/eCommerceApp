@@ -16,7 +16,7 @@ import { GenericStateManagerService } from '../../services/generic-state-manager
 export class HeaderComponent implements OnInit, OnDestroy {
 
   categoryId: number;
-  categoryList: CategoryModel;
+  categoryList: CategoryModel[];
   getCategoriesSubscription: ISubscription;
 
   constructor(
@@ -85,8 +85,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;
+      this.categoryList = this.categoryList.filter(x => x.parent_category_id === null);
     },
       (error) => {
         this.toastr.error('', error.error.message);

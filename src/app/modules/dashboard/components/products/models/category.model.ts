@@ -5,6 +5,7 @@ export class CategoryModel {
     id: number;
     name: string;
     description: string;
+    parent_category_id: number;
     status: Status;
     created_by = Constants.admin;
     updated_by = Constants.admin;

@@ -46,12 +46,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginSubscription = this.service.login(loginModel).subscribe((response) => {
 
         if (response) {
+          debugger;
           this.authService.setUserDetailsInCookie(response);
           if (response.role === Constants.client) {
             this.router.navigate([RoutePathConfig.Home]);
           } else {
-            this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.Products}`]);
+            this.router.navigate([RoutePathConfig.Dashboard]);
           }
+          if (response.role === Constants.admin) {
+            this.router.navigate([RoutePathConfig.Dashboard]);
+          } 
           this.formSubmitted = false;
           this.loginForm.reset();
         }

@@ -23,6 +23,7 @@ export class RoutePathConfig {
     public static readonly Products = 'products';
     public static readonly ProductsDetail = 'products/details';
     public static readonly CreateProducts = 'products/add';
+    public static readonly EditProducts = 'products/edit';
 
     // Category
     public static readonly CreateCategory = 'categories/create';
@@ -31,5 +32,16 @@ export class RoutePathConfig {
     // Sub-categories
     public static readonly CreateSubCategory = 'categories/sub-categories/create';
     public static readonly SubCategoryList = 'categories/sub-categories';
+
+    // Subscriptions
+    public static readonly Subscriptions = 'subscriptions';
+    public static readonly SellerDetails = 'seller-details';
+
+    // Dashboard
+    public static readonly Dashboard = 'dashboard';
+    public static readonly EditCategory = 'edit-categories';
+    public static readonly EditSubCategory = 'edit-sub-categories';
+    public static readonly SubCategory = 'sub-categories';
+    public static readonly EditProduct = 'edit-product-list';
 }
 

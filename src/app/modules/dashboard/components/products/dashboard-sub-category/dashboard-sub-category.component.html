@@ -32,7 +32,8 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Parent Category</th>
+                        <th>Has SubCategory</th>
+                        <th>Path</th>
                         <th>Created Date</th>
                         <th>Created By</th>
                         <th>Action</th>
@@ -41,7 +42,8 @@
                 <tbody *ngFor="let subCategory of subCategoriesList; let i = index;">
                     <tr>
                         <td>{{subCategory?.name}}</td>
-                        <td><input type="checkbox" disabled [checked]="subCategory.parent_category_id"></td>
+                        <td><input type="checkbox" disabled [checked]="subCategory.hasSubCategory"></td>
+                        <td>{{subCategory?.path}}</td>
                         <td>{{subCategory?.created_at |date}}</td>
                         <td>{{subCategory?.created_by}}</td>
                         <td>
@@ -54,7 +56,7 @@
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
+                <!-- <tfoot>
                     <tr>
                         <th>Name</th>
                         <th>Parent Category</th>
@@ -62,7 +64,7 @@
                         <th>Created By</th>
                         <th>Action</th>
                     </tr>
-                </tfoot>
+                </tfoot> -->
             </table>
         </div>
     </div>

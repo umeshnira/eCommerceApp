@@ -20,13 +20,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   userId: number;
   isSeller: boolean;
-  productList: ProductDetailsModel;
+  productList: ProductDetailsModel[];
   sellersList: SellerDetailsModel;
-  categoryList: CategoryModel;
+  categoryList: CategoryModel[];
+
   getAllSellersSubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
   getProductsBySellerIdSubscription: ISubscription;
   topRatedProductsSubscription: ISubscription;
+  deleteProductSubscription: ISubscription;
 
   constructor(
     private sellerService: SellerService,
@@ -82,7 +84,28 @@ export class ProductsComponent implements OnInit, OnDestroy {
       relativeTo: this.route
     };
 
-    this.router.navigate(['edit-product-list'], navigationExtras);
+    this.router.navigate(['edit'], navigationExtras);
+  }
+
+  navigateToViewPage(productId: number) {
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { productId: productId },
+      relativeTo: this.route
+    };
+
+    this.router.navigate(['details'], navigationExtras);
+  }
+
+  deleteProduct(productId: number, index: number) {
+    this.deleteProductSubscription = this.productService.deleteProduct(productId).subscribe(response => {
+
+      this.productList.splice(index, 1);
+      this.toastr.success('Deleted Product Successfully', 'Success');
+    },
+      (error) => {
+        this.toastr.error('', error.error.message);
+      });
   }
 
   ngOnDestroy() {
@@ -91,6 +114,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     if (this.topRatedProductsSubscription) {
       this.topRatedProductsSubscription.unsubscribe();
+    }
+    if (this.deleteProductSubscription) {
+      this.deleteProductSubscription.unsubscribe();
+    }
+    if (this.getCategoriesSubscription) {
+      this.getCategoriesSubscription.unsubscribe();
+    }
+    if (this.getProductsBySellerIdSubscription) {
+      this.getProductsBySellerIdSubscription.unsubscribe();
     }
   }
 
@@ -120,8 +152,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   private getCategories() {
-    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response: CategoryModel) => {
+    this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;
+      this.categoryList = this.categoryList.filter(x => x.parent_category_id === null);
     },
       (error) => {
         this.toastr.error('', error.error.message);
