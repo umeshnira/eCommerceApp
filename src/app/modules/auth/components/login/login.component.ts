@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginSubscription = this.service.login(loginModel).subscribe((response) => {
 
         if (response) {
-          debugger;
           this.authService.setUserDetailsInCookie(response);
           if (response.role === Constants.client) {
             this.router.navigate([RoutePathConfig.Home]);

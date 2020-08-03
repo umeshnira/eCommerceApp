@@ -83,7 +83,6 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
   }
 
   navigateToHomePage() {
-    debugger;
     const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.SubCategory}`;
     this.router.navigate([path]);
   }

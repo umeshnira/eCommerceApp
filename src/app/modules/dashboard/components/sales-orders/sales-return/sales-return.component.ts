@@ -27,7 +27,6 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
-    debugger;
     this.getUserOrderDetails(this.userId);
   }
   ngOnDestroy() {
