@@ -39,7 +39,20 @@ export class DashboardProductDetailComponent implements OnInit {
     this.productId = this.route.snapshot.queryParams.productId;
     this.getProductDetails(this.productId);
   }
-
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+    this.loadScript('assets/Home/js/slick.min.js');
+    this.loadScript('assets/Home/js/nouislider.min.js');
+    this.loadScript('assets/Home/js/jquery.zoom.min.js');
+    this.loadScript('assets/Home/js/main.js');
+  }
   addProductToCart() {
     const cartModel = new CartModel();
     cartModel.user_id = this.userId;

@@ -1,84 +1,11 @@
-.small-font {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-  }
-  
-  a {
-    color: #0066c0;
-    cursor: pointer;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    color: #c45500;
-    cursor: pointer;
-  }
-  
-  .font-style {
-    color: #111;
-  }
-  
-  .m-l-10 {
-    margin-left: 10px;
-  }
-  
-  .m-t-10 {
-    margin-top: 10px;
-  }
-  
-  .border-class {
-    padding: 10px;
-    border: 1px #ddd solid;
-  }
-  
-  .dropdown-style {
-    width: 15%;
-    background: #e7e9ec;
-    border-radius: 3px;
-  }
-  
-  .cart-button {
-    margin: 10px;
-    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-  }
-  
-  .buy-button {
-    margin: 10px;
-    background: linear-gradient(to bottom, #f6c88f, #ed9220);
-  }
-  
-  .borderClass {
-    border-bottom: 1px #ddd solid;
-  }
-  
-  .btn-width {
-    width: 88%;
-  }
-  
-  #exzoom {
-    width: 400px;
-  }
-  
-  .exzoom-container {
-    max-width: 960px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .exzoom .exzoom_img_ul_outer{
-    border: 1px solid #fff;
-  }
-  
-  .exzoom .exzoom_img_box {
-    background: #fff;
-  }
-  .w-35p{
-    width: 35%;
-  }
-  .border-style{
-    padding: 11px 14px 7px 12px;
-    border:1px solid #e91e63;
-  }
-
+.section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+#navigation {
+  margin-right: 10px;
+  background-color: #30323A;
+  margin-left: 10px;
+}

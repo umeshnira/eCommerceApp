@@ -38,9 +38,9 @@
 /* BASE - Base tyles, Variables, Mixins, etc. */
 body {
   background-color: #ffffff;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333333;
-  font-size: 16px;
+  font-size: 14px;
   overflow-x: hidden;
 }
 

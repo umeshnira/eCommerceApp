@@ -11,6 +11,16 @@ export class DasboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
+  // private loadScript(scriptUrl: string) {
+  //   return new Promise((resolve, reject) => {
+  //     const scriptElement = document.createElement('script');
+  //     scriptElement.src = scriptUrl;
+  //     scriptElement.onload = resolve;
+  //     document.body.appendChild(scriptElement);
+  //   })
+  // }
+  // ngAfterViewInit() {
+  //   this.loadScript('assets/plugins/raphel-min.js');
+  //   this.loadScript('assets/plugins/morris/morris.min.js');
+  // }
 }

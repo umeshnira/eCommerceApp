@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { LocalCartStorageService } from 'src/app/shared/services/local-cart-storage.service';
 import { FirstPageService } from '../../services/first-page.service';
 import { LocalWhishListService } from '../../services/local-whish-list.service';
@@ -21,7 +20,20 @@ export class HomePageComponent implements OnInit {
     public locCart: LocalCartStorageService,
     public locWhishList: LocalWhishListService
   ) { }
-
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+    this.loadScript('assets/Home/js/slick.min.js');
+    this.loadScript('assets/Home/js/nouislider.min.js');
+    this.loadScript('assets/Home/js/jquery.zoom.min.js');
+    this.loadScript('assets/Home/js/main.js');
+  }
   ngOnInit(): void {
     this.prodList = this.fps.loadRandomProductsList;
     this.cartList = this.locCart.localCart;
@@ -37,5 +49,5 @@ export class HomePageComponent implements OnInit {
     this.locWhishList.addToMyWhishList(prod);
   }
 
- 
+
 }
