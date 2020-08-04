@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
-import { SubscriptionLike as ISubscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SubscriptionLike as ISubscription } from 'rxjs';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
@@ -63,7 +63,20 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.getProductsBySellerId();
     }
   }
-
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+    this.loadScript('assets/Home/js/slick.min.js');
+    this.loadScript('assets/Home/js/nouislider.min.js');
+    this.loadScript('assets/Home/js/jquery.zoom.min.js');
+    this.loadScript('assets/Home/js/main.js');
+  }
   categoryNodeclicked(event) {
     this.categoryId = event.node.dataset.uid;
     this.getProductsByCategoryId(this.categoryId);

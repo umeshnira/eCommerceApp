@@ -60,10 +60,10 @@ a:hover {
 }
 
 .btn-warning {
-  background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+  background: -webkit-linear-gradient(top, #f309578c, #e91e63);
   border-radius: 3px;
-  border-color: #eeb933 #eeb933 #eeb933;
-  color: #111;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
 }
 
 .cart-image-style {

@@ -64,6 +64,7 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #4A4E5A;
   overflow-x: hidden;
+  font-size: 12px
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -128,6 +129,7 @@ hr {
 
 .icon-btn.main-btn, .icon-btn.primary-btn {
   width: 40px;
+  margin-left: 5px;
   height: 40px;
   line-height: 40px;
   text-align: center;
@@ -151,6 +153,7 @@ hr {
 .primary-btn {
   color: #FFF;
   background-color: #e91e63;
+  margin-left: 5px;
 }
 
 .primary-btn:hover, .primary-btn:focus {
@@ -356,7 +359,7 @@ textarea.input {
 .header-search {
   display: inline-block;
   padding: 15px 0px;
-  max-width: 400px;
+  width: 350px;
 }
 
 .header-search>form {
@@ -391,7 +394,7 @@ textarea.input {
 .header-btns>li {
   display: inline-block;
   vertical-align: top;
-  padding: 15px 0px;
+  padding: 15px 10px;
 }
 
 .header-btns>li+li {
@@ -861,7 +864,7 @@ textarea.input {
 
 .product .product-countdown>li {
   display: inline-block;
-  margin-right: -4px;
+  margin-right: 0px;
 }
 
 .product .product-countdown>li+li:before {
@@ -1117,11 +1120,12 @@ textarea.input {
 
 .filter-list>li:last-child {
   margin-right: 0px;
+  margin-top: 5pxpp;
 }
 
 .filter-list li a {
   position: relative;
-  padding: 0px 5px 0px 20px;
+  padding: 3px 5px 6px 20px;
 }
 
 .filter-list li a:before {
@@ -1129,7 +1133,7 @@ textarea.input {
   font-family: FontAwesome;
   position: absolute;
   left: 4px;
-  top: 5px;
+  top: 2px;
   line-height: 12px;
   font-size: 9px;
   color: #FFF;
@@ -1223,6 +1227,7 @@ textarea.input {
 
 .row-filter>a.active {
   background-color: #e91e63;
+  margin-left: 5px;
 }
 
 .sort-filter {

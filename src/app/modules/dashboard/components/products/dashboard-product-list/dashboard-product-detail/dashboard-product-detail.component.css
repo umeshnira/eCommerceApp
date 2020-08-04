@@ -9,3 +9,6 @@
   background-color: #30323A;
   margin-left: 10px;
 }
+:disabled{
+  cursor:not-allowed
+}
