@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { ProductDetailsModel } from './models/product-details.model';
 import { Constants } from 'src/app/shared/models/constants';
 import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
+import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
+import { CategoryTreeViewModel } from './models/category-tree-view.model';
 
 @Component({
   selector: 'app-products',
@@ -19,20 +21,30 @@ import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 export class ProductsComponent implements OnInit, OnDestroy {
 
   userId: number;
+  categoryId: number;
+  sellerId: number;
+  userRole: string;
   isSeller: boolean;
+  hasSubCategory: boolean;
+
   productList: ProductDetailsModel[];
   sellersList: SellerDetailsModel;
   categoryList: CategoryModel[];
+  field: Object;
+  result: CategoryTreeViewModel;
 
   getAllSellersSubscription: ISubscription;
   getCategoriesSubscription: ISubscription;
   getProductsBySellerIdSubscription: ISubscription;
   topRatedProductsSubscription: ISubscription;
   deleteProductSubscription: ISubscription;
+  subCategoryListSubscription: ISubscription;
+  getProductsByCategoryIdSubscription: ISubscription;
 
   constructor(
     private sellerService: SellerService,
     private categoryService: CategoryService,
+    private subCategoryService: SubCategoryService,
     private productService: ProductService,
     private authService: AuthService,
     private toastr: ToastrService,
@@ -43,17 +55,28 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
-    const userRole = userDetails.role;
+    this.userRole = userDetails.role;
     this.getAllSellers();
     this.getCategories();
-    if (userRole === Constants.seller) {
-      this.isSeller = true;
-      this.getProductsBySellerId();
-    }
-    if (userRole === Constants.admin) {
-      this.getTopRatedProducts();
+    this.loadDefaultProductsList();
+
+  }
+
+  getCategoryId(event) {
+    this.hasSubCategory = false;
+    this.categoryId = Number(event.target.value);
+    if (this.categoryId !== 0) {
+      this.getSubCategoryList();
     }
 
+  }
+
+  categoryNodeclicked(event) {
+    this.categoryId = event.node.dataset.uid;
+  }
+
+  getSellerId(event) {
+    this.sellerId = Number(event.target.value);
   }
 
   getProductsBySellerId() {
@@ -108,6 +131,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
       });
   }
 
+  searchTopSellingProducts() {
+    if (this.categoryId === 0) {
+      this.loadDefaultProductsList();
+    } else {
+      this.getProductsByCategoryId(this.categoryId);
+    }
+  }
+
   ngOnDestroy() {
     if (this.getAllSellersSubscription) {
       this.getAllSellersSubscription.unsubscribe();
@@ -123,6 +154,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     if (this.getProductsBySellerIdSubscription) {
       this.getProductsBySellerIdSubscription.unsubscribe();
+    }
+    if (this.subCategoryListSubscription) {
+      this.subCategoryListSubscription.unsubscribe();
+    }
+    if (this.getProductsByCategoryIdSubscription) {
+      this.getProductsByCategoryIdSubscription.unsubscribe();
     }
   }
 
@@ -160,6 +197,48 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.toastr.error('', error.error.message);
       }
     );
+  }
+
+  private getSubCategoryList() {
+    this.subCategoryListSubscription = this.subCategoryService.getSubCategoriesByCategoryId(this.categoryId)
+      .subscribe(response => {
+        this.result = response;
+        this.field = { dataSource: this.result, id: 'id', text: 'name', child: 'subCategories' };
+        this.hasSubCategory = true;
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+  }
+
+  private loadDefaultProductsList() {
+    if (this.userRole === Constants.seller) {
+      this.isSeller = true;
+      this.getProductsBySellerId();
+    }
+    if (this.userRole === Constants.admin) {
+      this.getTopRatedProducts();
+    }
+  }
+
+  private getProductsByCategoryId(categoryId: number) {
+    this.getProductsByCategoryIdSubscription = this.productService.getProductsByCategoryId(categoryId)
+      .subscribe((response) => {
+        if (this.sellerId) {
+          this.getProductsByCategoryIdForSeller(response);
+        } else {
+          this.productList = response;
+        }
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+
+  }
+
+  private getProductsByCategoryIdForSeller(response: ProductDetailsModel[]) {
+    const productsList = response.filter(x => x.seller_id === this.sellerId);
+    this.productList = productsList;
   }
 
 

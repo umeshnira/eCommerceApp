@@ -194,6 +194,34 @@ a {
 .p-l-0 {
   padding-left: 0px;
 }
+.tree-view-scroll {
+  height: 500px;
+  width: 300px;
+  overflow: auto;
+  /* overflow-x: scroll; */
+  /* overflow-y: scroll; */
+}
+.e-control {
+  font-family: "Open Sans", "sans-serif";
+  font-size: 14px;
+}
+/* .e-treeview .e-ul{
+  width: 500px;
+} */
+
+.checkbox:checked:before{
+  background-color:green;
+  }
+  .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus 
+   {
+    outline: 5px auto #936666!important;
+   }
+  .btn-style:active, 
+  .btn-style:focus 
+  {
+      border:none;
+      color: white;
+   }
 
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

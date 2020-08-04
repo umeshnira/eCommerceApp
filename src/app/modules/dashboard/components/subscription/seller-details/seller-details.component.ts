@@ -7,6 +7,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { Constants } from 'src/app/shared/models/constants';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-seller-details',
@@ -15,6 +16,7 @@ import { Constants } from 'src/app/shared/models/constants';
 })
 export class SellerDetailsComponent implements OnInit, OnDestroy {
   sellerId: number;
+  isView: boolean;
   sellerDetails: SellerDetailsModel;
   sellerDetailsForm: FormGroup;
   sellerDetailsSubscription: ISubscription;
@@ -23,13 +25,21 @@ export class SellerDetailsComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private sellerService: SellerService,
+    private authService: AuthService,
     private toastr: ToastrService
   ) {
   }
 
   ngOnInit(): void {
+    const userDetails = this.authService.getUserDetailsFromCookie();
+    const userRole = userDetails.role;
+    if (userRole === Constants.seller) {
+      this.sellerId = userDetails.user_id;
+    } else {
+      this.isView = true;
+      this.sellerId = this.route.snapshot.queryParams.sellerId;
+    }
     this.sellerFormInitialization();
-    this.sellerId = this.route.snapshot.queryParams.sellerId;
     this.getSellerDetails();
   }
 

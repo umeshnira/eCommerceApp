@@ -48,7 +48,7 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
     this.subCategoryFormInitialization();
     this.getCategories();
     this.getCategoryList();
-    if (this.route.snapshot.url[0].path === 'edit-sub-categories') {
+    if (this.route.snapshot.url[1].path === 'edit') {
       this.subCategoryId = this.route.snapshot.queryParams.subCategoryId;
       this.getSubCategory(this.subCategoryId);
       this.isEdit = true;
@@ -67,7 +67,8 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
           this.formSubmitted = false;
           this.subCategoryForm.reset();
           this.toastr.success('SubCategory Added Successfully', 'Success');
-          this.router.navigate([`${RoutePathConfig.Home}/${RoutePathConfig.SubCategoryList}`]);
+          const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}/${RoutePathConfig.SubCategory}`;
+          this.router.navigate([path]);
         },
           (error) => {
             this.toastr.error('', error.error.message);

@@ -42,6 +42,5 @@ export class RoutePathConfig {
     public static readonly EditCategory = 'edit-categories';
     public static readonly EditSubCategory = 'edit-sub-categories';
     public static readonly SubCategory = 'sub-categories';
-    public static readonly EditProduct = 'edit-product-list';
 }
 

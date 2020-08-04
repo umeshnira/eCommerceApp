@@ -1,15 +1,16 @@
 <aw-wizard>
     <aw-wizard-step stepTitle="Categories">
         <hr>
-        <div class="container p-b-20">
-            <div class='row m-b-10'>
-            </div>
+        <div class="container p-b-20 tree-view-scroll">
+            <!-- <div class='row m-b-10'>
+            </div> -->
             <!-- <select class="form-control" (change)="getCategoryId($event)">
                 <option value="">All Categories</option>
                 <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}
                 </option>
               </select> -->
-            <ejs-treeview [fields]='field' (nodeClicked)='categoryTreeNodeClicked($event)'>
+              <!-- cssClass="tree-view-scroll" -->
+            <ejs-treeview [fields]='field' (nodeClicked)='categoryTreeNodeClicked($event)' >
             </ejs-treeview>
             <div class="row p-t-20">
                 <div class='col-md-4'></div>
@@ -101,7 +102,7 @@
                 <div class="row p-t-10">
                     <div class='col-md-6'>
                         <div class="floating-label-group">
-                            <input type="number" id="Batch" class="form-control" autocomplete="off" autofocus
+                            <input type="number" id="Batch" class="form-control m-topN-5" autocomplete="off" autofocus
                                 formControlName="batch" required />
                             <label class="floating-label">Batch No</label>
                         </div>
@@ -109,8 +110,14 @@
                             required.
                         </div>
                     </div>
-                    <div class='col-md-6 h-60'>
-                        <ejs-datepicker placeholder='Enter date' formControlName="expDate"></ejs-datepicker>
+                    <div class='col-md-6 h-60 p-t-10'>
+                        <ejs-datepicker placeholder='Enter date'class="form-control" formControlName="expDate"></ejs-datepicker>
+                        <!-- <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker"> -->
+                            <!-- <label for="example">Try me...</label> -->
+                            
+                            <!-- <input placeholder="Select date" type="text" id="example" class="form-control">
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                          </div> -->
                         <div *ngIf="formSubmitted && form.expDate.errors?.required" class="valid-error m-topN-25">
                             Expiry
                             Date is required.
@@ -232,19 +239,6 @@
                             </tr>
         
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Reduced Price</th>
-                                <th>Off Percentage</th>
-                                <th>Valid From</th>
-                                <th>Valid To</th>
-                                <th>Status</th>
-                                <th>Associated With</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

@@ -323,7 +323,7 @@
                                     Transactions</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview" *ngIf="userRole === 'Admin'">
                         <a routerLink="/dashboard/seller">
                             <i class="fa fa-handshake-o m-r-10"></i> <span>Sellers</span>
                             <i class="fa fa-angle-left pull-right"></i>
@@ -350,7 +350,7 @@
                             <small class="label pull-right bg-pink">2</small>
                         </a>
                     </li>
-                    <li>
+                    <li *ngIf="userRole === 'Admin'">
                         <a routerLink="/dashboard/coupons">
                             <i class="fa fa-percent m-r-10"></i> <span>Coupons</span>
                             <small class="label pull-right bg-pink">1</small>
@@ -360,6 +360,13 @@
                     <li>
                         <a routerLink="/dashboard/subscriptions">
                             <i class="fa fa-hand-pointer-o m-r-10"></i> <span>Suscriptions</span>
+                            <small class="label pull-right bg-pink">1</small>
+                        </a>
+                    </li>
+
+                    <li *ngIf="userRole === 'Seller'">
+                        <a routerLink="/dashboard/subscriptions/seller-details">
+                            <i class="fa fa-hand-pointer-o m-r-10"></i> <span>Profile</span>
                             <small class="label pull-right bg-pink">1</small>
                         </a>
                     </li>

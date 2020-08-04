@@ -40,8 +40,11 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], navigationExtras);
   }
 
-  deleteSubCategory(subCategoryId: number, index: number) {
-    this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategoryId).subscribe(response => {
+  deleteSubCategory(subCategory: SubCategoryModel, index: number) {
+    if (subCategory.hasSubCategory) {
+      this.toastr.warning('Categories with Subcategory cannot be deleted', 'Warning');
+    } else {
+    this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategory.id).subscribe(response => {
 
       if (response) {
         this.subCategoriesList.splice(index, 1);
@@ -50,6 +53,7 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     }, (error) => {
       this.toastr.error('', error.error.message);
     });
+  }
   }
 
   ngOnDestroy() {

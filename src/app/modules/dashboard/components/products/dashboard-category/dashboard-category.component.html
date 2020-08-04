@@ -46,8 +46,9 @@
               <a class="dropdown-item font-12" (click)="goToEditPage(category?.id)"><i
                   class="fa fa-pencil m-r-5 icon-style" title="Edit"></i>
               </a>
-
-              <a class="dropdown-item font-12" (click)="deleteCategory(category, i)"><i
+              
+              <a class="dropdown-item font-12"
+              (click)="deleteCategory(category, i)"><i
                   class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
               </a>
             </td>
@@ -71,7 +72,8 @@
   style="display: none; position: relative; height: 300px;cursor: pointer;">
 </div>
 <div class="chart" id="line-chart" style="display: none; height: 277px;"></div>
-<section class="content">
+<!-- <section class="content">
+
   <div class="example-modal" id="modal_example">
     <div class="modal">
       <div class="modal-dialog">
@@ -88,8 +90,41 @@
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  </div><!-- /.example-modal -->
-</section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content w-400">
+      <div class="modal-header header-color">
+        <h4 class="modal-title w-100 font-weight-bold header">
+          <label class="small-font">Create a new list</label>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <label for="list-name" class="small-font">List name</label>
+          <input type="text" id="list-name" class="form-control">
+        </div>
+
+        <div >
+         <span class="small-font">Use lists to save items for later. All lists are private unless you share them with others.
+
+         </span>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center header-color">
+        <button class="btn btn-default header-color">Cancel</button>
+        <button class="btn btn-warning ">Create List</button>
+      </div>
+    </div>
+  </div>
+</div>

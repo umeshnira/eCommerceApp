@@ -36,7 +36,7 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.categoryFormInitialization();
 
-    if (this.route.snapshot.url[0].path === 'edit') {
+    if (this.route.snapshot.url[1].path === 'edit') {
       this.categoryId = this.route.snapshot.queryParams.categoryId;
       this.getCategoryDetails(this.categoryId);
       this.isEdit = true;

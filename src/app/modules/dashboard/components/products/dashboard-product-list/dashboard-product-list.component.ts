@@ -19,6 +19,7 @@ import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 export class DashboardProductListComponent implements OnInit, OnDestroy {
   categoryId: number;
   userId: number;
+  userRole: String;
   isSeller: boolean;
   hasSubCategory: boolean;
 
@@ -49,15 +50,8 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
-    const userRole = userDetails.role;
-    if (userRole === Constants.seller) {
-      this.isSeller = true;
-      this.getCategories();
-      this.getProductsBySellerId(this.userId);
-    } else {
-      this.getCategories();
-      this.getProducts();
-    }
+    this.userRole = userDetails.role;
+    this.loadProductsList();
   }
 
   categoryNodeclicked(event) {
@@ -86,14 +80,12 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
   }
 
   navigateToEditPage(productId: number, categoryId: number) {
-
     let navigationExtras: NavigationExtras;
     navigationExtras = {
       queryParams: { productId: productId, categoryId: categoryId },
-      relativeTo: this.route
     };
 
-    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.EditProduct}`;
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.EditProducts}`;
     this.router.navigate([path], navigationExtras);
   }
 
@@ -101,7 +93,6 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
       queryParams: { productId: productId },
-      relativeTo: this.route
     };
 
     const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.ProductsDetail}`;
@@ -110,12 +101,17 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
 
   getCategoryId(event) {
     this.hasSubCategory = false;
-    this.categoryId = event.target.value;
-    this.getSubCategoryList();
-    if (this.isSeller) {
-      this.getProductsByCategoryId(this.categoryId);
+    this.categoryId = Number(event.target.value);
+
+    if (this.categoryId === 0) {
+      this.loadProductsList();
     } else {
-      this.getProductsByCategoryId(this.categoryId);
+      this.getSubCategoryList();
+      if (this.isSeller) {
+        this.getProductsByCategoryId(this.categoryId);
+      } else {
+        this.getProductsByCategoryId(this.categoryId);
+      }
     }
 
   }
@@ -206,6 +202,17 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
           this.toastr.error('', error.error.message);
         }
       );
+  }
+
+  private loadProductsList() {
+    if (this.userRole === Constants.seller) {
+      this.isSeller = true;
+      this.getCategories();
+      this.getProductsBySellerId(this.userId);
+    } else {
+      this.getCategories();
+      this.getProducts();
+    }
   }
 
 
