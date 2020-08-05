@@ -497,6 +497,7 @@ textarea.input {
 .category-nav .category-header>i {
   float: right;
   line-height: 20px;
+  cursor: pointer;
 }
 
 .category-nav .category-list {

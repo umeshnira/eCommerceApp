@@ -14,11 +14,12 @@ import { SubCategoryService } from './services/sub-category.service';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { GenericStateManagerService } from './services/generic-state-manager.service';
 import { SellerService } from './services/seller.service';
+import { RouterModule } from '@angular/router';
 
 const components = [HeaderComponent, FooterComponent, DragAndDropDirective];
 
 const modules = [FormsModule, CommonModule, ReactiveFormsModule, TreeViewModule, ListViewModule,
-                 CheckBoxModule, DatePickerModule, TabsModule];
+  CheckBoxModule, DatePickerModule, TabsModule, RouterModule];
 
 const providers = [LocalCartStorageService, CategoryService, SubCategoryService, GenericStateManagerService, SellerService];
 
