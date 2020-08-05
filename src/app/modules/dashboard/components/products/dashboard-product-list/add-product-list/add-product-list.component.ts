@@ -59,13 +59,13 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
     if (this.route.snapshot.url[0].path === 'edit') {
-      this.productFormInitialization();
       this.productId = this.route.snapshot.queryParams.productId;
       this.getProductDetails(this.productId);
       this.isEdit = true;
     }
     this.getCategories();
     this.productFormInitialization();
+
   }
 
   categoryTreeNodeClicked(event) {
@@ -271,14 +271,12 @@ export class AddProductListComponent implements OnInit, OnDestroy {
   }
 
   private getCategoryNode(categories: Array<CategoryTreeViewModel>) {
-
+debugger;
     categories.map((category, index = 0) => {
       if (category.id === this.categoryId) {
         category.isSelected = true;
-        this.categories[index].expanded = true;
-        if (this.categories[index].subCategories) {
-          this.categories[index].subCategories[index].expanded = true;
-        }
+        categories[index].expanded = true;
+       this.expandTree(categories, index);
         return categories;
       }
       const hasFoundCategory = this.getCategoryNode(categories[index].subCategories);
@@ -289,6 +287,29 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     return categories;
 
   }
+
+  private expandTree(category: CategoryTreeViewModel[], i: number) {
+    if (category[i].parent_category_id) {
+      this.categories.map((element, index = i) => {
+        if(element.subCategories.length > 0 && index === i) {
+        if (element.subCategories[i].parent_category_id === element.id) {
+          element.expanded = true;
+          return this.categories;
+        }
+        const hasFoundCategory = this.expandTree(category[i].subCategories, i);
+        if (hasFoundCategory) {
+          return hasFoundCategory;
+        }
+      }
+      });
+    }
+    return this.categories;
+
+  }
+
+  // if (this.categories[index].subCategories) {
+  //   this.categories[index].subCategories[index].expanded = true;
+  // }
 
   // if (categories) {
   //   for (let i = 0; i < categories.length; i++) {

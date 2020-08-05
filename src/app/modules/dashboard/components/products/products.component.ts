@@ -215,8 +215,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (this.userRole === Constants.seller) {
       this.isSeller = true;
       this.getProductsBySellerId();
-    }
-    if (this.userRole === Constants.admin) {
+    } else {
       this.getTopRatedProducts();
     }
   }

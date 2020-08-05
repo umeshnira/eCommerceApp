@@ -10,9 +10,8 @@ export class AuthService {
   ) { }
 
   setUserDetailsInCookie(user: UserStorageDetailsModel) {
-    this.cookieService.deleteAll();
-    this.cookieService.set('role', user.role);
-    this.cookieService.set('userId', String(user.user_id));
+    this.cookieService.set('role', user.role, null, '/');
+    this.cookieService.set('userId', String(user.user_id), null, '/');
   }
 
   getUserDetailsFromCookie() {

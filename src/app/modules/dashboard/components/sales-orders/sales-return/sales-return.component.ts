@@ -37,7 +37,6 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
 
   private getUserOrderDetails(id: number) {
     this.getOrderSubscrip = this.service.getSellerReturnOrders(id).subscribe((res) => {
-
       res.forEach(x => {
         let a = new Date(x.ordered_date);
         x.ordered_date = this.formatDate(x.ordered_date);

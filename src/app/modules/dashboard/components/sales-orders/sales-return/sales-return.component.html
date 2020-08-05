@@ -27,10 +27,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="x of getOrderSubscrip">
+                    <tr *ngFor="let x of orderDetails">
                         <td>{{x.id}}</td>
-                        <td>{{x.id}}</td>
-                        <td>{{x.id}}</td>
+                        <td>{{x.user_id}}</td>
+                        <td>{{x.order_detail_id}}</td>
                         <td>{{x.qty * x.price}}</td>
                         <td>{{x.reason}}</td>
                         <td>{{x.ordered_date}}</td>                      
@@ -45,22 +45,9 @@
                     </tr>
 
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Order ID</th>
-                        <th>Invoice ID</th>
-                        <th>Amount</th>
-                        <th>Reason</th>
-                        <th>Date of Request</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>
-
-
 </div>
 <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
 <div class="chart tab-pane active" id="sales-chart"

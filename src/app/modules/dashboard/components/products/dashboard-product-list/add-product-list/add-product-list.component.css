@@ -120,21 +120,57 @@
   margin-top: -5px;
 
 }
-.e-treeview > .e-ul {
-  max-height: 300px;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  overflow-y: auto;
+.check {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 }
-.e-treeview > .e-ul {
-  overflow-x: scroll;
-  overflow-y: scroll;
+.check:checked+.checktoggle {
+  background-color: #55ce63;
+}
+.checktoggle {
+  background-color: #e0001a;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  height: 24px;
+  margin-bottom: 0;
+  position: relative;
+  width: 48px;
+}
+.check:checked+.checktoggle:after {
+  left: 100%;
+  transform: translate(calc(-100% - 5px), -50%);
+}
+.checktoggle:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(5px, -50%);
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: left 300ms ease, transform 300ms ease;
+}
+.e-treeview {
+  overflow: scroll;
+  max-height: 300px;
 }
 .e-input-group:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-input-group.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap {
-  border-color: rgba(0, 0, 0, 0);
+  border-color:#e91e63
 }
 .e-input-group:hover:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled):not(.e-float-icon-left), .e-input-group.e-control-wrapper:hover:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled):not(.e-float-icon-left), .e-float-input.e-control-wrapper:hover:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled):not(.e-float-icon-left), .e-float-input:hover:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) .e-input-in-wrap:hover, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) .e-input-in-wrap:hover, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) .e-input-in-wrap:hover, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) .e-input-in-wrap:hover, .e-float-input:hover:not(.e-input-group):not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) input:not([disabled]), .e-float-input:hover:not(.e-input-group):not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) textarea:not([disabled]), .e-float-input.e-control-wrapper:hover:not(.e-input-group):not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) input:not([disabled]), .e-float-input.e-control-wrapper:hover:not(.e-input-group):not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) textarea:not([disabled]), .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error):not(.e-disabled) .e-input-in-wrap:hover {
-  border-color: rgba(0, 0, 0, 0);
+  border-color:#e91e63
 }
 .e-input-group:focus:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-input-group.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap {
   background: rgba(0, 0, 0, 0);
@@ -145,3 +181,4 @@
 .listResults .checkbox label::before{
   margin-top: -5px;
 }
+

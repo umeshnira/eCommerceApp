@@ -1,83 +1,76 @@
 <div class="container-fluid">
-    <div class="panel">
-        <div class="content container-fluid padding-20">
-            <div class="m-t-20">
-                <div class="row text-center ">
-                    <div class="col">
-                        <h3 class="tittle-w3l">Offers
-                            <span class="heading-style">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                            </span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <table class="table table-bordered table-striped example1 m-t-10">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Reduced Price</th>
-                        <th>Off Percentage</th>
-                        <th>Valid From</th>
-                        <th>Valid To</th>
-                        <th>Status</th>
-                        <th>Associated With</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fashion</td>
-                        <td>Fashion </td>
-                        <td>$123</td>
-                        <td>15%</td>
-                        <td>Jun 10,2020</td>
-                        <td>Jul 22,2020</td>
-                        <td>
-                            <div class="status-toggle">
-                                <input type="checkbox" id="staff_module" class="check">
-                                <label for="staff_module" class="checktoggle">checkbox</label>
-                            </div>
-                        </td>
-                        <td><a class="associatedClass">Link</a></td>
-                        <td>
-                            <a class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
-                            </a>
-
-                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style"
-                                    title="Edit"></i>
-                            </a>
-                            <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style"
-                                    title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Reduced Price</th>
-                        <th>Off Percentage</th>
-                        <th>Valid From</th>
-                        <th>Valid To</th>
-                        <th>Status</th>
-                        <th>Associated With</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
+  <div class="panel">
+    <div class="content container-fluid padding-20">
+      <div class="m-t-20">
+        <div class="row text-center ">
+          <div class="col">
+              <h3 class="tittle-w3l">Offers
+                <span class="heading-style">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </span>
+              </h3>
+            
+          </div>
         </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <span class="float-right">
+              <button class="btn btn-style m-b-30" routerLink="">Create Offer</button>
+            </span>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped example1 m-t-10">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Reduced Price</th>
+            <th>Off Percentage</th>
+            <th>Valid From</th>
+            <th>Valid To</th>
+            <th>Status</th>
+            <th>Associated Products</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fashion</td>
+            <td>Fashion </td>
+            <td>$123</td>
+            <td>15%</td>
+            <td>Jun 10,2020</td>
+            <td>Jul 22,2020</td>
+            <td>
+              <div class="status-toggle">
+                <input type="checkbox" id="staff_module" class="check">
+                <label for="staff_module" class="checktoggle">checkbox</label>
+              </div>
+            </td>
+            <td><a class="associatedClass">Click here</a></td>
+            <td>
+              <a class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
+              </a>
+
+              <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style" title="Edit"></i>
+              </a>
+              <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
+              </a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
+  </div>
 
 
 </div>
 <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
 <div class="chart tab-pane active" id="sales-chart"
-    style="display: none; position: relative; height: 300px;cursor: pointer;">
+  style="display: none; position: relative; height: 300px;cursor: pointer;">
 </div>
 <div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

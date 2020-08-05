@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
           if (response.role === Constants.admin) {
             this.router.navigate([RoutePathConfig.Dashboard]);
-          } 
+          }
           this.formSubmitted = false;
           this.loginForm.reset();
         }

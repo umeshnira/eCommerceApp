@@ -31,4 +31,8 @@ h3.tittle-w3l {
 .form-control{
     border-color: #e91e63;
  
-  }
+}
+.e-treeview {
+    overflow: scroll;
+    max-height: 300px;
+}

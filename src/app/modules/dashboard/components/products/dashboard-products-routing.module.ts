@@ -32,7 +32,7 @@ const productRoutes = [
         component: DashboardSubCategoryComponent
     },
     {
-        path: 'add-sub-categories',
+        path: 'sub-categories/add',
         component: AddEditProductSubcategoryComponent
     },
     {

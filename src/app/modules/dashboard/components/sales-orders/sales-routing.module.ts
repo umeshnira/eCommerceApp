@@ -9,6 +9,10 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const salesRoutes = [
     {
+        path: '',
+        component: SalesOrdersComponent
+    },
+    {
         path: 'orders',
         component: SalesOrdersComponent
     },

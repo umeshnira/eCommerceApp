@@ -20,3 +20,7 @@ h3.tittle-w3l:after {
     color:#e91e63;
     font-size: 16px;
 }
+.e-treeview {
+    overflow: scroll;
+    max-height: 300px;
+}
