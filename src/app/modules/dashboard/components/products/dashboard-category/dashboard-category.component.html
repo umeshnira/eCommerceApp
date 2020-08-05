@@ -39,16 +39,20 @@
         <tbody>
           <tr *ngFor="let category of categories; let i = index;">
             <td>{{category?.name}}</td>
-            <td><input type="checkbox"  disabled [checked]="category.hasSubCategory"></td>
+            <td class="listResults">
+              <span class="checkbox">
+                <input type="checkbox" class="checkbox1" disabled [checked]="category.hasSubCategory">
+                <label></label>
+              </span>
+            </td>
             <td>{{category?.created_at |date}}</td>
             <td>{{category?.created_by}}</td>
             <td>
               <a class="dropdown-item font-12" (click)="goToEditPage(category?.id)"><i
                   class="fa fa-pencil m-r-5 icon-style" title="Edit"></i>
               </a>
-              
-              <a class="dropdown-item font-12"
-              (click)="deleteCategory(category, i)"><i
+
+              <a class="dropdown-item font-12" (click)="deleteCategory(category, i)"><i
                   class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
               </a>
             </td>
@@ -96,8 +100,7 @@
   </div>
 </section> -->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog " role="document">
     <div class="modal-content w-400">
       <div class="modal-header header-color">
@@ -114,10 +117,11 @@
           <input type="text" id="list-name" class="form-control">
         </div>
 
-        <div >
-         <span class="small-font">Use lists to save items for later. All lists are private unless you share them with others.
+        <div>
+          <span class="small-font">Use lists to save items for later. All lists are private unless you share them with
+            others.
 
-         </span>
+          </span>
         </div>
 
       </div>

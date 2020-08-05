@@ -40,7 +40,7 @@ body {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
   color: #333333;
-  font-size: 12px;
+  font-size: 13px;
   overflow-x: hidden;
 }
 
@@ -5489,4 +5489,76 @@ img {
   #aa-header .aa-header-top .aa-header-top-right .aa-head-top-nav-right li a {
     padding: 5px 2px;
   }
+}
+
+.listResults .checkbox * {
+  cursor: pointer;
+}
+.listResults .checkbox {
+  padding-left: 10px;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.listResults .checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 5px;
+}
+
+.listResults .checkbox label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  margin-left: -20px;
+  border: 1px solid #e91e63;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.listResults .checkbox label::after {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0px;
+  margin-left: -21px;
+  padding-left: 3px;
+  padding-top: 1px;
+  font-size: 11px;
+  color: #e91e63;
+}
+
+.listResults .checkbox input[type="checkbox"]{
+  opacity: 0;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+}
+
+
+.listResults .checkbox input[type="checkbox"]:checked + label::after{
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.listResults .checkbox.checkbox-circle label::before {
+  border-radius: 50%;
+}
+
+.listResults .checkbox.checkbox-inline {
+  margin-top: 0;
+}
+input[type="checkbox"].styled:checked + label:after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+
 }

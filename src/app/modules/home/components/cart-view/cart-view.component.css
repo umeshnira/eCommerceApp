@@ -39,7 +39,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #c45500;
+  color: #e91e63;
   cursor: pointer;
 }
 
@@ -61,6 +61,13 @@ a:hover {
 
 .btn-warning {
   background: -webkit-linear-gradient(top, #f309578c, #e91e63);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
+}
+
+.btn-warning:hover {
+  background: -webkit-linear-gradient(top, #f3093f4f, #e8618f);
   border-radius: 3px;
   border-color: #e91e63 #e91e63 #e91e63;
   color: white;
@@ -92,3 +99,10 @@ a:hover {
   font-weight: 600;
   color: #ae2727;
 }
+.listResults .checkbox{
+  padding-left:30px;
+}
+.checkbox, .radio {
+  display: inline!important;
+}
+

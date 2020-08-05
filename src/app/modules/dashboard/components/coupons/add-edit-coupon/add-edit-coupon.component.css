@@ -108,3 +108,12 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
     h3.tittle-w3l:after{
         right: 20.5%;
     }
+    .checkbox, .radio{
+        display: inline;
+    }
+    .listResults .checkbox label::before{
+        top:3px;
+    }
+    .listResults .checkbox label::after{
+        top:3px;
+    }

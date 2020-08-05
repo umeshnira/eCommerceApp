@@ -66,7 +66,7 @@
                 </div>
                 <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
               </div>
-              <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+              <a routerLink="/auth/login"  class="text-uppercase">Login</a> / <a routerLink="/auth/client/register"   class="text-uppercase">Join</a>
               <ul class="custom-menu">
                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                 <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
@@ -114,8 +114,11 @@
                     </div>
                   </div>
                   <div class="shopping-cart-btns">
-                    <button class="main-btn" routerLink="/home/cart">View Cart</button>
-                    <button class="primary-btn" routerLink="/home/cart">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+                    <a routerLink="/home/cart">
+                      <button class="main-btn" >View Cart</button>
+                    </a>
+                 
+                    <button class="primary-btn" routerLink="/home/payment/method">Checkout <i class="fa fa-arrow-circle-right"></i></button>
                   </div>
                 </div>
               </div>
@@ -134,3 +137,8 @@
     </div>
     <!-- container -->
   </header>
+  <div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+    style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

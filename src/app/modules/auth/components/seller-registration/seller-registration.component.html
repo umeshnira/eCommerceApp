@@ -1,12 +1,12 @@
 <div class='container'>
   <div class='col-md-12 row'>
   </div>
-  <div class='col-md-4'></div>
+  <div class='col-md-3'></div>
   <div class='col-md-4'>
     <div class='card m-b-30'>
       <div class='col-md-12'>
         <div class='row m-b-10'>
-          <h1>Create Account</h1>
+          <h3 class="text-center">Create Account</h3>
         </div>
       </div>
       <form [formGroup]="sellerSignUpForm" (submit)="submitSellerSignUpForm()">
@@ -21,7 +21,8 @@
         </div>
         <div class="form-group">
           <label for="address" class="f-weight">Address</label>
-          <textarea rows="4" cols="20" class="w-100" name="address" formControlName="address"></textarea>
+          <textarea class="form-control" rows="4" cols="20"  name="address"
+            formControlName="address"></textarea>
           <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
           </div>
           <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
@@ -140,7 +141,8 @@
           <input type="password" class="form-control" id="password" formControlName="password">
           <div *ngIf="formSubmitted && form.password.errors?.required" class="valid-error">Password is required.
           </div>
-          <div *ngIf="formSubmitted && form.password.errors" class="valid-error">White spaces are not allowed. Enter valid
+          <div *ngIf="formSubmitted && form.password.errors" class="valid-error">White spaces are not allowed. Enter
+            valid
             Password
           </div>
         </div>

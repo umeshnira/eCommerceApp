@@ -42,7 +42,12 @@
                 <tbody *ngFor="let subCategory of subCategoriesList; let i = index;">
                     <tr>
                         <td>{{subCategory?.name}}</td>
-                        <td><input type="checkbox" disabled [checked]="subCategory.hasSubCategory"></td>
+                        <td class="listResults">
+                            <span class="checkbox">
+                            <input type="checkbox"  class="checkbox1" disabled [checked]="subCategory.hasSubCategory">
+                            <label></label>
+                        </span>
+                        </td>
                         <td>{{subCategory?.path}}</td>
                         <td>{{subCategory?.created_at |date}}</td>
                         <td>{{subCategory?.created_by}}</td>
