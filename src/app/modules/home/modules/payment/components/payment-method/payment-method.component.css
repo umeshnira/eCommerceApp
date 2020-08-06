@@ -24,7 +24,19 @@ a:hover {
 .btn-width {
   width: 60%;
 }
+.btn-warning {
+  background: -webkit-linear-gradient(top, #f309578c, #e91e63);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
+}
 
+.btn-warning:hover {
+  background: -webkit-linear-gradient(top, #f3093f4f, #e8618f);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
+}
 .m-t-55 {
   margin-top: 55px;
 }

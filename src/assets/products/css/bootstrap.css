@@ -3291,14 +3291,16 @@ fieldset[disabled] .btn-info.focus {
 }
 .btn-warning:focus,
 .btn-warning.focus {
-  color: #fff;
-  background-color: #ec971f;
-  border-color: #985f0d;
+  background: -webkit-linear-gradient(top, #f309578c, #e91e63);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
 }
 .btn-warning:hover {
-  color: #fff;
-  background-color: #ec971f;
-  border-color: #d58512;
+  background: -webkit-linear-gradient(top, #f3093f4f, #e8618f);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
 }
 .btn-warning:active,
 .btn-warning.active,
