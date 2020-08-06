@@ -36,3 +36,7 @@ h3.tittle-w3l {
     overflow: scroll;
     max-height: 300px;
 }
+.image-style{
+    width: 200px;
+    height: 250px;
+}

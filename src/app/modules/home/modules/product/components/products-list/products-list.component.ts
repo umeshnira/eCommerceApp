@@ -49,19 +49,19 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    const userDetails = this.authService.getUserDetailsFromCookie();
-    this.userId = userDetails.user_id;
-    this.userRole = userDetails.role;
-    this.changeInCategoryId();
-    this.categoryId = this.route.snapshot.queryParams.categoryId;
-    this.getSubCategoryList();
-    if (this.userRole === Constants.client) {
-      this.isUser = true;
-      this.getProductsByCategoryId(this.categoryId);
-    }
-    if (this.userRole === Constants.seller) {
-      this.getProductsBySellerId();
-    }
+    // const userDetails = this.authService.getUserDetailsFromCookie();
+    // this.userId = userDetails.user_id;
+    // this.userRole = userDetails.role;
+    // this.changeInCategoryId();
+    // this.categoryId = this.route.snapshot.queryParams.categoryId;
+    // this.getSubCategoryList();
+    // if (this.userRole === Constants.client) {
+    //   this.isUser = true;
+    //   this.getProductsByCategoryId(this.categoryId);
+    // }
+    // if (this.userRole === Constants.seller) {
+    //   this.getProductsBySellerId();
+    // }
   }
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {

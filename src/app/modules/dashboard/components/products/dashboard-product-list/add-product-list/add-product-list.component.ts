@@ -11,6 +11,7 @@ import { Status } from 'src/app/shared/enums/user-status.enum';
 import { CustomFormValidator } from 'src/app/shared/validators/custom-form.validator';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-add-product-list',
@@ -91,7 +92,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
         this.formData.delete('data');
         this.productDetailsForm.reset();
         this.formSubmitted = false;
-        this.router.navigate([RoutePathConfig.Home]);
+        this.router.navigate([`${RoutePathConfig.Dashboard}/${RoutePathConfig.Products}`]);
       },
         (error) => {
           this.formData.delete('data');
@@ -271,32 +272,32 @@ export class AddProductListComponent implements OnInit, OnDestroy {
   }
 
   private getCategoryNode(categories: Array<CategoryTreeViewModel>) {
-debugger;
     categories.map((category, index = 0) => {
       if (category.id === this.categoryId) {
         category.isSelected = true;
         categories[index].expanded = true;
        this.expandTree(categories, index);
-        return categories;
+        return this.categories;
       }
       const hasFoundCategory = this.getCategoryNode(categories[index].subCategories);
       if (hasFoundCategory) {
         return hasFoundCategory;
       }
     });
-    return categories;
+    return this.categories;
 
   }
 
   private expandTree(category: CategoryTreeViewModel[], i: number) {
+    debugger;
     if (category[i].parent_category_id) {
       this.categories.map((element, index = i) => {
-        if(element.subCategories.length > 0 && index === i) {
-        if (element.subCategories[i].parent_category_id === element.id) {
-          element.expanded = true;
-          return this.categories;
-        }
-        const hasFoundCategory = this.expandTree(category[i].subCategories, i);
+        if (element.subCategories.length > 0 && index <= i) {
+              if (element.subCategories[i].parent_category_id === element.id) {
+                element.expanded = true;
+                return this.categories;
+              }
+        const hasFoundCategory = this.expandTree(this.categories[i].subCategories, i);
         if (hasFoundCategory) {
           return hasFoundCategory;
         }
@@ -304,8 +305,26 @@ debugger;
       });
     }
     return this.categories;
-
   }
+
+}
+
+// if (category[i].parent_category_id) {
+//   this.categories.map((element, index = i) => {
+//     if (element.subCategories.length > 0 && index <= i) {
+//       if (element.subCategories[i].parent_category_id === element.id) {
+//         element.expanded = true;
+//         return this.categories;
+//       }
+//     }
+//     const hasFoundCategory = this.expandTree(category[i].subCategories, i);
+//     if (hasFoundCategory) {
+//       return hasFoundCategory;
+//     }
+//   });
+// }
+// return this.categories;
+// }
 
   // if (this.categories[index].subCategories) {
   //   this.categories[index].subCategories[index].expanded = true;
@@ -339,4 +358,3 @@ debugger;
   // });
   // return categories;
 
-}

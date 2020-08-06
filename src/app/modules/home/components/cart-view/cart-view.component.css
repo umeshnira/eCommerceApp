@@ -105,4 +105,7 @@ a:hover {
 .checkbox, .radio {
   display: inline!important;
 }
+.listResults .checkbox label::before {
+  margin-left: -30px;
+}
 

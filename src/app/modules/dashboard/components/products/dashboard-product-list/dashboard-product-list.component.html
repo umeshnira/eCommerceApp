@@ -29,9 +29,9 @@
             <div class="panel padding-20">
               <div class="men-pro-item simpleCart_shelfItem">
                 <div class="men-thumb-item">
-                  <img [src]="getProductImage(product)" alt="" height="100" width="100" />
+                  <img [src]="getProductImage(product)" class="image-style" />
                   <span class="product-new-top "><a type="button" data-toggle="dropdown">
-                      <i class="fa fa-ellipsis-v "></i>
+                      <i class="fa fa-ellipsis-v p-l-20"></i>
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item font-12 " (click)="navigateToDetailPage(product?.id)">

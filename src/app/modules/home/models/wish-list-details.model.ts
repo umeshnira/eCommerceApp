@@ -3,7 +3,7 @@ export class WishListDetails {
     description: string;
     image: string;
     left_qty: number;
-    name: string;
+    productName: string;
     offer_id: number;
     price: number;
     productId: number;

@@ -33,17 +33,25 @@
                         <td>{{x.title}}</td>
                         <td>
                             <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star" aria-hidden=""></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                    </a>
+                                <li class="w-100">
+                                  <small class="text-success">
+                                    <div class="dashboard-rating1">
+                                      <span class="dashboard-starRating">
+                                        <input id="rating5" type="radio"  value="5" />
+                                        <label for="rating5"></label>
+                                        <input id="rating4" type="radio"  value="4" checked="true"/>
+                                        <label for="rating4"></label>
+                                        <input id="rating3" type="radio"  value="3"  />
+                                        <label for="rating3"></label>
+                                        <input id="rating2" type="radio"  value="2" />
+                                        <label for="rating2"></label>
+                                        <input id="rating1" type="radio"  value="1" />
+                                        <label for="rating1"></label>
+                                      </span>
+                                    </div>
+                                  </small>
                                 </li>
-                            </ul>
+                              </ul>
                         </td>
                         <td>{{x.status}}</td>
                         <td>{{x.date}}</td>

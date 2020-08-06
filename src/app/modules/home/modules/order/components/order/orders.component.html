@@ -68,11 +68,16 @@
             </div>
             <div class="col-md-3 float">
               <span class="font-13">ORDER # {{x.id}}</span>
-              <div>
+              <!-- <div>
                 <a> <span class="font-13 m-r-10">Order Details</span></a>|
                 <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                   data-trigger="focus"
                   data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
+                  <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
+              </div> -->
+              <div>
+                <a> <span class="font-13 m-r-10">Order Details</span></a>|
+                <a routerLink="/home/order/invoice-details">
                   <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
               </div>
             </div>
@@ -202,11 +207,16 @@
                 <span class="font-13">ORDER # {{x.id}}</span>
                 <div>
                   <a> <span class="font-13 m-r-10">Order Details</span></a>|
+                  <a routerLink="/dashboard/sales/invoice-details">
+                    <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
+                </div>
+                <!-- <div>
+                  <a> <span class="font-13 m-r-10">Order Details</span></a>|
                   <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                     data-trigger="focus"
                     data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
                     <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -291,18 +301,16 @@
               <div class="col-md-3">
                 <span class="font-13">SHIP TO</span>
                 <div>
-                  <a tabindex="0" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover"
+                  <!-- <a tabindex="0" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover"
                     data-content="<div><ul><li>{{x.full_name}}</li><li>{{x.address}}</li><li>Phone: {{x.phone}}</li></ul></div>">
-                    <span class="font-13">Address</span><i class="fa fa-chevron-down m-l-10"></i></a>
+                    <span class="font-13">Address</span><i class="fa fa-chevron-down m-l-10"></i></a> -->
                 </div>
               </div>
               <div class="col-md-3 float">
                 <span class="font-13">ORDER # {{x.id}}</span>
                 <div>
                   <a> <span class="font-13 m-r-10">Order Details</span></a>|
-                  <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
-                    data-trigger="focus"
-                    data-content="<div><ul><li><a>Invoice 1</a></li> <li><a>P-slip/Warranty 1</a></li> <li><a>Printable Order Summary</a></li></ul></div>">
+                  <a routerLink="/dashboard/sales/invoice-details">
                     <span class="font-13">Invoice</span><i class="fa fa-chevron-down m-l-10"></i></a>
                 </div>
               </div>

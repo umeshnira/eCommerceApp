@@ -49,15 +49,17 @@
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            autofocus disabled  formControlName="name"/>
+                                                        autofocus required
+                                                        [readOnly]="!isSeller" formControlName="name"/>
                                                         <label class="floating-label">Name</label>
                                                     </div>
 
                                                 </div>
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
-                                                        <input type="number" class="form-control" autocomplete="off"
-                                                            autofocus disabled formControlName="phone"/>
+                                                        <input type="text" class="form-control" autocomplete="off"
+                                                        autofocus required
+                                                        [readOnly]="!isSeller" formControlName="phone"/>
 
                                                         <label class="floating-label">Phone Number</label>
                                                     </div>
@@ -68,15 +70,17 @@
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <textarea rows="3" cols="2" class="form-control"
-                                                            autocomplete="off" autofocus disabled formControlName="address"></textarea>
-                                                        <label class="floating-label">Address</label>
+                                                            autocomplete="off"  autofocus required
+                                                            [readOnly]="!isSeller" formControlName="address"></textarea>
+                                                        <label class="floating-label-address">Address</label>
                                                     </div>
 
                                                 </div>
                                                 <div class='col-md-6 h-60'>
                                                     <div class="floating-label-group">
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            autofocus disabled formControlName="" />
+                                                        autofocus required
+                                                        [readOnly]="!isSeller" formControlName="" value="Trivandrum" />
                                                         <label class="floating-label">City</label>
                                                     </div>
                                                 </div>
@@ -84,22 +88,27 @@
                                             <div class="row p-t-10">
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
-                                                        <select class="form-control" disabled>
+                                                        <select class="form-control" autocomplete="off" autofocus required
+                                                        [disabled]="!isSeller" >
                                                             <option value="0">
-                                                                State
+                                                                Kerala
                                                             </option>
                                                             <option value="1">
                                                                 TN
                                                             </option>
+                                                            <option value="2">
+                                                                Karnataka
+                                                            </option>
                                                         </select>
-
+                                                        <label class="floating-label">State</label>
                                                     </div>
 
                                                 </div>
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            autofocus disabled formControlName="pincode"/>
+                                                        autofocus required
+                                                        [readOnly]="!isSeller" formControlName="pincode"/>
                                                         <label class="floating-label">Pincode</label>
                                                     </div>
 
@@ -114,22 +123,24 @@
                                         <div class="row m-t-20">
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <input type="text" class="form-control" autocomplete="off" autofocus
-                                                        disabled formControlName="aadhar_card_no"/>
+                                                    <input type="text" class="form-control" autocomplete="off" 
+                                                    autofocus required
+                                                    [readOnly]="!isSeller" formControlName="aadhar_card_no"/>
                                                     <label class="floating-label">Aadhar Card Number</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <input type="text" class="form-control" autocomplete="off" autofocus
-                                                        disabled formControlName="pan_card_no"/>
+                                                    <input type="text" class="form-control" autocomplete="off" autofocus required
+                                                    [readOnly]="!isSeller" formControlName="pan_card_no"/>
                                                     <label class="floating-label">Pan Card Number</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <input type="text" class="form-control" autocomplete="off" autofocus
-                                                        disabled formControlName="bank_ac_no"/>
+                                                    <input type="text" class="form-control" autocomplete="off" 
+                                                    autofocus required
+                                                    [readOnly]="!isSeller" formControlName="bank_ac_no"/>
                                                     <label class="floating-label">Account Number</label>
                                                 </div>
                                             </div>
@@ -137,12 +148,18 @@
                                         <div class="row m-t-20">
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <select class="form-control" autocomplete="off" autofocus disabled>
+                                                    <select class="form-control" autocomplete="off" required [disabled]="!isSeller">
                                                         <option value="0">{{sellerDetails?.bank_name}}
 
                                                         </option>
                                                         <option value="1">
                                                             Allahabad Bank
+                                                        </option>
+                                                        <option value="1">
+                                                            Bank of Baroda
+                                                        </option>
+                                                        <option value="1">
+                                                            ICICI Bank
                                                         </option>
                                                     </select>
                                                     <label class="floating-label">Bank Name</label>
@@ -150,22 +167,28 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <input type="text" class="form-control" autocomplete="off" autofocus
-                                                        disabled formControlName="ifsc_code"/>
+                                                    <input type="text" class="form-control" autocomplete="off" autofocus required
+                                                    [readOnly]="!isSeller" formControlName="ifsc_code"/>
                                                     <label class="floating-label">IFSC Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="floating-label-group">
-                                                    <select class="form-control" autocomplete="off" autofocus disabled>
+                                                    <select class="form-control" autocomplete="off" required [disabled]="!isSeller">
                                                         <option value="0">{{sellerDetails?.branch_name}}
                                                            
                                                         </option>
                                                         <option value="1">
-                                                           KK
+                                                           Kottarakkara
                                                         </option>
+                                                        <option value="2">
+                                                            Kollam
+                                                         </option>
+                                                         <option value="2">
+                                                            Trivandrum
+                                                         </option>
                                                     </select>
-                                                    <label class="floating-label">Branch Name</label>
+                                                    <label  class="floating-label">Branch Name</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -200,7 +223,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <span *ngIf="!isView"><a type="button" data-toggle="dropdown" >
+                                                                <span *ngIf="isSeller"><a type="button" data-toggle="dropdown" >
                                                                         <i class="fa fa-ellipsis-v"></i>
                                                                     </a>
                                                                     <div class="dropdown-menu" >
@@ -254,7 +277,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <span *ngIf="!isView"><a type="button" data-toggle="dropdown">
+                                                                <span *ngIf="isSeller"><a type="button" data-toggle="dropdown">
                                                                         <i class="fa fa-ellipsis-v"></i>
                                                                     </a>
                                                                     <div class="dropdown-menu">

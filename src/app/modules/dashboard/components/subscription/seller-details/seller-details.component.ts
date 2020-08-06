@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class SellerDetailsComponent implements OnInit, OnDestroy {
   sellerId: number;
-  isView: boolean;
+  isSeller: boolean;
   sellerDetails: SellerDetailsModel;
   sellerDetailsForm: FormGroup;
   sellerDetailsSubscription: ISubscription;
@@ -31,12 +31,14 @@ export class SellerDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    debugger;
     const userDetails = this.authService.getUserDetailsFromCookie();
     const userRole = userDetails.role;
     if (userRole === Constants.seller) {
       this.sellerId = userDetails.user_id;
+      this.isSeller = true;
     } else {
-      this.isView = true;
+      this.isSeller = false;
       this.sellerId = this.route.snapshot.queryParams.sellerId;
     }
     this.sellerFormInitialization();
@@ -50,6 +52,7 @@ export class SellerDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getSellerDetails() {
+    debugger;
     this.sellerDetailsSubscription = this.sellerService.getSellerDetailsById(this.sellerId)
       .subscribe(response => {
 

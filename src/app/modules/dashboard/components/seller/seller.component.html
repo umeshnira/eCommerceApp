@@ -19,10 +19,10 @@
                     <div class="panel padding-20">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img [src]="seller.image" alt="" *ngIf="seller.image ! == null" (click)="navigateToDetailPage(seller.id)"/>
+                                <img [src]="seller.image" alt="" *ngIf="seller.image ! == null" (click)="navigateToDetailPage(seller.user_id)"/>
                                 <img src="../../../../../assets/images/defaultImage.png" 
                                 alt=""*ngIf="seller.image === null ||seller.image === undefined"
-                                (click)="navigateToDetailPage(seller.id)" />
+                                (click)="navigateToDetailPage(seller.user_id)" />
 
                             </div>
                             <div class="item-info-product">

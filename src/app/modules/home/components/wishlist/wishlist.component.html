@@ -56,8 +56,8 @@
                 </div>
                 <div class="border-class padding-20">
                   <span class="buttons">
-                    <a class="text-style grid-class"><i class="glyphicon glyphicon-th"></i></a>
-                    <a class="text-style grid-active list-class m-l-10"><i class="glyphicon glyphicon-th-list"></i></a>
+                    <a class="text-style grid-class"><i class="fa fa-th-large"></i></a>
+                    <a class="text-style grid-active list-class m-l-10"><i class="fa fa-th-list"></i></a>
                   </span>
 
                   <small><a>
@@ -82,22 +82,22 @@
                       <div class="col-md-6">
                         <ul>
                           <li class="font-class">
-                            <a href="https://www.amazon.in/gp/cart/view.html?ref_=nav_cart">{{x.name}}</a>
+                            <a>{{x.productName}}</a>
                           </li>
                           <li>
                             <small class="text-success">
                               <div class="rating1">
                                 <span class="starRating">
-                                  <input id="rating5" type="radio" [name]="x.name" value="5" [checked]="x.star_rate === 5"/>
-                                  <label for="rating5">5</label>
-                                  <input id="rating4" type="radio" [name]="x.name" value="4" [checked]="x.star_rate === 4"/>
-                                  <label for="rating4">4</label>
-                                  <input id="rating3" type="radio" [name]="x.name" value="3" [checked]="x.star_rate === 3" />
-                                  <label for="rating3">3</label>
-                                  <input id="rating2" type="radio" [name]="x.name" value="2" [checked]="x.star_rate === 2"/>
-                                  <label for="rating2">2</label>
-                                  <input id="rating1" type="radio" [name]="x.name" value="1" [checked]="x.star_rate === 1"/>
-                                  <label for="rating1">1</label>
+                                  <input id="rating5" type="radio" [name]="x.productName" value="5" [checked]="x.star_rate === 5" disabled/>
+                                  <label for="rating5" disabled>5</label>
+                                  <input id="rating4" type="radio" [name]="x.productName" value="4" [checked]="x.star_rate === 4 " disabled/>
+                                  <label for="rating4" disabled>4</label>
+                                  <input id="rating3" type="radio" [name]="x.productName" value="3" [checked]="x.star_rate === 3" disabled/>
+                                  <label for="rating3" disabled>3</label>
+                                  <input id="rating2" type="radio" [name]="x.productName" value="2" [checked]="x.star_rate === 2" disabled/>
+                                  <label for="rating2" disabled>2</label>
+                                  <input id="rating1" type="radio" [name]="x.productName" value="1" [checked]="x.star_rate === 1" disabled/>
+                                  <label for="rating1" disabled>1</label>
                                 </span>
                                 <a class="small-font">50</a>
                               </div>

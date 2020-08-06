@@ -50,3 +50,6 @@ h1, h2, h3, h4 {
 .a-color-secondary {
     color: #555!important;
 }
+a {
+    cursor: pointer;
+}
