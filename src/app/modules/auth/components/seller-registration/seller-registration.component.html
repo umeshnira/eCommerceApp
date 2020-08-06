@@ -10,140 +10,169 @@
         </div>
       </div>
       <form [formGroup]="sellerSignUpForm" (submit)="submitSellerSignUpForm()">
-        <div class="form-group">
-          <label for="name" class="f-weight">Your name</label>
-          <input type="text" class="form-control" id="name" formControlName="name">
-          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
+        <div class="row">
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="text" class="form-control" autocomplete="off" autofocus formControlName="name" required />
+              <label class="floating-label">Name</label>
+              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
+              </div>
+              <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="email" class="form-control" id="phone" autocomplete="off" formControlName="phone" required>
+              <label class="floating-label">Phone No</label>
+              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Phone No is required.
+              </div>
+              <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                name
+              </div>
+            </div>
+            <div class="floating-label-group m-t-45">
+              <input type="text" class="form-control" id="landmark" autocomplete="off" formControlName="landmark"
+                required>
+              <label class="floating-label">Landmark</label>
+              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Landmark is required.
+              </div>
+              <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="aadhar_card_no" autocomplete="off"
+                formControlName="aadhar_card_no" required>
+              <label class="floating-label">Aadhar Card No</label>
+              <div *ngIf="formSubmitted && form.aadhar_card_no.errors?.required" class="valid-error">AadharCard No is
+                required.
+              </div>
+              <div *ngIf="formSubmitted && form.aadhar_card_no.errors" class="valid-error">White spaces are not allowed.
+                Enter valid
+                number
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="bank_ac_no" autocomplete="off" formControlName="bank_ac_no"
+                required>
+              <label class="floating-label">Bank Account No</label>
+              <div *ngIf="formSubmitted && form.bank_ac_no.errors?.required" class="valid-error">Bank Account Number is
+                required.
+              </div>
+              <div *ngIf="formSubmitted && form.bank_ac_no.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                Bank Account Number
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="bank_name" autocomplete="off" formControlName="bank_name"
+                required>
+              <label class="floating-label">Bank Name</label>
+              <div *ngIf="formSubmitted && form.bank_name.errors?.required" class="valid-error">Bank Name is required.
+              </div>
+              <div *ngIf="formSubmitted && form.bank_name.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                Bank Name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="user_name" autocomplete="off" formControlName="user_name"
+                required>
+              <label class="floating-label">Username</label>
+              <div *ngIf="formSubmitted && form.user_name.errors?.required" class="valid-error">Username is required.
+              </div>
+              <div *ngIf="formSubmitted && form.user_name.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                Username
+              </div>
+            </div>
           </div>
-          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
-            name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="address" class="f-weight">Address</label>
-          <textarea class="form-control" rows="4" cols="20"  name="address"
-            formControlName="address"></textarea>
-          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
-            name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Landmark</label>
-          <input type="text" class="form-control" id="landmark" formControlName="landmark">
-          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
-            name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Pin Code</label>
-          <input type="text" class="form-control" id="pincode" formControlName="pincode">
-          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
-            name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email" class="f-weight">Email</label>
-          <input type="email" class="form-control" id="email" formControlName="email">
-          <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
-          </div>
-          <div *ngIf="formSubmitted && form.email.errors" class="valid-error">Please enter a valid email
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Phone No:</label>
-          <input type="text" class="form-control" id="phone" formControlName="phone">
-          <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter valid
-            name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">AadharCard No:</label>
-          <input type="text" class="form-control" id="aadhar_card_no" formControlName="aadhar_card_no">
-          <div *ngIf="formSubmitted && form.aadhar_card_no.errors?.required" class="valid-error">AadharCard No is
-            required.
-          </div>
-          <div *ngIf="formSubmitted && form.aadhar_card_no.errors" class="valid-error">White spaces are not allowed.
-            Enter valid
-            number
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Pancard No:</label>
-          <input type="text" class="form-control" id="pan_card_no" formControlName="pan_card_no">
-          <div *ngIf="formSubmitted && form.pan_card_no.errors?.required" class="valid-error">Pancard No is required.
-          </div>
-          <div *ngIf="formSubmitted && form.pan_card_no.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Pancard No
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Bank Name:</label>
-          <input type="text" class="form-control" id="bank_name" formControlName="bank_name">
-          <div *ngIf="formSubmitted && form.bank_name.errors?.required" class="valid-error">Bank Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.bank_name.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Bank Name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Bank Account No:</label>
-          <input type="text" class="form-control" id="bank_ac_no" formControlName="bank_ac_no">
-          <div *ngIf="formSubmitted && form.bank_ac_no.errors?.required" class="valid-error">Bank Account Number is
-            required.
-          </div>
-          <div *ngIf="formSubmitted && form.bank_ac_no.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Bank Account Number
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Branch Name:</label>
-          <input type="text" class="form-control" id="branch_name" formControlName="branch_name">
-          <div *ngIf="formSubmitted && form.branch_name.errors?.required" class="valid-error">Branch Name is required.
-          </div>
-          <div *ngIf="formSubmitted && form.branch_name.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Branch Name
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">IFSC code:</label>
-          <input type="text" class="form-control" id="ifsc_code" formControlName="ifsc_code">
-          <div *ngIf="formSubmitted && form.ifsc_code.errors?.required" class="valid-error">IFSC code is required.
-          </div>
-          <div *ngIf="formSubmitted && form.ifsc_code.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            IFSC code
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Username:</label>
-          <input type="text" class="form-control" id="user_name" formControlName="user_name">
-          <div *ngIf="formSubmitted && form.user_name.errors?.required" class="valid-error">Username is required.
-          </div>
-          <div *ngIf="formSubmitted && form.user_name.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Username
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="" class="f-weight">Password</label>
-          <input type="password" class="form-control" id="password" formControlName="password">
-          <div *ngIf="formSubmitted && form.password.errors?.required" class="valid-error">Password is required.
-          </div>
-          <div *ngIf="formSubmitted && form.password.errors" class="valid-error">White spaces are not allowed. Enter
-            valid
-            Password
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="email" class="form-control" id="email" autocomplete="off" formControlName="email" required>
+              <label class="floating-label">Email</label>
+              <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
+              </div>
+              <div *ngIf="formSubmitted && form.email.errors" class="valid-error">Please enter a valid email
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <textarea class="form-control" name="address" autocomplete="off" autofocus formControlName="address"
+                required></textarea>
+              <label class="floating-label-textarea">Address</label>
+              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Address is required.
+              </div>
+              <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="landmark" autocomplete="off" formControlName="pincode"
+                required>
+              <label class="floating-label">Pincode</label>
+              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Pincode is required.
+              </div>
+              <div *ngIf="formSubmitted && form.name.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="pan_card_no" autocomplete="off" formControlName="pan_card_no"
+                required>
+              <label class="floating-label">Pancard No</label>
+              <div *ngIf="formSubmitted && form.pan_card_no.errors?.required" class="valid-error">Pancard No is
+                required.
+              </div>
+              <div *ngIf="formSubmitted && form.pan_card_no.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                Pancard No
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="ifsc_code" autocomplete="off" formControlName="ifsc_code"
+                required>
+              <label class="floating-label">IFSC Code</label>
+              <div *ngIf="formSubmitted && form.ifsc_code.errors?.required" class="valid-error">IFSC code is required.
+              </div>
+              <div *ngIf="formSubmitted && form.ifsc_code.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                IFSC code
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="branch_name" autocomplete="off" formControlName="branch_name"
+                required>
+              <label class="floating-label">Branch Name</label>
+              <div *ngIf="formSubmitted && form.branch_name.errors?.required" class="valid-error">Branch Name is
+                required.
+              </div>
+              <div *ngIf="formSubmitted && form.branch_name.errors" class="valid-error">White spaces are not allowed.
+                Enter
+                valid
+                Branch Name
+              </div>
+            </div>
+            <div class="floating-label-group">
+              <input type="text" class="form-control" id="password" autocomplete="off" formControlName="password"
+                required>
+              <label class="floating-label">Password</label>
+              <div *ngIf="formSubmitted && form.password.errors?.required" class="valid-error">Password is required.
+              </div>
+              <div *ngIf="formSubmitted && form.password.errors" class="valid-error">White spaces are not allowed. Enter
+                valid
+                Password
+              </div>
+            </div>
           </div>
         </div>
         <div>

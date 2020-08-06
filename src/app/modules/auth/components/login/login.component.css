@@ -41,3 +41,46 @@
   a:hover, a:focus {
     color: #e42044c7;
 }
+.floating-label-group {
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+	.floating-label {
+		font-size: 13px;
+		color: #cccccc;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+.floating-label-username{
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 53px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+	input:focus ~ .floating-label-username,
+	input:not(:focus):valid ~ .floating-label-username {
+    top: 36px;
+    bottom: 29px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+  }
+  input:focus ~ .floating-label,
+	input:not(:focus):valid ~ .floating-label {
+    top: -8px;
+    bottom: 29px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+	}

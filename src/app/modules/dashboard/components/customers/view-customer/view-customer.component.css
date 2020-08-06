@@ -75,16 +75,6 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
 		transition: all 0.1s ease;
 	}
 
-	input:focus ~ .floating-label,
-	input:not(:focus):valid ~ .floating-label {
-    top: -8px;
-    bottom: 29px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-	}
 	.form-control:focus ~ .floating-label,
 	.form-control:not(:focus):valid ~ .floating-label {
     top: -8px;
@@ -95,17 +85,29 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
     font-size: 12px;
     color: #e91e63;
   }
-  .form-control:focus ~ .floating-label,
-	.form-control:not(:focus):valid ~ .floating-label {
-    top: -8px;
-    bottom: 29px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-    }
+  .floating-label-textarea {
+    font-size: 13px;
+    color: #cccccc;
+    position: absolute;
+    pointer-events: none;
+    top: 9px;
+    left: 12px;
+    transition: all 0.1s ease;
+}
+.form-control:focus ~ .floating-label-textarea,
+.form-control:not(:focus):valid ~ .floating-label-textarea {
+top: -8px;
+bottom: 68px;
+background-color: #fdfbfb;
+left: 13px;
+outline: none;
+font-size: 12px;
+color: #e91e63;
+}
     h3.tittle-w3l:after {
         right: 12.5%;
         width: 249px;
     }
+.m-t-15{
+    margin-top: -15px;
+}
