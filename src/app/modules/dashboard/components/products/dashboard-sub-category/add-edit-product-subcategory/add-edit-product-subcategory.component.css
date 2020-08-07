@@ -10,7 +10,7 @@
     margin-left: 80px;
   }
   .w-45{
-    width: 45%;
+    width: 47%;
 }
 .control-label{
   font-weight: 600;
@@ -28,8 +28,6 @@
 }
 .floating-label-group {
 	position: relative;
-	margin-top: 15px;
-	margin-bottom: 25px;
 }
 	.floating-label {
 		font-size: 13px;

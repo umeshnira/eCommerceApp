@@ -53,5 +53,15 @@ input[type=checkbox], input[type=radio] {
 }
 .associatedClass{
     text-decoration: underline;
-    color:blue
+    color:#e91e63;
+    cursor: pointer;
+}
+.associatedClass:hover{
+    text-decoration: underline;
+    color:#fc5e92;
+    cursor: pointer;
+}
+h3.tittle-w3l:after {
+    right: 30.5%;
+    width: 135px;
 }

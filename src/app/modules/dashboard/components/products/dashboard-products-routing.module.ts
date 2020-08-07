@@ -57,7 +57,7 @@ const productRoutes = [
     },
     {
         path: 'offers',
-        component: OffersComponent
+        loadChildren: () => import('./offers/offer.module').then(m => m.OfferModule),
     }
 ];
 

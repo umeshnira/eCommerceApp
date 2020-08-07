@@ -1,13 +1,25 @@
 <div class="container-fluid m-t-20">
     <!-- tittle heading -->
-    <h3 class="tittle-w3l">
-        Subscription
-        <span class="heading-style">
-            <i></i>
-            <i></i>
-            <i></i>
-        </span>
-    </h3>
+    <div class="col">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+          <h3 class="tittle-w3l">
+            Subscriptions
+            <span class="heading-style">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+          </h3>
+        </div>
+        <div class="col-md-4">
+          <span class="float-right">
+            <button class="btn btn-style m-b-10" routerLink="/dashboard/subscriptions/add">Create
+              Subscription</button>
+          </span>
+        </div>
+      </div>
     <!-- //tittle heading -->
     <!-- product right -->
 
@@ -28,7 +40,7 @@
                                         <div class="dropdown-menu">
                                             <a routerLink="/dashboard/subscriptions/subscribers" class="dropdown-item font-12"><i class="fa fa-users m-r-10 m-l-10"></i>
                                                 Subscribers</a>
-                                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                                            <a class="dropdown-item font-12" routerLink="/dashboard/subscriptions/edit/1"><i class="fa fa-pencil m-r-10 m-l-10"></i>
                                                 Edit</a>
                                             <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
                                                 Delete</a>
@@ -71,7 +83,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item font-12" routerLink="/dashboard/subscriptions/subscribers"><i class="fa fa-users m-r-10 m-l-10"></i>
                                                 Subscribers</a>
-                                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                                            <a class="dropdown-item font-12" routerLink="/dashboard/subscriptions/edit/1"><i class="fa fa-pencil m-r-10 m-l-10"></i>
                                                 Edit</a>
                                             <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
                                                 Delete</a>
@@ -114,7 +126,7 @@
                                         <div class="dropdown-menu">
                                             <a routerLink="/dashboard/subscriptions/subscribers" class="dropdown-item font-12"><i class="fa fa-users m-r-10 m-l-10"></i>
                                                 Subscribers</a>
-                                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10"></i>
+                                            <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-10 m-l-10" routerLink="/dashboard/subscriptions/edit/1"></i>
                                                 Edit</a>
                                             <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"></i>
                                                 Delete</a>

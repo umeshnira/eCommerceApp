@@ -4,23 +4,27 @@
       <div class="m-t-20">
         <div class="row text-center ">
           <div class="col">
-              <h3 class="tittle-w3l">Offers
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+              <h3 class="tittle-w3l">
+                Offers
                 <span class="heading-style">
                   <i></i>
                   <i></i>
                   <i></i>
                 </span>
               </h3>
-            
+            </div>
+            <div class="col-md-4">
+              <span class="float-right">
+                <button class="btn btn-style m-b-10" routerLink="/dashboard/products/offers/add">Create
+                  Offer</button>
+              </span>
+            </div>
           </div>
         </div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <span class="float-right">
-              <button class="btn btn-style m-b-30" routerLink="">Create Offer</button>
-            </span>
-          </div>
+
       </div>
       <table class="table table-bordered table-striped example1 m-t-10">
         <thead>
@@ -50,12 +54,12 @@
                 <label for="staff_module" class="checktoggle">checkbox</label>
               </div>
             </td>
-            <td><a class="associatedClass">Click here</a></td>
+            <td><a class="associatedClass"  routerLink="/dashboard/products">Click here</a></td>
             <td>
-              <a class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
+              <a routerLink="/dashboard/products/offers/assign-product" class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
               </a>
 
-              <a class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style" title="Edit"></i>
+              <a routerLink="/dashboard/products/offers/edit/1" class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style" title="Edit"></i>
               </a>
               <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
               </a>

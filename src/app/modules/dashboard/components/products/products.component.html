@@ -31,7 +31,7 @@
               </select>
               <label class="floating-label font-13 m-l-36">Seller</label>
             </div>
-         
+
           </div>
           <div class="col-md-3">
             <ul class="dropdown-menu6">
@@ -47,6 +47,9 @@
         </div>
       </form>
     </div>
+  </div>
+  <div class="col-md-12 float-left">
+    <a class="offersLink" routerLink="/dashboard/products/offers">Back to Offers</a>
   </div>
   <div class="col-md-3 m-t-30 tree-view-scroll">
     <h3 class="h1-color m-t-10"></h3>
@@ -70,7 +73,8 @@
                     <a class="dropdown-item font-12" (click)="navigateToViewPage(x.id)"><i
                         class="fa fa-eye m-r-10 m-l-10"></i>
                       View</a>
-                    <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
+                    <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details"><i
+                        class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
                       Review</a>
                     <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.category_id)"><i
                         class="fa fa-pencil m-r-10 m-l-10"></i>
