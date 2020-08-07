@@ -10,18 +10,19 @@
             <small>Please provide your product details and the reason for your return.</small>
             <form [formGroup]="returnForm">
                 <div class="first-row form-group">
-                    <div class="controls">
-                        <!-- <label class="control-label font-13">Full Name</label> -->
-                        <input class="form-control" type="text" id="reason" name="reason"
-                            formControlName="reason" />
+                    <div class="floating-label-group">
+                        <input type="text" class="form-control" autocomplete="off" required id="reason" name="reason"
+                            formControlName="reason">
+                        <label class="floating-label">Reason</label>
                         <div *ngIf="formSubmitted && form.reason.errors?.required" class="valid-error">reason is
                             required.
                         </div>
+
                     </div>
                 </div>
-                <button (click)="returnOrder()" class="btn btn-warning" type="submit">
-                    <span>Return </span>
-                </button>
+                    <button (click)="returnOrder()" class="btn btn-warning" type="submit">
+                        <span>Return </span>
+                    </button>
             </form>
         </div>
 

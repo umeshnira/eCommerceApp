@@ -26,3 +26,47 @@
   color: rgba(0, 0, 0, 0.87);
   font-size: 16px;
 }
+.floating-label-group {
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+	.floating-label {
+		font-size: 13px;
+		color: #cccccc;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+
+	.form-control:focus ~ .floating-label,
+	.form-control:not(:focus):valid ~ .floating-label {
+    top: -8px;
+    bottom: 22px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+  }
+  .floating-label-address {
+		font-size: 13px;
+		color: #cccccc;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+	.form-control:focus ~ .floating-label-address,
+	.form-control:not(:focus):valid ~ .floating-label-address {
+    top: -8px;
+    bottom: 29px;
+    background-color: #fdfbfb;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+  }

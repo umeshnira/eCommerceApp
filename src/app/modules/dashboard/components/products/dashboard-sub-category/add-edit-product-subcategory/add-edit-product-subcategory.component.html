@@ -41,50 +41,60 @@
           <form [formGroup]="subCategoryForm" (submit)="addSubCategory()">
             <div class="form-group" *ngIf="!isEdit">
               <div class='col-md-12 m-t-20'>
-                <div class='col-md-3'>
-                  <label for="username" class="control-label">Category</label>
+                <div class='col-md-1'>
+
                 </div>
-                <div class='col-md-9'>
-                  <input type="text" class="form-control" id="parentCategory" placeholder="Name of category"
-                    formControlName="parentCategory" disabled>
-                  <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
-                    required.
+                <div class='col-md-11'>
+                  <div class="floating-label-group">
+                    <input type="text" class="form-control" formControlName="parentCategory" autocomplete="off" required
+                      id="parentCategory" disabled>
+                    <label class="floating-label">Category Name</label>
+                    <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
+                      required.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <div class='col-md-12 m-t-20'>
-                <div class='col-md-3'>
-                  <label for="username" class="control-label">Sub Category</label>
+                <div class='col-md-1'>
+
                 </div>
-                <div class='col-md-9'>
-                  <input type="text" class="form-control" id="name" placeholder="Name of Subcategory"
-                    formControlName="name">
-                  <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Sub category is required.
+                <div class='col-md-11'>
+                  <div class="floating-label-group">
+                    <input type="text" class="form-control" formControlName="name" autocomplete="off" required
+                      id="name">
+                    <label class="floating-label">Sub category</label>
+                    <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Sub category is
+                      required.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <div class='col-md-12 m-t-20'>
-                <div class='col-md-3'>
-                  <label for="" class="control-label">Description</label>
+                <div class='col-md-1'>
+
                 </div>
-                <div class='col-md-9'>
-                  <input type="text" class="form-control" id="description" placeholder="Description"
-                    formControlName="description">
-                  <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
-                    required.
+                <div class='col-md-11'>
+                  <div class="floating-label-group">
+                    <textarea type="text" class="form-control" id="description" formControlName="description" rows="2"
+                      cols="4" autocomplete="off" required></textarea>
+                    <label class="floating-label-address">Description</label>
+                    <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">Description is
+                      required.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="text-center col-md-12 m-t-30">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-1">
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-11">
                   <button type="submit" *ngIf="!isEdit" class="btn btn-style btn-width w-45 m-b-30">Add
                     Sub Category</button>
                   <button type="submit" *ngIf="isEdit" class="btn btn-style btn-width w-45 m-b-30"

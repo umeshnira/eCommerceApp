@@ -5,13 +5,21 @@
 }
 .searchbox {
   text-indent: 30px;
+  border: 1px solid #e91e63;
   height: 36px;
   width: 350px;
 }
+
+
 .search-orders {
   font-weight: 700;
   color: #fff;
   background-color: #e91e63;
+
+}
+.form-control{
+  border-color: #e91e63;
+  background-color: unset;
 }
 a {
   color: #0066c0;
@@ -19,7 +27,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
-  color: #c45500;
+  color: #d4084c;
   cursor: pointer;
 }
 

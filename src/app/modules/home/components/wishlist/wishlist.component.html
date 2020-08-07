@@ -38,8 +38,7 @@
                         to others</a>|
                       <span class="dropdown">
                         <a class="small-font dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false"><i
-                            class="glyphicon glyphicon-option-horizontal m-r-10 font-13"></i>More</a>
+                          aria-expanded="false"><i class="fa fa-ellipsis-h m-r-10 font-13"></i>More</a>
                         <ul class="dropdown-menu">
                           <li><a href="#">Manage List</a></li>
                           <li><a href="#">Print List</a></li>
@@ -88,15 +87,20 @@
                             <small class="text-success">
                               <div class="rating1">
                                 <span class="starRating">
-                                  <input id="rating5" type="radio" [name]="x.productName" value="5" [checked]="x.star_rate === 5" disabled/>
+                                  <input id="rating5" type="radio" [name]="x.productName" value="5"
+                                    [checked]="x.star_rate === 5" disabled />
                                   <label for="rating5" disabled>5</label>
-                                  <input id="rating4" type="radio" [name]="x.productName" value="4" [checked]="x.star_rate === 4 " disabled/>
+                                  <input id="rating4" type="radio" [name]="x.productName" value="4"
+                                    [checked]="x.star_rate === 4 " disabled />
                                   <label for="rating4" disabled>4</label>
-                                  <input id="rating3" type="radio" [name]="x.productName" value="3" [checked]="x.star_rate === 3" disabled/>
+                                  <input id="rating3" type="radio" [name]="x.productName" value="3"
+                                    [checked]="x.star_rate === 3" disabled />
                                   <label for="rating3" disabled>3</label>
-                                  <input id="rating2" type="radio" [name]="x.productName" value="2" [checked]="x.star_rate === 2" disabled/>
+                                  <input id="rating2" type="radio" [name]="x.productName" value="2"
+                                    [checked]="x.star_rate === 2" disabled />
                                   <label for="rating2" disabled>2</label>
-                                  <input id="rating1" type="radio" [name]="x.productName" value="1" [checked]="x.star_rate === 1" disabled/>
+                                  <input id="rating1" type="radio" [name]="x.productName" value="1"
+                                    [checked]="x.star_rate === 1" disabled />
                                   <label for="rating1" disabled>1</label>
                                 </span>
                                 <a class="small-font">50</a>
@@ -116,8 +120,7 @@
                         <ul>
                           <li class="small-font">Item added on {{x.createdDate |date}}</li>
                           <li>
-                            <button (click)="moveToCart(x,i)"
-                              class="btn btn-warning btn-width">
+                            <button (click)="moveToCart(x,i)" class="btn btn-warning btn-width">
                               Add to Cart
                             </button>
                           </li>
@@ -148,7 +151,7 @@
                             <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                               data-trigger="focus"
                               data-content="<div><ul><li><a>Add comment, quantity & priority</a></li> <li><a>Move</a></li> <li><a>Delete</a></li></ul></div>">
-                              <i class="glyphicon glyphicon-option-horizontal">
+                              <i class="fa fa-ellipsis-h">
                               </i>
                             </a>
                           </span>
@@ -175,7 +178,7 @@
                             <a tabindex="0" role="button" data-placement="bottom" data-html="true" data-toggle="popover"
                               data-trigger="focus"
                               data-content="<div><ul><li><a>Add comment, quantity & priority</a></li> <li><a>Move</a></li> <li><a>Delete</a></li></ul></div>">
-                              <i class="glyphicon glyphicon-option-horizontal">
+                              <i class="fa fa-ellipsis-h">
                               </i>
                             </a>
                           </span>
@@ -209,7 +212,7 @@
                         </div>
                       </div>
                       <!-- /section-title -->
-                
+
                       <!-- banner -->
                       <!-- <div class="col-md-3 col-sm-6 col-xs-6">
                         <div class="banner banner-2">
@@ -221,7 +224,7 @@
                         </div>
                       </div> -->
                       <!-- /banner -->
-                
+
                       <!-- Product Slick -->
                       <div class="col-md-9 col-sm-6 col-xs-6">
                         <div class="row">
@@ -238,7 +241,8 @@
                                   <li><span>00 M</span></li>
                                   <li><span>00 S</span></li>
                                 </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product01.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -254,12 +258,13 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
@@ -271,7 +276,8 @@
                                   <li><span>00 M</span></li>
                                   <li><span>00 S</span></li>
                                 </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product07.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -287,12 +293,13 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
@@ -305,7 +312,8 @@
                                   <li><span>00 M</span></li>
                                   <li><span>00 S</span></li>
                                 </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product06.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -321,12 +329,13 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
@@ -339,7 +348,8 @@
                                   <li><span>00 M</span></li>
                                   <li><span>00 S</span></li>
                                 </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product08.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -355,7 +365,8 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
@@ -366,7 +377,7 @@
                       <!-- /Product Slick -->
                     </div>
                     <!-- /row -->
-                
+
                     <!-- row -->
                     <div class="row">
                       <!-- section title -->
@@ -380,7 +391,7 @@
                         </div>
                       </div>
                       <!-- section title -->
-                
+
                       <!-- Product Single -->
                       <!-- <div class="col-md-3 col-sm-6 col-xs-6">
                         <div class="product product-single product-hot">
@@ -415,7 +426,7 @@
                         </div>
                       </div> -->
                       <!-- /Product Single -->
-                
+
                       <!-- Product Slick -->
                       <div class="col-md-9 col-sm-6 col-xs-6">
                         <div class="row">
@@ -423,7 +434,8 @@
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product06.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -439,19 +451,21 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
                                 <div class="product-label">
                                   <span class="sale">-20%</span>
                                 </div>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product05.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -467,16 +481,18 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product04.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -492,12 +508,13 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                             <!-- Product Single -->
                             <div class="product product-single">
                               <div class="product-thumb">
@@ -505,7 +522,8 @@
                                   <span>New</span>
                                   <span class="sale">-20%</span>
                                 </div>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                  view</button>
                                 <img src="../../../../../assets/Home/img/product03.jpg" alt="">
                               </div>
                               <div class="product-body">
@@ -521,12 +539,13 @@
                                 <div class="product-btns">
                                   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                   <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                    Cart</button>
                                 </div>
                               </div>
                             </div>
                             <!-- /Product Single -->
-                
+
                           </div>
                         </div>
                       </div>
@@ -536,7 +555,7 @@
                   </div>
                   <!-- /container -->
                 </div>
-             
+
               </div>
             </div>
           </div>
@@ -566,7 +585,7 @@
                   </span>
                 </div>
                 <span class="float m-b-10">
-                  <button class="btn btn-secondary">
+                  <button class="btn btn-warning">
                     Copy message
                   </button>
                   <button class="btn btn-warning m-l-10">
@@ -597,14 +616,17 @@
       </div>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
-          <label for="list-name" class="small-font">List name</label>
-          <input type="text" id="list-name" class="form-control" [(ngModel)]="wishListName">
+          <div class="floating-label-group">
+            <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="wishListName">
+            <label class="floating-label font-13 m-l-36">List Name</label>
+          </div>
         </div>
 
-        <div >
-         <span class="small-font">Use lists to save items for later. All lists are private unless you share them with others.
+        <div>
+          <span class="small-font">Use lists to save items for later. All lists are private unless you share them with
+            others.
 
-         </span>
+          </span>
         </div>
 
       </div>

@@ -52,3 +52,28 @@ h3.tittle-w3l:after {
     color: rgba(0, 0, 0, 0.87);
     font-size: 14px;
 }
+  .floating-label-group {
+	position: relative;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+	.floating-label {
+		font-size: 13px;
+		color: #cccccc;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+
+	.form-control:focus ~ .floating-label,
+	.form-control:not(:focus):valid ~ .floating-label {
+    top: -11px;
+    bottom: 29px;
+    background-color: #f3f3f3;
+    left: 13px;
+    outline: none;
+    font-size: 12px;
+    color: #e91e63;
+  }

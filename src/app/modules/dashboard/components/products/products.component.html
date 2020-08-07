@@ -15,16 +15,23 @@
       <form method="POST">
         <div class="row">
           <div class="col-md-3">
-            <select class="form-control" (change)="getCategoryId($event)">
-              <option value="0">All Categories </option>
-              <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}</option>
-            </select>
+            <div class="floating-label-group">
+              <select class="form-control" (change)="getCategoryId($event)" autocomplete="off" required>
+                <option value="0">All Categories </option>
+                <option *ngFor="let x of categoryList" [value]="x.id">{{x.name}}</option>
+              </select>
+              <label class="floating-label font-13 m-l-36">Categories</label>
+            </div>
           </div>
-          <div class="col-md-3" >
-            <select class="form-control" *ngIf="!isSeller" (change)="getSellerId($event)">
-              <option value="0">Select Seller</option>
-              <option *ngFor="let x of sellersList" [value]="x.user_id">{{x.name}}</option>
-            </select>
+          <div class="col-md-3">
+            <div class="floating-label-group">
+              <select class="form-control" *ngIf="!isSeller" (change)="getSellerId($event)" autocomplete="off" required>
+                <option value="0">Select Seller</option>
+                <option *ngFor="let x of sellersList" [value]="x.user_id">{{x.name}}</option>
+              </select>
+              <label class="floating-label font-13 m-l-36">Seller</label>
+            </div>
+         
           </div>
           <div class="col-md-3">
             <ul class="dropdown-menu6">
@@ -52,22 +59,24 @@
       <div class="row">
         <div class="col-md-4" *ngFor="let x of productList; let i = index;">
           <div class="panel padding-20">
-            <div class="men-pro-item simpleCart_shelfItem" >
+            <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
-                <img [src]="getImage(x)" alt="" class="image-style"/>
+                <img [src]="getImage(x)" alt="" class="image-style" />
 
                 <span class="product-new-top"><a type="button" data-toggle="dropdown">
                     <i class="fa fa-ellipsis-v p-l-20"></i>
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item font-12" (click)="navigateToViewPage(x.id)"><i class="fa fa-eye m-r-10 m-l-10"></i>
+                    <a class="dropdown-item font-12" (click)="navigateToViewPage(x.id)"><i
+                        class="fa fa-eye m-r-10 m-l-10"></i>
                       View</a>
                     <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details"><i class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
                       Review</a>
-                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.category_id)"><i class="fa fa-pencil m-r-10 m-l-10" 
-                      ></i>
+                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.category_id)"><i
+                        class="fa fa-pencil m-r-10 m-l-10"></i>
                       Edit</a>
-                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10" (click)="deleteProduct(x.id,i)"></i>
+                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"
+                        (click)="deleteProduct(x.id,i)"></i>
                       Delete</a>
                   </div>
                 </span>
@@ -90,15 +99,15 @@
                         <small class="text-success">
                           <div class="dashboard-rating1">
                             <span class="dashboard-starRating">
-                              <input id="rating5" type="radio"  value="5" [checked]="x.star_rate === 5"/>
+                              <input id="rating5" type="radio" value="5" [checked]="x.star_rate === 5" />
                               <label for="rating5"></label>
-                              <input id="rating4" type="radio"  value="4" [checked]="x.star_rate === 4"/>
+                              <input id="rating4" type="radio" value="4" [checked]="x.star_rate === 4" />
                               <label for="rating4"></label>
-                              <input id="rating3" type="radio"  value="3" [checked]="x.star_rate === 3" />
+                              <input id="rating3" type="radio" value="3" [checked]="x.star_rate === 3" />
                               <label for="rating3"></label>
-                              <input id="rating2" type="radio"  value="2" [checked]="x.star_rate === 2"/>
+                              <input id="rating2" type="radio" value="2" [checked]="x.star_rate === 2" />
                               <label for="rating2"></label>
-                              <input id="rating1" type="radio"  value="1" [checked]="x.star_rate === 1"/>
+                              <input id="rating1" type="radio" value="1" [checked]="x.star_rate === 1" />
                               <label for="rating1"></label>
                             </span>
                           </div>
