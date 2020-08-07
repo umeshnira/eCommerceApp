@@ -5,7 +5,7 @@ import { AddOfferComponent } from './add-offer/add-offer.component';
 import { OfferRoutingModule } from './offer-routing.module';
 import { AssignProductComponent } from './assign-product/assign-product.component';
 
-const modules = [SharedModule, OfferRoutingModule];
+const modules = [SharedModule, OfferRoutingModule,];
 
 const components = [OffersComponent,AddOfferComponent,AssignProductComponent];
 
