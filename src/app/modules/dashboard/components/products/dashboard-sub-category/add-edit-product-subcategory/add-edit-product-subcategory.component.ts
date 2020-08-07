@@ -126,7 +126,8 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
   private prepareSubCategoryRequestModel() {
     const subCategoryModel = new SubCategoryModel();
     subCategoryModel.parent_category_id = this.categoryId;
-    subCategoryModel.name = this.subCategoryForm?.controls['name'].value;
+    const name = this.subCategoryForm?.controls['name'].value;
+    subCategoryModel.name = name.toLocaleUpperCase;
     subCategoryModel.description = this.subCategoryForm?.controls['description'].value;
 
     return subCategoryModel;
@@ -145,6 +146,7 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
       }
     }
   }
+
   private getCategoryList() {
     this.getCategoriesSubscription = this.categoryService.getCategories().subscribe((response) => {
       this.categoryList = response;

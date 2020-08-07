@@ -8,6 +8,8 @@ import { SellerModel } from '../../models/seller-model';
 import { ToastrService } from 'ngx-toastr';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { UserRole } from 'src/app/shared/enums/user-role.enum';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,7 +29,8 @@ export class SellerRegistrationComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: RegistrationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,7 @@ export class SellerRegistrationComponent implements OnInit, OnDestroy {
         if (response) {
           this.formSubmitted = false;
           this.sellerSignUpForm.reset();
+          this.router.navigate([RoutePathConfig.Home]);
         }
       },
         (error) => {

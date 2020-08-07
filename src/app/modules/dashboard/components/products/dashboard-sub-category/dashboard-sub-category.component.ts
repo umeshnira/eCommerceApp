@@ -48,6 +48,7 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
 
       if (response) {
         this.subCategoriesList.splice(index, 1);
+        this.getSubcategoriesList();
         this.toastr.success('SubCategory Deleted Successfully', 'Success');
       }
     }, (error) => {

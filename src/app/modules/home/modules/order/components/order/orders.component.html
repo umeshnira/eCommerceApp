@@ -15,30 +15,30 @@
   </div>
   <ul class="nav nav-tabs border-class" role="tablist">
     <li class="active">
-      <a (click)="getOrders()" class="text-style" href="#home" role="tab" data-toggle="tab">
+      <a (click)="getOrders()" class="text-style font-14" href="#home" role="tab" data-toggle="tab">
         Orders
       </a>
     </li>
     <li>
-      <a (click)="getBuyAgain()" class="text-style" href="#buyAgain" role="tab" data-toggle="tab">
+      <a (click)="getBuyAgain()" class="text-style font-14" href="#buyAgain" role="tab" data-toggle="tab">
         Buy Again
       </a>
     </li>
     <li>
-      <a (click)="getOpenOrder()" class="text-style" href="#openOrder" role="tab" data-toggle="tab">
+      <a (click)="getOpenOrder()" class="text-style font-14" href="#openOrder" role="tab" data-toggle="tab">
         Open Orders
       </a>
     </li>
     <li>
-      <a (click)="getCancelledOrders()" class="text-style" href="#cancelOrder" role="tab" data-toggle="tab">
+      <a (click)="getCancelledOrders()" class="text-style font-14" href="#cancelOrder" role="tab" data-toggle="tab">
         Cancelled orders
       </a>
     </li>
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content m-t-10">
-    <div *ngIf="orderDetails.length>0" class="tab-pane fade active in m-t-20" id="home">
+  <div class="tab-content m-t-10 ">
+    <div *ngIf="orderDetails.length>0" class="tab-pane fade active in m-t-20 " id="home">
       <b>{{orderDetails.length}} orders </b> placed in
       <select class="m-l-10 dropdown-style m-b-10">
         <option value="1">last 30 days</option>

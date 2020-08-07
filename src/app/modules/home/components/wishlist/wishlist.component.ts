@@ -42,7 +42,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
     this.getWhishList();
   }
 
-  moveToCart(item: WishListDetails) {
+  moveToCart(item: WishListDetails, index: number) {
     const cartModel = new CartModel();
     cartModel.user_id = this.userId;
     cartModel.product_id = item.productId;
@@ -53,7 +53,8 @@ export class WishlistComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         if (response) {
           this.toastr.success('Item moved to Cart Successfully', 'Success');
-          this.removeWishList(item.id);
+          // this.removeWishList(item.id);
+          this.wishList.splice(index, 1);
         }
 
       }, (error) => {
@@ -91,6 +92,7 @@ export class WishlistComponent implements OnInit, OnDestroy {
   getWishList(){
     
   }
+ 
 
   ngOnDestroy() {
     if (this.getWhishListSubscription) {
@@ -117,6 +119,21 @@ export class WishlistComponent implements OnInit, OnDestroy {
       }, (error) => {
         this.toastr.error('', error.error.message);
       });
+  }
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+    this.loadScript('assets/Home/js/slick.min.js');
+    this.loadScript('assets/Home/js/nouislider.min.js');
+    this.loadScript('assets/Home/js/jquery.zoom.min.js');
+    this.loadScript('assets/Home/js/main.js');
   }
 
 }

@@ -106,6 +106,10 @@ a:hover {
   display: inline!important;
 }
 .listResults .checkbox label::before {
-  margin-left: -30px;
+  margin-left: -20px;
+}
+.rupees-style {
+  color: #e91e63;
+  font-weight: 1000;
 }
 

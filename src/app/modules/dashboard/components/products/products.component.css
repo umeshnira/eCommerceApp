@@ -48,3 +48,7 @@ h3.tittle-w3l:after {
     overflow: scroll;
     max-height: 300px;
   }
+  .e-treeview .e-list-text {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+}

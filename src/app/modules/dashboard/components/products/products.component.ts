@@ -86,7 +86,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.productList = response;
       },
         (error) => {
-          this.toastr.error('', error.error.message);
+          this.toastr.warning('No Products are available', 'Sorry');
         });
   }
 
@@ -170,7 +170,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.productList = response;
       },
         (error) => {
-          this.toastr.error('', error.error.message);
+          this.toastr.warning('No Products are Available', 'Sorry');
         });
   }
 
@@ -230,7 +230,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         }
       },
         (error) => {
-          this.toastr.error('', error.error.message);
+          this.toastr.warning('No Products are Available', 'Sorry');
         });
 
   }

@@ -40,3 +40,7 @@ h3.tittle-w3l {
     width: 200px;
     height: 250px;
 }
+.e-treeview .e-list-text {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+}

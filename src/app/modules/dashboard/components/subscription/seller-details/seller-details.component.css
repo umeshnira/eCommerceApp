@@ -72,7 +72,7 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
         background-color: #fdfbfb;
         left: 13px;
         outline: none;
-        font-size: 12px;
+        font-size: 14px;
         color: #e91e63;
     }
     .floating-label-address {
@@ -82,7 +82,7 @@ overflow: -moz-scrollbars-none;/*// Firefox*/}
         background-color: #fdfbfb;
         left: 13px;
         outline: none;
-        font-size: 12px;
+        font-size: 14px;
         color: #e91e63;
     }
 

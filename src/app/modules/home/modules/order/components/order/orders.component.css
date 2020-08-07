@@ -25,9 +25,10 @@ a:hover {
 
 .dropdown-style {
   width: 15%;
-  background: #e7e9ec;
+  /* background: #e7e9ec; */
   border-radius: 3px;
   height: 36px;
+  border-color: #e91e63;
 }
 .nav-tabs {
   margin: 0;
@@ -56,7 +57,7 @@ a:hover {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   border: unset !important;
-  border-bottom: 2px solid #e47911 !important;
+  border-bottom: 2px solid #e91e63 !important;
 }
 .nav-tabs > li > a {
   border: unset !important;
@@ -72,4 +73,7 @@ a:hover {
   border-radius: 3px;
   border-color: #e91e63 #e91e63 #e91e63;
   color: white;
+}
+.font-14 {
+  font-size: 14px;
 }

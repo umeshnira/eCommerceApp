@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { Constants } from 'src/app/shared/models/constants';
 import { SellerService } from 'src/app/shared/services/seller.service';
+import { NavigationExtras, Router } from '@angular/router';
+import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 
 @Component({
   selector: 'app-dashboard-seller-registration',
@@ -19,7 +21,8 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
 
   constructor(
     private sellerService: SellerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,16 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
         (error) => {
           this.toastr.error('', error.error.message);
         });
+  }
+
+  navigateToSellerDetails(sellerId: number) {
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { sellerId: sellerId },
+    };
+
+    const path = `${RoutePathConfig.Dashboard}/${RoutePathConfig.Subscriptions}/${RoutePathConfig.SellerDetails}`;
+    this.router.navigate([path], navigationExtras);
   }
 
   ngOnDestroy() {

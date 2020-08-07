@@ -31,7 +31,6 @@ export class SellerDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    debugger;
     const userDetails = this.authService.getUserDetailsFromCookie();
     const userRole = userDetails.role;
     if (userRole === Constants.seller) {
@@ -52,7 +51,6 @@ export class SellerDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getSellerDetails() {
-    debugger;
     this.sellerDetailsSubscription = this.sellerService.getSellerDetailsById(this.sellerId)
       .subscribe(response => {
 

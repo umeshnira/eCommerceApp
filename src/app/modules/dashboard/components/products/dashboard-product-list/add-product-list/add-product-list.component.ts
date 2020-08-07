@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ProductModel } from 'src/app/modules/home/modules/product/models/product.model';
 import { CategoryTreeViewModel } from 'src/app/modules/home/modules/category/models/category-tree-view.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,6 +12,7 @@ import { CustomFormValidator } from 'src/app/shared/validators/custom-form.valid
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
+import { TreeViewComponent } from '@syncfusion/ej2-angular-navigations';
 
 @Component({
   selector: 'app-add-product-list',
@@ -47,6 +48,8 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     return this.productDetailsForm.controls;
   }
 
+  
+
   constructor(
     private subCategoryService: SubCategoryService,
     private service: ProductService,
@@ -55,6 +58,9 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
   ) { }
+
+  @ViewChild('tree',{static:true})
+    public tree: TreeViewComponent;
 
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
@@ -258,7 +264,10 @@ export class AddProductListComponent implements OnInit, OnDestroy {
 
         this.categories = response;
         if (this.isEdit === true) {
-          this.categories = this.getCategoryNode(this.categories);
+          // this.categories = this.getCategoryNode(this.categories);
+          // let categories = new Array<CategoryTreeViewModel>();
+          const categories = response;
+          this.getTreeNode(this.categories, this.categoryId);
           this.field = { dataSource: this.categories, id: 'id', text: 'name', child: 'subCategories', selected: 'isSelected' };
         } else {
           this.field = { dataSource: this.categories, id: 'id', text: 'name', child: 'subCategories' };
@@ -271,41 +280,57 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     );
   }
 
-  private getCategoryNode(categories: Array<CategoryTreeViewModel>) {
-    categories.map((category, index = 0) => {
-      if (category.id === this.categoryId) {
-        category.isSelected = true;
-        categories[index].expanded = true;
-       this.expandTree(categories, index);
-        return this.categories;
-      }
-      const hasFoundCategory = this.getCategoryNode(categories[index].subCategories);
-      if (hasFoundCategory) {
-        return hasFoundCategory;
-      }
-    });
-    return this.categories;
-
-  }
-
-  private expandTree(category: CategoryTreeViewModel[], i: number) {
-    debugger;
-    if (category[i].parent_category_id) {
-      this.categories.map((element, index = i) => {
-        if (element.subCategories.length > 0 && index <= i) {
-              if (element.subCategories[i].parent_category_id === element.id) {
-                element.expanded = true;
-                return this.categories;
-              }
-        const hasFoundCategory = this.expandTree(this.categories[i].subCategories, i);
+  private getTreeNode(newArray: Array<CategoryTreeViewModel>, categoryId: number ) {
+    if (newArray) {
+      for (let i = 0; i < newArray.length; i++) {
+        newArray[i].expanded = true;
+        if (newArray[i].id === categoryId) {
+          newArray[i].isSelected = true;
+          return newArray[i];
+        }
+        const hasFoundCategory = this.getTreeNode(newArray[i].subCategories, categoryId);
         if (hasFoundCategory) {
           return hasFoundCategory;
         }
       }
-      });
     }
-    return this.categories;
+    
   }
+
+  // private getCategoryNode(categories: Array<CategoryTreeViewModel>) {
+  //   categories.map((category, index = 0) => {
+  //     if (category.id === this.categoryId) {
+  //       category.isSelected = true;
+  //       categories[index].expanded = true;
+  //      this.expandTree(categories, index);
+  //       return this.categories;
+  //     }
+  //     const hasFoundCategory = this.getCategoryNode(categories[index].subCategories);
+  //     if (hasFoundCategory) {
+  //       return hasFoundCategory;
+  //     }
+  //   });
+  //   return this.categories;
+
+  // }
+
+  // private expandTree(category: CategoryTreeViewModel[], i: number) {
+  //   if (category[i].parent_category_id) {
+  //     this.categories.map((element, index = i) => {
+  //       if (element.subCategories.length > 0 && index <= i) {
+  //             if (element.subCategories[i].parent_category_id === element.id) {
+  //               element.expanded = true;
+  //               return this.categories;
+  //             }
+  //       const hasFoundCategory = this.expandTree(this.categories[i].subCategories, i);
+  //       if (hasFoundCategory) {
+  //         return hasFoundCategory;
+  //       }
+  //     }
+  //     });
+  //   }
+  //   return this.categories;
+  // }
 
 }
 

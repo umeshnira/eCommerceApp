@@ -15,23 +15,23 @@
             <div class="floating-label-group">
               <input type="text" class="form-control" autocomplete="off" autofocus formControlName="name" required />
               <label class="floating-label">Name</label>
-              <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Name is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.name.errors" class="valid-error">Please enter a valid Name</div>
             </div>
             <div class="floating-label-group">
               <input type="text" class="form-control" autocomplete="off" formControlName="phone" required />
               <label class="floating-label">Phone No</label>
-              <div *ngIf="formSubmitted && form.phone.errors?.required" class="valid-error">Phone No is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.phone.errors?.required" class="valid-error">Phone No is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.phone.errors" class="valid-error">Please enter phone
                 number</div>
             </div>
             <div class="floating-label-group m-t-45 ">
               <input type="text" class="form-control" autocomplete="off" formControlName="landmark" required />
               <label class="floating-label">Landmark</label>
-              <div *ngIf="formSubmitted && form.landmark.errors?.required" class="valid-error">Landmark is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.landmark.errors?.required" class="valid-error">Landmark is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.landmark.errors" class="valid-error">Please enter a valid Landmark</div>
             </div>
             <div class="floating-label-group">
@@ -39,8 +39,8 @@
               <label class="floating-label">Username</label>
               <div *ngIf="formSubmitted && form.username.errors?.required" class="valid-error">Username is required.
               </div>
-              <div *ngIf="formSubmitted && form.username.errors" class="valid-error">Please enter a valid email or phone
-                number</div>
+              <!-- <div *ngIf="formSubmitted && form.username.errors" class="valid-error">Please enter a valid email or phone
+                number</div> -->
             </div>
 
           </div>
@@ -48,23 +48,23 @@
             <div class="floating-label-group">
               <input type="email" class="form-control" autocomplete="off" formControlName="email" required />
               <label class="floating-label">Email Id</label>
-              <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.email.errors?.required" class="valid-error">Email is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.email.errors" class="valid-error">Please enter a valid email</div>
             </div>
             <div class="floating-label-group">
               <textarea  class="form-control" autocomplete="off" formControlName="address"
                 required></textarea>
               <label class="floating-label-textarea">Address</label>
-              <div *ngIf="formSubmitted && form.address.errors?.required" class="valid-error">Address is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.address.errors?.required" class="valid-error">Address is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.address.errors" class="valid-error">Please enter a valid Address</div>
             </div>
             <div class="floating-label-group">
               <input type="text" class="form-control" autocomplete="off" formControlName="pin_code" required />
               <label class="floating-label">Pincode</label>
-              <div *ngIf="formSubmitted && form.pin_code.errors?.required" class="valid-error">Pincode is required.
-              </div>
+              <!-- <div *ngIf="formSubmitted && form.pin_code.errors?.required" class="valid-error">Pincode is required.
+              </div> -->
               <div *ngIf="formSubmitted && form.pin_code.errors" class="valid-error">Please enter a valid Pincode</div>
             </div>
             <div class="floating-label-group">

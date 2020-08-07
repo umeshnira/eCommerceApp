@@ -205,7 +205,8 @@ a {
   /* overflow-y: scroll; */
 }
 .e-control {
-  font-family: "Open Sans", "sans-serif";
+  /* font-family: "Open Sans", "sans-serif"; */
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
 }
 /* .e-treeview .e-ul{

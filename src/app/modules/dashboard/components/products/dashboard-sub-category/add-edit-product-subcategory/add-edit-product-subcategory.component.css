@@ -19,6 +19,10 @@
   border-color: #e91e63;
   background-color: unset;
 }
-.w-300 {
-  width: 300px;
+.w-285 {
+  width: 282px;
+}
+.e-treeview .e-list-text {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
 }

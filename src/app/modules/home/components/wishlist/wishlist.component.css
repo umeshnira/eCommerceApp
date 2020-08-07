@@ -38,7 +38,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #c45500;
+  color: #e91e63;
   cursor: pointer;
 }
 
@@ -88,7 +88,7 @@ a:hover {
 }
 
 .grid-active {
-  border-bottom: 2px solid #e77600;
+  border-bottom: 2px solid #e91e63;
 }
 
 .margin-30 {
@@ -166,8 +166,8 @@ a:hover {
 
 .nav-tabs>li.active>a:focus {
   border: unset !important;
-  border-top: 2px solid #e47911 !important;
-  color: #e47911 !important;
+  border-top: 2px solid #e91e63 !important;
+  color: #e91e63 !important;
   font-weight: 700 !important;
 }
 
@@ -193,4 +193,8 @@ a:hover {
 }
 .w-400 {
   width: 400px;
+}
+.rupees-style {
+  color: #e91e63;
+  font-weight: 1000;
 }

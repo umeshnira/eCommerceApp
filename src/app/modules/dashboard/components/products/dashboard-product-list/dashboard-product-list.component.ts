@@ -154,7 +154,7 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
         this.products = response;
       },
         (error) => {
-          this.toastr.error('', error.error.message);
+          this.toastr.warning('No Products are available in this Category', 'Sorry');
         });
 
   }
@@ -178,7 +178,7 @@ export class DashboardProductListComponent implements OnInit, OnDestroy {
         this.products = response;
       },
         (error) => {
-          this.toastr.error('', error.error.message);
+          this.toastr.warning('No Products are available', 'Sorry');
         });
   }
 
