@@ -357,8 +357,14 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li *ngIf="userRole === 'Admin'">
                         <a routerLink="/dashboard/subscriptions">
+                            <i class="fa fa-hand-pointer-o m-r-10"></i> <span>Suscriptions</span>
+                            <small class="label pull-right bg-pink">1</small>
+                        </a>
+                    </li>
+                    <li *ngIf="userRole === 'Seller'">
+                        <a routerLink="/dashboard/seller/subscription-plan">
                             <i class="fa fa-hand-pointer-o m-r-10"></i> <span>Suscriptions</span>
                             <small class="label pull-right bg-pink">1</small>
                         </a>

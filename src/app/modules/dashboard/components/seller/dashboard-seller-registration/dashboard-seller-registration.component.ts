@@ -37,6 +37,7 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
 
         if (response) {
           this.toastr.success('Approved Seller', 'Success');
+          this.getAllSellers();
         }
       },
         (error) => {
@@ -52,6 +53,7 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
 
         if (response) {
           this.toastr.success('Approved Seller', 'Success');
+          this.getAllSellers();
         }
       },
         (error) => {
