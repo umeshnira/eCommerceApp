@@ -20,11 +20,6 @@ export class DasboardComponent implements OnInit {
     })
   }
   ngAfterViewInit() {
-
-    this.loadScript('assets/products/js/bootstrap.js');
-
-    this.loadScript('assets/bootstrap/js/bootstrap.min.js');
-    this.loadScript('assets/bootstrap/js/bootstrap.js');
     this.loadScript('assets/plugins/raphel-min.js');
     this.loadScript('assets/plugins/morris/morris.min.js');
     this.loadScript('assets/dist/js/pages/dashboard.js');
