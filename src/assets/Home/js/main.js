@@ -143,5 +143,24 @@
       }
     });
   }
-
+  var slider = document.getElementById('order-slider');
+  if (slider) {
+    noUiSlider.create(slider, {
+      start: [1, 999],
+      connect: true,
+      tooltips: [true, true],
+      format: {
+        to: function(value) {
+          return value.toFixed(0) + ' Orders';
+        },
+        from: function(value) {
+          return value
+        }
+      },
+      range: {
+        'min': 1,
+        'max': 999
+      }
+    });
+  }
 })(jQuery);

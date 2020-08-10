@@ -239,7 +239,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const productsList = response.filter(x => x.seller_id === this.sellerId);
     this.productList = productsList;
   }
-
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+    this.loadScript('assets/Home/js/slick.min.js');
+    this.loadScript('assets/Home/js/nouislider.min.js');
+    this.loadScript('assets/Home/js/jquery.zoom.min.js');
+    this.loadScript('assets/Home/js/main.js');
+  }
 
 
 }
