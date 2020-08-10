@@ -23,7 +23,18 @@ export class SalesOrdersComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private authService: AuthService,
   ) { }
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
 
+    this.loadScript('assets/js/datatable.js');
+  }
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;

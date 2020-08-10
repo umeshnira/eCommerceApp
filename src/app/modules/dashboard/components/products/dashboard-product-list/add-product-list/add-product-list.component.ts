@@ -48,7 +48,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     return this.productDetailsForm.controls;
   }
 
-  
+
 
   constructor(
     private subCategoryService: SubCategoryService,
@@ -59,8 +59,8 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     private router: Router,
   ) { }
 
-  @ViewChild('tree',{static:true})
-    public tree: TreeViewComponent;
+  @ViewChild('tree', { static: true })
+  public tree: TreeViewComponent;
 
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
@@ -74,7 +74,18 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     this.productFormInitialization();
 
   }
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
 
+    this.loadScript('assets/js/datatable.js');
+  }
   categoryTreeNodeClicked(event) {
     this.categoryId = event.node.dataset.uid;
   }
@@ -280,7 +291,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     );
   }
 
-  private getTreeNode(newArray: Array<CategoryTreeViewModel>, categoryId: number ) {
+  private getTreeNode(newArray: Array<CategoryTreeViewModel>, categoryId: number) {
     if (newArray) {
       for (let i = 0; i < newArray.length; i++) {
         newArray[i].expanded = true;
@@ -294,7 +305,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
         }
       }
     }
-    
+
   }
 
   // private getCategoryNode(categories: Array<CategoryTreeViewModel>) {

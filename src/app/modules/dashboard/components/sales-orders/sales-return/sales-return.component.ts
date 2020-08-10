@@ -29,6 +29,18 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
     this.userId = userDetails.user_id;
     this.getUserOrderDetails(this.userId);
   }
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  ngAfterViewInit() {
+
+    this.loadScript('assets/js/datatable.js');
+  }
   ngOnDestroy() {
     if (this.getOrderSubscrip) {
       this.getOrderSubscrip.unsubscribe();

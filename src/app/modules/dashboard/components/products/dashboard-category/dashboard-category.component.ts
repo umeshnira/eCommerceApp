@@ -30,7 +30,18 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllCategories();
   }
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+    }
+  ngAfterViewInit() {
 
+  this.loadScript('assets/js/datatable.js');
+  }
   goToEditPage(categoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
