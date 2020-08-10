@@ -57,7 +57,6 @@
               "src/assets/plugins/fastclick/fastclick.min.js",
               "src/assets/dist/js/app.min.js",
               "src/assets/plugins/sparkline/jquery.sparkline.min.js",
-              "src/assets/dist/js/pages/dashboard.js",
               "src/assets/dist/js/demo.js",
               "src/assets/js/datatable.js",
               "src/assets/Home/js/slick.min.js",
