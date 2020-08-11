@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
-import { OrderDetailsModel } from '../models/order-details.model'
-import { OrderLocationTableModel } from '../models/order-location-table.model'
-import { OrderReturnTableModel } from '../models/order-return-table.model'
+import { OrderDetailsModel } from '../models/order-details.model';
+import { OrderLocationTableModel } from '../models/order-location-table.model';
+import { OrderReturnTableModel } from '../models/order-return-table.model';
 import { HttpBaseService } from 'src/app/core/services/http-base-service.service';
 import { ApiResponseModel } from '../../../../../shared/models/api-response.model';
 
@@ -17,7 +17,7 @@ export class OrderService extends HttpBaseService {
   baseUrl = environment.api.baseUrl;
   notificUrl = environment.api.notificUrl;
 
-  orderStorage;//for store order details
+  orderStorage; // for store order details
 
 
   constructor(private http: HttpClient) {
@@ -25,13 +25,13 @@ export class OrderService extends HttpBaseService {
   }
 
   getUserOrders(id: number) {
-    const url = `${this.orderUrl}/user/orders/${id}`;
+    const url = `${this.orderUrl}/orders/${id}/user`;
     return this.http.get<OrderDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
   getCancelledOrders(id: number) {
-    const url = `${this.orderUrl}/cancel/orders/${id}`;
+    const url = `${this.orderUrl}/orders/${id}/status?status=3`;
     return this.http.get<OrderDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
@@ -44,21 +44,21 @@ export class OrderService extends HttpBaseService {
   }
 
   getBuyAgainProducts(id: number) {
-    const url = `${this.orderUrl}/orders/buyAgain/${id}`;
+    const url = `${this.orderUrl}/orders/${id}/user`;
     return this.http.get<OrderLocationTableModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
   getOpenOrders(id: number) {
-    const url = `${this.orderUrl}/orders/openOrder/${id}`;
+    const url = `${this.orderUrl}/orders/${id}/status?status=1`;
     return this.http.get<OrderLocationTableModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
   cancelOrder(id: number) {
-    const url = `${this.orderUrl}/cancel/orders/${id}`;
-    return this.http.post<ApiResponseModel>(url, {})
+    const url = `${this.orderUrl}/orders/${id}/status?status=3`;
+    return this.http.patch<ApiResponseModel>(url, {})
       .pipe(catchError(this.handleError)
       );
   }
@@ -84,7 +84,7 @@ export class OrderService extends HttpBaseService {
   }
 
   sendMail(id: number) {
-    const url = `${this.notificUrl}/mail/${id}`;
+    const url = `${this.orderUrl}/orders/${id}/mail`;
     return this.http.post<ApiResponseModel>(url, {})
       .pipe(catchError(this.handleError)
       );

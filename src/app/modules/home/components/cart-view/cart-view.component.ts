@@ -17,6 +17,7 @@ import { OrderService } from '../../modules/order/services/order.service';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { WishListModel } from '../../models/wish-list.model';
 import { WishListService } from '../../services/wish-list.service';
+import { OrderProductModel } from '../../modules/order/models/order-product.model';
 
 @Component({
   selector: 'app-cart-view',
@@ -213,12 +214,13 @@ export class CartViewComponent implements OnInit, OnDestroy {
 
   placeOrder() {
     const orderModel = {
-      data: {
+      order: {
         created_by: this.userId.toString(),
         user_id: this.userId,
         location: this.locationDetails,
         details: [],
-        offer: []
+        offer: [],
+        product: []
       }
     };
 
@@ -236,13 +238,22 @@ export class CartViewComponent implements OnInit, OnDestroy {
         detaisModel.qty = x.quantity;
         detaisModel.product_id = x.id;
 
-        orderModel.data.details.push(detaisModel);
+        orderModel.order.details.push(detaisModel);
 
         const offerModel = new OrderOffersTableModel();
         offerModel.created_by = this.userId.toString();
         offerModel.offer_id = x.offer_id;
 
-        orderModel.data.offer.push(offerModel);
+        orderModel.order.offer.push(offerModel);
+
+        const product = new OrderProductModel();
+        product.image = x.image;
+        product.name = x.name;
+        product.offer_id = x.offer_id;
+        product.offer_name = x.offer_name;
+        product.created_by = this.userId.toString();
+
+        orderModel.order.product.push(product);
       });
 
       this.orderService.orderStorage = orderModel;
