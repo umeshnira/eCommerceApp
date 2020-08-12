@@ -67,7 +67,7 @@ export class ProductService extends HttpBaseService {
   }
   getSellerReviews(id: number) {
 
-    const url = `${this.baseUrl}/products/sellerreview/${id}`;
+    const url = `${this.baseUrl}/user/${id}/review/forseller`;
     return this.http.get<ReviewViewDetailsModel>(url)
     .pipe(catchError(this.handleError)
     );

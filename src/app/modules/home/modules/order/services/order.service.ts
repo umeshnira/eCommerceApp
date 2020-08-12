@@ -64,14 +64,14 @@ export class OrderService extends HttpBaseService {
   }
 
   getSellerOrders(id: number) {
-    const url = `${this.orderUrl}/orders/sellerorders/${id}`;
+    const url = `${this.orderUrl}/user/${id}/orders/sellerorders`;
     return this.http.get<OrderDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
 
   getSellerReturnOrders(id: number) {
-    const url = `${this.orderUrl}/orders/sellerreturnorders/${id}`;
+    const url = `${this.orderUrl}/user/${id}/orders/sellerreturnorders`;
     return this.http.get<OrderDetailsModel>(url)
       .pipe(catchError(this.handleError)
       );
