@@ -41,20 +41,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Fashion</td>
-            <td>Fashion </td>
-            <td>$123</td>
-            <td>15%</td>
-            <td>Jun 10,2020</td>
-            <td>Jul 22,2020</td>
+          <tr *ngFor="let item of offerList">
+            <td>{{item.name}}</td>
+            <td>{{item.description}} </td>
+            <td>${{item.price}}</td>
+            <td>{{item.percentage}}%</td>
+            <td>{{item.validFrom}}</td>
+            <td>{{item.validTo}}</td>
             <td>
               <div class="status-toggle">
-                <input type="checkbox" id="staff_module" class="check">
+                <input type="checkbox" id="staff_module" class="check" [checked]="item.status === '1'">
                 <label for="staff_module" class="checktoggle">checkbox</label>
               </div>
             </td>
-            <td><a class="associatedClass"  routerLink="/dashboard/products">Click here</a></td>
+            <td><a class="associatedClass"  (click)="navigateToProductList()">Click here</a></td>
             <td>
               <a routerLink="/dashboard/products/offers/assign-product" class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
               </a>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ProductService } from 'src/app/modules/home/modules/product/services/product.service';
 import { ReviewViewDetailsModel } from 'src/app/modules/home/modules/product/models/review-view-details.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
-export class ReviewComponent implements OnInit, OnDestroy {
+export class ReviewComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private getReviewSubscrip: ISubscription;
 

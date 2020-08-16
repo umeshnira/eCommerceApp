@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { SubCategoryModel } from 'src/app/modules/home/modules/category/models/sub-category.model';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
@@ -28,6 +28,7 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getSubcategoriesList();
+    this.loadScript('assets/js/datatable.js');
   }
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
@@ -35,12 +36,9 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
       scriptElement.src = scriptUrl;
       scriptElement.onload = resolve;
       document.body.appendChild(scriptElement);
-    })
-    }
-  ngAfterViewInit() {
-
-  this.loadScript('assets/js/datatable.js');
+    });
   }
+
   navigateToEditPage(subCategoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
@@ -55,17 +53,17 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     if (subCategory.hasSubCategory) {
       this.toastr.warning('Categories with Subcategory cannot be deleted', 'Warning');
     } else {
-    this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategory.id).subscribe(response => {
+      this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategory.id).subscribe(response => {
 
-      if (response) {
-        this.subCategoriesList.splice(index, 1);
-        this.getSubcategoriesList();
-        this.toastr.success('SubCategory Deleted Successfully', 'Success');
-      }
-    }, (error) => {
-      this.toastr.error('', error.error.message);
-    });
-  }
+        if (response) {
+          this.subCategoriesList.splice(index, 1);
+          this.getSubcategoriesList();
+          this.toastr.success('SubCategory Deleted Successfully', 'Success');
+        }
+      }, (error) => {
+        this.toastr.error('', error.error.message);
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -76,6 +74,8 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
       this.deleteSubCategorySubscription.unsubscribe();
     }
   }
+
+
 
   private getSubcategoriesList() {
     this.getAllCategoriesSubscription = this.service.getAllSubCategories().subscribe(response => {
@@ -98,9 +98,9 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     newArray = this.subCategoriesList;
     for (let i = 0; i < newArray.length; i++) {
       for (let j = 0; j < newArray.length; j++) {
-          if(newArray[i].id === newArray[j].parent_category_id) {
-            newArray[i].hasSubCategory = true;
-          }
+        if (newArray[i].id === newArray[j].parent_category_id) {
+          newArray[i].hasSubCategory = true;
+        }
       }
     }
     this.subCategoriesList = newArray;

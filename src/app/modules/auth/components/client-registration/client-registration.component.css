@@ -56,7 +56,7 @@ a:hover, a:focus {
   .form-control:focus ~ .floating-label,
 	.form-control:not(:focus):valid ~ .floating-label {
     top: -8px;
-    bottom: 29px;
+    bottom: 45px;
     background-color: #fdfbfb;
     left: 13px;
     outline: none;

@@ -15,3 +15,9 @@ h3.tittle-w3l:after {
     color:#e91e63;
     font-size: 16px;
 }
+.listResults .checkbox label::before {
+    top: -30px;
+}
+.listResults .checkbox label::after {
+    top: -30px;
+}

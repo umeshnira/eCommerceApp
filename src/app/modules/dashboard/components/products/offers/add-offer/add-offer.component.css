@@ -14,7 +14,7 @@
           position: absolute;
           pointer-events: none;
           top: 9px;
-          left: 12px;
+          left: 13px;
           transition: all 0.1s ease;
       }
   
@@ -25,7 +25,7 @@
       background-color: #fdfbfb;
       left: 13px;
       outline: none;
-      font-size: 12px;
+      font-size: 13px;
       color: #e91e63;
     }
     .floating-label-address {
@@ -34,7 +34,7 @@
         position: absolute;
         pointer-events: none;
         top: 9px;
-        left: 12px;
+        left: 13px;
         transition: all 0.1s ease;
     }
 
@@ -45,7 +45,7 @@
     background-color: #fdfbfb;
     left: 13px;
     outline: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #e91e63;
   }
 h3.tittle-w3l {

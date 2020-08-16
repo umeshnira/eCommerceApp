@@ -8,6 +8,9 @@
       <i></i>
     </span>
   </h3>
+  <div class="col-md-12" *ngIf="isOfferList">
+    <a class="offersLink float-left" routerLink="/dashboard/products/offers">Back to Offers</a>
+  </div>
   <!-- //tittle heading -->
   <!-- product right -->
   <div class="card">
@@ -29,25 +32,23 @@
                 <option value="0">Select Seller</option>
                 <option *ngFor="let x of sellersList" [value]="x.user_id">{{x.name}}</option>
               </select>
-              <label class="floating-label font-13 m-l-36">Seller</label>
+              <label class="floating-label font-13 m-l-36" *ngIf="!isSeller">Seller</label>
             </div>
 
           </div>
           <div class="col-md-3">
             <div class="aside">
-              <div id="order-slider"></div>
+              <div id="order-slider" class="font-12"></div>
             </div>
           </div>
-          <div class="col-md-3 m-t-10">
+          <div class="col-md-3 m-t-20">
             <button class="btn btn-width btn-style" type="submit" (click)="searchTopSellingProducts()">Search</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  <div class="col-md-12 float-left">
-    <a class="offersLink" routerLink="/dashboard/products/offers">Back to Offers</a>
-  </div>
+ 
   <div class="col-md-3 m-t-30 tree-view-scroll">
     <h3 class="h1-color m-t-10"></h3>
     <ejs-treeview *ngIf="hasSubCategory" [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
@@ -67,16 +68,16 @@
                     <i class="fa fa-ellipsis-v p-l-20"></i>
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item font-12" (click)="navigateToViewPage(x.id)"><i
+                    <a class="dropdown-item font-14" (click)="navigateToViewPage(x.id)"><i
                         class="fa fa-eye m-r-10 m-l-10"></i>
                       View</a>
-                    <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details"><i
+                    <a class="dropdown-item font-14" routerLink="/dashboard/reviews/review-details"><i
                         class="fa fa-thumbs-o-up m-r-10 m-l-10"></i>
                       Review</a>
-                    <a class="dropdown-item font-12" (click)="navigateToEditPage(x.id, x.category_id)"><i
+                    <a class="dropdown-item font-14" (click)="navigateToEditPage(x.id, x.category_id)"><i
                         class="fa fa-pencil m-r-10 m-l-10"></i>
                       Edit</a>
-                    <a class="dropdown-item font-12"><i class="fa fa-trash m-r-10 m-l-10"
+                    <a class="dropdown-item font-14"><i class="fa fa-trash m-r-10 m-l-10"
                         (click)="deleteProduct(x.id,i)"></i>
                       Delete</a>
                   </div>
@@ -91,8 +92,8 @@
                 </h4>
                 <div class="info-product-price row">
                   <div class="col-md-6">
-                    <span class="item_price">{{x.price}}</span>
-                    <del>$255.00</del>
+                    <span class="item_price">₹{{x.price}}</span>
+                    <del>₹255.00</del>
                   </div>
                   <div class="col-md-6 p-l-0">
                     <ul>

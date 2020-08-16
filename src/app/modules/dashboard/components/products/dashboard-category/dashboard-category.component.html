@@ -52,9 +52,12 @@
                   class="fa fa-pencil m-r-5 icon-style" title="Edit"></i>
               </a>
 
-              <a class="dropdown-item font-12" (click)="deleteCategory(category, i)"><i
+              <!-- <a class="dropdown-item font-12" (click)="deleteCategory(category, i)"><i
                   class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
-              </a>
+              </a> -->
+              <a class="dropdown-item font-12" (click)="deleteCategory(category, i)" data-toggle="modal" data-target="#deleteModal"><i
+                class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
+            </a>
             </td>
           </tr>
         </tbody>
@@ -123,3 +126,8 @@
     </div>
   </div>
 </div>
+<div class="chart tab-pane " id="revenue-chart" style="display: none; height: 300px;"></div>
+<div class="chart tab-pane active" id="sales-chart"
+    style="display: none; position: relative; height: 300px;cursor: pointer;">
+</div>
+<div class="chart" id="line-chart" style="display: none; height: 277px;"></div>

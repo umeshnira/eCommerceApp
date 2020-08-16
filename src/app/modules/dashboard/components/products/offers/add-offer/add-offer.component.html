@@ -18,14 +18,20 @@
             <div class='col-md-3'></div>
             <div class='col-md-6'>
                 <div class='card m-b-30'>
-                    <form>
+                    <form [formGroup]="offerForm" (submit)="createOffer()">
                         <div class="form-group">
                             <div class='col-md-12 m-t-10'>
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <input type="text" class="form-control" autocomplete="off" required>
+                                        <input type="text" class="form-control" autocomplete="off" required
+                                         formControlName="name">
                                         <label class="floating-label">Name</label>
                                     </div>
+                                    <div *ngIf="formSubmitted && form.name.errors?.required"
+                                    class="valid-error">
+                                    Name is
+                                    required.
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -33,9 +39,15 @@
                             <div class='col-md-12 m-t-10'>
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <textarea class="form-control" autocomplete="off" required></textarea>
+                                        <textarea class="form-control" autocomplete="off" required
+                                        formControlName="description"></textarea>
                                         <label class="floating-label-address">Description</label>
                                     </div>
+                                    <div *ngIf="formSubmitted && form.description.errors?.required"
+                                    class="valid-error">
+                                    Description is
+                                    required.
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -43,25 +55,57 @@
                             <div class='col-md-12 m-t-10'>
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <input type="text" class="form-control" autocomplete="off" required>
+                                        <input type="text" class="form-control" autocomplete="off" required
+                                        formControlName="percentage">
                                         <label class="floating-label">Percentage</label>
                                     </div>
+                                    <div *ngIf="formSubmitted && form.percentage.errors?.required"
+                            class="valid-error">
+                            Percentage is
+                            required.
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class='col-md-12 m-t-10'>
+                                <div class='col-md-12'>
+                                    <div class="floating-label-group">
+                                        <input type="text" class="form-control" autocomplete="off" required
+                                        formControlName="price">
+                                        <label class="floating-label">Price</label>
+                                    </div>
+                                    <div *ngIf="formSubmitted && form.price.errors?.required"
+                            class="valid-error">
+                            Price is
+                            required.
+                        </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class='col-md-12 h-60 p-t-10 m-b-20'>
-                                <ejs-datepicker placeholder='Valid From'>
+                                <ejs-datepicker placeholder='Valid From' formControlName="validFrom">
                                 </ejs-datepicker>
                             </div>
+                            <div *ngIf="formSubmitted && form.validFrom.errors?.required"
+                            class="valid-error">
+                            ValidFrom date is
+                            required.
+                        </div>
                         </div>
                         <div class="form-group">
                             <div class='col-md-12 h-60 p-t-10 m-b-20'>
 
-                                <ejs-datepicker placeholder='Valid To'>
+                                <ejs-datepicker placeholder='Valid To' formControlName="validTo">
                                 </ejs-datepicker>
 
                             </div>
+                            <div *ngIf="formSubmitted && form.validTo.errors?.required"
+                            class="valid-error">
+                            ValidTo date is
+                            required.
+                        </div>
                         </div>
 
 

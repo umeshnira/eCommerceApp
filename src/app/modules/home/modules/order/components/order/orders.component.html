@@ -16,22 +16,22 @@
   </div>
   <ul class="nav nav-tabs border-class" role="tablist">
     <li class="active">
-      <a (click)="getOrders()" class="text-style font-14" href="#home" role="tab" data-toggle="tab">
+      <a (click)="getOrders()" class="text-style font-16" href="#home" role="tab" data-toggle="tab">
         Orders
       </a>
     </li>
     <li>
-      <a (click)="getBuyAgain()" class="text-style font-14" href="#buyAgain" role="tab" data-toggle="tab">
+      <a (click)="getBuyAgain()" class="text-style font-16" href="#buyAgain" role="tab" data-toggle="tab">
         Buy Again
       </a>
     </li>
     <li>
-      <a (click)="getOpenOrder()" class="text-style font-14" href="#openOrder" role="tab" data-toggle="tab">
+      <a (click)="getOpenOrder()" class="text-style font-16" href="#openOrder" role="tab" data-toggle="tab">
         Open Orders
       </a>
     </li>
     <li>
-      <a (click)="getCancelledOrders()" class="text-style font-14" href="#cancelOrder" role="tab" data-toggle="tab">
+      <a (click)="getCancelledOrders()" class="text-style font-16" href="#cancelOrder" role="tab" data-toggle="tab">
         Cancelled orders
       </a>
     </li>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-3">
               <span class="font-13">TOTAL</span>
-              <div><span class="font-13">{{x.qty*x.price}}</span></div>
+              <div><span class="font-13">₹{{x.qty*x.price}}</span></div>
             </div>
             <div class="col-md-3">
               <span class="font-13">SHIP TO</span>
@@ -150,10 +150,10 @@
     </div>
     <div class="tab-pane fade" id="buyAgain">
       <div *ngIf="buyAgainDetails.length>0" class="row m-b-10">
-        <div *ngFor="let x of buyAgainDetails" class="col-md-4 product-men grid-style m-r-10">
-          <div class="men-pro-item simpleCart_shelfItem">
+        <div *ngFor="let x of buyAgainDetails" class="col-md-4 product-men grid-style m-r-10 h-400">
+          <div class="men-pro-item simpleCart_shelfItem ">
             <div class="men-thumb-item">
-              <img src="{{x.path}}" alt=""  />
+              <img src="{{x.path}}" alt="" class="img-style" />
               <!-- <div class="men-cart-pro">
                 <div class="inner-men-cart-pro">
                   <a href="single.html" class="link-product-add-cart">Quick View</a>
@@ -161,12 +161,12 @@
               </div> -->
             </div>
             <div class="item-info-product">
-              <span class="item_price">{{x.name}}</span>
+              <span class="font-16 blue-color">{{x.name}}</span>
               <div class="info-product-price">
-                <span class="item_price">{{x.price}}</span>
+                <span class="item_price">₹{{x.price}}</span>
               </div>
               <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <button (click)="redirectToDetails(x.product_id)" class="btn btn-secondary btn-width">
+                <button (click)="redirectToDetails(x.product_id)" class="btn btn-warning btn-width">
                   Add to Cart
                 </button>
               </div>

@@ -12,6 +12,7 @@ import { Constants } from 'src/app/shared/models/constants';
 import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { CategoryTreeViewModel } from './models/category-tree-view.model';
+import { Status } from 'src/app/shared/enums/user-status.enum';
 
 @Component({
   selector: 'app-products',
@@ -26,9 +27,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   userRole: string;
   isSeller: boolean;
   hasSubCategory: boolean;
+  isOfferList: boolean;
 
   productList: ProductDetailsModel[];
-  sellersList: SellerDetailsModel;
+  sellersList: SellerDetailsModel[];
   categoryList: CategoryModel[];
   field: Object;
   result: CategoryTreeViewModel;
@@ -59,6 +61,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.getAllSellers();
     this.getCategories();
     this.loadDefaultProductsList();
+    this.isOfferList = this.route.snapshot.queryParams.offerList;
 
   }
 
@@ -180,6 +183,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
         if (response) {
           this.sellersList = response;
+          this.sellersList = this.sellersList.filter(x => x.status === Status.Active);
         }
       },
         (error) => {
