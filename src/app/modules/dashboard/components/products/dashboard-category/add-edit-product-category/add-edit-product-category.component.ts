@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/shared/services/category.service';
@@ -12,7 +12,7 @@ import { SubscriptionLike as ISubscription } from 'rxjs';
   templateUrl: './add-edit-product-category.component.html',
   styleUrls: ['./add-edit-product-category.component.css']
 })
-export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
+export class AddEditProductCategoryComponent implements OnInit, OnDestroy, AfterViewInit {
   categoryId: number;
   formSubmitted: boolean;
   isEdit: boolean;
@@ -107,6 +107,19 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    });
+    }
+  ngAfterViewInit() {
+
+  this.loadScript('assets/js/datatable.js');
+  }
+
   private prepareCategoryRequestModel() {
     const categoryModel = new CategoryModel();
     categoryModel.name = this.categoryForm?.controls['name'].value;
@@ -150,9 +163,6 @@ export class AddEditProductCategoryComponent implements OnInit, OnDestroy {
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
       description: new FormControl('',
         Validators.compose([Validators.required, CustomFormValidator.cannotContainSpace])),
-        hasSubCategory: new FormControl(''
-      ),
-
     });
   }
 

@@ -74,7 +74,7 @@ h3.tittle-w3l:after {
     background-color: #f3f3f3;
     left: 13px;
     outline: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #e91e63;
   }
 .offersLink{
@@ -89,4 +89,11 @@ h3.tittle-w3l:after {
 }
 #order-slider {
     margin: 29px 39px;
-  }
+}
+.font-12 {
+    font-size: 12px;
+}
+.font-14 {
+    font-size: 14px;
+}
+  

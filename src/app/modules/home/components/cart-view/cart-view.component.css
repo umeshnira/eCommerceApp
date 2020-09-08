@@ -20,7 +20,7 @@
 }
 
 .font-class {
-  font-size: 17px !important;
+  font-size: 20px !important;
 }
 
 .btn-width {
@@ -44,7 +44,7 @@ a:hover {
 }
 
 .small-font {
-  font-size: 12px !important;
+  font-size: 14px !important;
   line-height: 1.5 !important;
 }
 
@@ -111,5 +111,12 @@ a:hover {
 .rupees-style {
   color: #e91e63;
   font-weight: 1000;
+}
+.stock-font {
+  font-size: 14px;
+  font-weight: 500;
+}
+.font-15 {
+  font-size: 15px!important;
 }
 

@@ -37,15 +37,15 @@
                                   <small class="text-success">
                                     <div class="dashboard-rating1">
                                       <span class="dashboard-starRating">
-                                        <input id="rating5" type="radio"  value="5" />
+                                        <input id="rating5" type="radio"  value="5" [checked]="x.rate === 5" disabled/>
                                         <label for="rating5"></label>
-                                        <input id="rating4" type="radio"  value="4" checked="true"/>
+                                        <input id="rating4" type="radio"  value="4" [checked]="x.rate === 4" disabled/>
                                         <label for="rating4"></label>
-                                        <input id="rating3" type="radio"  value="3"  />
+                                        <input id="rating3" type="radio"  value="3"  [checked]="x.rate === 3" disabled/>
                                         <label for="rating3"></label>
-                                        <input id="rating2" type="radio"  value="2" />
+                                        <input id="rating2" type="radio"  value="2" [checked]="x.rate === 2" disabled/>
                                         <label for="rating2"></label>
-                                        <input id="rating1" type="radio"  value="1" />
+                                        <input id="rating1" type="radio"  value="1" [checked]="x.rate === 1" disabled/>
                                         <label for="rating1"></label>
                                       </span>
                                     </div>
@@ -62,8 +62,8 @@
                             <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 m-l-10 icon-style" title="Approve"></i>
                             </a>
 
-                            <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style"
-                                    title="Delete"></i>
+                            <a class="dropdown-item font-12"><i class="fa fa-times m-r-5 m-l-10 icon-style"
+                                    title="Deny"></i>
                             </a>
                         </td>
                     </tr>

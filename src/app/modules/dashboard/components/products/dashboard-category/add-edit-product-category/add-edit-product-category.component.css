@@ -1,67 +1,81 @@
 .text-centre {
-    text-align: center;
-  }
-  h3.tittle-w3l {
-    margin-bottom: unset;
-  }
-  .valid-error {
-    color: red;
-    font-size: 13px;
-  }
-  .m-l-80{
-    margin-left: 80px;
-  }
-  .w-45{
-      width: 43%;
-  }
-  .control-label{
-    font-weight: 600;
+  text-align: center;
 }
-.form-control{
+
+h3.tittle-w3l {
+  margin-bottom: unset;
+}
+
+.valid-error {
+  color: red;
+  font-size: 13px;
+}
+
+.m-l-80 {
+  margin-left: 80px;
+}
+
+.w-45 {
+  width: 43%;
+}
+
+.control-label {
+  font-weight: 600;
+}
+
+.form-control {
   border-color: #e91e63;
   background-color: unset;
 }
-.floating-label-group {
-	position: relative;
-	margin-top: 15px;
-	margin-bottom: 25px;
-}
-	.floating-label {
-		font-size: 13px;
-		color: #cccccc;
-		position: absolute;
-		pointer-events: none;
-		top: 9px;
-		left: 12px;
-		transition: all 0.1s ease;
-	}
 
-	.form-control:focus ~ .floating-label,
-	.form-control:not(:focus):valid ~ .floating-label {
-    top: -8px;
-    bottom: 22px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-  }
-  .floating-label-address {
-		font-size: 13px;
-		color: #cccccc;
-		position: absolute;
-		pointer-events: none;
-		top: 9px;
-		left: 12px;
-		transition: all 0.1s ease;
-	}
-	.form-control:focus ~ .floating-label-address,
-	.form-control:not(:focus):valid ~ .floating-label-address {
-    top: -8px;
-    bottom: 29px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-  }
+.floating-label-group {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.floating-label {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus~.floating-label,
+.form-control:not(:focus):valid~.floating-label {
+  top: -8px;
+  bottom: 22px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 13px;
+  color: #e91e63;
+}
+
+.floating-label-address {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus~.floating-label-address,
+.form-control:not(:focus):valid~.floating-label-address {
+  top: -8px;
+  bottom: 40px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 13px;
+  color: #e91e63;
+}
+
+.b-25 {
+  bottom: 25px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { CategoryModel } from 'src/app/modules/home/modules/category/models/category.model';
@@ -30,7 +30,12 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllCategories();
   }
-  private loadScript(scriptUrl: string) {
+
+  ngAfterViewInit() {
+
+  this.loadScript('assets/js/datatable.js');
+  }
+    private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
       const scriptElement = document.createElement('script');
       scriptElement.src = scriptUrl;
@@ -38,10 +43,6 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy {
       document.body.appendChild(scriptElement);
     })
     }
-  ngAfterViewInit() {
-
-  this.loadScript('assets/js/datatable.js');
-  }
   goToEditPage(categoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {

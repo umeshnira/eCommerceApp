@@ -9,8 +9,6 @@
   height: 36px;
   width: 350px;
 }
-
-
 .search-orders {
   font-weight: 700;
   color: #fff;
@@ -43,7 +41,6 @@ a:hover {
   padding: 0;
   border: 0;
 }
-
 .btn-secondary {
   background: -webkit-linear-gradient(top, #f7f8fa, #e7e9ec);
   border-radius: 3px;
@@ -82,6 +79,16 @@ a:hover {
   border-color: #e91e63 #e91e63 #e91e63;
   color: white;
 }
-.font-14 {
-  font-size: 14px;
+.font-16 {
+  font-size: 16px;
+}
+.h-400 {
+  height: 400px;
+}
+.img-style {
+  height: 200px;
+  width: 200px;
+}
+.blue-color {
+  color: #0066c0;
 }

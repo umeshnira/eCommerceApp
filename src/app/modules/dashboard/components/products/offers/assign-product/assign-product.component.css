@@ -1,3 +1,13 @@
 #checkall{
 margin-left:10px
 }
+.e-treeview .e-list-text {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+}
+.avatar{
+    background-color: #aaa;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+}

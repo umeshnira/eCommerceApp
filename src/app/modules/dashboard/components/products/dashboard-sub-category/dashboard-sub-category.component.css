@@ -1,26 +1,51 @@
-.icon-style{
-    color:#e91e63
+.icon-style {
+  color: #e91e63
 }
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background-color:#e91e63!important;
-    border-color:#e91e63!important;
- }
-.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus{
-        background-color:#e91e63!important;
-        border-color:#e91e63!important;
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
+  background-color: #e91e63 !important;
+  border-color: #e91e63 !important;
 }
-.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
-    border-bottom-width: thin!important;
+
+.pagination>li>a:hover,
+.pagination>li>span:hover,
+.pagination>li>a:focus,
+.pagination>li>span:focus {
+  background-color: #e91e63 !important;
+  border-color: #e91e63 !important;
 }
+
+.table-bordered>thead>tr>th,
+.table-bordered>thead>tr>td {
+  border-bottom-width: thin !important;
+}
+
 h3.tittle-w3l:after {
-    right: 16.5%;
-    width: 221px;
+  right: 16.5%;
+  width: 221px;
 }
-.fa{
-    color:#e91e63;
-    font-size: 16px;
+
+.fa {
+  color: #e91e63;
+  font-size: 16px;
 }
+
 .e-treeview {
-    overflow: scroll;
-    max-height: 300px;
+  overflow: scroll;
+  max-height: 300px;
+}
+
+.b-25 {
+  bottom: 25px;
+}
+.listResults .checkbox label::before {
+  top: -30px;
+}
+.listResults .checkbox label::after {
+  top: -30px;
 }

@@ -12,3 +12,12 @@
   .table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     color: #191919;
 }
+.fa {
+  color:#e91e63!important;
+}
+.p-r-10 {
+  padding-right: 10px!important;
+}
+.m-r-50 {
+  margin-right: 50px;
+}

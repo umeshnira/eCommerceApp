@@ -13,13 +13,14 @@ import { AddProductListComponent } from './dashboard-product-list/add-product-li
 import { ArchwizardModule } from 'angular-archwizard';
 import { DashboardProductDetailComponent } from './dashboard-product-list/dashboard-product-detail/dashboard-product-detail.component';
 import { CartService } from 'src/app/modules/home/services/cart.service';
+import { OfferService } from './services/offer.service';
 const modules = [SharedModule, DashboardProductRoutingModule, ArchwizardModule
 ];
 const components = [ProductsComponent, DashboardCategoryComponent, AddProductListComponent,
     AddEditProductCategoryComponent, AddEditProductSubcategoryComponent, DashboardSubCategoryComponent,
     DashboardProductListComponent, DashboardProductDetailComponent];
 
-const providers = [FirstPageService, ProductService, CartService];
+const providers = [FirstPageService, ProductService, CartService, OfferService];
 
 @NgModule({
     imports: modules,

@@ -38,9 +38,9 @@
              
                 <div class='col-md-12'>
                   <div class="floating-label-group">
-                    <input type="text" class="form-control" formControlName="parentCategory" autocomplete="off" required
+                    <input type="text" class="form-control" placeholder="Category Name" formControlName="parentCategory" autocomplete="off"
                       id="parentCategory" disabled>
-                    <label class="floating-label">Category Name</label>
+                    <!-- <label class="floating-label">Category Name</label> -->
                     <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
                       required.
                     </div>

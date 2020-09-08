@@ -75,3 +75,7 @@ body{
 .footerColor{
     color:#e91e63
 }
+.btn-style {
+    background-color: #e91e63!important;
+    color: white!important;
+}

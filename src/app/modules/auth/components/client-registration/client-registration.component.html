@@ -37,10 +37,10 @@
             <div class="floating-label-group">
               <input type="text" class="form-control" autocomplete="off" formControlName="username" required />
               <label class="floating-label">Username</label>
-              <div *ngIf="formSubmitted && form.username.errors?.required" class="valid-error">Username is required.
-              </div>
-              <!-- <div *ngIf="formSubmitted && form.username.errors" class="valid-error">Please enter a valid email or phone
-                number</div> -->
+              <!-- <div *ngIf="formSubmitted && form.username.errors?.required" class="valid-error">Username is required.
+              </div> -->
+              <div *ngIf="formSubmitted && form.username.errors" class="valid-error">Please enter a valid email or phone
+                number</div>
             </div>
 
           </div>

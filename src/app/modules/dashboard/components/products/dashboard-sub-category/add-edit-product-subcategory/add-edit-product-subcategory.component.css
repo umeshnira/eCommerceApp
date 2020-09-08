@@ -46,7 +46,7 @@
     background-color: #fdfbfb;
     left: 13px;
     outline: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #e91e63;
   }
   .floating-label-address {
@@ -61,10 +61,10 @@
 	.form-control:focus ~ .floating-label-address,
 	.form-control:not(:focus):valid ~ .floating-label-address {
     top: -8px;
-    bottom: 29px;
+    bottom: 40px;
     background-color: #fdfbfb;
     left: 13px;
     outline: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #e91e63;
   }
