@@ -36,11 +36,11 @@ export class ReviewComponent implements OnInit, OnDestroy {
       scriptElement.src = scriptUrl;
       scriptElement.onload = resolve;
       document.body.appendChild(scriptElement);
-    })
-    }
+    });
+  }
   ngAfterViewInit() {
 
-  this.loadScript('assets/js/datatable.js');
+    this.loadScript('assets/js/datatable.js');
   }
   ngOnDestroy() {
     if (this.getReviewSubscrip) {
@@ -52,7 +52,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
     this.getReviewSubscrip = this.service.getSellerReviews(id).subscribe((res) => {
 
       res.forEach(x => {
-        let a = new Date(x.date);
+        const a = new Date(x.date);
         x.date = this.formatDate(x.date);
       });
 
@@ -66,13 +66,15 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
 
   private formatDate(date) {
-    let d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+     const d = new Date(date);
+     let  month = '' + (d.getMonth() + 1);
+     let  day = '' + d.getDate();
+     const year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+    if (day.length < 2) { day = '0' + day; }
 
     return [day, month, year].join('-');
   }

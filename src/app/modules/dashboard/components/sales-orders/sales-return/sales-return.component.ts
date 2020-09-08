@@ -35,7 +35,7 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
       scriptElement.src = scriptUrl;
       scriptElement.onload = resolve;
       document.body.appendChild(scriptElement);
-    })
+    });
   }
   ngAfterViewInit() {
 
@@ -50,7 +50,7 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
   private getUserOrderDetails(id: number) {
     this.getOrderSubscrip = this.service.getSellerReturnOrders(id).subscribe((res) => {
       res.forEach(x => {
-        let a = new Date(x.ordered_date);
+        const a = new Date(x.ordered_date);
         x.ordered_date = this.formatDate(x.ordered_date);
 
       });
@@ -65,14 +65,16 @@ export class SalesReturnComponent implements OnInit, OnDestroy {
 
 
   private formatDate(date) {
-    let d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+    const d = new Date(date);
+    let  month = '' + (d.getMonth() + 1);
+    let  day = '' + d.getDate();
+    const year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+   if (month.length < 2) {
+     month = '0' + month;
+   }
+   if (day.length < 2) { day = '0' + day; }
 
-    return [day, month, year].join('-');
-  }
+   return [day, month, year].join('-');
+ }
 }
