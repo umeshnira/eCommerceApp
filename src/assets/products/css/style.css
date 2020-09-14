@@ -4611,7 +4611,8 @@ select.form-control.option-w3ls {
   }
   h3.tittle-w3l:after {
     right: 35%;
-    width: 100px;
+    width: 100%;
+    left: 20px;
   }
   .product-new-top {
     right: 3px;

@@ -1,42 +1,62 @@
-.form-control{
-    border-color: #e91e63;
-    background-color: unset;
-  }
-  .w-285 {
-    width: 282px;
-  }
-  .e-treeview .e-list-text {
-    color: rgba(0, 0, 0, 0.87);
-    font-size: 16px;
-  }
-  .floating-label-group {
-      position: relative;
-      margin-top: 15px;
-      margin-bottom: 25px;
-  }
-      .floating-label {
-          font-size: 13px;
-          color: #cccccc;
-          position: absolute;
-          pointer-events: none;
-          top: 9px;
-          left: 12px;
-          transition: all 0.1s ease;
-      }
-  
-      .form-control:focus ~ .floating-label,
-      .form-control:not(:focus):valid ~ .floating-label {
-      top: -8px;
-      bottom: 22px;
-      background-color: #fdfbfb;
-      left: 13px;
-      outline: none;
-      font-size: 12px;
-      color: #e91e63;
-    }
+.form-control {
+  border-color: #e91e63;
+  background-color: unset;
+}
+
+.w-285 {
+  width: 282px;
+}
+
+.e-treeview .e-list-text {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+}
+
+.floating-label-group {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.floating-label {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus~.floating-label,
+.form-control:not(:focus):valid~.floating-label {
+  top: -8px;
+  bottom: 22px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 12px;
+  color: #e91e63;
+}
+
 h3.tittle-w3l {
-        margin-bottom: unset;
-      }
-      .w-45{
-        width: 43%;
-    }
+  margin-bottom: unset;
+}
+
+.w-45 {
+  width: 43%;
+}
+
+@media (max-width: 384px) {
+  .btn-style {
+    width: 65%;
+  }
+  .m-l-10 {
+    margin-left: 0;
+  }
+  h3.tittle-w3l:after {
+    right: 35%;
+    width: 88%;
+    left: 20px;
+}
+}

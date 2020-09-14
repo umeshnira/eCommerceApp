@@ -27,7 +27,7 @@
 
 h3.tittle-w3l:after {
   right: 16.5%;
-  width: 221px;
+  width: 260px;
 }
 
 .fa {
@@ -48,4 +48,15 @@ h3.tittle-w3l:after {
 }
 .listResults .checkbox label::after {
   top: -30px;
+}
+
+@media only screen and (max-width: 992px) {
+  .listResults .checkbox label::before {
+      top: 0px;
+  }
+  .listResults .checkbox label::after {
+      top: 0px;
+  }
+
+  
 }

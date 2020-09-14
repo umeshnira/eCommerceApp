@@ -185,4 +185,33 @@
   color: rgba(0, 0, 0, 0.87);
   font-size: 14px;
 }
+@media only screen and (max-width: 992px) {
+.btn-style {
+  background-color: #e91e63;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 100px;
+}
+.dropzone {
+  width: 300px;
+}
+.float-right {
+  position: absolute;
+  bottom: 60px;
+  right: 100px;
+}
+.button-style{
+  position: relative;
+  float: right;
+  bottom: 40px;
+  right: 100px;
+}
+.panel {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sticky {
+  position: sticky;
+}
+}
 
