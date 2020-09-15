@@ -92,3 +92,20 @@ a:hover {
 .blue-color {
   color: #0066c0;
 }
+@media only screen and (max-width: 992px) {
+  .float {
+    float: none;
+}
+.search-orders {
+  margin-top: 15px;
+}
+.dropdown-style {
+  width: 35%;
+}
+.men-pro-item {
+  width: fit-content;
+}
+.grid-style{
+  width: 70%;
+}
+}

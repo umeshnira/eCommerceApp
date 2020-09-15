@@ -58,3 +58,8 @@ p{
 .product-new-top{
     top:-20px;
 }
+@media (max-width: 384px) {
+.agileinfo-ads-display {
+    padding-top: 20px;
+  }
+}

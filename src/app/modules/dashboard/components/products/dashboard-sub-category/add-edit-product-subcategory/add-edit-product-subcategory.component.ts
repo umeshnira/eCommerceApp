@@ -127,7 +127,7 @@ export class AddEditProductSubcategoryComponent implements OnInit, OnDestroy {
     const subCategoryModel = new SubCategoryModel();
     subCategoryModel.parent_category_id = this.categoryId;
     const name = this.subCategoryForm?.controls['name'].value;
-    subCategoryModel.name = name.toLocaleUpperCase;
+    subCategoryModel.name = name.toLocaleUpperCase();
     subCategoryModel.description = this.subCategoryForm?.controls['description'].value;
 
     return subCategoryModel;

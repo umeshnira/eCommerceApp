@@ -1,61 +1,68 @@
 .card {
-    margin-top: 100px;
-    padding: 14px 18px;
-    border: 1px solid #d1c8c8;
-    border-radius: 20px;
-    width: 500px;
+  margin-top: 100px;
+  padding: 14px 18px;
+  border: 1px solid #d1c8c8;
+  border-radius: 20px;
+  width: 500px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-  }
-  
-  .form-control {
-    border-color: #e91e63;
-    background-color: unset;
 }
-  
-  .m-l-100 {
-    margin-left: 100px;
-  }
-  
-  .valid-error {
-    color: red;
-    font-size: 13px;
-  }
-  .btn-warning {
-    background: -webkit-linear-gradient(top, #f309578c, #e91e63);
-    border-radius: 3px;
-    border-color: #e91e63 #e91e63 #e91e63;
-    color: white;
-  }
-  
-  .btn-warning:hover {
-    background: -webkit-linear-gradient(top, #f3093f4f, #e8618f);
-    border-radius: 3px;
-    border-color: #e91e63 #e91e63 #e91e63;
-    color: white;
-  }
-  a{
-    color:#e91e63;
-    font-size: 16px;
-    font-weight: 600;
-  }
-  a:hover, a:focus {
-    color: #e42044c7;
+
+.form-control {
+  border-color: #e91e63;
+  background-color: unset;
 }
+
+.m-l-100 {
+  margin-left: 100px;
+}
+
+.valid-error {
+  color: red;
+  font-size: 13px;
+}
+
+.btn-warning {
+  background: -webkit-linear-gradient(top, #f309578c, #e91e63);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
+}
+
+.btn-warning:hover {
+  background: -webkit-linear-gradient(top, #f3093f4f, #e8618f);
+  border-radius: 3px;
+  border-color: #e91e63 #e91e63 #e91e63;
+  color: white;
+}
+
+a {
+  color: #e91e63;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+a:hover,
+a:focus {
+  color: #e42044c7;
+}
+
 .floating-label-group {
-	position: relative;
-	margin-top: 15px;
-	margin-bottom: 25px;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
-	.floating-label {
-		font-size: 13px;
-		color: #cccccc;
-		position: absolute;
-		pointer-events: none;
-		top: 9px;
-		left: 12px;
-		transition: all 0.1s ease;
-	}
-.floating-label-username{
+
+.floating-label {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.floating-label-username {
   font-size: 13px;
   color: #cccccc;
   position: absolute;
@@ -64,23 +71,52 @@
   left: 12px;
   transition: all 0.1s ease;
 }
-	input:focus ~ .floating-label-username,
-	input:not(:focus):valid ~ .floating-label-username {
-    top: 36px;
-    bottom: 29px;
+
+input:focus~.floating-label-username,
+input:not(:focus):valid~.floating-label-username {
+  top: 36px;
+  bottom: 29px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 12px;
+  color: #e91e63;
+}
+
+input:focus~.floating-label,
+input:not(:focus):valid~.floating-label {
+  top: -8px;
+  bottom: 29px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 12px;
+  color: #e91e63;
+}
+
+@media only screen and (max-width: 992px) {
+  .card {
+    width: auto;
+  }
+
+  input:focus~.floating-label-username,
+  input:not(:focus):valid~.floating-label-username {
+    top: -9px;
+    bottom: 25px;
     background-color: #fdfbfb;
     left: 13px;
     outline: none;
     font-size: 12px;
     color: #e91e63;
   }
-  input:focus ~ .floating-label,
-	input:not(:focus):valid ~ .floating-label {
-    top: -8px;
-    bottom: 29px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-	}
+
+  .floating-label-username {
+    font-size: 13px;
+    color: #cccccc;
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    left: 12px;
+    transition: all 0.1s ease;
+  }
+}
