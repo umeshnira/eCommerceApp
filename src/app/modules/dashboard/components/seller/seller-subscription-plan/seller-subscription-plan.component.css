@@ -46,3 +46,15 @@
 .panelClass:hover{
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
+@media (max-width: 384px){
+h3.tittle-w3l:after {
+    right: 35%;
+    width: 90%;
+    left: 20px;
+}
+.panelActive {
+    border: 2px solid #e91e63;
+    cursor: pointer;
+    margin-top: 60px;
+}
+}

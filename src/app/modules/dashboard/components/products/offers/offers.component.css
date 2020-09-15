@@ -65,3 +65,10 @@ h3.tittle-w3l:after {
     right: 30.5%;
     width: 135px;
 }
+@media (max-width: 384px) {
+h3.tittle-w3l:after {
+    right: 35%;
+    width: 100%;
+    left: 20px;
+}
+}

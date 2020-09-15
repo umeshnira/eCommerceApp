@@ -10,6 +10,7 @@ input, button, select, textarea{
 }
 h3.tittle-w3l:after {
     right: 19.5%;
+    width: 230px;
 }
 .fa{
     color:#e91e63;
@@ -21,3 +22,11 @@ h3.tittle-w3l:after {
 .listResults .checkbox label::after {
     top: -30px;
 }
+@media only screen and (max-width: 992px) {
+    .listResults .checkbox label::before {
+        top: 0px;
+    }
+    .listResults .checkbox label::after {
+        top: 0px;
+    }
+  }

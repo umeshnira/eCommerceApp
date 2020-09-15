@@ -68,3 +68,22 @@
     font-size: 13px;
     color: #e91e63;
   }
+
+  @media only screen and (max-width: 992px) {
+  .tree-view-scroll {
+    height: auto;
+    width: auto;
+    max-height: 239px;
+    max-width: 300px;
+    overflow: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.w-45 {
+  width: 100%;
+}
+.m-l-10 {
+  margin-left: 0;
+}
+
+  }

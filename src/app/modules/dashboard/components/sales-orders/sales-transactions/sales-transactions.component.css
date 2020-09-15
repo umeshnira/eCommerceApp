@@ -5,3 +5,10 @@
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
     border-bottom-width: thin!important;
 }
+@media (max-width: 384px){
+h3.tittle-w3l:after {
+    right: 35%;
+    width: 85%;
+    left: 20px;
+}
+}

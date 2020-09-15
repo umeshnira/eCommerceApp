@@ -57,3 +57,10 @@ p{
 .m-l-15{
     margin-left: 15px;
 }
+@media (max-width: 384px){
+h3.tittle-w3l:after {
+    right: 35%;
+    width: 85%;
+    left: 20px;
+}
+}

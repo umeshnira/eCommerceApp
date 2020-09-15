@@ -15,7 +15,7 @@
                 </div>
             </div> -->
         <!-- </div> -->
-        <div class="float-right">
+        <div class="float-right sticky">
             <button type="button" class="btn btn-style" awNextStep>Next</button>
             <!-- <button type="button" class="btn btn-style m-l-10" [awGoToStep]="{stepIndex: 3}">Go directly to Forth
                 Step</button> -->
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div class="float-right m-b-10">
+        <div class="float-right m-b-10 sticky">
             <button type="button" class="btn btn-style" awPreviousStep>Previous</button>
             <button type="button" class="btn btn-style m-l-10" awNextStep>Next </button>
         </div>
@@ -176,7 +176,7 @@
 
             </form>
         </div>
-        <div class=" m-b-10 m-t-10 button-style">
+        <div class=" m-b-10 m-t-10 button-style sticky">
             <button type="button" class="btn btn-style " awPreviousStep>Previous </button>
             <button type="button" class="btn btn-style m-l-10" awNextStep>Next</button>
         </div>
@@ -184,7 +184,7 @@
     <aw-wizard-step stepTitle="Offers">
         <div class="container-fluid">
             <div class="panel">
-                <div class="content container-fluid padding-20">
+                <div class="content container-fluid padding-20 auto">
 
                     <table class="table table-bordered table-striped example1 m-t-10">
                         <thead>
@@ -229,7 +229,7 @@
             style="display: none; position: relative; height: 300px;cursor: pointer;">
         </div>
         <div class="chart" id="line-chart" style="display: none; height: 277px;"></div>
-        <div class="float-right m-b-10">
+        <div class="float-right m-b-10 sticky">
             <button class="btn btn-style" type="button" awPreviousStep>Previous</button>
             <button class="btn btn-style m-l-10" *ngIf="!isEdit" type="button" (click)="addProduct()">Save</button>
             <button class="btn btn-style m-l-10" *ngIf="isEdit" type="button" (click)="editProduct()">Update</button>
