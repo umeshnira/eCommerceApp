@@ -1,7 +1,7 @@
-import { CouponsComponent } from "./coupons.component";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { AddEditCouponComponent } from "./add-edit-coupon/add-edit-coupon.component";
+import { CouponsComponent } from './coupons.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AddEditCouponComponent } from './add-edit-coupon/add-edit-coupon.component';
 
 
 const couponRoutes = [

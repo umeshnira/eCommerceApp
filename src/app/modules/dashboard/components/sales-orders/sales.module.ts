@@ -5,10 +5,11 @@ import { SalesOrderRoutingModule } from './sales-routing.module';
 import { InvoiceDetailsComponent } from './invoice-details/invoice-details.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SalesReturnComponent } from './sales-return/sales-return.component';
+import { SalesInvoiceComponent } from './sales-invoice/sales-invoice.component';
 
 const modules = [SharedModule, SalesOrderRoutingModule];
 
-const components = [SalesOrdersComponent, InvoiceDetailsComponent, OrderDetailsComponent, SalesReturnComponent];
+const components = [SalesOrdersComponent, InvoiceDetailsComponent, OrderDetailsComponent, SalesReturnComponent, SalesInvoiceComponent];
 
 const providers = [];
 

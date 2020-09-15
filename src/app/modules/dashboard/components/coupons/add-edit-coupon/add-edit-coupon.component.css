@@ -1,3 +1,7 @@
+.valid-error {
+    color: red;
+    font-size: 13px;
+  }
 body {
     background: #EDECEC;
 }

@@ -28,30 +28,26 @@
                     <div class="col-sm-4 invoice-col">
                         <h4 class="m-b-10">Billing Address</h4>
                         <address>
-                            <strong>Admin, Inc.</strong><br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
-                            Phone: (804) 123-5432<br />
-                            Email: info@almasaeedstudio.com
+                            <strong>{{locationDetails.name}}</strong><br>
+                            {{locationDetails.address}}<br>
+
                         </address>
                     </div><!-- /.col -->
                     <div class="col-sm-4 invoice-col">
                         <h4 class="m-b-10">Shipping Address</h4>
                         <address>
-                            <strong>John Doe</strong><br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
-                            Phone: (555) 539-1037<br />
-                            Email: john.doe@example.com
+                            <strong>{{clientInvoice[0].cust_name}}</strong><br>
+                            {{clientInvoice[0].address}}<br>
+
                         </address>
                     </div><!-- /.col -->
                     <div class="col-sm-4 invoice-col">
                         <b>Invoice #007612</b><br />
-                        <b class="m-r-5">Place of Delivery:</b> Tamilnadu<br />
+                        <b class="m-r-5">Place of Delivery:</b> {{clientInvoice[0].lanmark}}<br />
                         <b class="m-r-5">Order ID:</b> 4F3S8J<br />
-                        <b class="m-r-5">Payment Due:</b> 2/22/2014<br />
-                        <b class="m-r-5">PAN No:</b> AACCV7480N<br/>
-                        <b class="m-r-5">GST Registration No:</b> 06AACCV7480N1ZQ
+                        <b class="m-r-5">Payment Due:</b> {{clientInvoice[0].ordered_date}}<br />
+                        <b class="m-r-5">PAN No:</b> {{clientInvoice[0].pan_card_no}}<br/>
+                        <b class="m-r-5">GST Registration No:</b> {{clientInvoice[0].gst_reg_no}}
 
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -70,47 +66,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Call of Duty</td>
-                                    <td>Varindavan fabrics pvt ltd</td>
-                                    <td>
-                                        plot 19 A, Delhi Sanoli Bye Pass , opposite sector
-                                        25, huda
-                                        Panipat, Haryana, 132103</td>
-                                        <td>$64.50</td>
+                                <tr *ngFor="let x of clientInvoice">
+                                    <td>{{x.qty}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.seller_name}}</td>
+                                    <td>{{x.seller_address}}</td>
+                                    <td>{{x.price}}</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Call of Duty</td>
-                                    <td>Varindavan fabrics pvt ltd</td>
-                                 
-                                    <td>
-                                        plot 19 A, Delhi Sanoli Bye Pass , opposite sector
-                                        25, huda
-                                        Panipat, Haryana, 132103</td>
-                                        <td>$64.50</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Call of Duty</td>
-                                    <td>Varindavan fabrics pvt ltd</td>
-                                    <td>
-                                        plot 19 A, Delhi Sanoli Bye Pass , opposite sector
-                                        25, huda
-                                        Panipat, Haryana, 132103</td>
-                                        <td>$64.50</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Call of Duty</td>
-                                    <td>Varindavan fabrics pvt ltd</td>
-                                    <td>
-                                        plot 19 A, Delhi Sanoli Bye Pass , opposite sector
-                                        25, huda
-                                        Panipat, Haryana, 132103</td>
-                                        <td>$64.50</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div><!-- /.col -->
@@ -129,19 +92,19 @@
                             <table class="table">
                                 <tr>
                                     <th style="width:50%">Subtotal:</th>
-                                    <td>$250.30</td>
+                                    <td>{{totalPrice}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tax (9.3%)</th>
-                                    <td>$10.34</td>
+                                    <th>Tax (0%)</th>
+                                    <td>0</td>
                                 </tr>
                                 <tr>
                                     <th>Shipping:</th>
-                                    <td>$5.80</td>
+                                    <td>0</td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
-                                    <td>$265.24</td>
+                                    <td>{{totalPrice}}</td>
                                 </tr>
                             </table>
                         </div>

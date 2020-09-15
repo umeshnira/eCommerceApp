@@ -6,7 +6,7 @@ import { AddEditCouponComponent } from './add-edit-coupon/add-edit-coupon.compon
 
 const modules = [SharedModule, CouponRoutingModule];
 
-const components = [CouponsComponent,AddEditCouponComponent];
+const components = [CouponsComponent, AddEditCouponComponent];
 
 const providers = [];
 

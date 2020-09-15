@@ -76,6 +76,14 @@ export class OrderService extends HttpBaseService {
       .pipe(catchError(this.handleError)
       );
   }
+
+  getAllOrdersByStatus(status: number, pageNo: number, Offset: number) {
+    const url = `${this.orderUrl}/status/${status}/orders?limit=${pageNo}&offset=${Offset}`;
+    return this.http.get<OrderDetailsModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
   returnOrder(obj: OrderReturnTableModel) {
     const url = `${this.orderUrl}/orders/return`;
     return this.http.post<ApiResponseModel>(url, obj)

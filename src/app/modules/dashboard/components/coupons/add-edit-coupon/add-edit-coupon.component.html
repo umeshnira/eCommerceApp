@@ -8,7 +8,8 @@
                         </div>
                         <div class="col-md-4">
                             <h3 class="tittle-w3l">
-                                Add Coupons
+                               <span *ngIf="!couponId">Add Coupons</span> 
+                               <span *ngIf="couponId">Update Coupons</span>
                                 <span class="heading-style">
                                     <i></i>
                                     <i></i>
@@ -24,49 +25,54 @@
 
                 <div class="row">
                     <div class="">
-                        <!-- Nav tabs -->
-                        <div class="card">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active m-r-40"><a href="#info" aria-controls="info"
-                                        role="tab" data-toggle="tab">General Info</a></li>
-                                <li role="presentation" class="m-r-40"><a href="#restriction"
-                                        aria-controls="restriction" role="tab" data-toggle="tab">Restriction</a></li>
-                                <li role="presentation" class="m-r-40"><a href="#limit" aria-controls="limit" role="tab"
-                                        data-toggle="tab">Limit</a></li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane active" id="info">
-                                    <div class='panel m-b-30 padding-20 m-l-100 m-r-100'>
-                                        <div class='col-md-12'>
-                                            <div class='row m-b-10'>
+                        <form [formGroup]="couponDetailsForm">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active m-r-40"><a href="#info" aria-controls="info"
+                                            role="tab" data-toggle="tab">General Info</a></li>
+                                    <li role="presentation" class="m-r-40"><a href="#restriction"
+                                            aria-controls="restriction" role="tab" data-toggle="tab">Restriction</a>
+                                    </li>
+                                    <li role="presentation" class="m-r-40"><a href="#limit" aria-controls="limit"
+                                            role="tab" data-toggle="tab">Limit</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane active" id="info">
+                                        <div class='panel m-b-30 padding-20 m-l-100 m-r-100'>
+                                            <div class='col-md-12'>
+                                                <div class='row m-b-10'>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <form>
+
                                             <div class="row p-t-10">
 
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            autofocus required />
+                                                            autofocus formControlName="name"  />
                                                         <label class="floating-label">Title</label>
                                                     </div>
-
+                                                    <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">Title is required.
+                                                      </div>
                                                 </div>
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            autofocus required />
+                                                            autofocus formControlName="code" />
                                                         <label class="floating-label">Code</label>
                                                     </div>
-
+                                                    <div *ngIf="formSubmitted && form.productName.errors?.required" class="valid-error">Code is required.
+                                                      </div>
                                                 </div>
                                             </div>
                                             <div class="row p-t-10">
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
-                                                        <select class="form-control" required autocomplete="off"
+                                                        <select class="form-control" formControlName="discount_type" autocomplete="off"
                                                             autofocus>
                                                             <option value="0">
                                                                 Discount Type
@@ -81,25 +87,31 @@
 
                                                         <label class="floating-label">Discount Type</label>
                                                     </div>
-
+                                                    <div *ngIf="formSubmitted && form.discount_type.errors?.required" class="valid-error">Discount Type is required.
+                                                      </div>
                                                 </div>
                                                 <div class='col-md-6 h-60'>
                                                     <div class="floating-label-group">
                                                         <input type="number" class="form-control" autocomplete="off"
-                                                            autofocus required />
+                                                            autofocus formControlName="price" />
                                                         <label class="floating-label">Amount</label>
+                                                        <div *ngIf="formSubmitted && form.price.errors?.required" class="valid-error">Amount is required.
+                                                          </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row p-t-10">
                                                 <div class='col-md-6'>
-                                                    <ejs-datepicker placeholder='Coupon Expiry  date'>
+                                                    <ejs-datepicker  placeholder='Coupon Expiry  date' formControlName="end_date">
                                                     </ejs-datepicker>
+                                                    <div *ngIf="formSubmitted && form.end_date.errors?.required" class="valid-error">Coupon Expiry  date is required.
+                                                      </div>
                                                 </div>
                                                 <div class='col-md-6 listResults'>
                                                     <span class="checkbox">
-                                                        <input type="checkbox" class="checkbox1">
-                                                        <label class="control-label m-l-10">Allow free shipping</label>
+                                                        <input type="checkbox" class="checkbox1" formControlName="free_shipping">
+                                                        <label class="control-label m-l-10">Allow free
+                                                            shipping</label>
 
                                                     </span>
 
@@ -108,106 +120,116 @@
                                             <div class="row p-t-10 ">
                                                 <div class='col-md-6 m-t-20 listResults'>
                                                     <span class="checkbox">
-                                                        <input type="checkbox" class="checkbox1">
+                                                        <input type="checkbox" class="checkbox1" formControlName="on_store">
                                                         <label class="control-label m-l-10">Show on store</label>
                                                     </span>
                                                 </div>
                                                 <div class='col-md-6'>
                                                     <div class="floating-label-group">
                                                         <textarea rows="3" cols="2" class="form-control"
-                                                            autocomplete="off" autofocus required></textarea>
+                                                            autocomplete="off" autofocus formControlName="description"></textarea>
                                                         <label class="floating-label">Description</label>
                                                     </div>
-
+                                                    <div *ngIf="formSubmitted && form.description.errors?.required" class="valid-error">description is required.
+                                                      </div>
                                                 </div>
                                             </div>
                                             <div class="float-right">
-                                                <button class="btn btn-style">Save</button>
+                                                <a href="#restriction"> <button class="btn btn-style">Next</button></a>
                                             </div>
 
-                                        </form>
+
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="restriction">
+                                        <div class="m-b-20">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="floating-label-group">
+                                                        <input type="text" class="form-control" autocomplete="off"
+                                                            autofocus required />
+                                                        <label class="floating-label">Add Product</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <select class="form-control" required autocomplete="off" autofocus>
+                                                        <option value="0">
+                                                            Discount Type
+                                                        </option>
+                                                        <option value="1">
+                                                            Percentage Discount
+                                                        </option>
+                                                        <option value="2">
+                                                            Fixed Cart Discount
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-4 m-t-5 listResults">
+                                                    <span class="checkbox">
+                                                        
+                                                        <label class="control-label m-l-10">Individual use only</label>
+                                                    </span>
+
+                                                </div>
+                                                <div class="col-md-4 m-t-5 listResults">
+                                                    <span class="checkbox">
+                                                       
+                                                        <label class="control-label m-l-10">Exclude sale items</label>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="float-right">
+                                                <a href="#limit"> <button class="btn btn-style">Next</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="limit">
+                                        <div class="m-b-20">
+                                            <div class="row">
+                                                <div class="col-md-4">
+
+                                                    <div class="floating-label-group">
+                                                        <input type="number" class="form-control" autocomplete="off"
+                                                            autofocus formControlName="limit_per_coupon" />
+                                                        <label class="floating-label">Usage limit per coupon</label>
+                                                        <div *ngIf="formSubmitted && form.limit_per_coupon.errors?.required" class="valid-error">Usage limit per coupon is required.
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                    <div class="floating-label-group">
+                                                        <input type="number" class="form-control" autocomplete="off"
+                                                            autofocus formControlName="limit_per_item" />
+                                                        <label class="floating-label">Limit usage to X items</label>
+                                                        <div *ngIf="formSubmitted && form.limit_per_item.errors?.required" class="valid-error">Limit usage to X items is required.
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                    <div class="floating-label-group">
+                                                        <input type="number" class="form-control" autocomplete="off"
+                                                            autofocus formControlName="limit_per_user" />
+                                                        <label class="floating-label">Usage limit per user</label>
+                                                        <div *ngIf="formSubmitted && form.limit_per_user.errors?.required" class="valid-error">Usage limit per user is required.
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right">
+                                                <button *ngIf="!couponId" (click)="addCoupon()" class="btn btn-style">Save</button>
+                                                <button *ngIf="couponId" (click)="UpdateCoupon()" class="btn btn-style">Update</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="restriction">
-                                    <form class="m-b-20">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="floating-label-group">
-                                                    <input type="text" class="form-control" autocomplete="off" autofocus
-                                                        required />
-                                                    <label class="floating-label">Add Product</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <select class="form-control" required autocomplete="off" autofocus>
-                                                    <option value="0">
-                                                        Discount Type
-                                                    </option>
-                                                    <option value="1">
-                                                        Percentage Discount
-                                                    </option>
-                                                    <option value="2">
-                                                        Fixed Cart Discount
-                                                    </option>
-                                                </select>
 
-                                            </div>
-                                            <div class="col-md-4 m-t-5 listResults">
-                                                <span class="checkbox">
-                                                    <input type="checkbox" class="checkbox1"/>
-                                                    <label class="control-label m-l-10">Individual use only</label>
-                                                </span>
-                                               
-                                            </div>
-                                            <div class="col-md-4 m-t-5 listResults">
-                                                <span class="checkbox">
-                                                <input type="checkbox" class="checkbox1" />
-                                                <label class="control-label m-l-10">Exclude sale items</label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="float-right">
-                                            <button class="btn btn-style">Save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="limit">
-                                    <form class="m-b-20">
-                                        <div class="row">
-                                            <div class="col-md-4">
-
-                                                <div class="floating-label-group">
-                                                    <input type="number" class="form-control" autocomplete="off"
-                                                        autofocus required />
-                                                    <label class="floating-label">Usage limit per coupon</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-
-                                                <div class="floating-label-group">
-                                                    <input type="number" class="form-control" autocomplete="off"
-                                                        autofocus required />
-                                                    <label class="floating-label">Limit usage to X items</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-
-                                                <div class="floating-label-group">
-                                                    <input type="number" class="form-control" autocomplete="off"
-                                                        autofocus required />
-                                                    <label class="floating-label">Usage limit per user</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right">
-                                            <button class="btn btn-style">Save</button>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

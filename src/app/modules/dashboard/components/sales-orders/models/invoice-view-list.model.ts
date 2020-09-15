@@ -20,5 +20,9 @@ export class InvoiceViewListModel {
     lanmark: string;
     seller_name: string;
     seller_address: string;
+    pan_card_no: string;
+    cust_name: string;
+    address: string;
+    length;
 
 }

@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { OrderService } from 'src/app/modules/home/modules/order/services/order.service';
 import { OrderDetailsModel } from 'src/app/modules/home/modules/order/models/order-details.model';
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -10,15 +10,18 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './sales-invoice.component.html',
   styleUrls: ['./sales-invoice.component.css']
 })
-export class SalesInvoiceComponent implements OnInit {
+export class SalesInvoiceComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private getOrderSubscrip: ISubscription;
 
   public orderDetails = new OrderDetailsModel();
 
+  public pageNo;
+
   constructor(
     private service: OrderService,
     private toastr: ToastrService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -38,17 +41,18 @@ export class SalesInvoiceComponent implements OnInit {
 
     this.loadScript('assets/js/datatable.js');
   }
-  navigateTodetails() {
-    this.router.navigate(['dashboard/sales/invoice-details']);
+  navigateTodetails(id: number) {
+
+    let navigationExtras: NavigationExtras;
+    navigationExtras = {
+      queryParams: { orderId: id },
+    };
+
+    this.router.navigate(['dashboard/sales/invoice-details'], navigationExtras);
   }
 
   private orderViewList(no: number) {
-    this.getOrderSubscrip = this.service.getSellerReturnOrders(no).subscribe((res) => {
-      res.forEach(x => {
-        const a = new Date(x.ordered_date);
-        x.ordered_date = this.formatDate(x.ordered_date);
-
-      });
+    this.getOrderSubscrip = this.service.getAllOrdersByStatus(2, 0, (no - 1) * 10).subscribe((res) => {
 
       this.orderDetails = res;
     },
@@ -63,17 +67,4 @@ export class SalesInvoiceComponent implements OnInit {
     }
   }
 
-  private formatDate(date) {
-    const d = new Date(date);
-    let  month = '' + (d.getMonth() + 1);
-    let  day = '' + d.getDate();
-    const year = d.getFullYear();
-
-   if (month.length < 2) {
-     month = '0' + month;
-   }
-   if (day.length < 2) { day = '0' + day; }
-
-   return [day, month, year].join('-');
- }
 }
