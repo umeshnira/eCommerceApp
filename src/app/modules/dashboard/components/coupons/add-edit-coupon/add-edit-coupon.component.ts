@@ -31,6 +31,8 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
 
   addSubscription: ISubscription;
 
+  @ViewChild('tabset', { static: false }) tabset: TabsetComponent;
+
   constructor(
     private route: ActivatedRoute,
     private service: CouponService,
@@ -42,6 +44,7 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
   get form() {
     return this.couponDetailsForm.controls;
   }
+
   ngOnInit(): void {
     this.couponId = this.route.snapshot.queryParams.couponId;
 
@@ -62,38 +65,51 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
   }
 
   addCoupon() {
-    const couponModel = this.addingValues();
     this.formSubmitted = true;
 
-    this.addSubscription = this.service.createCoupon(couponModel).subscribe(response => {
+    if (this.couponDetailsForm.valid) {
+      const couponModel = this.addingValues();
+      this.addSubscription = this.service.createCoupon(couponModel).subscribe(response => {
 
-      this.toastr.success('Product Added Successfully', 'Success');
+        this.toastr.success('Product Added Successfully', 'Success');
 
-      this.couponDetailsForm.reset();
-      this.formSubmitted = false;
+        this.couponDetailsForm.reset();
+        this.formSubmitted = false;
 
-    },
-      (error) => {
-        this.toastr.error('', error.error.message);
-      });
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+    } else {
+      this.toastr.warning('Please check all fields', 'Warning');
+    }
   }
 
   UpdateCoupon() {
-    const couponModel = this.addingValues();
     this.formSubmitted = true;
+    if (this.couponDetailsForm.valid) {
+      const couponModel = this.addingValues();
 
-    this.addSubscription = this.service.UpdateCoupon(couponModel, this.couponId).subscribe(response => {
 
-      this.toastr.success('Product Added Successfully', 'Success');
+      this.addSubscription = this.service.UpdateCoupon(couponModel, this.couponId).subscribe(response => {
 
-      this.couponDetailsForm.reset();
-      this.formSubmitted = false;
+        this.toastr.success('Product Updated Successfully', 'Success');
 
-    },
-      (error) => {
-        this.toastr.error('', error.error.message);
-      });
+        this.formSubmitted = false;
+
+      },
+        (error) => {
+          this.toastr.error('', error.error.message);
+        });
+    } else {
+      this.toastr.warning('Please check all fields', 'Warning');
+    }
   }
+
+  navigateTab(tabId: number) {
+    this.tabset.tabs[tabId].active = true;
+  }
+
   private productFormInitialization() {
     this.couponDetailsForm = new FormGroup({
       name: new FormControl('',
