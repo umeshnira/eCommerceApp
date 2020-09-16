@@ -241,3 +241,11 @@ body {
   height: 30px;
   width: 200px;
 }
+.friends {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 992px) {
+ .friends {
+   margin-top: 10px;
+ }
+}

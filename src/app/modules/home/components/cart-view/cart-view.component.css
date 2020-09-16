@@ -87,36 +87,53 @@ a:hover {
   padding: 5px;
   border: 1px solid #ae6953;
   margin-bottom: 10px;
-  font-weight: lighter!important;
+  font-weight: lighter !important;
 }
-.warning-icon-color-cart{
+
+.warning-icon-color-cart {
   color: #db7900
 }
-.font-light{
+
+.font-light {
   font-weight: lighter;
 }
+
 .cart-rupees-text {
   font-weight: 600;
   color: #ae2727;
 }
-.listResults .checkbox{
-  padding-left:30px;
+
+.listResults .checkbox {
+  padding-left: 30px;
 }
-.checkbox, .radio {
-  display: inline!important;
+
+.checkbox,
+.radio {
+  display: inline !important;
 }
+
 .listResults .checkbox label::before {
   margin-left: -20px;
 }
+
 .rupees-style {
   color: #e91e63;
   font-weight: 1000;
 }
+
 .stock-font {
   font-size: 14px;
   font-weight: 500;
 }
+
 .font-15 {
-  font-size: 15px!important;
+  font-size: 15px !important;
 }
 
+@media only screen and (max-width: 992px) {
+  .dropdown-style {
+    width: 26%;
+    background: #e7e9ec;
+    border-radius: 3px;
+  }
+}

@@ -11,10 +11,12 @@
   color: red;
   font-size: 13px;
 }
+
 .form-control {
   border-color: #e91e63;
   background-color: unset;
 }
+
 .btn-warning {
   background: -webkit-linear-gradient(top, #f309578c, #e91e63);
   border-radius: 3px;
@@ -30,45 +32,65 @@
 }
 
 .floating-label-group {
-	position: relative;
-	margin-bottom: 25px;
+  position: relative;
+  margin-bottom: 25px;
 }
-	.floating-label {
-		font-size: 13px;
-		color: #cccccc;
-		position: absolute;
-		pointer-events: none;
-		top: 9px;
-		left: 12px;
-		transition: all 0.1s ease;
-	}
-	.form-control:focus ~ .floating-label,
-	.form-control:not(:focus):valid ~ .floating-label {
+
+.floating-label {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus~.floating-label,
+.form-control:not(:focus):valid~.floating-label {
+  top: -8px;
+  bottom: 29px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 12px;
+  color: #e91e63;
+}
+
+.floating-label-textarea {
+  font-size: 13px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 9px;
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.form-control:focus~.floating-label-textarea,
+.form-control:not(:focus):valid~.floating-label-textarea {
+  top: -8px;
+  bottom: 49px;
+  background-color: #fdfbfb;
+  left: 13px;
+  outline: none;
+  font-size: 12px;
+  color: #e91e63;
+}
+
+@media only screen and (max-width: 992px) {
+  .card {
+    width: auto;
+  }
+
+  .form-control:focus~.floating-label,
+  .form-control:not(:focus):valid~.floating-label {
     top: -8px;
-    bottom: 29px;
+    bottom: 30px;
     background-color: #fdfbfb;
     left: 13px;
     outline: none;
     font-size: 12px;
     color: #e91e63;
   }
-  .floating-label-textarea {
-		font-size: 13px;
-		color: #cccccc;
-		position: absolute;
-		pointer-events: none;
-		top: 9px;
-		left: 12px;
-		transition: all 0.1s ease;
-	}
-	.form-control:focus ~ .floating-label-textarea,
-	.form-control:not(:focus):valid ~ .floating-label-textarea {
-    top: -8px;
-    bottom: 49px;
-    background-color: #fdfbfb;
-    left: 13px;
-    outline: none;
-    font-size: 12px;
-    color: #e91e63;
-  }
- 
+}

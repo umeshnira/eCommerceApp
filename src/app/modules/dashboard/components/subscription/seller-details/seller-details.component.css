@@ -220,4 +220,7 @@ p {
     width: 85%;
     left: 20px;
   }
+  .m-l-45 {
+      margin-left: 0;
+  }
 }

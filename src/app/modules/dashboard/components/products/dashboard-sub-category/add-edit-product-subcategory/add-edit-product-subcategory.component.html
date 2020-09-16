@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-4 m-t-20 tree-view-scroll">
         <div class="search-hotel w-285" *ngIf="!isEdit">
-          <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)'>
+          <ejs-treeview [fields]='field' (nodeClicked)='categoryNodeclicked($event)' class="auto">
 
           </ejs-treeview>
         </div>
@@ -39,7 +39,7 @@
                 <div class='col-md-12'>
                   <div class="floating-label-group">
                     <input type="text" class="form-control" placeholder="Category Name" formControlName="parentCategory" autocomplete="off"
-                      id="parentCategory" disabled>
+                      id="parentCategory" readonly>
                     <!-- <label class="floating-label">Category Name</label> -->
                     <div *ngIf="formSubmitted && form.parentCategory.errors?.required" class="valid-error">Category is
                       required.
