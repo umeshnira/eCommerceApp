@@ -509,4 +509,23 @@ div.a-column {
     width: 85%;
     left: 20px;
   }
+  .margin {
+    margin-right: -55px;
+  }
+  .payment {
+    display: grid;
+    margin-top: 250px;
+  }
+  .summary {
+    margin-top: 380px;
+  }
+  .grid {
+    display: grid;
+  }
+  .max-content {
+    width: max-content!important;
+  }
+  .dollar {
+    margin-top: -45px;
+  }
 }

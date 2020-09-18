@@ -3,7 +3,8 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a routerLink="/dashboard" href="index2.html" class="logo"><b>Admin</b>&nbsp;Dashboard</a>
+            <a routerLink="/dashboard" href="index2.html" class="logo" *ngIf="userRole === 'Admin'"><b>Admin</b>&nbsp;Dashboard</a>
+            <a routerLink="/dashboard" href="index2.html" class="logo" *ngIf="userRole === 'Seller'"><b>Seller</b>&nbsp;Dashboard</a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
