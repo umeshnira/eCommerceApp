@@ -14,7 +14,7 @@ const subscriptionRoutes = [
         component: AddSubscriptionComponent
     },
     {
-        path: 'edit/:id',
+        path: 'edit',
         component: AddSubscriptionComponent
     },
     {

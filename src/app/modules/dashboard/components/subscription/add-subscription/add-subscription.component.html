@@ -5,7 +5,8 @@
                 <div class="row text-center ">
                     <div class="col">
 
-                        <h3 class="tittle-w3l">Add Subscription
+                        <h3 class="tittle-w3l"> <span *ngIf="!subscriptionId">Add Subscription</span>
+                            <span *ngIf="subscriptionId">Update Subscription</span>
                             <span class="heading-style">
                                 <i></i>
                                 <i></i>
@@ -18,30 +19,30 @@
             <div class='col-md-3'></div>
             <div class='col-md-6'>
                 <div class='card m-b-30'>
-                    <form >
+                    <form [formGroup]="subFrom">
                         <div class="form-group">
                             <div class='col-md-12 m-t-10'>
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <input type="text" class="form-control" 
-                                            autocomplete="off" required>
-                                        <label class="floating-label">Subscription Title</label>
-                                        <!-- <div *ngIf="formSubmitted && form.title.errors?.required" class="valid-error">
+                                        <input type="text" class="form-control" autocomplete="off"
+                                            formControlName="name">
+                                        <label class="floating-label">Subscription Title*</label>
+                                        <div *ngIf="formSubmitted && form.name.errors?.required" class="valid-error">
                                             Title is
                                             required.
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class='col-md-12'>
-                               
+
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <input type="number" class="form-control" 
-                                            autocomplete="off" required>
-                                        <label class="floating-label">Amount</label>
+                                        <input type="number" class="form-control" autocomplete="off"
+                                            formControlName="amount">
+                                        <label class="floating-label">Amount*</label>
                                         <div *ngIf="formSubmitted && form.amount.errors?.required" class="valid-error">
                                             Amount is
                                             required.
@@ -52,29 +53,48 @@
                         </div>
                         <div class="form-group">
                             <div class='col-md-12'>
-                            
+
                                 <div class='col-md-12'>
                                     <div class="floating-label-group">
-                                        <select class="form-control" autocomplete="off"
-                                            required>
-                                            <option value="M">Monthly</option>
-                                            <option value="M">Yearly</option>
+                                        <select class="form-control" autocomplete="off" formControlName="type">
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Yearly">Yearly</option>
                                         </select>
-                                        <label class="floating-label">Validity</label>
-                                        <!-- <div *ngIf="formSubmitted && form.validity.errors?.required"
-                                            class="valid-error">
+                                        <label class="floating-label">Validity*</label>
+                                        <div *ngIf="formSubmitted && form.type.errors?.required" class="valid-error">
                                             Validity is
                                             required.
-                                        </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class='col-md-12'>
+
+                                <div class='col-md-12'>
+                                    <div class="floating-label-group">
+                                        <textarea type="text" class="form-control" autocomplete="off"
+                                            formControlName="description"></textarea>
+                                        <label class="floating-label">Description*</label>
+                                        <div *ngIf="formSubmitted && form.description.errors?.required"
+                                            class="valid-error">
+                                            Description is
+                                            required.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center m-t-30">
                             <div class="row">
-                               
+
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-style btn-width w-45 m-b-30">Add
+                                    <button *ngIf="!subscriptionId" (click)="addSubscript()" type="submit"
+                                        class="btn btn-style btn-width w-45 m-b-30">Add
+                                        Subscription</button>
+                                    <button *ngIf="subscriptionId" (click)="updateSubscript()" type="submit"
+                                        class="btn btn-style btn-width w-45 m-b-30">Update
                                         Subscription</button>
 
                                     <button type="submit"

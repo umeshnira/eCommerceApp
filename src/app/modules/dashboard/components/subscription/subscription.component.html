@@ -28,7 +28,7 @@
             <!-- third section (oils) -->
             <div class="row">
                 <div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" *ngFor="let x of subDetails">
                         <div class="panel padding-20">
 
                             <div class="men-pro-item simpleCart_shelfItem">
@@ -49,21 +49,20 @@
                                 </div>
                                 <div class="item-info-product">
                                     <h3>
-                                        <span>Basic</span>
+                                        <span>{{x.name}}</span>
                                     </h3>
                                     <h4 class="m-t-10">
-                                        <a href="single.html">$205.00</a>
+                                        <p>Rs {{x.amount}}</p>
                                         <div class="m-t-10">
                                             <small class="smallfont">
-                                                Per Year
+                                               {{x.type}}
                                             </small>
                                         </div>
 
                                     </h4>
                                     <div class="info-product-price row">
                                         <p class="item_price">
-                                            Process of investors signing up and committing to invest in a financial
-                                            instrument
+                                            {{x.description}}
                                         </p>
                                     </div>
 

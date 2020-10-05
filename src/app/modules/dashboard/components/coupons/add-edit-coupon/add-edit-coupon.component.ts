@@ -30,6 +30,7 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
   couponDetails: CouponViewListModel;
 
   addSubscription: ISubscription;
+  getSubscription: ISubscription;
 
   @ViewChild('tabset', { static: false }) tabset: TabsetComponent;
 
@@ -51,7 +52,7 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
     const userDetails = this.authService.getUserDetailsFromCookie();
     this.userId = userDetails.user_id;
 
-    this.productFormInitialization();
+    this.FormInitialization();
 
     if (this.couponId) {
       this.getCouponDetails(this.couponId);
@@ -60,6 +61,9 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
 
     if (this.addSubscription) {
+      this.addSubscription.unsubscribe();
+    }
+    if (this.getSubscription) {
       this.addSubscription.unsubscribe();
     }
   }
@@ -110,7 +114,7 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
     this.tabset.tabs[tabId].active = true;
   }
 
-  private productFormInitialization() {
+  private FormInitialization() {
     this.couponDetailsForm = new FormGroup({
       name: new FormControl('',
         Validators.compose([Validators.required,
@@ -158,7 +162,7 @@ export class AddEditCouponComponent implements OnInit, OnDestroy {
 
 
   private getCouponDetails(couponId) {
-    this.addSubscription = this.service.getCoupon(couponId).subscribe(response => {
+    this.getSubscription = this.service.getCoupon(couponId).subscribe(response => {
       this.couponDetails = response;
 
       this.couponDetailsForm?.controls['name'].setValue(this.couponDetails?.name);

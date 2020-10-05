@@ -49,7 +49,7 @@ export class CouponsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   navigateTodetails(id: number) {
-debugger;
+
     let navigationExtras: NavigationExtras;
     navigationExtras = {
       queryParams: { couponId: id },
