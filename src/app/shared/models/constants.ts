@@ -5,4 +5,7 @@ export class Constants {
     public static readonly client = 'Client';
     public static readonly seller = 'Seller';
     public static readonly admin = 'Admin';
+
+    public static readonly  categoryDeleteText='Do you want to delete this category';
+    public static readonly  subCategoryDeleteText='Do you want to delete this sub category';
 }

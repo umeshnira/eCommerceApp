@@ -5,15 +5,24 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { CustomConfirmComponent } from "src/app/shared/components/custom-confirm/custom-confirm.component";
+import { Constants } from "src/app/shared/models/constants";
+
+const config = {
+  backdrop: true,
+  ignoreBackdropClick: false,
+};
+
 @Component({
   selector: 'app-dashboard-sub-category',
   templateUrl: './dashboard-sub-category.component.html',
   styleUrls: ['./dashboard-sub-category.component.css']
 })
-export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
+export class DashboardSubCategoryComponent implements OnInit, OnDestroy,AfterViewInit {
 
   categoryId: number;
-
+  bsModalRef: BsModalRef;
   subCategoriesList: SubCategoryModel[];
 
   getAllCategoriesSubscription: ISubscription;
@@ -23,13 +32,18 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     private service: SubCategoryService,
     private route: ActivatedRoute,
     private router: Router,
+    private modalService: BsModalService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.getSubcategoriesList();
-    this.loadScript('assets/js/datatable.js');
   }
+
+  ngAfterViewInit() {
+    this.loadScript("assets/js/datatable.js");
+  }
+
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
       const scriptElement = document.createElement('script');
@@ -53,6 +67,11 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
     if (subCategory.hasSubCategory) {
       this.toastr.warning('Categories with Subcategory cannot be deleted', 'Warning');
     } else {
+      this.bsModalRef = this.modalService.show(CustomConfirmComponent, config);
+      this.bsModalRef.content.data = Constants?.subCategoryDeleteText;
+      this.bsModalRef.content.onClose.subscribe((result) => {
+        this.bsModalRef.hide();
+        if (result) {
       this.deleteSubCategorySubscription = this.service.deleteSubCategory(subCategory.id).subscribe(response => {
 
         if (response) {
@@ -63,6 +82,8 @@ export class DashboardSubCategoryComponent implements OnInit, OnDestroy {
       }, (error) => {
         this.toastr.error('', error.error.message);
       });
+    }
+  });
     }
   }
 

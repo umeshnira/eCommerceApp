@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     }),
     CoreModule.forRoot(),
     SharedModule.forRoot(),
+    ModalModule.forRoot(),
     TabsModule.forRoot()
   ],
 

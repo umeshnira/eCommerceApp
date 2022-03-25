@@ -14,13 +14,15 @@ import { ArchwizardModule } from 'angular-archwizard';
 import { DashboardProductDetailComponent } from './dashboard-product-list/dashboard-product-detail/dashboard-product-detail.component';
 import { CartService } from 'src/app/modules/home/services/cart.service';
 import { OfferService } from './services/offer.service';
+import {  BsModalService } from "ngx-bootstrap/modal";
+
 const modules = [SharedModule, DashboardProductRoutingModule, ArchwizardModule
 ];
 const components = [ProductsComponent, DashboardCategoryComponent, AddProductListComponent,
     AddEditProductCategoryComponent, AddEditProductSubcategoryComponent, DashboardSubCategoryComponent,
     DashboardProductListComponent, DashboardProductDetailComponent];
 
-const providers = [FirstPageService, ProductService, CartService, OfferService];
+const providers = [FirstPageService, ProductService, CartService, OfferService,BsModalService];
 
 @NgModule({
     imports: modules,
