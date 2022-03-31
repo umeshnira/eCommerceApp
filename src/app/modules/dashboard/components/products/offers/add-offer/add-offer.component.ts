@@ -46,7 +46,6 @@ export class AddOfferComponent implements OnInit, OnDestroy {
     this.userId = userDetails.user_id;
     this.userRole = userDetails.role;
     this.offerFormInitialization();
-    debugger;
     this.offerId = this.route.snapshot.params?.id;
     if (this.offerId) {
       this.isEdit = true;
