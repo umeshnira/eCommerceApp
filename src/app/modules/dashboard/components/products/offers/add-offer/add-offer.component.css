@@ -3,6 +3,10 @@
   background-color: unset;
 }
 
+.valid-error {
+  color: red;
+  font-size: 13px;
+}
 .floating-label-group {
   position: relative;
   margin-top: 10px;

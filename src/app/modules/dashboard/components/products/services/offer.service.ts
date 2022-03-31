@@ -22,10 +22,24 @@ export class OfferService extends HttpBaseService {
       );
   }
 
+  updateOffer(model: OfferModel,id) {
+    const url = `${this.baseUrl}/offer/${id}`;
+    return this.http.put<ApiResponseModel>(url, model)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
   getAllOffers() {
     const url = `${this.baseUrl}/offer`;
     return this.http.get<OfferModel>(url)
       .pipe(catchError(this.handleError)
       );
   }
+  getOfferDetails(id) {
+    const url = `${this.baseUrl}/offer/${id}`;
+    return this.http.get<OfferModel>(url)
+      .pipe(catchError(this.handleError)
+      );
+  }
+
 }

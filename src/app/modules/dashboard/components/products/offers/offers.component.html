@@ -45,7 +45,7 @@
           <tr *ngFor="let item of offerList">
             <td>{{item.name}}</td>
             <td>{{item.description}} </td>
-            <td>${{item.price}}</td>
+            <td>{{item.price}}</td>
             <td>{{item.percentage}}%</td>
             <td>{{item.validFrom}}</td>
             <td>{{item.validTo}}</td>
@@ -60,7 +60,7 @@
               <a routerLink="/dashboard/products/offers/assign-product" class="dropdown-item font-12"><i class="fa fa-tasks m-r-5 icon-style" title="Assign"></i>
               </a>
 
-              <a routerLink="/dashboard/products/offers/edit/1" class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style" title="Edit"></i>
+              <a routerLink="/dashboard/products/offers/edit/{{item?.id}}" class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 m-l-10 icon-style" title="Edit"></i>
               </a>
               <a class="dropdown-item font-12"><i class="fa fa-trash m-r-5 m-l-10 icon-style" title="Delete"></i>
               </a>

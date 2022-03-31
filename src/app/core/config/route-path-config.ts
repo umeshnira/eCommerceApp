@@ -25,6 +25,10 @@ export class RoutePathConfig {
     public static readonly CreateProducts = 'products/add';
     public static readonly EditProducts = 'products/edit';
 
+    // Offer
+    public static readonly offer='offers';
+    
+
     // Category
     public static readonly CreateCategory = 'categories/create';
     public static readonly CategoryList = 'categories';

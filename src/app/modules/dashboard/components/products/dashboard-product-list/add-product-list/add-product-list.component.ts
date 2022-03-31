@@ -31,6 +31,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
   isLinear = false;
   files: any[] = [];
   imageList: any[] = [];
+  minDate=new Date();
 
   field: Object;
   formData: FormData = new FormData();
@@ -250,9 +251,9 @@ export class AddProductListComponent implements OnInit, OnDestroy {
 
   private productFormInitialization() {
     this.productDetailsForm = new FormGroup({
-      categoryName: new FormControl('',
-        Validators.compose([Validators.required,
-        CustomFormValidator.cannotContainSpace])),
+      // categoryName: new FormControl('',
+      //   Validators.compose([Validators.required,
+      //   CustomFormValidator.cannotContainSpace])),
       productName: new FormControl('',
         Validators.compose([Validators.required,
         CustomFormValidator.cannotContainSpace])),
