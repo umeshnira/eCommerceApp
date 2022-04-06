@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/modules/home/modules/product/services/product.service';
 import { ReviewViewDetailsModel } from 'src/app/modules/home/modules/product/models/review-view-details.model';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Subject, SubscriptionLike as ISubscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -10,11 +10,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
-export class ReviewComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ReviewComponent implements OnInit, OnDestroy {
 
   private getReviewSubscrip: ISubscription;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
-  public reviewDetails = new ReviewViewDetailsModel();
+  public reviewDetails = new Array<ReviewViewDetailsModel>();
 
   private userId: number;
 
@@ -30,33 +32,18 @@ export class ReviewComponent implements OnInit, OnDestroy, AfterViewInit {
     this.getUserOrderDetails(this.userId);
   }
 
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
-  ngAfterViewInit() {
-
-    this.loadScript('assets/js/datatable.js');
-  }
   ngOnDestroy() {
     if (this.getReviewSubscrip) {
       this.getReviewSubscrip.unsubscribe();
     }
+    this.dtTrigger?.unsubscribe();
   }
 
   private getUserOrderDetails(id: number) {
     this.getReviewSubscrip = this.service.getSellerReviews(id).subscribe((res) => {
 
-      res.forEach(x => {
-        const a = new Date(x.date);
-        x.date = this.formatDate(x.date);
-      });
-
       this.reviewDetails = res;
+      this.dtTrigger.next();
     },
       (error) => {
         this.toastr.error('', error.error.message);

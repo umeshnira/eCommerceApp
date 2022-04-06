@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { InvoiceService } from 'src/app/modules/dashboard/components/sales-orders/services/invoice.service';
 import { OrderService } from 'src/app/modules/home/modules/order/services/order.service';
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './invoice-details.component.html',
   styleUrls: ['./invoice-details.component.css']
 })
-export class InvoiceDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class InvoiceDetailsComponent implements OnInit, OnDestroy {
 
   orderInvoice: InvoiceViewListModel;
   clientInvoice: InvoiceViewListModel;
@@ -50,18 +50,8 @@ export class InvoiceDetailsComponent implements OnInit, OnDestroy, AfterViewInit
       this.getClientInvoice.unsubscribe();
     }
   }
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    })
-  }
-  ngAfterViewInit() {
 
-    this.loadScript('assets/js/datatable.js');
-  }
+
 
   // private getInvoiceDetails() {
   //   this.getorderInvoice = this.invoiceService.getInvoiceOrderDetails(this.orderId).subscribe((res) => {

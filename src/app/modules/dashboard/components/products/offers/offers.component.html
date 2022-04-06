@@ -27,7 +27,7 @@
 
       </div>
       <div class="auto">
-      <table class="table table-bordered table-striped example1 m-t-10">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped example1 m-t-10">
         <thead>
           <tr>
             <th>Name</th>
@@ -41,14 +41,14 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="offerList?.length != 0">
           <tr *ngFor="let item of offerList">
             <td>{{item.name}}</td>
             <td>{{item.description}} </td>
             <td>{{item.price}}</td>
             <td>{{item.percentage}}%</td>
-            <td>{{item.validFrom}}</td>
-            <td>{{item.validTo}}</td>
+            <td>{{item.validFrom |date}}</td>
+            <td>{{item.validTo |date}}</td>
             <td>
               <div class="status-toggle">
                 <input type="checkbox" id="staff_module" class="check" [checked]="item.status === '1'">
@@ -67,6 +67,11 @@
             </td>
           </tr>
 
+        </tbody>
+        <tbody *ngIf="offerList?.length == 0">
+          <tr>
+            <td colspan="9" class="no-data-available">No data available in table</td>
+          </tr>
         </tbody>
       </table>
     </div>

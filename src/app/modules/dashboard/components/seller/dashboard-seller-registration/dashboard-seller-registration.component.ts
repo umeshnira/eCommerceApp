@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SellerDetailsModel } from '../models/seller-details.model';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Subject, SubscriptionLike as ISubscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Status } from 'src/app/shared/enums/user-status.enum';
 import { Constants } from 'src/app/shared/models/constants';
@@ -18,7 +18,9 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
   sellersList: SellerDetailsModel[];
   getAllSellersSubscription: ISubscription;
   sellerApproveSubscription: ISubscription;
-
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+  
   constructor(
     private sellerService: SellerService,
     private toastr: ToastrService,
@@ -28,18 +30,7 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllSellers();
   }
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    })
-    }
-  ngAfterViewInit() {
 
-  this.loadScript('assets/js/datatable.js');
-  }
   approveSellerRegistration(sellerId: number, seller: SellerDetailsModel) {
     seller.status = Status.Active;
     seller.updated_by = Constants.admin;
@@ -89,6 +80,7 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
     if (this.sellerApproveSubscription) {
       this.sellerApproveSubscription.unsubscribe();
     }
+    this.dtTrigger?.unsubscribe();
   }
 
   private getAllSellers() {
@@ -98,6 +90,7 @@ export class DashboardSellerRegistrationComponent implements OnInit, OnDestroy {
         if (response) {
           this.sellersList = response;
           this.sellersList = this.sellersList.filter(x => x.status === Status.Approval_Pending);
+          this.dtTrigger.next();
         }
       },
         (error) => {

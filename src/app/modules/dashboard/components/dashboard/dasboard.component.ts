@@ -23,7 +23,6 @@ export class DasboardComponent implements OnInit {
     this.loadScript('assets/plugins/raphel-min.js');
     this.loadScript('assets/plugins/morris/morris.min.js');
     this.loadScript('assets/dist/js/pages/dashboard.js');
-    this.loadScript('assets/js/datatable.js');
   }
 
 }

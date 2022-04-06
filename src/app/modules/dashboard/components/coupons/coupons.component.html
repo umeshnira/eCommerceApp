@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="auto">
-            <table class="table table-bordered table-striped example1 m-t-10">
+            <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped example1 m-t-10">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -38,14 +38,14 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="couponDetails?.length != 0">
                     <tr *ngFor="let x of couponDetails">
                         <td>{{x.name}}</td>
                         <td>{{x.code}}</td>
                         <td>{{x.discount_name}}</td>
                         <td>{{x.price}}</td>
                         <td>{{x.limit_per_coupon}}</td>
-                        <td>{{x.end_date}}</td>
+                        <td>{{x.end_date |date:'dd/MM/yyyy'}}</td>
                         <td>
                             <a (click)="navigateTodetails(x.id)" class="dropdown-item font-12"><i class="fa fa-pencil m-r-5 icon-style" title="Edit"></i>
                             </a>
@@ -59,6 +59,11 @@
 
 
                 </tbody>
+                <tbody *ngIf="couponDetails?.length == 0">
+                    <tr>
+                      <td colspan="7" class="no-data-available">No data available in table</td>
+                    </tr>
+                  </tbody>
             </table>
         </div>
         </div>

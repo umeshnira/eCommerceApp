@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from "@angular/core";
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { SubscriptionLike as ISubscription } from "rxjs";
+import { Subject, SubscriptionLike as ISubscription } from "rxjs";
 import { CategoryModel } from "src/app/modules/home/modules/category/models/category.model";
 import { CategoryService } from "src/app/shared/services/category.service";
 import { Router, ActivatedRoute, NavigationExtras } from "@angular/router";
@@ -20,12 +20,15 @@ const config = {
   templateUrl: "./dashboard-category.component.html",
   styleUrls: ["./dashboard-category.component.css"],
 })
-export class DashboardCategoryComponent implements OnInit, OnDestroy,AfterViewInit {
+export class DashboardCategoryComponent implements OnInit, OnDestroy {
   categories: CategoryModel[];
   bsModalRef: BsModalRef;
   getAllCategoriesSubscription: ISubscription;
   deleteCategorySubscription: ISubscription;
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+  
   constructor(
     private service: CategoryService,
     private subCategoryService: SubCategoryService,
@@ -39,17 +42,6 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy,AfterViewIn
     this.getAllCategories();
   }
 
-  ngAfterViewInit() {
-    this.loadScript("assets/js/datatable.js");
-  }
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement("script");
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
   goToEditPage(categoryId: number) {
     let navigationExtras: NavigationExtras;
     navigationExtras = {
@@ -95,6 +87,7 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy,AfterViewIn
     if (this.deleteCategorySubscription) {
       this.deleteCategorySubscription.unsubscribe();
     }
+    this.dtTrigger?.unsubscribe();
   }
 
   private getAllCategories() {
@@ -102,6 +95,7 @@ export class DashboardCategoryComponent implements OnInit, OnDestroy,AfterViewIn
       (response) => {
         if (response) {
           this.categories = response;
+          this.dtTrigger.next();
           this.checkHasSubCategory();
         }
       },

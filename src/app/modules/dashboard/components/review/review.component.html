@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="auto">
-            <table class="table table-bordered table-striped example1 m-t-10">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped example1 m-t-10">
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -27,7 +27,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="reviewDetails?.length != 0">
                     <tr *ngFor="let x of reviewDetails">
                         <td><img class="img-fluid avatar" src="{{x.path}}"></td>
                         <td>{{x.author}}</td>
@@ -55,7 +55,7 @@
                               </ul>
                         </td>
                         <td>{{x.status}}</td>
-                        <td>{{x.date}}</td>
+                        <td>{{x.date |date}}</td>
                         <td>
                             <a class="dropdown-item font-12" routerLink="/dashboard/reviews/review-details">
                                 <i class="fa fa-eye m-r-5 icon-style m-l-10" title="View"></i>
@@ -71,6 +71,11 @@
                     </tr>
 
                 </tbody>
+                <tbody *ngIf="reviewDetails?.length == 0">
+                    <tr>
+                      <td colspan="7" class="no-data-available">No data available in table</td>
+                    </tr>
+                  </tbody>
             </table>
         </div>
         </div>

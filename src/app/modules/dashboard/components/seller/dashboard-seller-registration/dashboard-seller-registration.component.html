@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="auto">
-            <table class="table table-bordered table-striped example1 m-t-10">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped example1 m-t-10">
                 <thead>
                     <tr>
                         <th>Full Name</th>
@@ -26,7 +26,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="sellersList?.length != 0">
                     <tr *ngFor="let seller of sellersList">
                         <td>{{seller.name}}</td>
                         <td>{{seller.username}}</td>
@@ -48,6 +48,11 @@
                     </tr>
 
                 </tbody>
+                <tbody *ngIf="sellersList?.length == 0">
+                    <tr>
+                      <td colspan="6" class="no-data-available">No data available in table</td>
+                    </tr>
+                  </tbody>
             </table>
         </div>
         </div>

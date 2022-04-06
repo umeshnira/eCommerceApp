@@ -233,5 +233,13 @@ a {
      overflow: auto;
    }
 
+   .input-sm {
+    font-size: 15px !important;
+   }
+
+   div.dataTables_filter input {
+    width: 270px !important;
+   }
+
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

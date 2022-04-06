@@ -16,6 +16,7 @@ import { GenericStateManagerService } from "./services/generic-state-manager.ser
 import { SellerService } from "./services/seller.service";
 import { RouterModule } from "@angular/router";
 import { CustomConfirmComponent } from "./components/custom-confirm/custom-confirm.component";
+import { DataTablesModule } from "angular-datatables";
 
 const components = [
   HeaderComponent,
@@ -27,6 +28,7 @@ const components = [
 const modules = [
   FormsModule,
   CommonModule,
+  DataTablesModule,
   ReactiveFormsModule,
   TreeViewModule,
   ListViewModule,

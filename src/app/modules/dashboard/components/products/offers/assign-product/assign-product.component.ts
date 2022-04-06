@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/modules/home/modules/product/services/product.service';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './assign-product.component.html',
   styleUrls: ['./assign-product.component.css']
 })
-export class AssignProductComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AssignProductComponent implements OnInit, OnDestroy {
 
   userId: number;
   categoryId: number;
@@ -152,15 +152,5 @@ export class AssignProductComponent implements OnInit, AfterViewInit, OnDestroy 
         });
   }
 
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    })
-  }
-  ngAfterViewInit() {
-    this.loadScript('assets/js/datatable.js');
-  }
+
 }

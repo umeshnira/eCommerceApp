@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { RoutePathConfig } from 'src/app/core/config/route-path-config';
 import { OfferService } from '../services/offer.service';
 import { ToastrService } from 'ngx-toastr';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Subject, SubscriptionLike as ISubscription } from 'rxjs';
 import { OfferModel } from 'src/app/modules/home/modules/product/models/offer.model';
 
 @Component({
@@ -11,11 +11,13 @@ import { OfferModel } from 'src/app/modules/home/modules/product/models/offer.mo
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css']
 })
-export class OffersComponent implements OnInit, AfterViewInit, OnDestroy {
+export class OffersComponent implements OnInit, OnDestroy {
 
-  offerList: OfferModel;
+  offerList: OfferModel[];
   getAllOffersSubscription: ISubscription;
-
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+  
   constructor(
     private router: Router,
     private offerService: OfferService,
@@ -36,30 +38,21 @@ export class OffersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate([path], navigationExtras);
   }
 
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
 
   ngOnDestroy() {
     if (this.getAllOffersSubscription) {
       this.getAllOffersSubscription.unsubscribe();
     }
+    this.dtTrigger?.unsubscribe();
   }
 
-  ngAfterViewInit() {
-    this.loadScript('assets/js/datatable.js');
-  }
 
   private getAllOffers() {
     this.getAllOffersSubscription = this.offerService.getAllOffers().subscribe(response => {
 
       if (response) {
         this.offerList = response;
+        this.dtTrigger.next();
       }
     },
       (error) => {

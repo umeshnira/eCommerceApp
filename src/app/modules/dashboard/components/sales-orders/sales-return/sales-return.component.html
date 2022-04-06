@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="auto">
-            <table class="table table-bordered table-striped example1 m-t-10">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped example1 m-t-10">
                 <thead>
                     <tr>
                         <th>Request ID</th>
@@ -27,14 +27,14 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="orderDetails?.length != 0">
                     <tr *ngFor="let x of orderDetails">
                         <td>{{x.id}}</td>
                         <td>{{x.user_id}}</td>
                         <td>{{x.order_detail_id}}</td>
                         <td>₹{{x.qty * x.price}}</td>
                         <td>{{x.reason}}</td>
-                        <td>{{x.ordered_date}}</td>                      
+                        <td>{{x.ordered_date |date}}</td>                      
                         <td>
                             <a class="dropdown-item font-12"><i class="fa fa-check m-r-5 icon-style" title="Approve"></i>
                             </a>
@@ -46,6 +46,11 @@
                     </tr>
 
                 </tbody>
+                <tbody *ngIf="orderDetails?.length == 0">
+                    <tr>
+                      <td colspan="7" class="no-data-available">No data available in table</td>
+                    </tr>
+                  </tbody>
             </table>
         </div>
         </div>

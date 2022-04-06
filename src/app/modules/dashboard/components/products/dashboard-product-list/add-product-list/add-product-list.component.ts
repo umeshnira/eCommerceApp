@@ -75,18 +75,7 @@ export class AddProductListComponent implements OnInit, OnDestroy {
     this.productFormInitialization();
 
   }
-  private loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    })
-  }
-  ngAfterViewInit() {
 
-    this.loadScript('assets/js/datatable.js');
-  }
   categoryTreeNodeClicked(event) {
     this.categoryId = event.node.dataset.uid;
   }
