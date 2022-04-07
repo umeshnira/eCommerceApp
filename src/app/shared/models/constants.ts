@@ -8,4 +8,5 @@ export class Constants {
 
     public static readonly  categoryDeleteText='Do you want to delete this category';
     public static readonly  subCategoryDeleteText='Do you want to delete this sub category';
+    public static readonly  offerDeleteText='Do you want to delete this offer';
 }

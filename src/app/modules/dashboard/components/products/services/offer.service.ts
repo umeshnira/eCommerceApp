@@ -42,4 +42,11 @@ export class OfferService extends HttpBaseService {
       );
   }
 
+  statusChangeOffer(id,status){
+    const url = `${this.baseUrl}/offer/${id}?status=${status}`;
+    return this.http.patch<OfferModel>(url,{})
+      .pipe(catchError(this.handleError)
+      );
+  }
+
 }

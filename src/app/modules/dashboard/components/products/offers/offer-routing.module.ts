@@ -18,7 +18,7 @@ const offerRoutes = [
         component: AddOfferComponent
     },
     {
-        path: 'assign-product',
+        path: 'assign-product/:id',
         component: AssignProductComponent
     },
 ];
