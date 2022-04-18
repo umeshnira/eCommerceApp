@@ -29,6 +29,9 @@ export class OfferService extends HttpBaseService {
       );
   }
 
+  saveUpdateOfferProductsSelected(){
+    
+  }
   getAllOffers() {
     const url = `${this.baseUrl}/offer`;
     return this.http.get<OfferModel>(url)
@@ -45,6 +48,12 @@ export class OfferService extends HttpBaseService {
   statusChangeOffer(id,status){
     const url = `${this.baseUrl}/offer/${id}?status=${status}`;
     return this.http.patch<OfferModel>(url,{})
+      .pipe(catchError(this.handleError)
+      );
+  }
+  getOfferProducts(id,status){
+    const url = `${this.baseUrl}/offer/${id}/product?status=${status}`;
+    return this.http.get<OfferModel>(url)
       .pipe(catchError(this.handleError)
       );
   }

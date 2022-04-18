@@ -24,4 +24,7 @@ export class ProductDetailsModel {
   p_updated_at: Date;
   p_updated_by: string;
   category: string;
+  product_id: number;
+    product_name: string;
+  product_offer_id: number;
 }

@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductService } from 'src/app/modules/home/modules/product/services/product.service';
-import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
-import { SubscriptionLike as ISubscription } from 'rxjs';
-import { CategoryTreeViewModel } from '../../models/category-tree-view.model';
-import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { Constants } from 'src/app/shared/models/constants';
-import { ProductDetailsModel } from '../../models/product-details.model';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ProductService } from "src/app/modules/home/modules/product/services/product.service";
+import { SubCategoryService } from "src/app/shared/services/sub-category.service";
+import { SubscriptionLike as ISubscription } from "rxjs";
+import { CategoryTreeViewModel } from "../../models/category-tree-view.model";
+import { ToastrService } from "ngx-toastr";
+import { AuthService } from "src/app/core/services/auth.service";
+import { Constants } from "src/app/shared/models/constants";
+import { ProductDetailsModel } from "../../models/product-details.model";
+import { ActivatedRoute } from "@angular/router";
+import { OfferService } from "../../services/offer.service";
+import { Status } from "src/app/shared/enums/user-status.enum";
 
 @Component({
-  selector: 'app-assign-product',
-  templateUrl: './assign-product.component.html',
-  styleUrls: ['./assign-product.component.css']
+  selector: "app-assign-product",
+  templateUrl: "./assign-product.component.html",
+  styleUrls: ["./assign-product.component.css"],
 })
 export class AssignProductComponent implements OnInit, OnDestroy {
-
   userId: number;
   categoryId: number;
   userRole: string;
@@ -27,15 +28,19 @@ export class AssignProductComponent implements OnInit, OnDestroy {
   getProductsBySellerIdSubscription: ISubscription;
   getAllProductsSubscription: ISubscription;
   getProductsByCategoryIdSubscription: ISubscription;
+  offerProductSubcription: ISubscription;
   offerId: any;
+  offerProductList: any[];
+  offerProductSubmitSubcription: ISubscription;
 
   constructor(
     private productService: ProductService,
     private subCategoryService: SubCategoryService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
+    private offerService: OfferService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const userDetails = this.authService.getUserDetailsFromCookie();
@@ -43,7 +48,7 @@ export class AssignProductComponent implements OnInit, OnDestroy {
     this.userRole = userDetails.role;
     this.offerId = this.route.snapshot.params?.id;
     this.getCategories();
-    this.loadDefaultProductsList();
+    this.getofferProduct();
   }
 
   categoryNodeclicked(event) {
@@ -57,7 +62,6 @@ export class AssignProductComponent implements OnInit, OnDestroy {
     } else {
       return product.images[0].path;
     }
-
   }
 
   ngOnDestroy() {
@@ -76,35 +80,48 @@ export class AssignProductComponent implements OnInit, OnDestroy {
   }
 
   private getProductsByCategoryIdForSeller(response: ProductDetailsModel[]) {
-    const productsList = response.filter(x => x.seller_id === this.userId);
-    this.productList = productsList;
+    const productsList = response.filter((x) => x.seller_id === this.userId);
+    this.productList = this.checkForSelectedProduct(productsList);
   }
 
   private getProductsByCategoryId(categoryId: number) {
-    this.getProductsByCategoryIdSubscription = this.productService.getProductsByCategoryId(categoryId)
-      .subscribe((response) => {
-        if (this.isSeller) {
-          this.getProductsByCategoryIdForSeller(response);
-        }
-        this.productList = response;
-      },
+    this.getProductsByCategoryIdSubscription = this.productService
+      .getProductsByCategoryId(categoryId)
+      .subscribe(
+        (response) => {
+          if (this.isSeller) {
+            this.getProductsByCategoryIdForSeller(response);
+          }
+          this.productList = this.checkForSelectedProduct(response);
+        },
         (error) => {
-          this.toastr.warning('No Products are available in this Category', 'Sorry');
-        });
-
+          this.toastr.warning(
+            "No Products are available in this Category",
+            "Sorry"
+          );
+        }
+      );
   }
 
   private getCategories() {
-    this.getCategoriesSubscription = this.subCategoryService.getSubCategoriesTree().subscribe(response => {
-      if (response) {
-        this.categories = response;
-        this.field = { dataSource: this.categories, id: 'id', text: 'name', child: 'subCategories' };
-      }
-    },
-      (error) => {
-        this.toastr.error('', error.error.message);
-      }
-    );
+    this.getCategoriesSubscription = this.subCategoryService
+      .getSubCategoriesTree()
+      .subscribe(
+        (response) => {
+          if (response) {
+            this.categories = response;
+            this.field = {
+              dataSource: this.categories,
+              id: "id",
+              text: "name",
+              child: "subCategories",
+            };
+          }
+        },
+        (error) => {
+          this.toastr.error("", error.error.message);
+        }
+      );
   }
 
   private loadDefaultProductsList() {
@@ -117,35 +134,74 @@ export class AssignProductComponent implements OnInit, OnDestroy {
   }
 
   private getProductsBySellerId() {
-    this.getProductsBySellerIdSubscription = this.productService.getProductsBySellerId(this.userId)
-      .subscribe((response) => {
-
-        this.productList = response;
-      },
+    this.getProductsBySellerIdSubscription = this.productService
+      .getProductsBySellerId(this.userId)
+      .subscribe(
+        (response) => {
+          this.productList = this.checkForSelectedProduct(response);
+        },
         (error) => {
-          this.toastr.warning('No Products are available', 'Sorry');
-        });
+          this.toastr.warning("No Products are available", "Sorry");
+        }
+      );
   }
 
   private getAllProducts() {
-    this.getAllProductsSubscription = this.productService.getAllProducts()
-      .subscribe((response) => {
-
-        this.productList = response;
-      },
+    this.getAllProductsSubscription = this.productService
+      .getAllProducts()
+      .subscribe(
+        (response) => {
+          this.productList = this.checkForSelectedProduct(response);
+        },
         (error) => {
-          this.toastr.warning('No Products are Available', 'Sorry');
-        });
+          this.toastr.warning("No Products are Available", "Sorry");
+        }
+      );
   }
 
-  checkForSelectedProduct(array:ProductDetailsModel[]):any{
-         for(let x of array){
-             x.product_check= false;
-         }
+  checkForSelectedProduct(array: ProductDetailsModel[]): any {
+    for (let x of array) {
+      x.product_check = false;
+    }
+    if (this.offerProductList?.length > 0) {
+      for (let x of array) {
+        for (let y of this.offerProductList) {
+          if (x?.id == y?.product_id) {
+            x.product_check = true;
+            x.product_offer_id = y.product_offer_id;
+          }
+        }
+      }
+    }
+
+    return array;
   }
 
-  saveChanges(){
-    
+  getofferProduct() {
+    this.offerProductSubcription = this.offerService
+      .getOfferProducts(this.offerId, Status?.Active)
+      .subscribe(
+        (Response) => {
+          this.offerProductList = Response;
+          this.loadDefaultProductsList();
+        },
+        (error) => {
+          this.toastr.error("", error.error.message);
+          this.loadDefaultProductsList();
+        }
+      );
   }
 
+  saveChanges() {
+    // this.offerProductSubmitSubcription = this.offerService
+    //   .saveUpdateOfferProductsSelected()
+      // .subscribe(
+      //   (Response) => {
+         
+      //   },
+      //   (error) => {
+      //     this.toastr.error("", error.error.message);
+      //   }
+      // );
+  }
 }

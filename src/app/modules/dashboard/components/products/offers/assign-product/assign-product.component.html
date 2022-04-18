@@ -31,8 +31,8 @@
                             <th>Price</th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let product of productList">
-                                <td><input type="checkbox" class="checkthis" /></td>
+                            <tr *ngFor="let product of productList;">
+                                <td><input [(ngModel)]="product.product_check" (click)="product.product_check=!product?.product_check" type="checkbox" class="checkthis" /></td>
                                 <td><img class="img-fluid avatar" [src]="getProductImage(product)"></td>
                                 <td>{{product.name}}</td>
                                 <td>₹{{product.price}}</td>
